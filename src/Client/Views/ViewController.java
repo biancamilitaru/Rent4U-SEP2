@@ -1,7 +1,7 @@
 package Client.Views;
 
-import Client.ViewHandler;
-import Client.ViewModelFactory;
+import Client.Core.ViewHandler;
+import Client.Core.ViewModelFactory;
 
 public interface ViewController
 {

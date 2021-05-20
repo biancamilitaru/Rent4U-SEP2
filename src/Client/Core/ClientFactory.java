@@ -1,4 +1,4 @@
-package Core;
+package Client.Core;
 
 import Client.Networking.Client;
 import Client.Networking.ClientImpl;

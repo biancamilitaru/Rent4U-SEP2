@@ -1,4 +1,4 @@
-package Core;
+package Client.Core;
 
 import Client.ViewModel.LogInViewModel;
 

@@ -1,6 +1,6 @@
 package Client;
 
-import Core.ViewHandler;
+import Client.Core.ViewHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
