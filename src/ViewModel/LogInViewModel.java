@@ -3,9 +3,6 @@ package ViewModel;
 import Client.Model.ClientModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
-
-
 import java.beans.PropertyChangeEvent;
 
 public class LogInViewModel
@@ -24,9 +21,6 @@ public class LogInViewModel
     String result = (String) evt.getNewValue();
 
   }
-
-
-
 
   public StringProperty passwordProperty()
   {
