@@ -1,4 +1,4 @@
-package View.LoginView;
+package Client.Views;
 
 import Client.ViewHandler;
 import ViewModel.LogInViewModel;
