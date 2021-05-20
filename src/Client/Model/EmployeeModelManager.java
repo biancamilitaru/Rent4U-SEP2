@@ -1,9 +1,9 @@
 package Client.Model;
 
 import Client.Networking.Client;
-import Util.Answer;
 import Util.Request;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -18,7 +18,7 @@ public class EmployeeModelManager implements ClientModel{
         this.client = client;
         support = new PropertyChangeSupport(this);
         client.startClient();
-       // client.addListener("NewRequest",this::newAnswer);
+        client.addListener("NewRequest",this::newAnswer);
         password = "default";
     }
 
@@ -30,12 +30,13 @@ public class EmployeeModelManager implements ClientModel{
 
     @Override
     public void newRequest(Request request) {
-
+        client.newRequest(request);
     }
 
     @Override
-    public void newAnswer(Answer answer) {
-
+    public void newAnswer(PropertyChangeEvent evt)
+    {
+        support.firePropertyChange("NewAnswer", null, evt.getNewValue());
     }
 
     @Override

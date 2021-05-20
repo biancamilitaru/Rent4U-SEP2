@@ -50,6 +50,7 @@ public class ServerImpl implements RMIServer
             }
         };
         listeners.put(clientCallBack, listener);
+        System.out.println("New listener");
         serverModelManager.addListener("NewAnswer", listener);
 
     }

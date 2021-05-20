@@ -23,17 +23,10 @@ public class ViewHandler
   public void start() throws IOException
   {
     stage = new Stage();
-    open();
+    openLogInEmployee();
   }
 
-  private void openToLogInView()
-  {
-    Scene logInViewScene = ViewFactory.getScene("LogIn");
-    stage.setTitle(String.valueOf(logInViewScene));
-    stage.show();
-  }
-
-  public void open()
+  public void openLogInEmployee()
   {
     FXMLLoader loader = new FXMLLoader();
 
