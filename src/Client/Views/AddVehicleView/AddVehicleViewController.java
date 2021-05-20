@@ -1,7 +1,8 @@
-package Client.Views;
+package Client.Views.AddVehicleView;
 
-import Client.ViewHandler;
-import Client.ViewModelFactory;
+import Client.Core.ViewHandler;
+import Client.Core.ViewModelFactory;
+import Client.Views.ViewController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
@@ -47,9 +48,10 @@ public class AddVehicleViewController implements ViewController
     if (dieselTypeButton.isSelected()){
       return "diesel";
     }
-    if (hybridTypeButton.isSelected(){
+    if (hybridTypeButton.isSelected()){
       return "hybrid";
     }
+    else return "Not selected";
   }
 
   private String getGearBoxType(){
@@ -59,6 +61,7 @@ public class AddVehicleViewController implements ViewController
     if (manualGearBoxButton.isSelected()){
       return "manual";
     }
+    else return "Not selected";
   }
 
 
