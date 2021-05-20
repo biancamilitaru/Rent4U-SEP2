@@ -7,22 +7,25 @@ import Util.Request;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class ClientModelManager implements ClientModel{
+public class EmployeeModelManager implements ClientModel{
 
     private PropertyChangeSupport support;
     private Client client;
+    private String password;
 
-    public ClientModelManager(Client client)
+    public EmployeeModelManager(Client client)
     {
         this.client = client;
         support = new PropertyChangeSupport(this);
         client.startClient();
-        client.addListener("NewRequest",this::newAnswer);
+       // client.addListener("NewRequest",this::newAnswer);
+        password = "default";
     }
 
     @Override
     public void login(String s) {
-
+        if(s.equals(password))
+            System.out.println("Log in successfully!");
     }
 
     @Override
