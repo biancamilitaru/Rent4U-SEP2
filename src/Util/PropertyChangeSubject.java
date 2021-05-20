@@ -8,4 +8,5 @@ public interface PropertyChangeSubject
     void addListener(PropertyChangeListener listener);
     void removeListener(String name, PropertyChangeListener listener);
     void removeListener(PropertyChangeListener listener);
+    void start ();
 }

@@ -1,18 +1,19 @@
-package viewmodel;
+package ViewModel;
 
+import Client.Model.ClientModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import model.Model;
+
 
 import java.beans.PropertyChangeEvent;
 
 public class LogInViewModel
 {
-  private Model userModel;
+  private ClientModel userModel;
   private StringProperty password;
 
-  public LogInViewModel(Model userModel)
+  public LogInViewModel(ClientModel userModel)
   {
     this.userModel= userModel;
     password = new SimpleStringProperty();
