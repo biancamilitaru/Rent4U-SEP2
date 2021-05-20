@@ -30,10 +30,8 @@ public class LogInViewModel
 
   public void login()
   {
-
     System.out.println(password.get());
     userModel.login(password.get());
-
   }
 
 

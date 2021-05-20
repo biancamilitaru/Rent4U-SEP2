@@ -1,7 +1,7 @@
 package Client.Views;
 
 import Client.ViewHandler;
-import ViewModel.LogInViewModel;
+import Client.ViewModel.LogInViewModel;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
@@ -18,9 +18,6 @@ public class LogInViewController
   {
     this.logInViewModel = logInViewModel;
     this.viewHandler=viewHandler;
-
     passwordTextField.textProperty().bindBidirectional(logInViewModel.passwordProperty());
-
-
   }
 }
