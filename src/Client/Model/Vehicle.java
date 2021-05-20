@@ -28,6 +28,8 @@ public class Vehicle
     this.status = null;
   }
 
+
+
   public void setStatus(String status)
   {
     this.status = status;
