@@ -1,4 +1,6 @@
-package Client;
+package Core;
+
+import Client.ViewModel.LogInViewModel;
 
 public class ViewModelFactory
 {

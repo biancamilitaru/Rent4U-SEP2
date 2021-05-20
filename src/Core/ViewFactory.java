@@ -1,4 +1,4 @@
-package Client;
+package Core;
 
 import Client.Views.ViewController;
 import javafx.fxml.FXMLLoader;
@@ -46,7 +46,7 @@ public class ViewFactory
     loader.setLocation(ViewFactory.class.getResource(path));
     Parent root = loader.load();
 
-    //View Controller interface has to be created
+    //Client.View Controller interface has to be created
     ViewController vc = loader.getController();
     vc.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     return root;
