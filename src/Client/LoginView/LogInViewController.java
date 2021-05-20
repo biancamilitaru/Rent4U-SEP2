@@ -1,6 +1,6 @@
-package View.LoginView;
+package Client.LoginView;
 
-import Client.ViewHandler;
+import Core.ViewHandler;
 import javafx.fxml.FXML;
 
 public class LogInViewController
