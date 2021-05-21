@@ -13,6 +13,7 @@ public class ViewModelFactory
 
   private LogInViewModel logInViewModel;
   private AddVehicleViewModel addVehicleViewModel;
+  private MenuViewModel menuViewModel;
 
   private ViewModelFactory() {
   }
@@ -29,6 +30,15 @@ public class ViewModelFactory
       addVehicleViewModel=new AddVehicleViewModel(ModelFactory.getInstance().getClientModel());
     return addVehicleViewModel;
   }
+
+  public MenuViewModel getMenuViewModel()
+  {
+    if(menuViewModel==null)
+      menuViewModel=new MenuViewModel(ModelFactory.getInstance().getClientModel());
+    return menuViewModel;
+  }
+
+
 
 
 
