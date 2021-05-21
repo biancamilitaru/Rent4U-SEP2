@@ -2,6 +2,7 @@ package Client.Views.AddVehicleView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
+import Client.ViewModel.AddVehicleViewModel;
 import Client.Views.ViewController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -38,7 +39,7 @@ public class AddVehicleViewController implements ViewController
   @Override public void init(ViewHandler vh, ViewModelFactory vmf)
   {
     this.viewHandler = vh;
-    this.addVehicleViewModel = vmf.getAddVehicleViewModel;
+    this.addVehicleViewModel = vmf.getAddVehicleViewModel();
   }
 
   private String getFuelType(){
