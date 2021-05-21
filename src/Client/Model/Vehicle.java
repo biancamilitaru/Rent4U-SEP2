@@ -11,11 +11,11 @@ public class Vehicle
   private String typeOfGearbox;
   private String typeOfFuel;
   private int numberOfSeats;
-  private int price;
+  private double price;
   private String status;
 
   public Vehicle(String licensePlate,int enginesPower,String type,String make,String model,int year,
-                 String typeOfGearbox, String typeOfFuel,int numberOfSeats,int price){
+                 String typeOfGearbox, String typeOfFuel,int numberOfSeats,double price){
 
     this.licensePlate = licensePlate;
     this.enginesPower = enginesPower;
@@ -92,16 +92,6 @@ public class Vehicle
     return model;
   }
 
-  public int getNumberOfSeats()
-  {
-    return numberOfSeats;
-  }
-
-  public void setNumberOfSeats(int numberOfSeats)
-  {
-    this.numberOfSeats = numberOfSeats;
-  }
-
   public void setYear(int year)
   {
     this.year = year;
@@ -117,7 +107,7 @@ public class Vehicle
     this.price = price;
   }
 
-  public int getPrice()
+  public double getPrice()
   {
     return price;
   }
