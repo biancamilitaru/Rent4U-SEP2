@@ -107,7 +107,7 @@ public class Vehicle
     this.price = price;
   }
 
-  public int getPrice()
+  public double getPrice()
   {
     return price;
   }

@@ -11,6 +11,7 @@ import javafx.scene.control.RadioButton;
 
 import java.awt.*;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class AddVehicleViewController implements ViewController
@@ -29,6 +30,7 @@ public class AddVehicleViewController implements ViewController
   @FXML private RadioButton petrolTypeButton;
   @FXML private RadioButton dieselTypeButton;
   @FXML private RadioButton hybridTypeButton;
+  @FXML private RadioButton electricTypeButton;
 
   @FXML private MenuButton typeMenuButton;
 
@@ -52,6 +54,11 @@ public class AddVehicleViewController implements ViewController
     if (hybridTypeButton.isSelected()){
       return "hybrid";
     }
+
+    if (electricTypeButton.isSelected()){
+      return "electric";
+    }
+
     else return "Not selected";
   }
 
@@ -70,14 +77,15 @@ public class AddVehicleViewController implements ViewController
   public void onAddButton(){
     Platform.runLater(() -> addVehicleViewModel.addVehicle(
         licensePlateField.getText(),
-        enginePowerField.getText(),
-        typeMenuButton.getOnShowing(),
+        parseInt(enginePowerField.getText()),
+        typeMenuButton.getOnShowing().toString(),
         makeField.getText(),
         modelField.getText(),
         parseInt(yearField.getText()),
         getGearBoxType(),
         getFuelType(),
-        parseInt(priceField.getText())
+        parseInt(nbOfSeatsField.getText()),
+        parseDouble(priceField.getText())
         ));
     viewHandler.openMainMenu();
   }
