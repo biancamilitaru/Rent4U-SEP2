@@ -1,6 +1,9 @@
 package Client.ViewModel;
 
 import Client.Model.ClientModel;
+import Client.Model.Vehicle;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 
 public class AddVehicleViewModel
 {
@@ -11,4 +14,10 @@ public class AddVehicleViewModel
     this.userModel=userModel;
   }
 
+  public void addVehicle(String licensePlate, int enginePower, String type, String make, String model, int year,
+      String gearBoxType, String fuelType, double price)
+  {
+    userModel.addVehicle(new Vehicle(licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,price));
+
+  }
 }
