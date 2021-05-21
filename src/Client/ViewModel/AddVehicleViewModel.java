@@ -15,9 +15,9 @@ public class AddVehicleViewModel
   }
 
   public void addVehicle(String licensePlate, int enginePower, String type, String make, String model, int year,
-      String gearBoxType, String fuelType, double price)
+      String gearBoxType, String fuelType, int numberOfSeats, double price)
   {
-    userModel.addVehicle(new Vehicle(licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,price));
+    userModel.addVehicle(new Vehicle(licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType, numberOfSeats,price));
 
   }
 }
