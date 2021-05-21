@@ -55,7 +55,7 @@ public class ViewHandler
   {
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/MenuView/Menu.fxml"));
+    loader.setLocation(getClass().getResource("../Views/MenuView/MenuView.fxml"));
     Parent root = null;
     try
     {
