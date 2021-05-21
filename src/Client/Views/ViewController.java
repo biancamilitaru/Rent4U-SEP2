@@ -5,5 +5,5 @@ import Client.Core.ViewModelFactory;
 
 public interface ViewController
 {
-  void init(ViewHandler vh, ViewModelFactory vmf);
+  void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory);
 }

@@ -1,38 +1,42 @@
 package Client.Model;
 
 import Client.Networking.Client;
-import Util.Answer;
 import Util.Request;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class ClientModelManager implements ClientModel{
+public class EmployeeModelManager implements ClientModel{
 
     private PropertyChangeSupport support;
     private Client client;
+    private String password;
 
-    public ClientModelManager(Client client)
+    public EmployeeModelManager(Client client)
     {
         this.client = client;
         support = new PropertyChangeSupport(this);
         client.startClient();
         client.addListener("NewRequest",this::newAnswer);
+        password = "default";
     }
 
     @Override
     public void login(String s) {
-
+        if(s.equals(password))
+            System.out.println("Log in successfully!");
     }
 
     @Override
     public void newRequest(Request request) {
-
+        client.newRequest(request);
     }
 
     @Override
-    public void newAnswer(Answer answer) {
-
+    public void newAnswer(PropertyChangeEvent evt)
+    {
+        support.firePropertyChange("NewAnswer", null, evt.getNewValue());
     }
 
     @Override
