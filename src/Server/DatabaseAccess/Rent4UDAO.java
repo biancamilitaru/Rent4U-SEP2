@@ -18,7 +18,7 @@ public class Rent4UDAO implements ManageVehicles
         return instance;
     }
 
-    private Rent4UDAO() throws SQLException
+    Rent4UDAO() throws SQLException
     {
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
@@ -33,8 +33,8 @@ public class Rent4UDAO implements ManageVehicles
     public void addNewVehicle(Vehicle vehicle) throws  SQLException
     {
         try(Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Vehicle(licence_plate, type, make, model," +
-                    " year, engine_power, type_of_gearbox, number_of_seats, type_of_fuel, price)" +
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO Vehicle(licence_plate, type, make, model,"
+                    + "year, engine_power, type_of_gearbox, number_of_seats, type_of_fuel, price)" +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, vehicle.getLicensePlate());
             statement.setString(2, vehicle.getType());
@@ -42,24 +42,22 @@ public class Rent4UDAO implements ManageVehicles
             statement.setString(4, vehicle.getModel());
             statement.setInt(5, vehicle.getYear());
             statement.setInt(6, vehicle.getEnginesPower());
-            statement.setString(7, vehicle.getTypeOfGearbox());
+            if(vehicle.getTypeOfGearbox().equalsIgnoreCase("automatic"))
+                statement.setString(7, "Automatic");
+            else
+                statement.setString(7, "Manual");
             statement.setInt(8, vehicle.getNumberOfSeats());
-            statement.setString(9, vehicle.getTypeOfFuel());
-            statement.setInt(10, vehicle.getPrice());
+            if(vehicle.getTypeOfFuel().equalsIgnoreCase("petrol"))
+                statement.setString(9, "Petrol");
+            else if(vehicle.getTypeOfFuel().equalsIgnoreCase("diesel"))
+                statement.setString(9, "Diesel");
+            else if(vehicle.getTypeOfFuel().equalsIgnoreCase("electric"))
+                statement.setString(9, "Electric");
+            else
+                statement.setString(9, "Hybrid");
+            statement.setDouble(10, vehicle.getPrice());
+            statement.executeUpdate();
         }
     }
 
-    public Book create(String isbn, String title, int yearOfPublishing, Author author) throws SQLException {
-        try(Connection connection = getConnection()) {
-            PreparedStatement statement =
-                    connection.prepareStatement("INSERT INTO Book(isbn, title, yearOfPublishing, author_id)" +
-                            " VALUES (?, ?, ?, ?);");
-            statement.setString(1, isbn);
-            statement.setString(2, title);
-            statement.setInt(3, yearOfPublishing);
-            statement.setInt(4, author.getId());
-            statement.executeUpdate();
-            return new Book(isbn, title, yearOfPublishing, author);
-        }
-    }
 }

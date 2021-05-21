@@ -1,3 +1,4 @@
+/*
 package Client.Views.AddVehicleView;
 
 import Client.Core.ViewHandler;
@@ -83,3 +84,5 @@ public class AddVehicleViewController implements ViewController
     viewHandler.openMainMenu;
   }
 }
+
+ */
