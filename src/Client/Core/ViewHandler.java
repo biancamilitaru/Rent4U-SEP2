@@ -50,12 +50,12 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openAddVehicle()
+
+  public void openMenu()
   {
-    //This needs to be called from the menu when you click the button
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/AddVehicleView/AddVehicleView.fxml"));
+    loader.setLocation(getClass().getResource("../Views/MenuView/Menu.fxml"));
     Parent root = null;
     try
     {
@@ -68,7 +68,7 @@ public class ViewHandler
     }
     LoginViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("Add Vehicle");
+    stage.setTitle("Menu");
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
