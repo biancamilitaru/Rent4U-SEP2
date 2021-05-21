@@ -2,6 +2,7 @@ package Client.Views.MenuView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
+import Client.ViewModel.MenuViewModel;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;
 
