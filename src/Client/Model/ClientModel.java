@@ -1,14 +1,15 @@
 package Client.Model;
 
-import Util.PropertyChangeSubject;
+import Util.Answer;
 import Util.Request;
 
-import java.beans.PropertyChangeEvent;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
-public interface ClientModel extends PropertyChangeSubject
+public interface ClientModel
 {
-  void login (String s);
+  boolean login (String s);
   void newRequest(Request request);
-  void newAnswer(PropertyChangeEvent evt);
-  void addVehicle(Vehicle vehicle);
+  void newAnswer(Answer answer);
+  void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
 }

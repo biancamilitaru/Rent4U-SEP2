@@ -18,7 +18,7 @@ public class Rent4UDAO implements ManageVehicles
         return instance;
     }
 
-    Rent4UDAO() throws SQLException
+    public Rent4UDAO() throws SQLException
     {
         DriverManager.registerDriver(new org.postgresql.Driver());
     }

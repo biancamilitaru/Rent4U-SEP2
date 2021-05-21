@@ -1,36 +1,21 @@
 package Server.Model;
 
-import Util.Request;
+import Client.Model.Vehicle;
+import Server.DatabaseAccess.ManageVehicles;
+import Server.DatabaseAccess.Rent4UDAO;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 
 public class ServerModelManager implements ServerModel
 {
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private ManageVehicles manageVehicles;
 
-    @Override
-    public void newRequest(Request request) {
-        support.firePropertyChange("NewRequest", null, request);
+    public ServerModelManager() throws SQLException {
+        manageVehicles = new Rent4UDAO();
     }
 
     @Override
-    public void addListener(String name, PropertyChangeListener listener) {
-        support.addPropertyChangeListener(name, listener);
-    }
-
-    @Override
-    public void addListener(PropertyChangeListener listener) {
-        support.addPropertyChangeListener(listener);
-    }
-
-    @Override
-    public void removeListener(String name, PropertyChangeListener listener) {
-        support.removePropertyChangeListener(name, listener);
-    }
-
-    @Override
-    public void removeListener(PropertyChangeListener listener) {
-        support.removePropertyChangeListener(listener);
+    public void addVehicle(Vehicle vehicle) throws SQLException {
+        manageVehicles.addNewVehicle(vehicle);
     }
 }

@@ -29,7 +29,8 @@ public class LoginViewController implements ViewController
 
     public void logIn(ActionEvent event)
     {
-        viewModel.logIn();
+        if (viewModel.logIn())
+            viewHandler.openMainMenu();
         textField.clear();
     }
 }

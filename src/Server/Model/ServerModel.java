@@ -1,9 +1,13 @@
 package Server.Model;
 
-import Util.PropertyChangeSubject;
-import Util.Request;
+import Client.Model.Vehicle;
 
-public interface ServerModel extends PropertyChangeSubject
+import java.sql.SQLException;
+
+
+public interface ServerModel
 {
-    void newRequest(Request request);
+    void addVehicle(Vehicle vehicle) throws SQLException;
 }
+
+

@@ -2,6 +2,7 @@ package Client.Core;
 
 import Client.ViewModel.AddVehicleViewModel;
 import Client.ViewModel.LogInViewModel;
+import Client.ViewModel.MenuViewModel;
 
 public class ViewModelFactory
 {

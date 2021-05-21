@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.AddVehicleView.AddVehicleViewController">
    <children>
-      <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" text="Add new vehicle" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+      <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" onAction="#onExitButton" text="Exit" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
       <Label layoutX="25.0" layoutY="31.0" text="Add new vehicle" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="30.0">
          <font>
             <Font name="System Bold" size="17.0" />
@@ -45,8 +45,9 @@
          </items>
       </MenuButton>
       <Label layoutX="224.0" layoutY="235.0" text="License plate:" />
-      <Label layoutX="224.0" layoutY="270.0" text="Engine power(kW):" />
+      <Label layoutX="224.0" layoutY="270.0" text="Engine power(kW):)" />
       <TextField fx:id="licensePlateField" layoutX="348.0" layoutY="230.0" prefHeight="27.0" prefWidth="109.0" promptText="AA 00 000" />
       <TextField fx:id="enginePowerField" layoutX="348.0" layoutY="265.0" prefHeight="27.0" prefWidth="109.0" promptText="0" />
+      <Button layoutX="416.0" layoutY="343.0" mnemonicParsing="false" onAction="#onAddButton" text="Add new vehicle" />
    </children>
 </AnchorPane>
