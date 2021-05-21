@@ -7,7 +7,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class EmployeeModelManager implements ClientModel{
+public class EmployeeModelManager implements ClientModel
+{
 
     private PropertyChangeSupport support;
     private Client client;
@@ -18,44 +19,50 @@ public class EmployeeModelManager implements ClientModel{
         this.client = client;
         support = new PropertyChangeSupport(this);
         client.startClient();
-        client.addListener("NewRequest",this::newAnswer);
+        client.addListener("NewRequest", this::newAnswer);
         password = "default";
     }
 
-    @Override
-    public void login(String s) {
-        if(s.equals(password))
+    @Override public void login(String s)
+    {
+        if (s.equals(password))
             System.out.println("Log in successfully!");
     }
 
-    @Override
-    public void newRequest(Request request) {
+    @Override public void newRequest(Request request)
+    {
         client.newRequest(request);
     }
 
-    @Override
-    public void newAnswer(PropertyChangeEvent evt)
+    @Override public void newAnswer(PropertyChangeEvent evt)
     {
         support.firePropertyChange("NewAnswer", null, evt.getNewValue());
     }
 
-    @Override
-    public void addListener(String name, PropertyChangeListener listener) {
+    @Override public void addVehicle(Vehicle vehicle)
+    {
+
+    }
+
+    @Override public void addListener(String name,
+        PropertyChangeListener listener)
+    {
         support.addPropertyChangeListener(name, listener);
     }
 
-    @Override
-    public void addListener(PropertyChangeListener listener) {
+    @Override public void addListener(PropertyChangeListener listener)
+    {
         support.addPropertyChangeListener(listener);
     }
 
-    @Override
-    public void removeListener(String name, PropertyChangeListener listener) {
+    @Override public void removeListener(String name,
+        PropertyChangeListener listener)
+    {
         support.removePropertyChangeListener(name, listener);
     }
 
-    @Override
-    public void removeListener(PropertyChangeListener listener) {
+    @Override public void removeListener(PropertyChangeListener listener)
+    {
         support.removePropertyChangeListener(listener);
     }
 }
