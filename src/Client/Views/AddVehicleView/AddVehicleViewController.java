@@ -7,8 +7,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 
-import java.awt.*;
 
 import static java.lang.Integer.parseInt;
 
@@ -63,8 +63,6 @@ public class AddVehicleViewController implements ViewController
     }
     else return "Not selected";
   }
-
-
 
   public void onAddButton(){
     Platform.runLater(() -> addVehicleViewModel.addVehicle(
