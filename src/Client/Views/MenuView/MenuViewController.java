@@ -24,8 +24,10 @@ public class MenuViewController implements ViewController
 
   public void odAddVehicleButton()
   {
-    viewHandler.openAddVehicle;
+    viewHandler.openAddVehicle();
   }
+
+
 
 
 }

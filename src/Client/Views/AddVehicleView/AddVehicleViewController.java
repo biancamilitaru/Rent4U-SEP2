@@ -79,10 +79,10 @@ public class AddVehicleViewController implements ViewController
         getFuelType(),
         parseInt(priceField.getText())
         ));
-    viewHandler.openMainMenu;
+    viewHandler.openMainMenu();
   }
 
   public void onExitButton(){
-    viewHandler.openMainMenu;
+    viewHandler.openMainMenu();
   }
 }
