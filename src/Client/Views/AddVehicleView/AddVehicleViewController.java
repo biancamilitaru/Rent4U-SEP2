@@ -6,6 +6,7 @@ import Client.ViewModel.AddVehicleViewModel;
 import Client.Views.ViewController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -35,6 +36,7 @@ public class AddVehicleViewController implements ViewController
     @FXML private RadioButton electricTypeButton;
 
     @FXML private MenuButton typeMenuButton;
+    @FXML private ComboBox<String> types;
 
 
     private ViewHandler viewHandler;
@@ -44,6 +46,9 @@ public class AddVehicleViewController implements ViewController
     {
         this.viewHandler = vh;
         this.addVehicleViewModel = vmf.getAddVehicleViewModel();
+
+        types.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+
     }
 
     private String getFuelType(){
@@ -81,8 +86,7 @@ public class AddVehicleViewController implements ViewController
                 addVehicleViewModel.addVehicle(
                     licensePlateField.getText(),
                     parseInt(enginePowerField.getText()),
-                    //typeMenuButton.getOnShowing().toString(),
-                    "type",
+                    types.getSelectionModel().getSelectedItem(),
                     makeField.getText(),
                     modelField.getText(),
                     parseInt(yearField.getText()),
