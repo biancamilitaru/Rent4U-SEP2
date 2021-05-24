@@ -11,7 +11,9 @@ public class SetStatusViewModel
     this.userModel = userModel;
 
   }
-
+  public void setStatus(Vehicle vehicle,Status status){
+    userModel.setStatus(vehicle,status);
+  }
 
 }
 
