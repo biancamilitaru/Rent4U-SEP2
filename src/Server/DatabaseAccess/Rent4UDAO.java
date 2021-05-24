@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Rent4UDAO implements ManageVehicles
 {
@@ -58,6 +59,11 @@ public class Rent4UDAO implements ManageVehicles
             statement.setDouble(10, vehicle.getPrice());
             statement.executeUpdate();
         }
+    }
+
+    @Override public ArrayList<Vehicle> getListOfVehicles()
+    {
+        return null;
     }
 
 }
