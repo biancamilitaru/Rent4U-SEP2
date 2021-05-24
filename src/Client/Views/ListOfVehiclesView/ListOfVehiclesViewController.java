@@ -16,7 +16,6 @@ public class ListOfVehiclesViewController implements ViewController
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
 
   @FXML TableView table = new TableView();
-  @FXML
 
 
 
