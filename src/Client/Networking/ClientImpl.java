@@ -1,6 +1,7 @@
 package Client.Networking;
 
 import Client.Model.Vehicle;
+import Server.Model.Status;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
 import Util.Answer;
@@ -75,5 +76,10 @@ public class ClientImpl implements Client, ClientCallBack
     @Override public ArrayList<Vehicle> getListOfVehicles()
     {
        return server.getListOfVehicles();
+    }
+
+    @Override public void setStatus(Vehicle vehicle, Status status)
+    {
+        server.setStatus(vehicle,status);
     }
 }

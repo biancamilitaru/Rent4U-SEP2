@@ -2,6 +2,7 @@ package Client.ViewModel;
 
 import Client.Model.ClientModel;
 import Client.Model.Vehicle;
+import Server.Model.Status;
 
 public class SetStatusViewModel
 {
@@ -11,7 +12,7 @@ public class SetStatusViewModel
     this.userModel = userModel;
 
   }
-  public void setStatus(Vehicle vehicle,Status status){
+  public void setStatus(Vehicle vehicle, Status status){
     userModel.setStatus(vehicle,status);
   }
 
