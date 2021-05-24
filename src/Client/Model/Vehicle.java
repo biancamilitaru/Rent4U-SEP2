@@ -3,6 +3,7 @@ package Client.Model;
 import Server.Model.Status;
 
 import java.io.Serializable;
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 public class Vehicle implements Serializable

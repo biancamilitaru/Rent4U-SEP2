@@ -8,6 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class MenuViewController implements ViewController
 {
 
@@ -16,6 +19,7 @@ public class MenuViewController implements ViewController
 
   @FXML private Button openAddVehicleButton;
   @FXML private Button openLogOutButton;
+  @FXML private Button listOfVehicleButton;
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory)
@@ -27,6 +31,10 @@ public class MenuViewController implements ViewController
   public void onAddVehicleButton(ActionEvent evt)
   {
     viewHandler.openAddVehicle();
+  }
+
+  public void onListOfVehicleButton(ActionEvent evt) throws SQLException, RemoteException {
+    viewHandler.openListOfVehicleView();
   }
 
   public void onLogOutButton(ActionEvent evt)

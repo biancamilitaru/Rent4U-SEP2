@@ -15,6 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ListOfVehiclesViewController implements ViewController
@@ -28,13 +30,12 @@ public class ListOfVehiclesViewController implements ViewController
 
 
   @Override public void init(ViewHandler viewHandler,
-      ViewModelFactory viewModelFactory)
-  {
+      ViewModelFactory viewModelFactory) throws SQLException, RemoteException {
     this.viewHandler = viewHandler;
     this.listOfVehiclesViewModel = viewModelFactory.getListOfVehiclesViewModel();
     addStatusButton();
     addEditButton();
-    getVehicleData();
+    getVehicleData(listOfVehiclesViewModel.getVehicles());
     table.setItems(tableObservableList);
   }
 
@@ -48,7 +49,9 @@ public class ListOfVehiclesViewController implements ViewController
     viewHandler.openMainMenu();
   }
 
-  public ObservableList<Vehicle> getVehicleData(ArrayList<Vehicle> vehiclesArrayList){
+  public ObservableList<Vehicle> getVehicleData(ArrayList<Vehicle> vehiclesArrayList)
+  {
+
     for (int x = 0; x<vehiclesArrayList.size(); x++){
       tableObservableList.add(vehiclesArrayList.get(x));
     }

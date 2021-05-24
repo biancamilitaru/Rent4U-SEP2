@@ -73,13 +73,11 @@ public class ClientImpl implements Client, ClientCallBack
         server.addVehicle(vehicle);
     }
 
-    @Override public ArrayList<Vehicle> getListOfVehicles()
-    {
-       return server.getListOfVehicles();
+    @Override public ArrayList<Vehicle> getListOfVehicles() throws SQLException, RemoteException {
+       return server.viewAllVehicles();
     }
 
-    @Override public void setStatus(Vehicle vehicle, Status status)
-    {
+    @Override public void setStatus(Vehicle vehicle, Status status) throws RemoteException {
         server.setStatus(vehicle,status);
     }
 }

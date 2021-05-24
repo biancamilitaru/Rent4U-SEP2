@@ -42,13 +42,11 @@ public class EmployeeModelManager implements ClientModel
         client.addVehicle(vehicle);
     }
 
-    @Override public ArrayList<Vehicle> getVehicles()
-    {
+    @Override public ArrayList<Vehicle> getVehicles() throws SQLException, RemoteException {
         return client.getListOfVehicles();
     }
 
-    @Override public void setStatus(Vehicle vehicle, Status status)
-    {
+    @Override public void setStatus(Vehicle vehicle, Status status) throws RemoteException {
         client.setStatus(vehicle,status);
     }
 }

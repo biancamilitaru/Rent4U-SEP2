@@ -47,9 +47,8 @@ public class ServerImpl implements RMIServer
         serverModelManager.addVehicle(vehicle);
     }
 
-    @Override public ArrayList<Vehicle> getListOfVehicles()
-    {
-        return serverModelManager.getListOfVehicles();
+    @Override public ArrayList<Vehicle> viewAllVehicles() throws SQLException {
+        return serverModelManager.viewAllVehicles();
     }
 
     @Override public void setStatus(Vehicle vehicle, Status status)
