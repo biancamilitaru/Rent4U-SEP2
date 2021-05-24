@@ -1,6 +1,8 @@
 package Server.Model;
 
+import Client.Model.Booking;
 import Client.Model.Vehicle;
+import Server.DatabaseAccess.ManageBookings;
 import Server.DatabaseAccess.ManageVehicles;
 import Server.DatabaseAccess.Rent4UDAO;
 
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 public class ServerModelManager implements ServerModel
 {
     private ManageVehicles manageVehicles;
+    private ManageBookings manageBookings;
 
     public ServerModelManager() throws SQLException {
         manageVehicles = new Rent4UDAO();
@@ -27,5 +30,10 @@ public class ServerModelManager implements ServerModel
     @Override public void setStatus(Vehicle vehicle, Status status)
     {
         manageVehicles.setStatus(vehicle,status);
+    }
+
+    @Override public void createBooking(Booking booking)
+    {
+        manageBookings.createBooking(booking);
     }
 }
