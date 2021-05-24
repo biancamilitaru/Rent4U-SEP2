@@ -15,6 +15,7 @@ public class MenuViewController implements ViewController
   private MenuViewModel menuViewModel;
 
   @FXML private Button openAddVehicleButton;
+  @FXML private Button openLogOutButton;
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory)
