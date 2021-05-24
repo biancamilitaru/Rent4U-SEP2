@@ -6,6 +6,7 @@ import Server.Model.Status;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Rent4UDAO implements ManageVehicles,ManageBookings
 {
@@ -70,26 +71,33 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next())
             {
-                String licencePlate = resultSet.getString(1);
-                String type = resultSet.getString(2);
-                String make = resultSet.getString(3);
-                String model = resultSet.getString(4);
-                int year = resultSet.getInt(5);
-                int enginePower = resultSet.getInt(6);
-                String typeOfGearBox = resultSet.getString(7);
-                int numberOfSeats = resultSet.getInt(8);
-                String typeOfFuel = resultSet.getString(9);
-                double price = resultSet.getDouble(10);
-                Vehicle vehicle = new Vehicle(licencePlate, enginePower, type, make, model, year, typeOfGearBox, typeOfFuel, numberOfSeats, price);
-                vehicles.add(vehicle);
+                vehicles.add(getVehicle(resultSet));
             }
         }
         return vehicles;
     }
 
-    @Override public void setStatus(Vehicle vehicle, Status status)
-    {
+    private Vehicle getVehicle(ResultSet resultSet) throws SQLException {
+        String licencePlate = resultSet.getString(1);
+        String type = resultSet.getString(2);
+        String make = resultSet.getString(3);
+        String model = resultSet.getString(4);
+        int year = resultSet.getInt(5);
+        int enginePower = resultSet.getInt(6);
+        String typeOfGearBox = resultSet.getString(7);
+        int numberOfSeats = resultSet.getInt(8);
+        String typeOfFuel = resultSet.getString(9);
+        double price = resultSet.getDouble(10);
+        return new Vehicle(licencePlate, enginePower, type, make, model, year, typeOfGearBox, typeOfFuel, numberOfSeats, price);
+    }
 
+    @Override public void setStatus(Vehicle vehicle, Status status) throws SQLException {
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO Status(license_plate, " +
+                    "start_time, end_time, status) VALUES (?, ?, ?, ?)");
+            statement.setString(1, vehicle.getLicensePlate());
+
+        }
     }
 
     @Override public void createBooking(Booking booking)
