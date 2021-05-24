@@ -3,10 +3,7 @@ package Server.DatabaseAccess;
 import Client.Model.Vehicle;
 import Server.Model.Status;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Rent4UDAO implements ManageVehicles
@@ -62,9 +59,31 @@ public class Rent4UDAO implements ManageVehicles
         }
     }
 
-    @Override public ArrayList<Vehicle> getListOfVehicles()
+    @Override
+    public ArrayList<Vehicle> viewAllVehicles() throws SQLException
     {
-        return null;
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        try(Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM vehicle");
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next())
+            {
+                String licencePlate = resultSet.getString(1);
+                String type = resultSet.getString(2);
+                String make = resultSet.getString(3);
+                String model = resultSet.getString(4);
+                int year = resultSet.getInt(5);
+                int enginePower = resultSet.getInt(6);
+                String typeOfGearBox = resultSet.getString(7);
+                int numberOfSeats = resultSet.getInt(8);
+                String typeOfFuel = resultSet.getString(9);
+                double price = resultSet.getDouble(10);
+                Vehicle vehicle = new Vehicle(licencePlate, enginePower, type, make, model, year, typeOfGearBox, typeOfFuel, numberOfSeats, price);
+                vehicles.add(vehicle);
+            }
+        }
+        return vehicles;
     }
 
     @Override public void setStatus(Vehicle vehicle, Status status)

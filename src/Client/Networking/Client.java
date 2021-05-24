@@ -15,6 +15,6 @@ public interface Client
     void newRequest(Request request);
     void newAnswer(Answer answer);
     void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
-  ArrayList<Vehicle> getListOfVehicles();
-  void setStatus(Vehicle vehicle, Status status);
+  ArrayList<Vehicle> getListOfVehicles() throws SQLException, RemoteException;
+  void setStatus(Vehicle vehicle, Status status) throws RemoteException;
 }

@@ -14,8 +14,8 @@ public interface ClientModel
   void newRequest(Request request);
   void newAnswer(Answer answer);
   void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
-  ArrayList<Vehicle> getVehicles();
-  void setStatus(Vehicle vehicle, Status status);
+  ArrayList<Vehicle> getVehicles() throws SQLException, RemoteException;
+  void setStatus(Vehicle vehicle, Status status) throws RemoteException;
   void createBooking(Booking booking);
 
 }

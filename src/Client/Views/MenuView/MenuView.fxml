@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.MenuView.MenuViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.MenuView.MenuViewController">
    <children>
       <Label alignment="CENTER" layoutX="133.0" layoutY="33.0" prefHeight="48.0" prefWidth="356.0" text="Rent4U" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
          <font>
@@ -14,8 +14,8 @@
       </Label>
       <Button fx:id="openAddVehicleButton" layoutX="192.0" layoutY="113.0" mnemonicParsing="false" onAction="#onAddVehicleButton" prefHeight="40.0" prefWidth="217.0" text="ADD NEW VEHICLE" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="120.0" />
       <Label alignment="CENTER" layoutX="270.0" layoutY="81.0" text="Welcome..." AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
-      <Button layoutX="238.0" layoutY="359.0" mnemonicParsing="false" onAction="#onLogOutButton" prefHeight="27.0" prefWidth="127.0" text="LOG OUT" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="360.0" />
-      <Button layoutX="193.0" layoutY="160.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="217.0" text="LIST OF ALL VEHICLES" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="170.0" />
+      <Button fx:id="openLogOutButton" layoutX="238.0" layoutY="359.0" mnemonicParsing="false" onAction="#onLogOutButton" prefHeight="27.0" prefWidth="127.0" text="LOG OUT" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="360.0" />
+      <Button fx:id="listOfVehicleButton" layoutX="193.0" layoutY="160.0" mnemonicParsing="false" onAction="#onListOfVehicleButton" prefHeight="40.0" prefWidth="217.0" text="LIST OF ALL VEHICLES" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="170.0" />
       <Button layoutX="193.0" layoutY="210.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="217.0" text="LIST OF ALL BOOKINGS" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="220.0" />
    </children>
 </AnchorPane>

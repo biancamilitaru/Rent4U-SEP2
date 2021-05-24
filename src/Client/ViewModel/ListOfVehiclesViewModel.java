@@ -3,6 +3,8 @@ package Client.ViewModel;
 import Client.Model.ClientModel;
 import Client.Model.Vehicle;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ListOfVehiclesViewModel
@@ -14,8 +16,7 @@ public class ListOfVehiclesViewModel
     this.userModel=userModel;
   }
 
-  public ArrayList<Vehicle> getVehicles()
-  {
+  public ArrayList<Vehicle> getVehicles() throws SQLException, RemoteException {
     return userModel.getVehicles();
   }
 

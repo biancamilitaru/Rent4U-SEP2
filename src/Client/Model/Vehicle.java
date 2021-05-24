@@ -3,6 +3,7 @@ package Client.Model;
 import Server.Model.Status;
 
 import java.io.Serializable;
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 public class Vehicle implements Serializable
@@ -142,5 +143,12 @@ public class Vehicle implements Serializable
   public void setNumberOfSeats(int numberOfSeats)
   {
     this.numberOfSeats = numberOfSeats;
+  }
+
+  public String toString()
+  {
+    return licensePlate + " " + type + " " + make + " " + model + " " + year + " "
+            + enginesPower + " " + typeOfGearbox + " " + numberOfSeats + " " +
+            numberOfSeats + " " + typeOfFuel + " " + price;
   }
 }

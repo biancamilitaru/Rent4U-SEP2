@@ -20,9 +20,8 @@ public class ServerModelManager implements ServerModel
         manageVehicles.addNewVehicle(vehicle);
     }
 
-    @Override public ArrayList<Vehicle> getListOfVehicles()
-    {
-        return manageVehicles.getListOfVehicles();
+    @Override public ArrayList<Vehicle> viewAllVehicles() throws SQLException {
+        return manageVehicles.viewAllVehicles();
     }
 
     @Override public void setStatus(Vehicle vehicle, Status status)

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public interface ServerModel
 {
     void addVehicle(Vehicle vehicle) throws SQLException;
-  ArrayList<Vehicle> getListOfVehicles();
+  ArrayList<Vehicle> viewAllVehicles() throws SQLException;
   void setStatus(Vehicle vehicle, Status status);
 }
 

@@ -4,6 +4,8 @@ import Client.Model.ClientModel;
 import Client.Model.Vehicle;
 import Server.Model.Status;
 
+import java.rmi.RemoteException;
+
 public class SetStatusViewModel
 {
   private ClientModel userModel;
@@ -12,7 +14,7 @@ public class SetStatusViewModel
     this.userModel = userModel;
 
   }
-  public void setStatus(Vehicle vehicle, Status status){
+  public void setStatus(Vehicle vehicle, Status status) throws RemoteException {
     userModel.setStatus(vehicle,status);
   }
 
