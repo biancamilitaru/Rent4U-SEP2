@@ -1,6 +1,6 @@
 package Client.Model;
 
-
+import Server.Model.Date;
 
 public class Booking
 {
