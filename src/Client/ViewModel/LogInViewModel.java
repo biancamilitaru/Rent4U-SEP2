@@ -22,10 +22,10 @@ public class LogInViewModel
     return password;
   }
 
-  public void logIn()
+  public boolean logIn()
   {
     System.out.println(password.get());
-    userModel.login(password.get());
+    return userModel.login(password.get());
   }
 
 

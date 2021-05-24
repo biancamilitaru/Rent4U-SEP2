@@ -5,6 +5,9 @@ import Client.Model.Vehicle;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class AddVehicleViewModel
 {
   private ClientModel userModel;
@@ -15,9 +18,7 @@ public class AddVehicleViewModel
   }
 
   public void addVehicle(String licensePlate, int enginePower, String type, String make, String model, int year,
-      String gearBoxType, String fuelType, int numberOfSeats, double price)
-  {
+      String gearBoxType, String fuelType, int numberOfSeats, double price) throws SQLException, RemoteException {
     userModel.addVehicle(new Vehicle(licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType, numberOfSeats,price));
-
   }
 }

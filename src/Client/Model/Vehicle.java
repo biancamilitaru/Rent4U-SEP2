@@ -1,6 +1,8 @@
 package Client.Model;
 
-public class Vehicle
+import java.io.Serializable;
+
+public class Vehicle implements Serializable
 {
   private String licensePlate;
   private int enginesPower;
@@ -130,5 +132,15 @@ public class Vehicle
   public String getTypeOfGearbox()
   {
     return typeOfGearbox;
+  }
+
+  public int getNumberOfSeats()
+  {
+    return numberOfSeats;
+  }
+
+  public void setNumberOfSeats(int numberOfSeats)
+  {
+    this.numberOfSeats = numberOfSeats;
   }
 }
