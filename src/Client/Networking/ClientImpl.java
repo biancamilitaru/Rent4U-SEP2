@@ -14,8 +14,10 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ClientImpl implements Client, ClientCallBack
+
 {
 
     private RMIServer server;
@@ -27,42 +29,51 @@ public class ClientImpl implements Client, ClientCallBack
         {
             UnicastRemoteObject.exportObject(this, 0);
             support = new PropertyChangeSupport(this);
-        } catch (RemoteException e)
+        }
+        catch (RemoteException e)
         {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void startClient()
+    @Override public void startClient()
     {
         try
         {
             Registry registry = LocateRegistry.getRegistry("localhost", 1099);
             server = (RMIServer) registry.lookup("Server");
-        } catch (RemoteException | NotBoundException e)
+        }
+        catch (RemoteException | NotBoundException e)
         {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void newRequest(Request request)
+    @Override public void newRequest(Request request)
     {
-        try {
+        try
+        {
             server.newRequest(request);
-        } catch (RemoteException e) {
+        }
+        catch (RemoteException e)
+        {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void newAnswer(Answer answer) {
+    @Override public void newAnswer(Answer answer)
+    {
 
     }
 
-    @Override
-    public void addVehicle(Vehicle vehicle) throws SQLException, RemoteException {
+    @Override public void addVehicle(Vehicle vehicle)
+        throws SQLException, RemoteException
+    {
         server.addVehicle(vehicle);
+    }
+
+    @Override public ArrayList<Vehicle> getListOfVehicles()
+    {
+       return server.getListOfVehicles();
     }
 }
