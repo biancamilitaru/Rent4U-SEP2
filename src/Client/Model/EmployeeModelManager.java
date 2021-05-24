@@ -1,6 +1,7 @@
 package Client.Model;
 
 import Client.Networking.Client;
+import Server.Model.Status;
 import Util.Answer;
 import Util.Request;
 
@@ -44,5 +45,10 @@ public class EmployeeModelManager implements ClientModel
     @Override public ArrayList<Vehicle> getVehicles()
     {
         return client.getListOfVehicles();
+    }
+
+    @Override public void setStatus(Vehicle vehicle, Status status)
+    {
+        client.setStatus(vehicle,status);
     }
 }

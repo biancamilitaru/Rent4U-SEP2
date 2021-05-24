@@ -1,5 +1,6 @@
 package Client.Model;
 
+import Server.Model.Status;
 import Util.Answer;
 import Util.Request;
 
@@ -14,4 +15,5 @@ public interface ClientModel
   void newAnswer(Answer answer);
   void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
   ArrayList<Vehicle> getVehicles();
+  void setStatus(Vehicle vehicle, Status status);
 }

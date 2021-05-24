@@ -2,6 +2,7 @@ package Server.Networking;
 
 import Client.Model.Vehicle;
 import Server.Model.ServerModelManager;
+import Server.Model.Status;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
 import Util.Request;
@@ -49,5 +50,10 @@ public class ServerImpl implements RMIServer
     @Override public ArrayList<Vehicle> getListOfVehicles()
     {
         return serverModelManager.getListOfVehicles();
+    }
+
+    @Override public void setStatus(Vehicle vehicle, Status status)
+    {
+        serverModelManager.setStatus(vehicle,status);
     }
 }

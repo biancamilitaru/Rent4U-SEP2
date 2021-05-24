@@ -9,4 +9,6 @@ public interface ManageVehicles
 {
     void addNewVehicle(Vehicle vehicle) throws SQLException;
     ArrayList<Vehicle> viewAllVehicles() throws SQLException;
+
+  void setStatus(Vehicle vehicle, Status status);
 }
