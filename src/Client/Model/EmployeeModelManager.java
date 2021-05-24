@@ -6,6 +6,7 @@ import Util.Request;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeeModelManager implements ClientModel
 {
@@ -38,5 +39,10 @@ public class EmployeeModelManager implements ClientModel
 
     @Override public void addVehicle(Vehicle vehicle) throws SQLException, RemoteException {
         client.addVehicle(vehicle);
+    }
+
+    @Override public ArrayList<Vehicle> getVehicles()
+    {
+        return client.getListOfVehicles();
     }
 }
