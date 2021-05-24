@@ -2,6 +2,7 @@ package Client.Views.ListOfVehiclesView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
+import Client.ViewModel.ListOfVehiclesViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 

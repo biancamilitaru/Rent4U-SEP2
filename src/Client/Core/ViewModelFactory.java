@@ -1,6 +1,7 @@
 package Client.Core;
 
 import Client.ViewModel.AddVehicleViewModel;
+import Client.ViewModel.ListOfVehiclesViewModel;
 import Client.ViewModel.LogInViewModel;
 import Client.ViewModel.MenuViewModel;
 
