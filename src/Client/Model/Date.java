@@ -135,4 +135,9 @@ public class Date
       return -1;
     }
   }
+
+  public String toString()
+  {
+    return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00";
+  }
 }

@@ -95,8 +95,6 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("INSERT INTO Status(license_plate, " +
                     "start_time, end_time, status) VALUES (?, ?, ?, ?)");
-            statement.setString(1, vehicle.getLicensePlate());
-
         }
     }
 
