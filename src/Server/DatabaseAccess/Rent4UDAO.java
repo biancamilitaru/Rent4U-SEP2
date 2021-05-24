@@ -1,6 +1,7 @@
 package Server.DatabaseAccess;
 
 import Client.Model.Vehicle;
+import Server.Model.Status;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -64,6 +65,11 @@ public class Rent4UDAO implements ManageVehicles
     @Override public ArrayList<Vehicle> getListOfVehicles()
     {
         return null;
+    }
+
+    @Override public void setStatus(Vehicle vehicle, Status status)
+    {
+
     }
 
 }

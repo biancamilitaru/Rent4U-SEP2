@@ -1,6 +1,7 @@
 package Client.Networking;
 
 import Client.Model.Vehicle;
+import Server.Model.Status;
 import Util.Answer;
 import Util.Request;
 
@@ -15,4 +16,5 @@ public interface Client
     void newAnswer(Answer answer);
     void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
   ArrayList<Vehicle> getListOfVehicles();
+  void setStatus(Vehicle vehicle, Status status);
 }

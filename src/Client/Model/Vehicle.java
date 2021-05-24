@@ -1,6 +1,9 @@
 package Client.Model;
 
+import Server.Model.Status;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Vehicle implements Serializable
 {
@@ -14,7 +17,7 @@ public class Vehicle implements Serializable
   private String typeOfFuel;
   private int numberOfSeats;
   private double price;
-  private String status;
+  private ArrayList<Status> statuses;
 
   public Vehicle(String licensePlate,int enginesPower,String type,String make,String model,int year,
                  String typeOfGearbox, String typeOfFuel,int numberOfSeats,double price){
@@ -29,20 +32,17 @@ public class Vehicle implements Serializable
     this.typeOfFuel = typeOfFuel;
     this.numberOfSeats = numberOfSeats;
     this.price = price;
-    this.status = null;
+    statuses=new ArrayList<>();
+
   }
 
 
 
-  public void setStatus(String status)
+  public void addStatus(Status status)
   {
-    this.status = status;
+    statuses.add(status);
   }
 
-  public String getStatus()
-  {
-    return status;
-  }
 
   public void setLicensePlate(String licensePlate)
   {

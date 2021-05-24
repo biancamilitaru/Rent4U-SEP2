@@ -24,4 +24,9 @@ public class ServerModelManager implements ServerModel
     {
         return manageVehicles.getListOfVehicles();
     }
+
+    @Override public void setStatus(Vehicle vehicle, Status status)
+    {
+        manageVehicles.setStatus(vehicle,status);
+    }
 }
