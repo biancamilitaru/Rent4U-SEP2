@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" text="Back to MENU" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+      <Label layoutX="25.0" layoutY="31.0" text="Change the status" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="68.0" text="Vehicle:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="70.0" />
+      <Label layoutX="121.0" layoutY="68.0" prefHeight="17.0" prefWidth="167.0" text="Make + Model" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="70.0" />
+      <Label layoutX="25.0" layoutY="97.0" text="License plate:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="121.0" layoutY="97.0" prefHeight="17.0" prefWidth="167.0" text="AA00 000" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="22.0" layoutY="132.0" text="Current status:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="130.0" />
+      <Label layoutX="121.0" layoutY="132.0" prefHeight="17.0" prefWidth="167.0" text="Out of service" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="130.0" />
+      <Label layoutX="22.0" layoutY="175.0" text="Enter the new status:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="175.0" />
+      <TextField layoutX="22.0" layoutY="200.0" prefHeight="27.0" prefWidth="184.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="200.0" />
+      <Line endX="449.0" layoutX="126.0" layoutY="162.0" startX="-100.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="160.0" />
+      <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" text="Change Status" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
+   </children>
+</AnchorPane>
