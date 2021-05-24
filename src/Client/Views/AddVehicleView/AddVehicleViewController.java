@@ -35,7 +35,6 @@ public class AddVehicleViewController implements ViewController
     @FXML private RadioButton hybridTypeButton;
     @FXML private RadioButton electricTypeButton;
 
-    @FXML private MenuButton typeMenuButton;
     @FXML private ComboBox<String> types;
 
 
