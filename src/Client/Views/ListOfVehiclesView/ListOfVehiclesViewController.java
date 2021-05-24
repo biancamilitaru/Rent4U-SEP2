@@ -51,7 +51,6 @@ public class ListOfVehiclesViewController implements ViewController
 
   public ObservableList<Vehicle> getVehicleData(ArrayList<Vehicle> vehiclesArrayList)
   {
-
     for (int x = 0; x<vehiclesArrayList.size(); x++){
       tableObservableList.add(vehiclesArrayList.get(x));
     }
