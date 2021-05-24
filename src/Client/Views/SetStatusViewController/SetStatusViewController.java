@@ -18,4 +18,6 @@ public class SetStatusViewController implements ViewController
     this.viewHandler = viewHandler;
     setStatusViewModel = viewModelFactory.getSetStatusViewModel();
   }
+
+
 }
