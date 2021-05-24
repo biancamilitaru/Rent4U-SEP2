@@ -2,8 +2,6 @@ package Client.Model;
 
 import Client.Networking.Client;
 import Server.Model.Status;
-import Util.Answer;
-import Util.Request;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -27,17 +25,6 @@ public class EmployeeModelManager implements ClientModel
         return s.equals(password);
     }
 
-    @Override public void newRequest(Request request)
-    {
-        client.newRequest(request);
-    }
-
-    @Override
-    public void newAnswer(Answer answer)
-    {
-
-    }
-
     @Override public void addVehicle(Vehicle vehicle) throws SQLException, RemoteException {
         client.addVehicle(vehicle);
     }
@@ -46,12 +33,11 @@ public class EmployeeModelManager implements ClientModel
         return client.getListOfVehicles();
     }
 
-    @Override public void setStatus(Vehicle vehicle, Status status) throws RemoteException {
+    @Override public void setStatus(Vehicle vehicle, Status status) throws RemoteException, SQLException {
         client.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking)
-    {
+    @Override public void createBooking(Booking booking) throws RemoteException {
         client.createBooking(booking);
     }
 }

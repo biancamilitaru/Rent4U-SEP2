@@ -6,7 +6,6 @@ import Server.Model.ServerModelManager;
 import Server.Model.Status;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
-import Util.Request;
 
 import java.beans.PropertyChangeListener;
 import java.rmi.AlreadyBoundException;
@@ -38,12 +37,6 @@ public class ServerImpl implements RMIServer
     }
 
     @Override
-    public void newRequest(Request request)
-    {
-
-    }
-
-    @Override
     public void addVehicle(Vehicle vehicle) throws SQLException {
         serverModelManager.addVehicle(vehicle);
     }
@@ -52,8 +45,7 @@ public class ServerImpl implements RMIServer
         return serverModelManager.viewAllVehicles();
     }
 
-    @Override public void setStatus(Vehicle vehicle, Status status)
-    {
+    @Override public void setStatus(Vehicle vehicle, Status status) throws SQLException {
         serverModelManager.setStatus(vehicle,status);
     }
 

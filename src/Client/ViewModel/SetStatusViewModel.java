@@ -5,6 +5,7 @@ import Client.Model.Vehicle;
 import Server.Model.Status;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class SetStatusViewModel
 {
@@ -14,7 +15,7 @@ public class SetStatusViewModel
     this.userModel = userModel;
 
   }
-  public void setStatus(Vehicle vehicle, Status status) throws RemoteException {
+  public void setStatus(Vehicle vehicle, Status status) throws RemoteException, SQLException {
     userModel.setStatus(vehicle,status);
   }
 

@@ -41,4 +41,8 @@ public class MenuViewController implements ViewController
   {
     viewHandler.openLogInEmployee();
   }
+
+  public void onAddBookingButton(ActionEvent evt) throws SQLException, RemoteException {
+    viewHandler.openAddBooking();
+  }
 }

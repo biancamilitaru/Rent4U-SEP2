@@ -1,8 +1,7 @@
-package Client.Views.SetStatusViewController;
+package Client.Views.SetStatusView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.ViewModel.MenuViewModel;
 import Client.ViewModel.SetStatusViewModel;
 import Client.Views.ViewController;
 

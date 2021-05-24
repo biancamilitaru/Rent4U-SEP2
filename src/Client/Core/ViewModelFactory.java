@@ -7,6 +7,8 @@ public class ViewModelFactory
   private static ViewModelFactory instance = new ViewModelFactory();
 
   public static ViewModelFactory getInstance(){
+    if(instance == null)
+      instance = new ViewModelFactory();
     return instance;
   }
 
@@ -14,7 +16,7 @@ public class ViewModelFactory
   private AddVehicleViewModel addVehicleViewModel;
   private MenuViewModel menuViewModel;
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
-  private CreateBookingViewModel createBookingViewModel;
+  private AddBookingViewModel addBookingViewModel;
   private SetStatusViewModel setStatusViewModel;
 
   private ViewModelFactory() {
@@ -46,10 +48,10 @@ public class ViewModelFactory
       listOfVehiclesViewModel=new ListOfVehiclesViewModel(ModelFactory.getInstance().getClientModel());
     return listOfVehiclesViewModel;
   }
-  public CreateBookingViewModel getCreateBookingViewModel() {
-    if (createBookingViewModel == null)
-      createBookingViewModel = new CreateBookingViewModel(ModelFactory.getInstance().getClientModel());
-    return createBookingViewModel;
+  public AddBookingViewModel getAddBookingViewModel() {
+    if (addBookingViewModel == null)
+      addBookingViewModel = new AddBookingViewModel(ModelFactory.getInstance().getClientModel());
+    return addBookingViewModel;
   }
 
   public SetStatusViewModel getSetStatusViewModel()

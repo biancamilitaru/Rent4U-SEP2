@@ -1,7 +1,5 @@
 package Server.Model;
 
-import java.util.ArrayList;
-
 public class Status
 {
   private String status;

@@ -4,6 +4,7 @@ import Client.Model.Vehicle;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class TestForDatabaseIgnorTHIS {
     public static void main(String[] args) throws SQLException {
@@ -17,5 +18,6 @@ public class TestForDatabaseIgnorTHIS {
         {
             System.out.println(vehicles.get(i).toString());
         }
+
     }
 }

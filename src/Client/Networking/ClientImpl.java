@@ -5,10 +5,7 @@ import Client.Model.Vehicle;
 import Server.Model.Status;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
-import Util.Answer;
-import Util.Request;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -51,23 +48,6 @@ public class ClientImpl implements Client, ClientCallBack
         }
     }
 
-    @Override public void newRequest(Request request)
-    {
-        try
-        {
-            server.newRequest(request);
-        }
-        catch (RemoteException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    @Override public void newAnswer(Answer answer)
-    {
-
-    }
-
     @Override public void addVehicle(Vehicle vehicle)
         throws SQLException, RemoteException
     {
@@ -78,12 +58,11 @@ public class ClientImpl implements Client, ClientCallBack
        return server.viewAllVehicles();
     }
 
-    @Override public void setStatus(Vehicle vehicle, Status status) throws RemoteException {
+    @Override public void setStatus(Vehicle vehicle, Status status) throws RemoteException, SQLException {
         server.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking)
-    {
+    @Override public void createBooking(Booking booking) throws RemoteException {
         server.createBooking(booking);
     }
 }

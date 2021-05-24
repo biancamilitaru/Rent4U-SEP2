@@ -37,7 +37,6 @@ public class ListOfVehiclesViewController implements ViewController
     addEditButton();
     getVehicleData(listOfVehiclesViewModel.getVehicles());
     table.setItems(tableObservableList);
-    System.out.println(table.getItems());
   }
 
   public void onAddVehicleButton(ActionEvent evt)
@@ -72,7 +71,7 @@ public class ListOfVehiclesViewController implements ViewController
             btn.setOnAction((ActionEvent event) -> {
               Vehicle data = getTableView().getItems().get(getIndex());
               System.out.println("selectedData: " + data);
-              //Add method that will open a window with data
+              viewHandler.openSetStatusView();
             });
           }
 

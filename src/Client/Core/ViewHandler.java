@@ -1,9 +1,12 @@
 package Client.Core;
 
+import Client.ViewModel.AddBookingViewModel;
+import Client.Views.AddBookingView.AddBookingController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
 import Client.Views.LogInView.LoginViewController;
 import Client.Views.MenuView.MenuViewController;
 import Client.Views.AddVehicleView.AddVehicleViewController;
+import Client.Views.SetStatusView.SetStatusViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +21,8 @@ public class ViewHandler
   private static ViewHandler instance = new ViewHandler();
 
   public static ViewHandler getInstance(){
+    if(instance == null)
+      instance = new ViewHandler();
     return instance;
   }
 
@@ -25,8 +30,7 @@ public class ViewHandler
 
   private ViewHandler() {}
 
-  public void start() throws IOException
-  {
+  public void start() throws IOException, SQLException {
     stage = new Stage();
     openLogInEmployee();
   }
@@ -127,4 +131,75 @@ public class ViewHandler
     stage.show();
   }
 
+  /*
+  public void openAddBookingView()
+  {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/AddBookingView/AddBookingView.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    AddBookingController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("List of bookings");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+   */
+  public void openSetStatusView() {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/SetStatusView/SetStatusView.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    SetStatusViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Set status");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openAddBooking() throws SQLException, RemoteException {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/AddBookingView/AddBookingView.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    AddBookingController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Add booking");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
 }

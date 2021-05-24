@@ -27,8 +27,7 @@ public class ServerModelManager implements ServerModel
         return manageVehicles.viewAllVehicles();
     }
 
-    @Override public void setStatus(Vehicle vehicle, Status status)
-    {
+    @Override public void setStatus(Vehicle vehicle, Status status) throws SQLException {
         manageVehicles.setStatus(vehicle,status);
     }
 
