@@ -37,6 +37,7 @@ public class ListOfVehiclesViewController implements ViewController
     addEditButton();
     getVehicleData(listOfVehiclesViewModel.getVehicles());
     table.setItems(tableObservableList);
+    System.out.println(table.getItems());
   }
 
   public void onAddVehicleButton(ActionEvent evt)
