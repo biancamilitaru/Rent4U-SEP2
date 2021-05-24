@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.ListOfVehiclesView.ListOfVehiclesViewController">
    <children>
       <Button layoutX="352.0" layoutY="346.0" mnemonicParsing="false" text="Add new vehicle" onAction="#onAddVehicleButton" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="140.0" />
@@ -16,18 +17,48 @@
          </font>
       </Label>
       <TableView layoutX="-5.0" layoutY="77.0" prefHeight="270.0" prefWidth="586.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
-        <columns>
-          <TableColumn prefWidth="44.623409271240234" text="Type" />
-          <TableColumn prefWidth="59.04167175292969" text="Make" />
-            <TableColumn prefWidth="66.10738372802734" text="Model" />
-            <TableColumn prefWidth="57.97596740722656" text="Year" />
-            <TableColumn prefWidth="52.770751953125" text="Seats" />
-            <TableColumn prefWidth="61.803680419921875" text="Gearbox" />
-            <TableColumn prefWidth="50.983978271484375" text="Fuel" />
-            <TableColumn prefWidth="91.27084350585938" text="License Plate" />
-            <TableColumn prefWidth="49.237945556640625" text="EnginePower" />
-            <TableColumn prefWidth="49.237945556640625" text="Price" />
-        </columns>
+          <columns>
+              <TableColumn prefWidth="80" text="Type">
+                  <cellValueFactory><PropertyValueFactory property="type" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="Make">
+                  <cellValueFactory><PropertyValueFactory property="make" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="Model">
+                  <cellValueFactory><PropertyValueFactory property="model" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="Year">
+                  <cellValueFactory><PropertyValueFactory property="year" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="Seats">
+                  <cellValueFactory><PropertyValueFactory property="numberOfSeats" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="Gearbox">
+                  <cellValueFactory><PropertyValueFactory property="typeOfGearbox" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="Fuel">
+                  <cellValueFactory><PropertyValueFactory property="typeOfFuel" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="License Plate">
+                  <cellValueFactory><PropertyValueFactory property="licensePlate" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="EnginePower">
+                  <cellValueFactory><PropertyValueFactory property="enginesPower" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="80" text="Price">
+                  <cellValueFactory><PropertyValueFactory property="price" />
+                  </cellValueFactory>
+              </TableColumn>
+          </columns>
       </TableView>
       <Label layoutX="25.0" layoutY="52.0" prefHeight="17.0" prefWidth="131.0" text="List of all vehicles" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="50.0" />
       <Button layoutX="472.0" layoutY="346.0" mnemonicParsing="false" text="Back to MENU" onAction="#onMenuButton" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="30.0" />
