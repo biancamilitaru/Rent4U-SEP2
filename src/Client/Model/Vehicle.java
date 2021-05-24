@@ -143,4 +143,11 @@ public class Vehicle implements Serializable
   {
     this.numberOfSeats = numberOfSeats;
   }
+
+  public String toString()
+  {
+    return licensePlate + " " + type + " " + make + " " + model + " " + year + " "
+            + enginesPower + " " + typeOfGearbox + " " + numberOfSeats + " " +
+            numberOfSeats + " " + typeOfFuel + " " + price;
+  }
 }
