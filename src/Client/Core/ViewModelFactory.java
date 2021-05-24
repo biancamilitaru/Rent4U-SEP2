@@ -1,9 +1,6 @@
 package Client.Core;
 
-import Client.ViewModel.AddVehicleViewModel;
-import Client.ViewModel.ListOfVehiclesViewModel;
-import Client.ViewModel.LogInViewModel;
-import Client.ViewModel.MenuViewModel;
+import Client.ViewModel.*;
 
 public class ViewModelFactory
 {
@@ -17,6 +14,7 @@ public class ViewModelFactory
   private AddVehicleViewModel addVehicleViewModel;
   private MenuViewModel menuViewModel;
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
+  private CreateBookingViewModel createBookingViewModel;
 
   private ViewModelFactory() {
   }
@@ -46,6 +44,11 @@ public class ViewModelFactory
     if(listOfVehiclesViewModel==null)
       listOfVehiclesViewModel=new ListOfVehiclesViewModel(ModelFactory.getInstance().getClientModel());
     return listOfVehiclesViewModel;
+  }
+  public CreateBookingViewModel getCreateBookingViewModel() {
+    if (createBookingViewModel == null)
+      createBookingViewModel = new CreateBookingViewModel(ModelFactory.getInstance().getClientModel());
+    return createBookingViewModel;
   }
 
 
