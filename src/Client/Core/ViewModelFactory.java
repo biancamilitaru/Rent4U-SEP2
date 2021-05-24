@@ -15,6 +15,7 @@ public class ViewModelFactory
   private MenuViewModel menuViewModel;
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
   private CreateBookingViewModel createBookingViewModel;
+  private SetStatusViewModel setStatusViewModel;
 
   private ViewModelFactory() {
   }
@@ -49,6 +50,14 @@ public class ViewModelFactory
     if (createBookingViewModel == null)
       createBookingViewModel = new CreateBookingViewModel(ModelFactory.getInstance().getClientModel());
     return createBookingViewModel;
+  }
+
+  public SetStatusViewModel getSetStatusViewModel()
+  {
+    if (setStatusViewModel == null)
+      setStatusViewModel = new SetStatusViewModel(ModelFactory.getInstance()
+          .getClientModel());
+    return setStatusViewModel;
   }
 
 

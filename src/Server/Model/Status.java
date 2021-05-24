@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Status
 {
   private String status;
+  private Date startDate;
+  private Date endDate;
 
   public String getStatus()
   {
