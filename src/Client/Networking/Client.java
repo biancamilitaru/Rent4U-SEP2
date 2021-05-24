@@ -1,5 +1,6 @@
 package Client.Networking;
 
+import Client.Model.Booking;
 import Client.Model.Vehicle;
 import Server.Model.Status;
 import Util.Answer;
@@ -17,4 +18,5 @@ public interface Client
     void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
   ArrayList<Vehicle> getListOfVehicles() throws SQLException, RemoteException;
   void setStatus(Vehicle vehicle, Status status) throws RemoteException;
+  void createBooking(Booking booking);
 }

@@ -1,5 +1,6 @@
 package Client.Networking;
 
+import Client.Model.Booking;
 import Client.Model.Vehicle;
 import Server.Model.Status;
 import Shared.ClientCallBack;
@@ -79,5 +80,10 @@ public class ClientImpl implements Client, ClientCallBack
 
     @Override public void setStatus(Vehicle vehicle, Status status) throws RemoteException {
         server.setStatus(vehicle,status);
+    }
+
+    @Override public void createBooking(Booking booking)
+    {
+        server.createBooking(booking);
     }
 }
