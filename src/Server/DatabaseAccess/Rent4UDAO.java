@@ -1,12 +1,13 @@
 package Server.DatabaseAccess;
 
+import Client.Model.Booking;
 import Client.Model.Vehicle;
 import Server.Model.Status;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class Rent4UDAO implements ManageVehicles
+public class Rent4UDAO implements ManageVehicles,ManageBookings
 {
     //We are using singleton for this class because we want to have only one instance in our program
     private static Rent4UDAO instance;
@@ -91,4 +92,8 @@ public class Rent4UDAO implements ManageVehicles
 
     }
 
+    @Override public void createBooking(Booking booking)
+    {
+
+    }
 }

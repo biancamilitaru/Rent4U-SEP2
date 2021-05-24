@@ -1,5 +1,6 @@
 package Server.Networking;
 
+import Client.Model.Booking;
 import Client.Model.Vehicle;
 import Server.Model.ServerModelManager;
 import Server.Model.Status;
@@ -54,5 +55,10 @@ public class ServerImpl implements RMIServer
     @Override public void setStatus(Vehicle vehicle, Status status)
     {
         serverModelManager.setStatus(vehicle,status);
+    }
+
+    @Override public void createBooking(Booking booking)
+    {
+        serverModelManager.createBooking(booking);
     }
 }

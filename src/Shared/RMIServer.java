@@ -1,5 +1,6 @@
 package Shared;
 
+import Client.Model.Booking;
 import Client.Model.Vehicle;
 import Server.Model.Status;
 import Util.Request;
@@ -17,4 +18,5 @@ public interface RMIServer extends Remote
     void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
     ArrayList<Vehicle> viewAllVehicles() throws SQLException, RemoteException;
     void setStatus(Vehicle vehicle, Status status) throws RemoteException;
+    void createBooking(Booking booking);
 }

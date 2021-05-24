@@ -50,8 +50,8 @@ public class EmployeeModelManager implements ClientModel
         client.setStatus(vehicle,status);
     }
 
-    @Override
-    public void createBooking(Booking booking) {
-
+    @Override public void createBooking(Booking booking)
+    {
+        client.createBooking(booking);
     }
 }
