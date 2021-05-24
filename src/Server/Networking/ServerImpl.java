@@ -1,18 +1,18 @@
 package Server.Networking;
 
+import Client.Model.Vehicle;
 import Server.Model.ServerModelManager;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
-import Util.Answer;
+import Util.Request;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,33 +35,13 @@ public class ServerImpl implements RMIServer
     }
 
     @Override
-    public void registerClient(ClientCallBack clientCallBack) throws RemoteException
+    public void newRequest(Request request)
     {
-        PropertyChangeListener listener = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                try {
-                    clientCallBack.newAnswer((Answer) evt.getNewValue());
-                } catch (RemoteException e)
-                {
-                    e.printStackTrace();
-                    serverModelManager.removeListener("NewAnswer", this);
-                }
-            }
-        };
-        listeners.put(clientCallBack, listener);
-        System.out.println("New listener");
-        serverModelManager.addListener("NewAnswer", listener);
 
     }
 
     @Override
-    public void unregisterClient(ClientCallBack clientCallBack) throws RemoteException
-    {
-        PropertyChangeListener listener = listeners.get(clientCallBack);
-        if (listener != null)
-        {
-            serverModelManager.removeListener(listener);
-        }
+    public void addVehicle(Vehicle vehicle) throws SQLException {
+        serverModelManager.addVehicle(vehicle);
     }
 }

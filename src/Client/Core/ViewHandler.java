@@ -1,6 +1,8 @@
 package Client.Core;
 
 import Client.Views.LogInView.LoginViewController;
+import Client.Views.MenuView.MenuViewController;
+import Client.Views.AddVehicleView.AddVehicleViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -65,7 +67,7 @@ public class ViewHandler
       System.out.println(e.getMessage());
       System.out.println(loader.getLocation());
     }
-    LoginViewController view = loader.getController();
+    AddVehicleViewController view= loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Add Vehicle");
 
@@ -90,7 +92,7 @@ public class ViewHandler
       System.out.println(e.getMessage());
       System.out.println(loader.getLocation());
     }
-    LoginViewController view = loader.getController();
+    MenuViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Menu");
 

@@ -1,5 +1,6 @@
 package Client.Networking;
 
+import Client.Model.Vehicle;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
 import Util.Answer;
@@ -12,6 +13,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 
 public class ClientImpl implements Client, ClientCallBack
 {
@@ -38,7 +40,6 @@ public class ClientImpl implements Client, ClientCallBack
         {
             Registry registry = LocateRegistry.getRegistry("localhost", 1099);
             server = (RMIServer) registry.lookup("Server");
-            server.registerClient(this);
         } catch (RemoteException | NotBoundException e)
         {
             e.printStackTrace();
@@ -46,8 +47,13 @@ public class ClientImpl implements Client, ClientCallBack
     }
 
     @Override
-    public void newRequest(Request request) {
-
+    public void newRequest(Request request)
+    {
+        try {
+            server.newRequest(request);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -56,22 +62,7 @@ public class ClientImpl implements Client, ClientCallBack
     }
 
     @Override
-    public void addListener(String name, PropertyChangeListener listener) {
-
-    }
-
-    @Override
-    public void addListener(PropertyChangeListener listener) {
-
-    }
-
-    @Override
-    public void removeListener(String name, PropertyChangeListener listener) {
-
-    }
-
-    @Override
-    public void removeListener(PropertyChangeListener listener) {
-
+    public void addVehicle(Vehicle vehicle) throws SQLException, RemoteException {
+        server.addVehicle(vehicle);
     }
 }

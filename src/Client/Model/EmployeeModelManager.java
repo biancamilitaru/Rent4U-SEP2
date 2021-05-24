@@ -1,32 +1,28 @@
 package Client.Model;
 
 import Client.Networking.Client;
+import Util.Answer;
 import Util.Request;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class EmployeeModelManager implements ClientModel
 {
 
-    private PropertyChangeSupport support;
     private Client client;
     private String password;
 
     public EmployeeModelManager(Client client)
     {
         this.client = client;
-        support = new PropertyChangeSupport(this);
         client.startClient();
-        client.addListener("NewRequest", this::newAnswer);
         password = "default";
     }
 
-    @Override public void login(String s)
+    @Override public boolean login(String s)
     {
-        if (s.equals(password))
-            System.out.println("Log in successfully!");
+        return s.equals(password);
     }
 
     @Override public void newRequest(Request request)
@@ -34,35 +30,13 @@ public class EmployeeModelManager implements ClientModel
         client.newRequest(request);
     }
 
-    @Override public void newAnswer(PropertyChangeEvent evt)
-    {
-        support.firePropertyChange("NewAnswer", null, evt.getNewValue());
-    }
-
-    @Override public void addVehicle(Vehicle vehicle)
+    @Override
+    public void newAnswer(Answer answer)
     {
 
     }
 
-    @Override public void addListener(String name,
-        PropertyChangeListener listener)
-    {
-        support.addPropertyChangeListener(name, listener);
-    }
-
-    @Override public void addListener(PropertyChangeListener listener)
-    {
-        support.addPropertyChangeListener(listener);
-    }
-
-    @Override public void removeListener(String name,
-        PropertyChangeListener listener)
-    {
-        support.removePropertyChangeListener(name, listener);
-    }
-
-    @Override public void removeListener(PropertyChangeListener listener)
-    {
-        support.removePropertyChangeListener(listener);
+    @Override public void addVehicle(Vehicle vehicle) throws SQLException, RemoteException {
+        client.addVehicle(vehicle);
     }
 }
