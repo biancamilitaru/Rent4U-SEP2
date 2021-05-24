@@ -34,7 +34,7 @@ public class ListOfVehiclesViewController implements ViewController
     this.listOfVehiclesViewModel = viewModelFactory.getListOfVehiclesViewModel();
     addStatusButton();
     addEditButton();
-    getVehicleData();
+    getVehicleData(listOfVehiclesViewModel.getVehicles());
     table.setItems(tableObservableList);
   }
 
