@@ -5,6 +5,7 @@ import Server.DatabaseAccess.ManageVehicles;
 import Server.DatabaseAccess.Rent4UDAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ServerModelManager implements ServerModel
 {
@@ -17,5 +18,10 @@ public class ServerModelManager implements ServerModel
     @Override
     public void addVehicle(Vehicle vehicle) throws SQLException {
         manageVehicles.addNewVehicle(vehicle);
+    }
+
+    @Override public ArrayList<Vehicle> getListOfVehicles()
+    {
+        return manageVehicles.getListOfVehicles();
     }
 }

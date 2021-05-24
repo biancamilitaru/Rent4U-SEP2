@@ -13,6 +13,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,5 +44,10 @@ public class ServerImpl implements RMIServer
     @Override
     public void addVehicle(Vehicle vehicle) throws SQLException {
         serverModelManager.addVehicle(vehicle);
+    }
+
+    @Override public ArrayList<Vehicle> getListOfVehicles()
+    {
+        return serverModelManager.getListOfVehicles();
     }
 }

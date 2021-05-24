@@ -6,6 +6,7 @@ import Util.Request;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public interface Client
 {
@@ -13,4 +14,5 @@ public interface Client
     void newRequest(Request request);
     void newAnswer(Answer answer);
     void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
+  ArrayList<Vehicle> getListOfVehicles();
 }

@@ -2,8 +2,6 @@ package Client.ViewModel;
 
 import Client.Model.ClientModel;
 import Client.Model.Vehicle;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
