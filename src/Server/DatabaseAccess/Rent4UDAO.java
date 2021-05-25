@@ -109,9 +109,7 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
         }
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
-        int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price)
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
     {
 
     }

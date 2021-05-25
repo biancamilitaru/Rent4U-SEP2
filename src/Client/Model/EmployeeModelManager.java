@@ -41,12 +41,10 @@ public class EmployeeModelManager implements ClientModel
         client.createBooking(booking);
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
-        int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price)
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
         throws RemoteException
     {
-        client.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+        client.editVehicleInfo(vehicle, newVehicle);
     }
 
     @Override public ArrayList<Booking> getBookings()

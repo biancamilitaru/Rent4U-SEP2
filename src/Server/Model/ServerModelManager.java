@@ -39,12 +39,9 @@ public class ServerModelManager implements ServerModel
         manageBookings.createBooking(booking);
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
-        int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price) throws
-        RemoteException
-    {
-        manageVehicles.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws
+            RemoteException, SQLException {
+        manageVehicles.editVehicleInfo(vehicle, newVehicle);
     }
 
     public ArrayList<Booking> viewAllBookings() throws SQLException
