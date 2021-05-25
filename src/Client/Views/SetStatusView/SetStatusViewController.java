@@ -10,7 +10,6 @@ import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-import org.w3c.dom.Text;
 
 import java.awt.*;
 import java.rmi.RemoteException;
