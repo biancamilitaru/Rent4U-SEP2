@@ -34,7 +34,7 @@ public class SetStatusViewController implements ViewController
 
   public void setSetStatusButton(ActionEvent evt)
   {
-    setStatusViewModel.setStatus(,statusTextField.getText());
+    //setStatusViewModel.setStatus(,statusTextField.getText());
   }
 
 

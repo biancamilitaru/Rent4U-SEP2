@@ -1,7 +1,9 @@
 package Client.Core;
 
+import Client.Model.Vehicle;
 import Client.ViewModel.AddBookingViewModel;
 import Client.Views.AddBookingView.AddBookingController;
+import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
 import Client.Views.LogInView.LoginViewController;
 import Client.Views.MenuView.MenuViewController;
@@ -197,6 +199,30 @@ public class ViewHandler
     AddBookingController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Add booking");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openEditVehicleInfo(Vehicle vehicle) throws SQLException, RemoteException{
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/EditVehicleInfo/EditVehicleInfoView.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    EditVehicleInfoViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Edit Vehicle");
+    view.setVehicle(vehicle);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);

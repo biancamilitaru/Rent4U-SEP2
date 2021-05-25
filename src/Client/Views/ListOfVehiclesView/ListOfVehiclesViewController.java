@@ -111,6 +111,18 @@ public class ListOfVehiclesViewController implements ViewController
               Vehicle data = getTableView().getItems().get(getIndex());
               System.out.println("selectedData: " + data);
               //Add method that will open a window with data
+              try
+              {
+                viewHandler.openEditVehicleInfo(data);
+              }
+              catch (SQLException throwables)
+              {
+                throwables.printStackTrace();
+              }
+              catch (RemoteException e)
+              {
+                e.printStackTrace();
+              }
             });
           }
 
