@@ -83,8 +83,8 @@ public class ClientImpl implements Client, ClientCallBack
 
     @Override public void editBookingInfo(Booking booking, int idOfCustomer,
         String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price)
+        GregorianCalendar endTime, int price) throws RemoteException
     {
-
+        server.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
     }
 }
