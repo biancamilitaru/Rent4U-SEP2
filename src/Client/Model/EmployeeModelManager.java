@@ -42,8 +42,7 @@ public class EmployeeModelManager implements ClientModel
     }
 
     @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
-        throws RemoteException
-    {
+            throws RemoteException, SQLException {
         client.editVehicleInfo(vehicle, newVehicle);
     }
 

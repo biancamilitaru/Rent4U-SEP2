@@ -68,8 +68,7 @@ public class ClientImpl implements Client, ClientCallBack
     }
 
     @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehivle)
-        throws RemoteException
-    {
+            throws RemoteException, SQLException {
         server.editVehicleInfo(vehicle,newVehivle);
     }
 

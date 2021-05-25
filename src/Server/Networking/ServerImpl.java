@@ -55,8 +55,7 @@ public class ServerImpl implements RMIServer
         serverModelManager.createBooking(booking);
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws RemoteException
-    {
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws RemoteException, SQLException {
         serverModelManager.editVehicleInfo(vehicle,newVehicle);
 
     }

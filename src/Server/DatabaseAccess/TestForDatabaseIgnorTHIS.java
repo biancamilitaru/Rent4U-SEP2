@@ -14,8 +14,10 @@ import java.util.GregorianCalendar;
 public class TestForDatabaseIgnorTHIS {
     public static void main(String[] args) throws SQLException {
         ManageVehicles manageVehicles = new Rent4UDAO();
-        Vehicle vehicle = new Vehicle("A78", 7, "type", "make",
+        Vehicle vehicle = new Vehicle("CHANGED", 7, "type", "make",
                 "model", 2009, "automatic", "electric", 9, 100);
-        //manageVehicles.addNewVehicle(vehicle);
+        Vehicle vehicle1 = new Vehicle("CHANGED", 7, "type", "make",
+                "CHANGED", 2009, "automatic", "electric", 9, 100);
+        manageVehicles.editVehicleInfo(vehicle, vehicle1);
     }
 }

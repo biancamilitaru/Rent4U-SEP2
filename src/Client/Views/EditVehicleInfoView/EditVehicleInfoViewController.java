@@ -98,7 +98,7 @@ public class EditVehicleInfoViewController implements ViewController
             parseDouble(priceField.getText())
         );
       }
-      catch (NumberFormatException | RemoteException e)
+      catch (NumberFormatException | RemoteException | SQLException e)
       {
         e.printStackTrace();
       }

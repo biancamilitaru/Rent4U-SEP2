@@ -97,7 +97,7 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
 
     @Override public void setStatus(Vehicle vehicle, Status status) throws SQLException {
         try(Connection connection = getConnection()){
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Status(license_plate, " +
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO status(license_plate, " +
                     "start_time, end_time, status) VALUES (?, ?, ?, ?)");
             GregorianCalendar gregorianCalendar = new GregorianCalendar(2000,8,9, 20, 30);
             Timestamp timestamp = new Timestamp(gregorianCalendar.getTimeInMillis());
@@ -109,9 +109,50 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
         }
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
-    {
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws SQLException {
+        try(Connection connection = getConnection()){
 
+            PreparedStatement statement = connection.prepareStatement("UPDATE vehicle SET licence_plate = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getLicensePlate());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET type = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getType());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET make = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getMake());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET model = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getModel());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET year = ? WHERE licence_plate = ?");
+            statement.setInt(1, newVehicle.getYear());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET engine_power = ? WHERE licence_plate = ?");
+            statement.setInt(1, newVehicle.getEnginesPower());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET type_of_gearbox = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getTypeOfGearbox());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET number_of_seats = ? WHERE licence_plate = ?");
+            statement.setInt(1, newVehicle.getNumberOfSeats());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET type_of_fuel = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getTypeOfFuel());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET price = ? WHERE licence_plate = ?");
+            statement.setDouble(1, newVehicle.getPrice());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+        }
     }
 
     @Override public void createBooking(Booking booking)
