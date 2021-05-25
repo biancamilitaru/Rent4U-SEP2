@@ -3,7 +3,7 @@ package Client.Views.EditVehicleInfoView;
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
 import Client.Model.Vehicle;
-import Client.ViewModel.EditVehicleInfoVewModel;
+import Client.ViewModel.EditVehicleInfoViewModel;
 import Client.Views.ViewController;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -41,13 +41,13 @@ public class EditVehicleInfoViewController implements ViewController
 
   private ViewHandler viewHandler;
   private Vehicle vehicle;
-  private EditVehicleInfoVewModel editVehicleInfoVewModel;
+  private EditVehicleInfoViewModel editVehicleInfoViewModel;
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
   {
     this.viewHandler=viewHandler;
-    editVehicleInfoVewModel=viewModelFactory.getEditVehicleInfoViewModel();
+    editVehicleInfoViewModel =viewModelFactory.getEditVehicleInfoViewModel();
     types.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }
 
@@ -88,7 +88,7 @@ public class EditVehicleInfoViewController implements ViewController
   {
     Platform.runLater(()->{
       try{
-        editVehicleInfoVewModel.editVehicleInfo(vehicle,licensePlateField.getText(),
+        editVehicleInfoViewModel.editVehicleInfo(vehicle,licensePlateField.getText(),
             parseInt(enginePowerField.getText()),
             types.getSelectionModel().getSelectedItem(),
             makeField.getText(),

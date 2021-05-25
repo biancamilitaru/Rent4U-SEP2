@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 
@@ -19,6 +20,8 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   @FXML Label licensePlateLabel;
   @FXML Label enginesPowerLabel;
   @FXML Label priceLabel;
+
+  @FXML private GridPane gridPane;
 
   FXMLLoader mLLoader = new FXMLLoader();
 
@@ -35,7 +38,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
     {
       if (mLLoader == null)
       {
-        mLLoader = new FXMLLoader(getClass().getResource("/VehicleViewCell.fxml"));
+        mLLoader = new FXMLLoader(getClass().getResource("VehicleViewCell.fxml"));
         mLLoader.setController(this);
 
         try
@@ -57,7 +60,11 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       licensePlateLabel.setText(vehicle.getLicensePlate());
       enginesPowerLabel.setText(String.valueOf(vehicle.getEnginesPower()));
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
+
+      setText(null);
+      setGraphic(gridPane);
     }
   }
+
 
 }

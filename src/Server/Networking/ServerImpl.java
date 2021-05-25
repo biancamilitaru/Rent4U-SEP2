@@ -15,6 +15,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,5 +66,12 @@ public class ServerImpl implements RMIServer
     @Override public ArrayList<Booking> viewAllBookings() throws SQLException
     {
         return serverModelManager.viewAllBookings();
+    }
+
+    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
+        String licencePlate, GregorianCalendar startTime,
+        GregorianCalendar endTime, int price) throws RemoteException
+    {
+        serverModelManager.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
     }
 }
