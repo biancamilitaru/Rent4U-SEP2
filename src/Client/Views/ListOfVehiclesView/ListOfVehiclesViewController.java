@@ -110,7 +110,6 @@ public class ListOfVehiclesViewController implements ViewController
             btn.setOnAction((ActionEvent event) -> {
               Vehicle data = getTableView().getItems().get(getIndex());
               System.out.println("selectedData: " + data);
-              //Add method that will open a window with data
               try
               {
                 viewHandler.openEditVehicleInfo(data);

@@ -208,7 +208,7 @@ public class ViewHandler
   public void openEditVehicleInfo(Vehicle vehicle) throws SQLException, RemoteException{
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/EditVehicleInfo/EditVehicleInfoView.fxml"));
+    loader.setLocation(getClass().getResource("../Views/EditVehicleInfoView/EditVehicleInfoView.fxml"));
     Parent root = null;
     try
     {
