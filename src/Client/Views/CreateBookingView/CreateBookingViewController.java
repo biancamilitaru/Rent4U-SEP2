@@ -2,7 +2,8 @@ package Client.Views.CreateBookingView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.ViewModel.CreateBookingViewModel;
+import Client.ViewModel.AddBookingViewModel;
+import Client.ViewModel.AddBookingViewModel;
 import Client.ViewModel.SetStatusViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 public class CreateBookingViewController implements ViewController
 {
   private ViewHandler viewHandler;
-  private CreateBookingViewModel createBookingViewModel;
+  private AddBookingViewModel createBookingViewModel;
 
   @FXML Button confirmButton;
   @FXML Button goToMenuButton;
@@ -26,7 +27,7 @@ public class CreateBookingViewController implements ViewController
       ViewModelFactory viewModelFactory)
   {
     this.viewHandler = viewHandler;
-    createBookingViewModel = viewModelFactory.getCreateBookingViewModel();
+    createBookingViewModel = viewModelFactory.getAddBookingViewModel();
   }
 
   public void onMenuButton(ActionEvent evt)
