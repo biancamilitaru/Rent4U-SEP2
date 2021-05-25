@@ -4,6 +4,8 @@ import Client.Model.Booking;
 import Client.Model.Status;
 import Client.Model.Vehicle;
 
+
+import java.rmi.RemoteException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -122,5 +124,12 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
     @Override public ArrayList<Booking> viewAllBookings() throws SQLException
     {
         return null;
+    }
+
+    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
+        String licencePlate, GregorianCalendar startTime,
+        GregorianCalendar endTime, int price) throws RemoteException
+    {
+
     }
 }

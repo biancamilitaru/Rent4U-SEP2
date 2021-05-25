@@ -19,4 +19,5 @@ public interface ClientModel
 
   ArrayList<Booking> getBookings() throws SQLException, RemoteException;
   void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price) throws RemoteException;
+
 }

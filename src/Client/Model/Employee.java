@@ -1,19 +1,20 @@
 package Client.Model;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
-  public class Employee
+public class Employee
 {
   private String cpr;
   private String firstName;
   private String lastName;
-  private Date dateOfBirth;
+  private GregorianCalendar dateOfBirth;
   private String phoneNumber;
   private String email;
   private int salary;
   private String position;
 
-  public Employee(String cpr, String firstName, String lastName, Date dateOfBirth,String phoneNumber,
+  public Employee(String cpr, String firstName, String lastName, GregorianCalendar dateOfBirth,String phoneNumber,
                   String email, int salary,String position){
     this.cpr = cpr;
     this.firstName = firstName;
@@ -35,12 +36,12 @@ import java.util.Date;
     return cpr;
   }
 
-  public void setDateOfBirth(Date dateOfBirth)
+  public void setDateOfBirth(GregorianCalendar dateOfBirth)
   {
     this.dateOfBirth = dateOfBirth;
   }
 
-  public Date getDateOfBirth()
+  public GregorianCalendar getDateOfBirth()
   {
     return dateOfBirth;
   }

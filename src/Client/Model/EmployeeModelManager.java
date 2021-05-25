@@ -59,7 +59,9 @@ public class EmployeeModelManager implements ClientModel
         String licencePlate, GregorianCalendar startTime,
         GregorianCalendar endTime, int price) throws RemoteException
     {
-
+         client.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
     }
+
+
 
 }
