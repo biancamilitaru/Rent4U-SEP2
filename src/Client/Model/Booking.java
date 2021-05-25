@@ -11,9 +11,9 @@ public class Booking
   private String licencePlate;
   private GregorianCalendar startTime;
   private GregorianCalendar endTime;
-  private int price;
+  private double price;
 
-  public Booking(int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,int price){
+  public Booking(int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
     this.idOfCustomer = idOfCustomer;
     this.licencePlate = licencePlate;
     this.startTime = startTime;
@@ -21,12 +21,12 @@ public class Booking
     this.price = price;
   }
 
-  public void setPrice(int price)
+  public void setPrice(double price)
   {
     this.price = price;
   }
 
-  public int getPrice()
+  public double getPrice()
   {
     return price;
   }
