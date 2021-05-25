@@ -2,7 +2,6 @@ package Client.ViewModel;
 
 import Client.Model.Booking;
 import Client.Model.ClientModel;
-import Server.Model.Date;
 
 public class EditBookingInfoViewModel
 {

@@ -1,8 +1,8 @@
 package Client.ViewModel;
 
 import Client.Model.ClientModel;
+import Client.Model.Status;
 import Client.Model.Vehicle;
-import Server.Model.Status;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

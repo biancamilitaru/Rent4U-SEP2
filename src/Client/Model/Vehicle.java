@@ -1,6 +1,5 @@
 package Client.Model;
 
-import Server.Model.Status;
 
 import java.io.Serializable;
 import java.rmi.Remote;

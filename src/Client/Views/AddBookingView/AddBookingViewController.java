@@ -6,7 +6,6 @@ import Client.Model.Vehicle;
 import Client.ViewModel.AddBookingViewModel;
 import Client.Views.AddBookingView.VehicleViewCell.VehicleListViewCell;
 import Client.Views.ViewController;
-import Server.Model.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +18,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class AddBookingViewController implements ViewController {
 
@@ -64,8 +64,8 @@ public class AddBookingViewController implements ViewController {
     LocalDate date1 = startDatePicker.getValue();
     LocalDate date2 = endDatePicker.getValue();
 
-    Date startDate1 = new Date(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
-    Date endDate1 = new Date(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
+    GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
+    GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
 
   }
 }

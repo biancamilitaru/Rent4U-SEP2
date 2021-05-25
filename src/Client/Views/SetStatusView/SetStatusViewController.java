@@ -2,20 +2,19 @@ package Client.Views.SetStatusView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Server.Model.Date;
-import Server.Model.Status;
+import Client.Model.Status;
 import Client.Model.Vehicle;
 import Client.ViewModel.SetStatusViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-import org.w3c.dom.Text;
 
 import java.awt.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.GregorianCalendar;
 
 public class SetStatusViewController implements ViewController
 {
@@ -51,7 +50,6 @@ public class SetStatusViewController implements ViewController
   {
     viewHandler.openMainMenu();
   }
-
   public void setSetStatusButton(ActionEvent evt)
       throws RemoteException, SQLException
   {
@@ -63,8 +61,8 @@ public class SetStatusViewController implements ViewController
     LocalDate date1 = startDatePicker.getValue();
     LocalDate date2 = endDatePicker.getValue();
 
-    Date startDate1 = new Date(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
-    Date endDate1 = new Date(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
+    GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
+    GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
 
     Status status = new Status(startDate1, endDate1, statusTextField.getText());
     setStatusViewModel.setStatus(vehicle, status);
