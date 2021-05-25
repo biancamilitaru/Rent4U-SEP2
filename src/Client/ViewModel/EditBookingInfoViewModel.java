@@ -2,7 +2,6 @@ package Client.ViewModel;
 
 import Client.Model.Booking;
 import Client.Model.ClientModel;
-import Server.Model.Date;
 
 import java.rmi.RemoteException;
 import java.util.GregorianCalendar;

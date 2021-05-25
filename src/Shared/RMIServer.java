@@ -1,8 +1,8 @@
 package Shared;
 
 import Client.Model.Booking;
+import Client.Model.Status;
 import Client.Model.Vehicle;
-import Server.Model.Status;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.Remote;

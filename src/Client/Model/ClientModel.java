@@ -1,7 +1,5 @@
 package Client.Model;
 
-import Server.Model.Status;
-
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;

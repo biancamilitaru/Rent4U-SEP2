@@ -1,8 +1,6 @@
 package Client.Model;
 
 import Client.Networking.Client;
-import Server.Model.Date;
-import Server.Model.Status;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

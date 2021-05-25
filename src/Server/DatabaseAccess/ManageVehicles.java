@@ -1,7 +1,8 @@
 package Server.DatabaseAccess;
 
+import Client.Model.Status;
 import Client.Model.Vehicle;
-import Server.Model.Status;
+
 
 import java.sql.SQLException;
 import java.util.ArrayList;

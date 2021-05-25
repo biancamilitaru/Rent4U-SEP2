@@ -1,36 +1,37 @@
 package Client.Model;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class Status
 {
   private String status;
-  private Date startDate;
-  private Date endDate;
+  private GregorianCalendar startDate;
+  private GregorianCalendar endDate;
 
-  public Status(Date startDate,Date endDate, String status)
+  public Status(GregorianCalendar startDate,GregorianCalendar endDate, String status)
   {
     this.startDate=startDate;
     this.endDate=endDate;
     this.status=status;
   }
 
-  public void setStartDate(Date startDate)
+  public void setStartDate(GregorianCalendar startDate)
   {
     this.startDate = startDate;
   }
 
-  public void setEndDate(Date endDate)
+  public void setEndDate(GregorianCalendar endDate)
   {
     this.endDate = endDate;
   }
 
-  public Date getStartDate()
+  public GregorianCalendar getStartDate()
   {
     return startDate;
   }
 
-  public Date getEndDate()
+  public GregorianCalendar getEndDate()
   {
     return endDate;
   }

@@ -1,8 +1,8 @@
 package Client.Networking;
 
 import Client.Model.Booking;
+import Client.Model.Status;
 import Client.Model.Vehicle;
-import Server.Model.Status;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
 

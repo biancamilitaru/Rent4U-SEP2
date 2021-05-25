@@ -1,14 +1,16 @@
 package Server.DatabaseAccess;
 
 import Client.Model.Booking;
+import Client.Model.Status;
 import Client.Model.Vehicle;
-import Server.Model.Status;
+
 
 import java.rmi.RemoteException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
 
 public class Rent4UDAO implements ManageVehicles,ManageBookings
 {
@@ -97,6 +99,13 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("INSERT INTO Status(license_plate, " +
                     "start_time, end_time, status) VALUES (?, ?, ?, ?)");
+            GregorianCalendar gregorianCalendar = new GregorianCalendar(2000,8,9, 20, 30);
+            Timestamp timestamp = new Timestamp(gregorianCalendar.getTimeInMillis());
+            statement.setString(1, vehicle.getLicensePlate());
+            statement.setTimestamp(2, timestamp);
+            statement.setTimestamp(3, timestamp);
+            statement.setString(4, status.getStatus());
+            statement.executeUpdate();
         }
     }
 

@@ -1,6 +1,7 @@
 package Client.Model;
 
-import Server.Model.Date;
+
+import java.util.GregorianCalendar;
 
 import java.util.GregorianCalendar;
 

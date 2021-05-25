@@ -1,6 +1,7 @@
 package Server.Model;
 
 import Client.Model.Booking;
+import Client.Model.Status;
 import Client.Model.Vehicle;
 
 import java.rmi.RemoteException;
