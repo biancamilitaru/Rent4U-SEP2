@@ -10,6 +10,7 @@ import Server.DatabaseAccess.Rent4UDAO;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class ServerModelManager implements ServerModel
 {
@@ -49,5 +50,12 @@ public class ServerModelManager implements ServerModel
     public ArrayList<Booking> viewAllBookings() throws SQLException
     {
         return manageBookings.viewAllBookings();
+    }
+
+    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
+        String licencePlate, GregorianCalendar startTime,
+        GregorianCalendar endTime, int price) throws RemoteException
+    {
+        manageBookings.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
     }
 }
