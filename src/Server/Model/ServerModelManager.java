@@ -35,4 +35,11 @@ public class ServerModelManager implements ServerModel
     {
         manageBookings.createBooking(booking);
     }
+
+    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
+        int enginePower, String type, String make, String model, int year,
+        String gearBoxType, String fuelType, int numberOfSeats, double price)
+    {
+        manageVehicles.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+    }
 }

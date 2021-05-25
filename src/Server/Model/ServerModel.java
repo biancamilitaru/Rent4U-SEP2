@@ -12,6 +12,8 @@ public interface ServerModel
   ArrayList<Vehicle> viewAllVehicles() throws SQLException;
   void setStatus(Vehicle vehicle, Status status) throws SQLException;
   void createBooking(Booking booking);
+  void editVehicleInfo(Vehicle vehicle, String licensePlate, int enginePower, String type, String make, String model,
+      int year, String gearBoxType, String fuelType, int numberOfSeats, double price);
 }
 
 
