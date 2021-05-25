@@ -5,6 +5,11 @@ import Server.Model.Date;
 import Server.Model.Status;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.TemporalField;
 
 
 public class TestForDatabaseIgnorTHIS {
@@ -16,7 +21,12 @@ public class TestForDatabaseIgnorTHIS {
         Date date1 = new Date(2021,7,25,12,30);
         Date date2 = new Date(2021,7,25,13,30);
         Status status = new Status(date1, date2, "In service");
-        manageVehicles.setStatus(vehicle, status);
-
+        //manageVehicles.setStatus(vehicle, status);
+        LocalDate startDate = LocalDate.of(2021,7,9);
+        LocalTime startTime = LocalTime.of(20,30);
+        LocalDateTime start = LocalDateTime.of(startDate, startTime);
+        System.out.println(start);
+        System.out.println(startDate);
+        System.out.println(startTime);
     }
 }

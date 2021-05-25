@@ -6,13 +6,16 @@ import Client.ViewModel.AddBookingViewModel;
 import Client.ViewModel.AddBookingViewModel;
 import Client.ViewModel.SetStatusViewModel;
 import Client.Views.ViewController;
+import Server.Model.Date;
 import javafx.event.ActionEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 
 import java.awt.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class AddBookingViewController implements ViewController
 {
@@ -21,6 +24,7 @@ public class AddBookingViewController implements ViewController
 
   @FXML Button confirmButton;
   @FXML Button goToMenuButton;
+  @FXML DatePicker datePicker;
 
 
   @Override public void init(ViewHandler viewHandler,
@@ -37,6 +41,7 @@ public class AddBookingViewController implements ViewController
 
   public void setConfirmButton(ActionEvent evt)
   {
+    LocalDate date = datePicker.getValue();
     Platform.runLater(() ->{
       createBookingViewModel.createBooking();
 

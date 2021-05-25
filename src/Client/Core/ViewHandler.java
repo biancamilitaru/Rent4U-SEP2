@@ -1,7 +1,7 @@
 package Client.Core;
 
 import Client.ViewModel.AddBookingViewModel;
-import Client.Views.AddBookingView.AddBookingController;
+import Client.Views.AddBookingView.AddBookingViewController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
 import Client.Views.LogInView.LoginViewController;
 import Client.Views.MenuView.MenuViewController;
@@ -194,7 +194,7 @@ public class ViewHandler
       System.out.println(e.getMessage());
       System.out.println(loader.getLocation());
     }
-    AddBookingController view = loader.getController();
+    AddBookingViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Add booking");
 

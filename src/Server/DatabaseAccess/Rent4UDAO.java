@@ -6,7 +6,7 @@ import Server.Model.Status;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class Rent4UDAO implements ManageVehicles,ManageBookings
 {
@@ -95,6 +95,7 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("INSERT INTO Status(license_plate, " +
                     "start_time, end_time, status) VALUES (?, ?, ?, ?)");
+
             statement.setString(1, vehicle.getLicensePlate());
             statement.setString(2, "TIMESTAMP '" + status.getStartDate().toString()+"'");
             statement.setString(3, "TIMESTAMP '" + status.getEndDate().toString()+"'");
