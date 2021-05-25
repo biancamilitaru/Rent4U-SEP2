@@ -1,6 +1,7 @@
 package Client.Model;
 
 import Client.Networking.Client;
+import Server.Model.Date;
 import Server.Model.Status;
 
 import java.rmi.RemoteException;
@@ -48,4 +49,18 @@ public class EmployeeModelManager implements ClientModel
     {
         client.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
     }
+
+    @Override public ArrayList<Booking> getBookings()
+        throws SQLException, RemoteException
+    {
+        return client.getListOfBookings();
+    }
+
+    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
+        String licencePlate, Client.Model.Date startTime,
+        Client.Model.Date endTime, int price) throws RemoteException
+    {
+
+    }
+
 }

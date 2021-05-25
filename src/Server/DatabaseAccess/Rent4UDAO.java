@@ -109,4 +109,9 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
     {
 
     }
+
+    @Override public ArrayList<Booking> viewAllBookings() throws SQLException
+    {
+        return null;
+    }
 }

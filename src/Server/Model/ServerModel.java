@@ -16,6 +16,7 @@ public interface ServerModel
   void editVehicleInfo(Vehicle vehicle, String licensePlate, int enginePower, String type, String make, String model,
       int year, String gearBoxType, String fuelType, int numberOfSeats, double price)
       throws RemoteException;
+  ArrayList<Booking> viewAllBookings() throws SQLException;
 }
 
 

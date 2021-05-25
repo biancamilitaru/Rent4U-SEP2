@@ -17,4 +17,7 @@ public interface ClientModel
       String gearBoxType, String fuelType, int numberOfSeats, double price)
       throws RemoteException;
 
+
+  ArrayList<Booking> getBookings() throws SQLException, RemoteException;
+  void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, Date startTime, Date endTime, int price) throws RemoteException;
 }

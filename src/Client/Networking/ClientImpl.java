@@ -73,4 +73,10 @@ public class ClientImpl implements Client, ClientCallBack
     {
         server.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
     }
+
+    @Override public ArrayList<Booking> getListOfBookings()
+        throws SQLException, RemoteException
+    {
+        return server.viewAllBookings();
+    }
 }

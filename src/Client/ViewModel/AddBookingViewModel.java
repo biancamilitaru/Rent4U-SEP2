@@ -20,6 +20,7 @@ public class AddBookingViewModel
   }
   public void createBooking() throws RemoteException
   {
+
     //userModel.createBooking(new Booking(idOfCustomer,licencePlate,startTime,endTime,price));
   }
 
