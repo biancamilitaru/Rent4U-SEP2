@@ -6,6 +6,7 @@ import Server.DatabaseAccess.ManageBookings;
 import Server.DatabaseAccess.ManageVehicles;
 import Server.DatabaseAccess.Rent4UDAO;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -38,7 +39,8 @@ public class ServerModelManager implements ServerModel
 
     @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
         int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price)
+        String gearBoxType, String fuelType, int numberOfSeats, double price) throws
+        RemoteException
     {
         manageVehicles.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
     }

@@ -45,6 +45,7 @@ public class EmployeeModelManager implements ClientModel
     @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
         int enginePower, String type, String make, String model, int year,
         String gearBoxType, String fuelType, int numberOfSeats, double price)
+        throws RemoteException
     {
         client.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
     }
@@ -56,8 +57,10 @@ public class EmployeeModelManager implements ClientModel
     }
 
     @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, Date startTime, Date endTime, int price)
+        String licencePlate, Client.Model.Date startTime,
+        Client.Model.Date endTime, int price) throws RemoteException
     {
 
     }
+
 }

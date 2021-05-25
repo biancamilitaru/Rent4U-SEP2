@@ -56,9 +56,10 @@ public class ServerImpl implements RMIServer
 
     @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
         int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price)
+        String gearBoxType, String fuelType, int numberOfSeats, double price) throws RemoteException
     {
         serverModelManager.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+
     }
 
     @Override public ArrayList<Booking> viewAllBookings() throws SQLException
