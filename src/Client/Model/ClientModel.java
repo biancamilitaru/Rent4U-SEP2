@@ -5,6 +5,7 @@ import Server.Model.Status;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public interface ClientModel
 {
@@ -19,5 +20,5 @@ public interface ClientModel
 
 
   ArrayList<Booking> getBookings() throws SQLException, RemoteException;
-  void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, Date startTime, Date endTime, int price) throws RemoteException;
+  void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price) throws RemoteException;
 }

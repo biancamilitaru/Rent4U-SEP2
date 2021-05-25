@@ -2,15 +2,17 @@ package Client.Model;
 
 import Server.Model.Date;
 
+import java.util.GregorianCalendar;
+
 public class Booking
 {
   private int idOfCustomer;
   private String licencePlate;
-  private Date startTime;
-  private Date endTime;
+  private GregorianCalendar startTime;
+  private GregorianCalendar endTime;
   private int price;
 
-  public Booking(int idOfCustomer,String licencePlate,Date startTime,Date endTime,int price){
+  public Booking(int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,int price){
     this.idOfCustomer = idOfCustomer;
     this.licencePlate = licencePlate;
     this.startTime = startTime;
@@ -28,12 +30,12 @@ public class Booking
     return price;
   }
 
-  public void setEndTime(Date endTime)
+  public void setEndTime(GregorianCalendar endTime)
   {
     this.endTime = endTime;
   }
 
-  public Date getEndTime()
+  public GregorianCalendar getEndTime()
   {
     return endTime;
   }
@@ -58,12 +60,12 @@ public class Booking
     return licencePlate;
   }
 
-  public void setStartTime(Date startTime)
+  public void setStartTime(GregorianCalendar startTime)
   {
     this.startTime = startTime;
   }
 
-  public Date getStartTime()
+  public GregorianCalendar getStartTime()
   {
     return startTime;
   }

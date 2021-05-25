@@ -3,11 +3,11 @@ package Client.ViewModel;
 import Client.Model.Booking;
 import Client.Model.ClientModel;
 import Client.Model.Vehicle;
-import Server.Model.Date;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AddBookingViewModel
 {
@@ -18,7 +18,7 @@ public class AddBookingViewModel
     this.userModel= userModel;
 
   }
-  public void createBooking() throws RemoteException
+  public void createBooking(/*int idOfCustomer,String licencePlate, Date startTime,Date endTime,int price*/) throws RemoteException
   {
 
     //userModel.createBooking(new Booking(idOfCustomer,licencePlate,startTime,endTime,price));

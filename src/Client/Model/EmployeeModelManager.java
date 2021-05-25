@@ -7,6 +7,7 @@ import Server.Model.Status;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class EmployeeModelManager implements ClientModel
 {
@@ -57,10 +58,12 @@ public class EmployeeModelManager implements ClientModel
     }
 
     @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, Client.Model.Date startTime,
-        Client.Model.Date endTime, int price) throws RemoteException
+        String licencePlate, GregorianCalendar startTime,
+        GregorianCalendar endTime, int price) throws RemoteException
     {
 
     }
+
+
 
 }

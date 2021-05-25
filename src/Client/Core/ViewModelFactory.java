@@ -19,6 +19,8 @@ public class ViewModelFactory
   private AddBookingViewModel addBookingViewModel;
   private SetStatusViewModel setStatusViewModel;
   private EditVehicleInfoVewModel editVehicleInfoVewModel;
+  private ListOfBookingsViewModel listOfBookingsViewModel;
+  private EditBookingInfoViewModel editBookingInfoViewModel;
 
   private ViewModelFactory() {
   }
@@ -67,5 +69,16 @@ public class ViewModelFactory
     if(editVehicleInfoVewModel==null)
       editVehicleInfoVewModel=new EditVehicleInfoVewModel(ModelFactory.getInstance().getClientModel());
     return editVehicleInfoVewModel;
+  }
+  public ListOfBookingsViewModel getListOfBookingsViewModel()
+  {
+    if(listOfBookingsViewModel==null)
+      listOfBookingsViewModel=new ListOfBookingsViewModel(ModelFactory.getInstance().getClientModel());
+    return listOfBookingsViewModel;
+  }
+  public EditBookingInfoViewModel getEditBookingInfoViewModel(){
+    if (editBookingInfoViewModel == null)
+      editBookingInfoViewModel= new EditBookingInfoViewModel(ModelFactory.getInstance().getClientModel());
+    return editBookingInfoViewModel;
   }
 }
