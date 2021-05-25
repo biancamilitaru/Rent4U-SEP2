@@ -22,11 +22,6 @@ public class TestForDatabaseIgnorTHIS {
         Date date2 = new Date(2021,7,25,13,30);
         Status status = new Status(date1, date2, "In service");
         //manageVehicles.setStatus(vehicle, status);
-        LocalDate startDate = LocalDate.of(2021,7,9);
-        LocalTime startTime = LocalTime.of(20,30);
-        LocalDateTime start = LocalDateTime.of(startDate, startTime);
-        System.out.println(start);
-        System.out.println(startDate);
-        System.out.println(startTime);
+        manageVehicles.setStatus(vehicle, status);
     }
 }
