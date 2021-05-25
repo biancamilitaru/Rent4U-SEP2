@@ -13,7 +13,7 @@ public class EditBookingInfoViewModel
       this.userModel= userModel;
 
     }
-    public void editBookingInfo(/*Booking booking ,int idOfCustomer,String licencePlate, Date startTime,Date endTime, int price*/) {
-      //userModel.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
+    public void editBookingInfo(Booking booking ,int idOfCustomer,String licencePlate, Date startTime,Date endTime, int price) {
+        userModel.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
     }
 }
