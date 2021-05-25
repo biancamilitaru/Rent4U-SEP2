@@ -6,7 +6,8 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="265.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.AddBookingView.VehicleViewCell.VehicleListViewCell">
+<?import javafx.scene.layout.GridPane?>
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="265.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.AddBookingView.VehicleViewCell.VehicleListViewCell">
    <children>
       <Label fx:id="makeLabel" layoutX="12.0" layoutY="10.0" prefHeight="17.0" prefWidth="70.0" text="Audi" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -36,4 +37,4 @@
       <Label layoutX="8.0" layoutY="91.0" prefHeight="17.0" prefWidth="80.0" text="Price per day:" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
       <Label fx:id="priceLabel" layoutX="88.0" layoutY="94.0" prefHeight="17.0" prefWidth="41.0" text="100" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="90.0" />
    </children>
-</AnchorPane>
+</GridPane>
