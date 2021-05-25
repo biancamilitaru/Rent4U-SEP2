@@ -42,4 +42,9 @@ public class ServerModelManager implements ServerModel
     {
         manageVehicles.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
     }
+
+    public ArrayList<Booking> viewAllBookings() throws SQLException
+    {
+        return manageBookings.viewAllBookings();
+    }
 }

@@ -58,6 +58,11 @@ public class ServerImpl implements RMIServer
         int enginePower, String type, String make, String model, int year,
         String gearBoxType, String fuelType, int numberOfSeats, double price)
     {
-        serverModelManager.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price)
+        serverModelManager.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+    }
+
+    @Override public ArrayList<Booking> viewAllBookings() throws SQLException
+    {
+        return serverModelManager.viewAllBookings();
     }
 }

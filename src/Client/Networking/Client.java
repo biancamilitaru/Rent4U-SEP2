@@ -17,4 +17,5 @@ public interface Client
     void createBooking(Booking booking) throws RemoteException;
   void editVehicleInfo(Vehicle vehicle, String licensePlate, int enginePower, String type, String make, String model,
       int year, String gearBoxType, String fuelType, int numberOfSeats, double price);
+    ArrayList<Booking> getListOfBookings() throws SQLException, RemoteException;
 }
