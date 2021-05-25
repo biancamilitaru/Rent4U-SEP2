@@ -1,5 +1,6 @@
 package Client.Model;
 
+import Server.Model.Date;
 import Server.Model.Status;
 
 import java.rmi.RemoteException;
@@ -15,5 +16,6 @@ public interface ClientModel
   void createBooking(Booking booking) throws RemoteException;
   void editVehicleInfo(Vehicle vehicle,String licensePlate, int enginePower, String type, String make, String model, int year,
       String gearBoxType, String fuelType, int numberOfSeats, double price);
-
+  ArrayList<Booking> getBookings();
+  void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, Date startTime, Date endTime, int price);
 }
