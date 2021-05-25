@@ -14,6 +14,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class ClientImpl implements Client, ClientCallBack
 
@@ -78,5 +79,12 @@ public class ClientImpl implements Client, ClientCallBack
         throws SQLException, RemoteException
     {
         return server.viewAllBookings();
+    }
+
+    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
+        String licencePlate, GregorianCalendar startTime,
+        GregorianCalendar endTime, int price)
+    {
+
     }
 }

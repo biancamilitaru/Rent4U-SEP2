@@ -7,6 +7,7 @@ import Client.Model.Vehicle;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public interface ServerModel
 {
@@ -18,6 +19,7 @@ public interface ServerModel
       int year, String gearBoxType, String fuelType, int numberOfSeats, double price)
       throws RemoteException;
   ArrayList<Booking> viewAllBookings() throws SQLException;
+  void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price) throws RemoteException;
 }
 
 

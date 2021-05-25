@@ -3,6 +3,8 @@ package Client.Model;
 
 import java.util.GregorianCalendar;
 
+import java.util.GregorianCalendar;
+
 public class Booking
 {
   private int idOfCustomer;
