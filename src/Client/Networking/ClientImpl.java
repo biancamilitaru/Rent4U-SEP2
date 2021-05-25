@@ -69,6 +69,7 @@ public class ClientImpl implements Client, ClientCallBack
     @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
         int enginePower, String type, String make, String model, int year,
         String gearBoxType, String fuelType, int numberOfSeats, double price)
+        throws RemoteException
     {
         server.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
     }
