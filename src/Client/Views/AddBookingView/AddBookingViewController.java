@@ -2,51 +2,70 @@ package Client.Views.AddBookingView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
+import Client.Model.Vehicle;
 import Client.ViewModel.AddBookingViewModel;
-import Client.ViewModel.AddBookingViewModel;
-import Client.ViewModel.SetStatusViewModel;
+import Client.Views.AddBookingView.VehicleViewCell.VehicleListViewCell;
 import Client.Views.ViewController;
 import Server.Model.Date;
-import javafx.event.ActionEvent;
-import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
-public class AddBookingViewController implements ViewController
-{
+public class AddBookingViewController implements ViewController {
+
   private ViewHandler viewHandler;
-  private AddBookingViewModel createBookingViewModel;
+  private AddBookingViewModel viewModel;
+  @FXML DatePicker startDatePicker;
+  @FXML DatePicker endDatePicker;
+  @FXML TextField startHour;
+  @FXML TextField startMinute;
+  @FXML TextField endHour;
+  @FXML TextField endMinute;
+  @FXML ListView listView;
 
-  @FXML Button confirmButton;
-  @FXML Button goToMenuButton;
-  @FXML DatePicker datePicker;
+  public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
 
-
-  @Override public void init(ViewHandler viewHandler,
-      ViewModelFactory viewModelFactory)
+  @Override
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
+      throws SQLException, RemoteException
   {
     this.viewHandler = viewHandler;
-    createBookingViewModel = viewModelFactory.getAddBookingViewModel();
+    viewModel = viewModelFactory.getAddBookingViewModel();
+    getVehicleData(viewModel.getVehicles());
+    listView.setItems(vehiclesObservableList);
+    listView.setCellFactory(studentListView -> new VehicleListViewCell());
   }
 
-  public void onMenuButton(ActionEvent evt)
+  public ObservableList<Vehicle> getVehicleData(
+      ArrayList<Vehicle> vehiclesArrayList)
   {
-    viewHandler.openMainMenu();
+    for (int x = 0; x<vehiclesArrayList.size(); x++){
+      vehiclesObservableList.add(vehiclesArrayList.get(x));
+    }
+    return vehiclesObservableList;
   }
 
-  public void setConfirmButton(ActionEvent evt)
+  public void onCreateBookingButton(ActionEvent evt) throws RemoteException
   {
-    LocalDate date = datePicker.getValue();
-    Platform.runLater(() ->{
-      createBookingViewModel.createBooking();
+    int startHour1 = Integer.parseInt(startHour.getText());
+    int endHour1 = Integer.parseInt(endHour.getText());
+    int startMinute1 = Integer.parseInt(startMinute.getText());
+    int endMinute1 = Integer.parseInt(endMinute.getText());
 
-    });
-    viewHandler.openMainMenu();
+    LocalDate date1 = startDatePicker.getValue();
+    LocalDate date2 = endDatePicker.getValue();
+
+    Date startDate1 = new Date(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
+    Date endDate1 = new Date(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
+
   }
-
 }
