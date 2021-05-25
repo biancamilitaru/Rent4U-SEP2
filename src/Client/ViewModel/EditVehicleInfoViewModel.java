@@ -6,11 +6,11 @@ import Client.Model.Vehicle;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
-public class EditVehicleInfoVewModel
+public class EditVehicleInfoViewModel
 {
   private ClientModel userModel;
 
-  public EditVehicleInfoVewModel(ClientModel userModel)
+  public EditVehicleInfoViewModel(ClientModel userModel)
   {
     this.userModel=userModel;
   }
@@ -19,6 +19,7 @@ public class EditVehicleInfoVewModel
       String gearBoxType, String fuelType, int numberOfSeats, double price)
       throws RemoteException
   {
-    userModel.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+    Vehicle newVehicle = new Vehicle(licensePlate, enginePower, type, make, model, year, type, fuelType, numberOfSeats, price);
+    //userModel.editVehicleInfo(vehicle, newVehicle.getTypeOfGearbox(), );
   }
 }

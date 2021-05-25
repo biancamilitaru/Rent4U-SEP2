@@ -111,21 +111,13 @@ public class ListOfVehiclesViewController implements ViewController
             btn.setOnAction((ActionEvent event) -> {
               Vehicle data = getTableView().getItems().get(getIndex());
               System.out.println("selectedData: " + data);
-              /*
-              try
-              {
-                //viewHandler.openEditVehicleInfo(data);
-              }
-              catch (SQLException throwables)
-              {
+              try {
+                viewHandler.openEditVehicle(data);
+              } catch (SQLException throwables) {
                 throwables.printStackTrace();
-              }
-              catch (RemoteException e)
-              {
+              } catch (RemoteException e) {
                 e.printStackTrace();
               }
-
-               */
             });
           }
 

@@ -16,6 +16,7 @@
       <Label alignment="CENTER" layoutX="270.0" layoutY="81.0" text="Welcome..." AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
       <Button fx:id="openLogOutButton" layoutX="238.0" layoutY="359.0" mnemonicParsing="false" onAction="#onLogOutButton" prefHeight="27.0" prefWidth="127.0" text="LOG OUT" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="360.0" />
       <Button fx:id="listOfVehicleButton" layoutX="193.0" layoutY="160.0" mnemonicParsing="false" onAction="#onListOfVehicleButton" prefHeight="40.0" prefWidth="217.0" text="LIST OF ALL VEHICLES" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="170.0" />
-      <Button layoutX="193.0" layoutY="210.0" mnemonicParsing="false" onAction="#onAddBookingButton" prefHeight="40.0" prefWidth="217.0" text="LIST OF ALL BOOKINGS" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="220.0" />
+      <Button layoutX="193.0" layoutY="210.0" mnemonicParsing="false" onAction="#onAddBookingButton" prefHeight="40.0" prefWidth="217.0" text="ADD NEW BOOKING" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="220.0" />
+      <Button layoutX="193.0" layoutY="210.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="217.0" text="LIST OF ALL BOOKINGS" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="270.0" />
    </children>
 </AnchorPane>

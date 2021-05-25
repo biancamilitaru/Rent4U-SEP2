@@ -18,10 +18,9 @@ public class ViewModelFactory
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
   private AddBookingViewModel addBookingViewModel;
   private SetStatusViewModel setStatusViewModel;
-  private EditVehicleInfoVewModel editVehicleInfoVewModel;
-  private ListOfBookingsViewModel listOfBookingsViewModel;
+  private EditVehicleInfoViewModel editVehicleInfoVewModel;
   private EditBookingInfoViewModel editBookingInfoViewModel;
-
+  private ListOfBookingsViewModel listOfBookingsViewModel;
   private ViewModelFactory() {
   }
 
@@ -64,21 +63,23 @@ public class ViewModelFactory
     return setStatusViewModel;
   }
 
-  public EditVehicleInfoVewModel getEditVehicleInfoViewModel()
+  public EditVehicleInfoViewModel getEditVehicleInfoViewModel()
   {
     if(editVehicleInfoVewModel==null)
-      editVehicleInfoVewModel=new EditVehicleInfoVewModel(ModelFactory.getInstance().getClientModel());
+      editVehicleInfoVewModel=new EditVehicleInfoViewModel(ModelFactory.getInstance().getClientModel());
     return editVehicleInfoVewModel;
+  }
+
+  public EditBookingInfoViewModel getEditBookingInfoViewModel()
+  {
+    if(editBookingInfoViewModel==null)
+      editBookingInfoViewModel=new EditBookingInfoViewModel(ModelFactory.getInstance().getClientModel());
+    return editBookingInfoViewModel;
   }
   public ListOfBookingsViewModel getListOfBookingsViewModel()
   {
     if(listOfBookingsViewModel==null)
       listOfBookingsViewModel=new ListOfBookingsViewModel(ModelFactory.getInstance().getClientModel());
     return listOfBookingsViewModel;
-  }
-  public EditBookingInfoViewModel getEditBookingInfoViewModel(){
-    if (editBookingInfoViewModel == null)
-      editBookingInfoViewModel= new EditBookingInfoViewModel(ModelFactory.getInstance().getClientModel());
-    return editBookingInfoViewModel;
   }
 }
