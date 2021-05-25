@@ -1,6 +1,7 @@
 package Client.Core;
 
 import Client.ViewModel.*;
+import Client.Views.EditBookingInfoView.EditBookingInfoViewController;
 
 public class ViewModelFactory
 {
@@ -18,7 +19,8 @@ public class ViewModelFactory
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
   private AddBookingViewModel addBookingViewModel;
   private SetStatusViewModel setStatusViewModel;
-  private EditVehicleInfoViewModel editVehicleInfoViewModel;
+  private EditVehicleInfoVewModel editVehicleInfoVewModel;
+  private EditBookingInfoViewModel editBookingInfoViewModel;
 
   private ViewModelFactory() {
   }
@@ -62,10 +64,17 @@ public class ViewModelFactory
     return setStatusViewModel;
   }
 
-  public EditVehicleInfoViewModel getEditVehicleInfoViewModel()
+  public EditVehicleInfoVewModel getEditVehicleInfoViewModel()
   {
-    if(editVehicleInfoViewModel ==null)
-      editVehicleInfoViewModel =new EditVehicleInfoViewModel(ModelFactory.getInstance().getClientModel());
-    return editVehicleInfoViewModel;
+    if(editVehicleInfoVewModel==null)
+      editVehicleInfoVewModel=new EditVehicleInfoVewModel(ModelFactory.getInstance().getClientModel());
+    return editVehicleInfoVewModel;
+  }
+
+  public EditBookingInfoViewModel getEditBookingInfoViewModel()
+  {
+    if(editBookingInfoViewModel==null)
+      editBookingInfoViewModel=new EditBookingInfoViewModel(ModelFactory.getInstance().getClientModel());
+    return editBookingInfoViewModel;
   }
 }
