@@ -46,6 +46,7 @@ public class SetStatusViewController implements ViewController
   {
     this.vehicle = vehicle;
   }
+
   public void onMenuButton(ActionEvent evt)
   {
     viewHandler.openMainMenu();

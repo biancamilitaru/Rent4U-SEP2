@@ -174,11 +174,13 @@ public class ViewHandler
     SetStatusViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Set status");
-    view.setVehicle(vehicle);
+    view.setVehicle(vehicle); //This is not good because it is calling on the wrong handler
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
+
+
 
 }
