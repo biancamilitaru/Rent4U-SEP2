@@ -34,7 +34,7 @@ public class AddBookingViewController implements ViewController {
   @FXML TextField startMinute;
   @FXML TextField endHour;
   @FXML TextField endMinute;
-  @FXML ListView listView;
+  @FXML ListView<Vehicle> listView;
   private Vehicle vehicle;
   private int priceOfBooking;
 
@@ -49,6 +49,7 @@ public class AddBookingViewController implements ViewController {
     getVehicleData(viewModel.getVehicles());
     listView.setItems(vehiclesObservableList);
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell());
+    listView.setFixedCellSize(100);
   }
 
   public ObservableList<Vehicle> getVehicleData(

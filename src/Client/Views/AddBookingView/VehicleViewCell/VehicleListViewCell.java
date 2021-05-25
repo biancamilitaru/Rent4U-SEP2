@@ -22,7 +22,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   @FXML Label enginesPowerLabel;
   @FXML Label priceLabel;
 
-  @FXML GridPane anchorPane;
+  @FXML AnchorPane anchorPane;
 
   private FXMLLoader mLLoader;
 
@@ -64,6 +64,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
       setText(null);
       setGraphic(this.anchorPane);
+      setMinHeight(200);
     }
   }
 
