@@ -35,7 +35,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
     {
       if (mLLoader == null)
       {
-        mLLoader = new FXMLLoader(getClass().getResource("/VehicleViewCell.fxml"));
+        mLLoader = new FXMLLoader(getClass().getResource("VehicleViewCell.fxml"));
         mLLoader.setController(this);
 
         try
