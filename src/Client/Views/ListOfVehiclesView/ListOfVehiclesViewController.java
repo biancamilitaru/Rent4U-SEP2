@@ -111,9 +111,10 @@ public class ListOfVehiclesViewController implements ViewController
             btn.setOnAction((ActionEvent event) -> {
               Vehicle data = getTableView().getItems().get(getIndex());
               System.out.println("selectedData: " + data);
+              /*
               try
               {
-                viewHandler.openEditVehicleInfo(data);
+                //viewHandler.openEditVehicleInfo(data);
               }
               catch (SQLException throwables)
               {
@@ -123,6 +124,8 @@ public class ListOfVehiclesViewController implements ViewController
               {
                 e.printStackTrace();
               }
+
+               */
             });
           }
 
