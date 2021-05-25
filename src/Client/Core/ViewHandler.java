@@ -1,7 +1,7 @@
 package Client.Core;
 
 import Client.Model.Vehicle;
-import Client.ViewModel.AddBookingViewModel;
+import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
 import Client.Views.LogInView.LoginViewController;
 import Client.Views.MenuView.MenuViewController;
@@ -131,32 +131,6 @@ public class ViewHandler
     stage.show();
   }
 
-  /*
-  public void openAddBookingView()
-  {
-    FXMLLoader loader = new FXMLLoader();
-
-    loader.setLocation(getClass().getResource("../Views/AddBookingView/AddBookingView.fxml"));
-    Parent root = null;
-    try
-    {
-      root = loader.load();
-    } catch (Exception e)
-    {
-      e.printStackTrace();
-      System.out.println(e.getMessage());
-      System.out.println(loader.getLocation());
-    }
-    AddBookingController view = loader.getController();
-    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("List of bookings");
-
-    Scene scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-   */
   public void openSetStatusView(Vehicle vehicle) {
     FXMLLoader loader = new FXMLLoader();
 
@@ -174,6 +148,30 @@ public class ViewHandler
     SetStatusViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Set status");
+    view.setVehicle(vehicle);
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openEditVehicle(Vehicle vehicle) throws SQLException, RemoteException {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/EditVehicleInfoView/EditVehicleInfoViewController.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    EditVehicleInfoViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Edit vehicle");
     view.setVehicle(vehicle);
 
     Scene scene = new Scene(root);
