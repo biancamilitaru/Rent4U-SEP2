@@ -53,4 +53,11 @@ public class ServerImpl implements RMIServer
     {
         serverModelManager.createBooking(booking);
     }
+
+    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
+        int enginePower, String type, String make, String model, int year,
+        String gearBoxType, String fuelType, int numberOfSeats, double price)
+    {
+        serverModelManager.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price)
+    }
 }
