@@ -23,7 +23,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
   @FXML private GridPane gridPane;
 
-  FXMLLoader mLLoader = new FXMLLoader();
+  private FXMLLoader mLLoader;
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {

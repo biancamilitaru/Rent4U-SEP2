@@ -42,7 +42,7 @@ public class AddBookingViewController implements ViewController {
     viewModel = viewModelFactory.getAddBookingViewModel();
     getVehicleData(viewModel.getVehicles());
     listView.setItems(vehiclesObservableList);
-    listView.setCellFactory(studentListView -> new VehicleListViewCell());
+    listView.setCellFactory(vehicleListView -> new VehicleListViewCell());
   }
 
   public ObservableList<Vehicle> getVehicleData(
