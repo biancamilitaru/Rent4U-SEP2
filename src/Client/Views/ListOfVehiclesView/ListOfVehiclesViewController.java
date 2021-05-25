@@ -71,7 +71,8 @@ public class ListOfVehiclesViewController implements ViewController
             btn.setOnAction((ActionEvent event) -> {
               Vehicle data = getTableView().getItems().get(getIndex());
               System.out.println("selectedData: " + data);
-              viewHandler.openSetStatusView();
+              viewHandler.openSetStatusView(data);
+
             });
           }
 
@@ -134,4 +135,5 @@ public class ListOfVehiclesViewController implements ViewController
     table.getColumns().add(colBtn);
 
   }
+
 }
