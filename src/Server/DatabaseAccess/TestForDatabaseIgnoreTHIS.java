@@ -26,6 +26,7 @@ public class TestForDatabaseIgnoreTHIS {
         Status status = new Status(start_time,end_time, "In Service");
         //manageVehicles.setStatus(vehicle1, status);
         Booking booking2 = new Booking(1000000000, "dd34", start_time, end_time, 200);
-        manageBookings.editBookingInfo(booking1, booking2);
+        //manageBookings.editBookingInfo(booking1, booking2);
+        System.out.println(manageBookings.viewAllBookings());
     }
 }
