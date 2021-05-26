@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
 
 public interface ServerModel
 {
-    void addVehicle(Vehicle vehicle) throws SQLException;
+  void addVehicle(Vehicle vehicle) throws SQLException;
   ArrayList<Vehicle> viewAllVehicles() throws SQLException;
   void setStatus(Vehicle vehicle, Status status) throws SQLException;
   void createBooking(Booking booking) throws SQLException;
