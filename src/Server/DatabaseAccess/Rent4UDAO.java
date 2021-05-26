@@ -238,4 +238,13 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
             statement.executeUpdate();
         }
     }
+
+    @Override
+    public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException{
+        ArrayList<Vehicle> freeVehicles = new ArrayList<>();
+        try(Connection connection = getConnection()){
+
+        }
+        return null;
+    }
 }

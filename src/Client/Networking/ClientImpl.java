@@ -81,4 +81,9 @@ public class ClientImpl implements Client, ClientCallBack
     @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
         server.editBookingInfo(booking,newBooking);
     }
+
+    @Override
+    public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException {
+        return server.getFreeVehicles(startDate, endDate, type);
+    }
 }

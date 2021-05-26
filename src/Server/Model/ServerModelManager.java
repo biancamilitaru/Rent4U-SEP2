@@ -52,4 +52,9 @@ public class ServerModelManager implements ServerModel
     @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
         manageBookings.editBookingInfo(booking, newBooking);
     }
+
+    @Override
+    public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException {
+        return manageVehicles.getFreeVehicles(startDate, endDate, type);
+    }
 }

@@ -15,10 +15,10 @@ public interface ServerModel
   ArrayList<Vehicle> viewAllVehicles() throws SQLException;
   void setStatus(Vehicle vehicle, Status status) throws SQLException;
   void createBooking(Booking booking) throws SQLException;
-  void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
-          throws RemoteException, SQLException;
+  void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws RemoteException, SQLException;
   ArrayList<Booking> viewAllBookings() throws SQLException;
   void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
+  ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws SQLException, RemoteException;
 }
 
 

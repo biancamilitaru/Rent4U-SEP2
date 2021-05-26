@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -33,6 +32,7 @@ public class AddBookingViewController implements ViewController {
   @FXML static TextField startMinute;
   @FXML static TextField endHour;
   @FXML static TextField endMinute;
+  @FXML ComboBox<String> types;
 
   @FXML static Label totalPriceOfBooking;
 
@@ -48,8 +48,8 @@ public class AddBookingViewController implements ViewController {
     listView.setItems(vehiclesObservableList);
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell());
     listView.setFixedCellSize(125);
-
     listView.setVisible(false);
+    types.getItems().addAll("Car", "Minibus", "Van", "Motorcycle");
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -98,6 +98,13 @@ public class AddBookingViewController implements ViewController {
   public static void setTotalPriceOfBooking(){
     totalPriceOfBooking.setText(String.valueOf(getTotalPrice()));
   }
+  /*
+  private ArrayList<Vehicle> getFreeVehicles()
+  {
+    //return viewModel.getFreeVehicles();
+  }
+
+   */
 
   public void onChoseType(){
     if (!startDatePicker.equals(null) &&
@@ -105,8 +112,9 @@ public class AddBookingViewController implements ViewController {
         !startHour.equals(null) &&
         !startMinute.equals(null) &&
         !endHour.equals(null) &&
-        !endMinute.equals(null) &&
-        !customersID.getSelectionModel().isEmpty()){
+        !endMinute.equals(null))
+        //!customersID.getSelectionModel().isEmpty())
+    {
       listView.setVisible(true);
     }
   }

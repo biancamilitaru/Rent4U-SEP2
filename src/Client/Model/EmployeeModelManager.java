@@ -5,6 +5,7 @@ import Client.Networking.Client;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class EmployeeModelManager implements ClientModel
 {
@@ -55,4 +56,9 @@ public class EmployeeModelManager implements ClientModel
          client.editBookingInfo(booking,newBooking);
     }
 
+    @Override
+    public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException
+    {
+        return client.getFreeVehicles(startDate, endDate, type);
+    }
 }

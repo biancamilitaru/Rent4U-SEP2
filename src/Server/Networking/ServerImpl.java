@@ -67,4 +67,9 @@ public class ServerImpl implements RMIServer
     @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
         serverModelManager.editBookingInfo(booking, newBooking);
     }
+
+    @Override
+    public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException {
+        return serverModelManager.getFreeVehicles(startDate, endDate, type);
+    }
 }
