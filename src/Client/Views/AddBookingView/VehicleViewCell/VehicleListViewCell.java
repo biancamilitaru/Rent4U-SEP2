@@ -1,6 +1,7 @@
 package Client.Views.AddBookingView.VehicleViewCell;
 
 import Client.Model.Vehicle;
+import Client.Views.AddBookingView.AddBookingViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -10,9 +11,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class VehicleListViewCell extends ListCell<Vehicle>
 {
+  private static Vehicle vehicle;
   @FXML Label makeLabel;
   @FXML Label modelLabel;
   @FXML Label yearLabel;
@@ -27,7 +31,6 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
   private FXMLLoader mLLoader;
 
-  private Vehicle vehicle;
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {
@@ -72,9 +75,14 @@ public class VehicleListViewCell extends ListCell<Vehicle>
     }
   }
 
-  public void onChooseButton(){
-    System.out.println(vehicle);
+  public void onChooseButton()
+  {
+    AddBookingViewController.setTotalPriceOfBooking();
   }
 
 
+  public static Vehicle getVehicle()
+  {
+    return vehicle;
+  }
 }
