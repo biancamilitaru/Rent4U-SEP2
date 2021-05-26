@@ -47,6 +47,28 @@ public class EditVehicleInfoViewController implements ViewController
     this.viewHandler=viewHandler;
     editVehicleInfoViewModel =viewModelFactory.getEditVehicleInfoViewModel();
     types.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+
+    makeField.setText(vehicle.getMake());
+    modelField.setText(vehicle.getModel());
+    yearField.setText(String.valueOf(vehicle.getYear()));
+    nbOfSeatsField.setText(String.valueOf(vehicle.getNumberOfSeats()));
+    priceField.setText(String.valueOf(vehicle.getPrice()));
+    licensePlateField.setText(vehicle.getLicensePlate());
+    enginePowerField.setText(String.valueOf(vehicle.getEnginesPower()));
+
+    if (vehicle.getTypeOfGearbox().equalsIgnoreCase("automatic"))
+      automaticGearBoxButton.fire();
+    else
+      manualGearBoxButton.fire();
+
+    if (vehicle.getTypeOfFuel().equalsIgnoreCase("petrol"))
+      petrolTypeButton.fire();
+    else if (vehicle.getTypeOfFuel().equalsIgnoreCase("diesel"))
+      dieselTypeButton.fire();
+    else if (vehicle.getTypeOfFuel().equalsIgnoreCase("hybrid"))
+      hybridTypeButton.fire();
+    else if (vehicle.getTypeOfFuel().equalsIgnoreCase("electric"))
+      electricTypeButton.fire();
   }
 
   private String getFuelType(){

@@ -43,11 +43,17 @@ public class Vehicle implements Serializable
     statuses.add(status);
   }
 
+  public Status getStatuses()
+  {
+    return statuses.get(0);
+  }
 
   public void setLicensePlate(String licensePlate)
   {
     this.licensePlate = licensePlate;
   }
+
+
 
   public String getLicensePlate()
   {
