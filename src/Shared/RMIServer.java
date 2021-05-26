@@ -20,7 +20,6 @@ public interface RMIServer extends Remote
     void setStatus(Vehicle vehicle, Status status) throws RemoteException, SQLException;
     void createBooking(Booking booking) throws RemoteException, SQLException;
     void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws RemoteException, SQLException;
-
     ArrayList<Booking> viewAllBookings() throws RemoteException, SQLException;
-    void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price) throws RemoteException;
+    void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
 }

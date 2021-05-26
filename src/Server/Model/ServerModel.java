@@ -18,7 +18,7 @@ public interface ServerModel
   void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
           throws RemoteException, SQLException;
   ArrayList<Booking> viewAllBookings() throws SQLException;
-  void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price) throws RemoteException;
+  void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
 }
 
 

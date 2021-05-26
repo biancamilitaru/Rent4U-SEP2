@@ -17,10 +17,7 @@ public interface Client
     ArrayList<Vehicle> getListOfVehicles() throws SQLException, RemoteException;
     void setStatus(Vehicle vehicle, Status status) throws RemoteException, SQLException;
     void createBooking(Booking booking) throws RemoteException, SQLException;
-  void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
-      throws RemoteException, SQLException;
+    void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws RemoteException, SQLException;
     ArrayList<Booking> getListOfBookings() throws SQLException, RemoteException;
-    void editBookingInfo(Booking booking,int idOfCustomer,String licencePlate,
-        GregorianCalendar startTime, GregorianCalendar endTime, int price)
-        throws RemoteException;
+    void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
 }

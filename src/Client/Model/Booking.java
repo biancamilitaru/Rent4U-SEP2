@@ -95,8 +95,8 @@ public class Booking
             "booking_id=" + booking_id +
             ", idOfCustomer=" + idOfCustomer +
             ", licencePlate='" + licencePlate + '\'' +
-            ", startTime=" + startTime +
-            ", endTime=" + endTime +
+            ", startTime=" + startTime.getTime() +
+            ", endTime=" + endTime.getTime() +
             ", price=" + price +
             '}';
   }

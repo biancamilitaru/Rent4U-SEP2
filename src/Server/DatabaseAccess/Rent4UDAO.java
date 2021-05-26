@@ -213,10 +213,31 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
         return new Booking(booking_id, id_of_customer, license_plate, start_time, end_time, price);
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price) throws RemoteException
-    {
-
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+        try (Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("UPDATE booking SET start_time = ? " +
+                    "WHERE booking_id = ?");
+            Timestamp start_time = new Timestamp(newBooking.getStartTime().getTimeInMillis());
+            statement.setTimestamp(1, start_time);
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE booking SET end_time = ? WHERE booking_id = ?");
+            Timestamp end_time = new Timestamp(newBooking.getEndTime().getTimeInMillis());
+            statement.setTimestamp(1, end_time);
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE booking SET cpr_of_customer = ? WHERE booking_id = ?");
+            statement.setInt(1, newBooking.getIdOfCustomer());
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE booking SET licence_plate = ? WHERE booking_id = ?");
+            statement.setString(1, newBooking.getLicencePlate());
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE booking SET total_price = ? WHERE booking_id = ?");
+            statement.setDouble(1, newBooking.getPrice());
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+        }
     }
 }

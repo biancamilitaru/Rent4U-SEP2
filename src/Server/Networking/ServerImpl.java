@@ -64,10 +64,7 @@ public class ServerImpl implements RMIServer
         return serverModelManager.viewAllBookings();
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price) throws RemoteException
-    {
-        serverModelManager.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+        serverModelManager.editBookingInfo(booking, newBooking);
     }
 }
