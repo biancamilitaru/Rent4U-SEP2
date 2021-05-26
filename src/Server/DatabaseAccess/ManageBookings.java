@@ -11,6 +11,5 @@ public interface ManageBookings
 {
   void createBooking(Booking booking) throws SQLException;
   ArrayList<Booking> viewAllBookings() throws SQLException;
-  void editBookingInfo(Booking booking, int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price) throws
-      RemoteException;
+  void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
 }

@@ -48,10 +48,7 @@ public class ServerModelManager implements ServerModel
         return manageBookings.viewAllBookings();
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price) throws RemoteException
-    {
-        manageBookings.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+        manageBookings.editBookingInfo(booking, newBooking);
     }
 }

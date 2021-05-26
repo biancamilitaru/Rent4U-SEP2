@@ -52,13 +52,8 @@ public class EmployeeModelManager implements ClientModel
         return client.getListOfBookings();
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price) throws RemoteException
-    {
-         client.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+         client.editBookingInfo(booking,newBooking);
     }
-
-
 
 }
