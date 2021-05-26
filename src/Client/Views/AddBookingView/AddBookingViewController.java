@@ -49,7 +49,8 @@ public class AddBookingViewController implements ViewController {
     getVehicleData(viewModel.getVehicles());
     listView.setItems(vehiclesObservableList);
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell());
-    listView.setFixedCellSize(100);
+
+    listView.setFixedCellSize(125);
   }
 
   public ObservableList<Vehicle> getVehicleData(
