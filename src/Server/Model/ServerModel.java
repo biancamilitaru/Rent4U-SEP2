@@ -14,7 +14,7 @@ public interface ServerModel
     void addVehicle(Vehicle vehicle) throws SQLException;
   ArrayList<Vehicle> viewAllVehicles() throws SQLException;
   void setStatus(Vehicle vehicle, Status status) throws SQLException;
-  void createBooking(Booking booking);
+  void createBooking(Booking booking) throws SQLException;
   void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
           throws RemoteException, SQLException;
   ArrayList<Booking> viewAllBookings() throws SQLException;

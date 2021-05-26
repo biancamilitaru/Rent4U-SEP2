@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 
 public class Booking
 {
+  private int booking_id;
   private int idOfCustomer;
   private String licencePlate;
   private GregorianCalendar startTime;
@@ -19,6 +20,23 @@ public class Booking
     this.startTime = startTime;
     this.endTime = endTime;
     this.price = price;
+  }
+
+  public Booking(int booking_id, int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
+    this.booking_id = booking_id;
+    this.idOfCustomer = idOfCustomer;
+    this.licencePlate = licencePlate;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.price = price;
+  }
+
+  public void setBooking_id(int booking_id) {
+    this.booking_id = booking_id;
+  }
+
+  public int getBooking_id() {
+    return booking_id;
   }
 
   public void setPrice(double price)
@@ -69,5 +87,17 @@ public class Booking
   public GregorianCalendar getStartTime()
   {
     return startTime;
+  }
+
+  @Override
+  public String toString() {
+    return "Booking{" +
+            "booking_id=" + booking_id +
+            ", idOfCustomer=" + idOfCustomer +
+            ", licencePlate='" + licencePlate + '\'' +
+            ", startTime=" + startTime +
+            ", endTime=" + endTime +
+            ", price=" + price +
+            '}';
   }
 }

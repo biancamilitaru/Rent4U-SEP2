@@ -50,8 +50,7 @@ public class ServerImpl implements RMIServer
         serverModelManager.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking)
-    {
+    @Override public void createBooking(Booking booking) throws SQLException {
         serverModelManager.createBooking(booking);
     }
 

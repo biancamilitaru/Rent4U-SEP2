@@ -37,7 +37,7 @@ public class EmployeeModelManager implements ClientModel
         client.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking) throws RemoteException {
+    @Override public void createBooking(Booking booking) throws RemoteException, SQLException {
         client.createBooking(booking);
     }
 

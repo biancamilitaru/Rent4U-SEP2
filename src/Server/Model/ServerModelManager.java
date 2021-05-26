@@ -34,8 +34,7 @@ public class ServerModelManager implements ServerModel
         manageVehicles.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking)
-    {
+    @Override public void createBooking(Booking booking) throws SQLException {
         manageBookings.createBooking(booking);
     }
 

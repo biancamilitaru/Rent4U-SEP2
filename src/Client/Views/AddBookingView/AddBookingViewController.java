@@ -61,8 +61,7 @@ public class AddBookingViewController implements ViewController {
     return vehiclesObservableList;
   }
 
-  public void onCreateBookingButton(ActionEvent evt) throws RemoteException
-  {
+  public void onCreateBookingButton(ActionEvent evt) throws RemoteException, SQLException {
     int startHour1 = Integer.parseInt(startHour.getText());
     int endHour1 = Integer.parseInt(endHour.getText());
     int startMinute1 = Integer.parseInt(startMinute.getText());

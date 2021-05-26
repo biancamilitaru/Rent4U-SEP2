@@ -63,7 +63,7 @@ public class ClientImpl implements Client, ClientCallBack
         server.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking) throws RemoteException {
+    @Override public void createBooking(Booking booking) throws RemoteException, SQLException {
         server.createBooking(booking);
     }
 

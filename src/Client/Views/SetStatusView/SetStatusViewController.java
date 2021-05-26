@@ -8,9 +8,10 @@ import Client.ViewModel.SetStatusViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
-import java.awt.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
