@@ -1,11 +1,12 @@
 package Client.Model;
 
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 import java.util.GregorianCalendar;
 
-public class Booking
+public class Booking implements Serializable
 {
   private int booking_id;
   private int idOfCustomer;

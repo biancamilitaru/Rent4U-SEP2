@@ -29,7 +29,6 @@ public class SetStatusViewController implements ViewController
   @FXML TextField statusTextField;
   private Vehicle vehicle;
   @FXML Label makeAndModelLabel;
-  @FXML Label currentStatusLabel;
   @FXML Label licensePlateLabel;
   @FXML DatePicker startDatePicker;
   @FXML DatePicker endDatePicker;
@@ -45,15 +44,15 @@ public class SetStatusViewController implements ViewController
   {
     this.viewHandler = viewHandler;
     setStatusViewModel = viewModelFactory.getSetStatusViewModel();
-    makeAndModelLabel.setText(vehicle.getMake()+" + "+vehicle.getModel());
-    licensePlateLabel.setText(vehicle.getLicensePlate());
-    currentStatusLabel.setText(vehicle.getStatuses().getStatus());
   }
 
 
   public void setVehicle(Vehicle vehicle)
   {
     this.vehicle = vehicle;
+    System.out.println(vehicle.getMake() + " " + vehicle.getModel());
+    makeAndModelLabel.setText(vehicle.getMake()+" + "+vehicle.getModel());
+    licensePlateLabel.setText(vehicle.getLicensePlate());
   }
   public void onMenuButton(ActionEvent evt)
   {
@@ -76,6 +75,7 @@ public class SetStatusViewController implements ViewController
 
     Status status = new Status(startDate1, endDate1, statusTextField.getText());
     setStatusViewModel.setStatus(vehicle, status);
+    viewHandler.openListOfVehicleView();
   }
 
 
