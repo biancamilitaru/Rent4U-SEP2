@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 public class VehicleListViewCell extends ListCell<Vehicle>
 {
-  private static Vehicle vehicle;
+  public Vehicle vehicle;
   @FXML Label makeLabel;
   @FXML Label modelLabel;
   @FXML Label yearLabel;
@@ -30,7 +30,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   @FXML AnchorPane anchorPane;
 
   private FXMLLoader mLLoader;
-
+  private AddBookingViewController viewController;
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {
@@ -77,11 +77,11 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
   public void onChooseButton()
   {
-    AddBookingViewController.setTotalPriceOfBooking();
+    viewController.setTotalPriceOfBooking();
   }
 
 
-  public static Vehicle getVehicle()
+  public Vehicle getVehicle()
   {
     return vehicle;
   }

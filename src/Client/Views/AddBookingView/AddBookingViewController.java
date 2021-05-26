@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -25,18 +26,19 @@ public class AddBookingViewController implements ViewController {
   private AddBookingViewModel viewModel;
   @FXML ListView<Vehicle> listView;
 
-  @FXML static DatePicker startDatePicker;
-  @FXML static DatePicker endDatePicker;
+  @FXML DatePicker startDatePicker;
+  @FXML DatePicker endDatePicker;
   @FXML ComboBox<Integer> customersID;
-  @FXML static TextField startHour;
-  @FXML static TextField startMinute;
-  @FXML static TextField endHour;
-  @FXML static TextField endMinute;
-  @FXML ComboBox<String> types;
+  @FXML TextField startHour;
+  @FXML TextField startMinute;
+  @FXML TextField endHour;
+  @FXML TextField endMinute;
+  @FXML ComboBox<String> type;
 
   @FXML static Label totalPriceOfBooking;
 
   public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
+  private VehicleListViewCell vehicleLVC;
 
   @Override
   public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
@@ -48,8 +50,10 @@ public class AddBookingViewController implements ViewController {
     listView.setItems(vehiclesObservableList);
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell());
     listView.setFixedCellSize(125);
+
     listView.setVisible(false);
-    types.getItems().addAll("Car", "Minibus", "Van", "Motorcycle");
+
+    type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -61,7 +65,7 @@ public class AddBookingViewController implements ViewController {
     return vehiclesObservableList;
   }
 
-  public static GregorianCalendar getStartDate(){
+  public GregorianCalendar getStartDate(){
     int startHour1 = Integer.parseInt(startHour.getText());
     int startMinute1 = Integer.parseInt(startMinute.getText());
     LocalDate date1 = startDatePicker.getValue();
@@ -71,7 +75,7 @@ public class AddBookingViewController implements ViewController {
     return startDate;
   }
 
-  public static GregorianCalendar getEndDate(){
+  public GregorianCalendar getEndDate(){
     int endHour1 = Integer.parseInt(endHour.getText());
     int endMinute1 = Integer.parseInt(endMinute.getText());
     LocalDate date2 = endDatePicker.getValue();
@@ -82,29 +86,22 @@ public class AddBookingViewController implements ViewController {
   }
 
   public void onCreateBookingButton() throws RemoteException, SQLException {
-    viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),VehicleListViewCell.getVehicle().getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
+    viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),vehicleLVC.getVehicle().getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
   }
 
-  public static int daysBetween(Date d1, Date d2) {
+  public int daysBetween(Date d1, Date d2) {
     return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
   }
 
-  public static double getTotalPrice(){
+  public double getTotalPrice(){
     int daysBetween = daysBetween(getStartDate().getTime(),getEndDate().getTime());
 
-    return VehicleListViewCell.getVehicle().getPrice()*daysBetween;
+    return vehicleLVC.getVehicle().getPrice()*daysBetween;
   }
 
-  public static void setTotalPriceOfBooking(){
+  public void setTotalPriceOfBooking(){
     totalPriceOfBooking.setText(String.valueOf(getTotalPrice()));
   }
-  /*
-  private ArrayList<Vehicle> getFreeVehicles()
-  {
-    //return viewModel.getFreeVehicles();
-  }
-
-   */
 
   public void onChoseType(){
     if (!startDatePicker.equals(null) &&
@@ -112,9 +109,9 @@ public class AddBookingViewController implements ViewController {
         !startHour.equals(null) &&
         !startMinute.equals(null) &&
         !endHour.equals(null) &&
-        !endMinute.equals(null))
-        //!customersID.getSelectionModel().isEmpty())
-    {
+        !endMinute.equals(null)
+        //!customersID.getSelectionModel().isEmpty()
+        ){
       listView.setVisible(true);
     }
   }
