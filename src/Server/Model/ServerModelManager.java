@@ -19,6 +19,7 @@ public class ServerModelManager implements ServerModel
 
     public ServerModelManager() throws SQLException {
         manageVehicles = new Rent4UDAO();
+        manageBookings = new Rent4UDAO();
     }
 
     @Override

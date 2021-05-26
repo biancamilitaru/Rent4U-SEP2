@@ -94,7 +94,7 @@ public class Booking implements Serializable
   @Override
   public String toString() {
     String str =  booking_id + ", " +idOfCustomer +", "+ licencePlate;
-    SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy hh:mm");
     fmt.setCalendar(startTime);
     String startTimeDateFormatted = fmt.format(startTime.getTime());
     fmt.setCalendar(endTime);

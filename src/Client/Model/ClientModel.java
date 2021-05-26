@@ -3,7 +3,6 @@ package Client.Model;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public interface ClientModel
 {
@@ -13,7 +12,7 @@ public interface ClientModel
   void setStatus(Vehicle vehicle, Status status) throws RemoteException, SQLException;
   void createBooking(Booking booking) throws RemoteException, SQLException;
   void editVehicleInfo(Vehicle vehicle,Vehicle newVehicle) throws RemoteException, SQLException;
-  ArrayList<Booking> getBookings() throws SQLException, RemoteException, SQLException;
+  ArrayList<Booking> getBookings() throws RemoteException, SQLException;
   void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
 
 }

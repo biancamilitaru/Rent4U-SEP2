@@ -137,7 +137,7 @@ public class ViewHandler
   public void openListOfBookingsView() throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/ListOfBookingsView/BookingListView.fxml"));
+    loader.setLocation(getClass().getResource("../Views/ListOfBookingsView/ListOfBookingsView.fxml"));
     Parent root = null;
     try
     {

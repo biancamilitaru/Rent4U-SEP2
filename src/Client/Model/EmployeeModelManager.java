@@ -5,7 +5,6 @@ import Client.Networking.Client;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public class EmployeeModelManager implements ClientModel
 {
@@ -47,7 +46,7 @@ public class EmployeeModelManager implements ClientModel
     }
 
     @Override public ArrayList<Booking> getBookings()
-        throws SQLException, RemoteException
+            throws RemoteException, SQLException
     {
         return client.getListOfBookings();
     }
