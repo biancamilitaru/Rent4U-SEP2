@@ -33,6 +33,7 @@ public class AddBookingViewController implements ViewController {
   @FXML TextField startMinute;
   @FXML TextField endHour;
   @FXML TextField endMinute;
+  @FXML ComboBox<String> type;
 
   @FXML static Label totalPriceOfBooking;
 
@@ -51,6 +52,8 @@ public class AddBookingViewController implements ViewController {
     listView.setFixedCellSize(125);
 
     listView.setVisible(false);
+
+    type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -106,8 +109,9 @@ public class AddBookingViewController implements ViewController {
         !startHour.equals(null) &&
         !startMinute.equals(null) &&
         !endHour.equals(null) &&
-        !endMinute.equals(null) &&
-        !customersID.getSelectionModel().isEmpty()){
+        !endMinute.equals(null)
+        //!customersID.getSelectionModel().isEmpty()
+        ){
       listView.setVisible(true);
     }
   }
