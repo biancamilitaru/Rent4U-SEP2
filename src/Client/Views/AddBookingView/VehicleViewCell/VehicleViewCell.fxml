@@ -28,7 +28,7 @@
       <Label layoutX="122.0" layoutY="35.0" prefHeight="17.0" prefWidth="60.0" text="Lic. plate:" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="35.0" />
       <Label fx:id="enginesPowerLabel" layoutX="11.0" layoutY="74.0" prefHeight="17.0" prefWidth="80.0" text="105 HP" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" />
       <Line endX="105.0" layoutX="160.0" layoutY="95.0" startX="-160.0" AnchorPane.bottomAnchor="2.0" />
-      <Button layoutX="200.0" layoutY="10.0" mnemonicParsing="false" text="CHOOSE THIS VEHICLE" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="10.0">
+      <Button onAction="#onChooseButton" layoutX="200.0" layoutY="10.0" mnemonicParsing="false" text="CHOOSE THIS VEHICLE" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font size="10.0" />
          </font>

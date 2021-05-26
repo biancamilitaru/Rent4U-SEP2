@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
@@ -26,9 +27,12 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
   private FXMLLoader mLLoader;
 
+  private Vehicle vehicle;
+
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {
     super.updateItem(vehicle, empty);
+    this.vehicle=vehicle;
 
     if (empty || vehicle == null)
     {
@@ -63,9 +67,13 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
       setText(null);
+
       setGraphic(this.anchorPane);
-      setMinHeight(200);
     }
+  }
+
+  public void onChooseButton(){
+    System.out.println(vehicle);
   }
 
 
