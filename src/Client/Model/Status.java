@@ -1,9 +1,10 @@
 package Client.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-public class Status
+public class Status implements Serializable
 {
   private String status;
   private GregorianCalendar startDate;
