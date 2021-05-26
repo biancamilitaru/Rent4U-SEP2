@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -21,9 +22,9 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   @FXML Label enginesPowerLabel;
   @FXML Label priceLabel;
 
-  @FXML private GridPane gridPane;
+  @FXML AnchorPane anchorPane;
 
-  FXMLLoader mLLoader = new FXMLLoader();
+  private FXMLLoader mLLoader;
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {
@@ -43,7 +44,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
         try
         {
-          mLLoader.load();
+          anchorPane = mLLoader.load();
         }
         catch (IOException e)
         {
@@ -62,7 +63,8 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
       setText(null);
-      setGraphic(gridPane);
+      setGraphic(this.anchorPane);
+      setMinHeight(200);
     }
   }
 

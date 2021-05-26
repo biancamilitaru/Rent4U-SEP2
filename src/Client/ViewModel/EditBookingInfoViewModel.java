@@ -15,7 +15,9 @@ public class EditBookingInfoViewModel
       this.userModel= userModel;
 
     }
-    public void editBookingInfo(Booking booking , int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price) throws RemoteException {
+    public void editBookingInfo(Booking booking , int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price)
+        throws RemoteException, RemoteException
+    {
         userModel.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
     }
 }
