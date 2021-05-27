@@ -1,7 +1,9 @@
 package Client.Core;
 
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Vehicle;
+import Client.ViewModel.EditCustomerInfoViewModel;
 import Client.Views.AddBookingView.AddBookingViewController;
 import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
 import Client.Views.AddPersonalAccountView.AddPersonalAccountViewController;
@@ -316,6 +318,30 @@ public class ViewHandler
     AddPersonalAccountViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Add Personal Account");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openEditCustomerInfo(Customer customer) throws SQLException, RemoteException {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource(""));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    EditCustomerInfoViewModel view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Edit booking");
+    view.setCustomer(customer);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
