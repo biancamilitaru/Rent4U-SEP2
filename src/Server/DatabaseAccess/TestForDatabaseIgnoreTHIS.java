@@ -40,6 +40,7 @@ public class TestForDatabaseIgnoreTHIS {
         //manageCustomers.editCustomerInfo(customer1, customer2);
         //manageVehicles.deleteVehicle(vehicle1);
         //manageBookings.deleteBooking(booking2);
-        manageCustomers.deleteCustomer(customer1);
+        //manageCustomers.deleteCustomer(customer1);
+        System.out.println(manageCustomers.checkForPassword("304312@via.dk", "maria5561"));
     }
 }
