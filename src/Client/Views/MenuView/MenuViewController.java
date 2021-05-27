@@ -40,9 +40,8 @@ public class MenuViewController implements ViewController
     viewHandler.openListOfBookingsView();
   }
 
-  public void onLogOutButton(ActionEvent evt)
-  {
-    viewHandler.openLogInEmployee();
+  public void onLogOutButton(ActionEvent evt) throws SQLException, RemoteException {
+    viewHandler.openLogInMenu();
   }
 
   public void onAddBookingButton(ActionEvent evt) throws SQLException, RemoteException {
