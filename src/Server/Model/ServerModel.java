@@ -23,11 +23,12 @@ public interface ServerModel
   void addCustomer(Customer customer) throws RemoteException, SQLException;
   ArrayList<Customer> viewAllCustomers() throws RemoteException, SQLException;
 
-  void createPersonalAccount(Customer customer);
+  void createPersonalAccount(Customer customer) throws RemoteException, SQLException;
   void editCustomerInfo(Customer customer, Customer newCustomer) throws RemoteException, SQLException;
   void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException;
   void deleteBooking(Booking booking) throws RemoteException, SQLException;
   void deleteCustomer(Customer customer) throws RemoteException, SQLException;
+  boolean checkForPassword(String emailAddress, String password) throws RemoteException, SQLException;
 }
 
 

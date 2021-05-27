@@ -96,8 +96,7 @@ public class ServerImpl implements RMIServer
         serverModelManager.deleteVehicle(vehicle);
     }
 
-    @Override public void createPersonalAccount(Customer customer)
-    {
+    @Override public void createPersonalAccount(Customer customer) throws RemoteException, SQLException {
         serverModelManager.createPersonalAccount(customer);
     }
     @Override public void deleteBooking(Booking booking)
@@ -110,5 +109,11 @@ public class ServerImpl implements RMIServer
         throws RemoteException, SQLException
     {
         serverModelManager.deleteCustomer(customer);
+    }
+
+    @Override public boolean checkForPassword(String emailAddress,
+        String password) throws RemoteException, SQLException
+    {
+        return serverModelManager.checkForPassword(emailAddress,password);
     }
 }

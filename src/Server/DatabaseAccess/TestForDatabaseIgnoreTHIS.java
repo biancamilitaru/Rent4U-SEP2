@@ -37,6 +37,9 @@ public class TestForDatabaseIgnoreTHIS {
         ManageCustomers manageCustomers = new Rent4UDAO();
         //manageCustomers.addCustomer(customer);
         //System.out.println(manageCustomers.viewAllCustomers());
-        manageCustomers.editCustomerInfo(customer1, customer2);
+        //manageCustomers.editCustomerInfo(customer1, customer2);
+        //manageVehicles.deleteVehicle(vehicle1);
+        //manageBookings.deleteBooking(booking2);
+        manageCustomers.deleteCustomer(customer1);
     }
 }

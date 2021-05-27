@@ -99,8 +99,13 @@ public class ServerModelManager implements ServerModel
         manageCustomers.deleteCustomer(customer);
     }
 
-    @Override public void createPersonalAccount(Customer customer)
-    {
+    @Override public void createPersonalAccount(Customer customer) throws RemoteException, SQLException {
         manageCustomers.createPersonalAccount(customer);
+    }
+
+    @Override public boolean checkForPassword(String emailAddress,
+        String password) throws RemoteException, SQLException
+    {
+        return manageCustomers.checkForPassword(emailAddress,password);
     }
 }

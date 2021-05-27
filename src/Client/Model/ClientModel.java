@@ -23,4 +23,5 @@ public interface ClientModel
   void deleteBooking(Booking booking) throws RemoteException, SQLException;
   void deleteCustomer(Customer customer) throws RemoteException, SQLException;
   void createPersonalAccount(Customer customer);
+  boolean checkForPassword(String emailAddress, String password) throws RemoteException, SQLException;
 }
