@@ -20,4 +20,9 @@ public class ListOfVehiclesViewModel
     return userModel.getVehicles();
   }
 
+  public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
+  {
+    userModel.deleteVehicle(vehicle);
+  }
+
 }

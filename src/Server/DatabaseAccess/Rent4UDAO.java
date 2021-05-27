@@ -166,6 +166,12 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         }
     }
 
+    @Override public void deleteVehicle(Vehicle vehicle)
+        throws RemoteException, SQLException
+    {
+
+    }
+
     @Override public void createBooking(Booking booking) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("INSERT INTO booking(start_time," +
@@ -249,6 +255,18 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         return null;
     }
 
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+
+    }
+
+    @Override public void deleteCustomer(Customer customer)
+        throws RemoteException, SQLException
+    {
+
+    }
+
     @Override
     public void addCustomer(Customer customer) throws RemoteException, SQLException {
         try (Connection connection = getConnection()) {
@@ -299,11 +317,41 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     }
 
 
-    @Override public void editCustomerInfo(String firstName, String lastName,
-        GregorianCalendar dateOfBirth, String email, String password,
-        String phoneNumber, String drivingLicenseNumber, String cpr_number)
-        throws RemoteException, SQLException
-    {
-
+    @Override public void editCustomerInfo(Customer customer,Customer newCustomer){
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("UPDATE customer SET cpr = ? WHERE cpr = ?");
+            statement.setString(1, newCustomer.getCpr_number());
+            statement.setString(2, customer.getCpr_number());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE customer SET first_name = ? WHERE cpr = ?");
+            statement.setString(1, newCustomer.getFirstName());
+            statement.setString(2, customer.getCpr_number());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE customer SET last_name = ? WHERE cpr = ?");
+            statement.setString(1, newCustomer.getLastName());
+            statement.setString(2, customer.getCpr_number());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE customer SET date_of_birth = ? WHERE cpr = ?");
+            Timestamp birthday = new Timestamp(newCustomer.getDateOfBirth().getTimeInMillis());
+            statement.setTimestamp(1, birthday);
+            statement.setString(2, customer.getCpr_number());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE customer SET phone_number = ? WHERE cpr = ?");
+            statement.setInt(1, Integer.parseInt(newCustomer.getPhoneNumber()));
+            statement.setString(2, customer.getCpr_number());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE customer SET email = ? WHERE cpr = ?");
+            statement.setString(1, newCustomer.getEmail());
+            statement.setString(2, customer.getCpr_number());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE customer SET driving_licence = ? WHERE cpr = ?");
+            statement.setString(1, newCustomer.getDrivingLicenseNumber());
+            statement.setString(2, customer.getCpr_number());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE customer SET password = ? WHERE cpr = ?");
+            statement.setString(1, newCustomer.getPassword());
+            statement.setString(2, customer.getCpr_number());
+            statement.executeUpdate();
+        }
     }
 }

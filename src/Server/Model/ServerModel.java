@@ -22,10 +22,10 @@ public interface ServerModel
   ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws SQLException, RemoteException;
   void addCustomer(Customer customer) throws RemoteException, SQLException;
   ArrayList<Customer> viewAllCustomers() throws RemoteException, SQLException;
-  void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password,
-      String phoneNumber, String drivingLicenseNumber, String cpr_number);
-  void editCustomerInfo(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password, String phoneNumber,
-      String drivingLicenseNumber, String cpr_number) throws RemoteException, SQLException;
+  void editCustomerInfo(Customer customer, Customer newCustomer) throws RemoteException, SQLException;
+  void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException;
+  void deleteBooking(Booking booking) throws RemoteException, SQLException;
+  void deleteCustomer(Customer customer) throws RemoteException, SQLException;
 }
 
 

@@ -93,16 +93,31 @@ public class ClientImpl implements Client, ClientCallBack
         return server.getCustomers();
     }
 
-    @Override public void editCustomerInfo(String firstName, String lastName,
-        GregorianCalendar dateOfBirth, String email, String password,
-        String phoneNumber, String drivingLicenseNumber, String cpr_number)
+    @Override public void editCustomerInfo(Customer customer, Customer newCustomer)
         throws RemoteException, SQLException
     {
-        server.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number );
+        server.editCustomerInfo(customer, newCustomer);
     }
 
     @Override
     public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException {
         return server.getFreeVehicles(startDate, endDate, type);
+    }
+
+    @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
+    {
+        server.deleteVehicle(vehicle);
+    }
+
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        server.deleteBooking(booking);
+    }
+
+    @Override public void deleteCustomer(Customer customer)
+        throws RemoteException, SQLException
+    {
+        server.deleteCustomer(customer);
     }
 }

@@ -16,4 +16,5 @@ public interface ManageVehicles
     void setStatus(Vehicle vehicle, Status status) throws SQLException;
     void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws SQLException;
     ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException;
+  void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException;
 }
