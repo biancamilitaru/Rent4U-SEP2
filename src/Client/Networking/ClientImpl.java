@@ -108,6 +108,12 @@ public class ClientImpl implements Client, ClientCallBack
         return server.getFreeVehicles(startDate, endDate, type);
     }
 
+    @Override public boolean checkForPassword(String emailAddress,
+        String password) throws RemoteException, SQLException
+    {
+        return server.checkForPassword(emailAddress,password);
+    }
+
     @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
     {
         server.deleteVehicle(vehicle);

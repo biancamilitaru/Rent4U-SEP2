@@ -100,4 +100,10 @@ public class EmployeeModelManager implements ClientModel
 
     }
 
+    @Override public boolean checkForPassword(String emailAddress,
+        String password) throws RemoteException, SQLException
+    {
+        return client.checkForPassword(emailAddress,password);
+    }
+
 }

@@ -28,6 +28,7 @@ public interface ServerModel
   void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException;
   void deleteBooking(Booking booking) throws RemoteException, SQLException;
   void deleteCustomer(Customer customer) throws RemoteException, SQLException;
+  boolean checkForPassword(String emailAddress, String password) throws RemoteException, SQLException;
 }
 
 
