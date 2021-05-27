@@ -299,9 +299,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     }
 
 
-    @Override public void editCustomerInfo(String firstName, String lastName,
-        GregorianCalendar dateOfBirth, String email, String password,
-        String phoneNumber, String drivingLicenseNumber, String cpr_number)
+    @Override public void editCustomerInfo(Customer customer,Customer newCustomer)
         throws RemoteException, SQLException
     {
 

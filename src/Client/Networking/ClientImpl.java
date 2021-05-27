@@ -93,12 +93,10 @@ public class ClientImpl implements Client, ClientCallBack
         return server.getCustomers();
     }
 
-    @Override public void editCustomerInfo(String firstName, String lastName,
-        GregorianCalendar dateOfBirth, String email, String password,
-        String phoneNumber, String drivingLicenseNumber, String cpr_number)
+    @Override public void editCustomerInfo(Customer customer,Customer newCustomer)
         throws RemoteException, SQLException
     {
-        server.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number );
+        server.editCustomerInfo(customer,newCustomer);
     }
 
     @Override
