@@ -61,7 +61,7 @@ public class CreateCustomerAccountViewController implements ViewController
     return dateOfBirth;
   }
 
-  public void onCreateButton(){
+  public void onCreateButton() throws RemoteException, SQLException {
     if (checkPassword()){
       addCustomerAccountViewModel.createCustomerAccount(
           firstNameField.getText(),

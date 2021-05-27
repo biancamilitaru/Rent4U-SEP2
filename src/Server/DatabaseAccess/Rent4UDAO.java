@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 
-public class Rent4UDAO implements ManageVehicles,ManageBookings,ManageCustomers
+public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomers
 {
     //We are using singleton for this class because we want to have only one instance in our program
     private static Rent4UDAO instance;
@@ -240,18 +240,64 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings,ManageCustomers
         }
     }
 
-    @Override public void createCustomerAccount(String firstName,
-        String lastName, GregorianCalendar dateOfBirth, String email,
-        String password, String phoneNumber, String drivingLicenseNumber,
-        String cpr_number)
-    {
+    @Override
+    public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException{
+        ArrayList<Vehicle> freeVehicles = new ArrayList<>();
+        try(Connection connection = getConnection()){
 
-    }
-
-    @Override public ArrayList<Customer> getCustomers() throws SQLException
-    {
+        }
         return null;
     }
+
+    @Override
+    public void addCustomer(Customer customer) throws RemoteException, SQLException {
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO customer(cpr, first_name, " +
+                    "last_name, date_of_birth, phone_number, email, driving_licence, password) VALUES (?, ?, ?, ?," +
+                    "?, ?, ?, ?)");
+            statement.setInt(1, Integer.parseInt(customer.getCpr_number()));
+            statement.setString(2, customer.getFirstName());
+            statement.setString(3, customer.getLastName());
+            Timestamp date_of_birth = new Timestamp(customer.getDateOfBirth().getTimeInMillis());
+            statement.setTimestamp(4, date_of_birth);
+            statement.setInt(5, Integer.parseInt(customer.getPhoneNumber()));
+            statement.setString(6, customer.getEmail());
+            statement.setString(7, customer.getDrivingLicenseNumber());
+            statement.setString(8, customer.getPassword());
+            statement.executeUpdate();
+        }
+    }
+
+    @Override
+    public ArrayList<Customer> viewAllCustomers() throws RemoteException, SQLException {
+        ArrayList<Customer> customers = new ArrayList<>();
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM customer");
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                customers.add(getCustomer(resultSet));
+            }
+        }
+        return customers;
+    }
+
+    private Customer getCustomer(ResultSet resultset) throws SQLException{
+        String cpr = resultset.getString(1);
+        String firstName = resultset.getString(2);
+        String lastName = resultset.getString(3);
+        Timestamp date_of_birthStamp = resultset.getTimestamp(4);
+        LocalDateTime date_of_birthTime = date_of_birthStamp.toLocalDateTime();
+        GregorianCalendar date_of_birth = new GregorianCalendar(date_of_birthTime.getYear(),
+                date_of_birthTime.getMonthValue(), date_of_birthTime.getDayOfMonth());
+        String phoneNumber = resultset.getString(5);
+        String email = resultset.getString(6);
+        String drivingLicense = resultset.getString(7);
+        String password = resultset.getString(8);
+        Customer customer = new Customer(firstName, lastName, date_of_birth,
+                email, password, phoneNumber, drivingLicense, cpr);
+        return customer;
+    }
+
 
     @Override public void editCustomerInfo(String firstName, String lastName,
         GregorianCalendar dateOfBirth, String email, String password,

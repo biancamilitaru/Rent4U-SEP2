@@ -1,8 +1,9 @@
 package Client.Model;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Customer
+public class Customer implements Serializable
 {
   private String firstName;
   private String lastName;
@@ -103,5 +104,19 @@ public class Customer
   public String getCpr_number()
   {
     return cpr_number;
+  }
+
+  @Override
+  public String toString() {
+    return "Customer{" +
+            "firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", dateOfBirth=" + dateOfBirth +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", phoneNumber='" + phoneNumber + '\'' +
+            ", drivingLicenseNumber='" + drivingLicenseNumber + '\'' +
+            ", cpr_number='" + cpr_number + '\'' +
+            '}';
   }
 }
