@@ -37,16 +37,13 @@ public class EmployeeModelManager implements ClientModel
         client.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking) throws RemoteException {
+    @Override public void createBooking(Booking booking) throws RemoteException, SQLException {
         client.createBooking(booking);
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
-        int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price)
-        throws RemoteException
-    {
-        client.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle)
+            throws RemoteException, SQLException {
+        client.editVehicleInfo(vehicle, newVehicle);
     }
 
     @Override public ArrayList<Booking> getBookings()
@@ -55,13 +52,8 @@ public class EmployeeModelManager implements ClientModel
         return client.getListOfBookings();
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price) throws RemoteException
-    {
-
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+         client.editBookingInfo(booking,newBooking);
     }
-
-
 
 }

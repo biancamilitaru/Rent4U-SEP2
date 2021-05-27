@@ -8,9 +8,11 @@ import Client.ViewModel.SetStatusViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
-import java.awt.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -26,6 +28,8 @@ public class SetStatusViewController implements ViewController
   @FXML Button goToMenuButton;
   @FXML TextField statusTextField;
   private Vehicle vehicle;
+  @FXML Label makeAndModelLabel;
+  @FXML Label licensePlateLabel;
   @FXML DatePicker startDatePicker;
   @FXML DatePicker endDatePicker;
   @FXML TextField startHour;
@@ -42,15 +46,20 @@ public class SetStatusViewController implements ViewController
     setStatusViewModel = viewModelFactory.getSetStatusViewModel();
   }
 
+
   public void setVehicle(Vehicle vehicle)
   {
     this.vehicle = vehicle;
+    System.out.println(vehicle.getMake() + " " + vehicle.getModel());
+    makeAndModelLabel.setText(vehicle.getMake()+" + "+vehicle.getModel());
+    licensePlateLabel.setText(vehicle.getLicensePlate());
   }
 
   public void onMenuButton(ActionEvent evt)
   {
     viewHandler.openMainMenu();
   }
+
   public void setSetStatusButton(ActionEvent evt)
       throws RemoteException, SQLException
   {
@@ -67,6 +76,7 @@ public class SetStatusViewController implements ViewController
 
     Status status = new Status(startDate1, endDate1, statusTextField.getText());
     setStatusViewModel.setStatus(vehicle, status);
+    viewHandler.openListOfVehicleView();
   }
 
 

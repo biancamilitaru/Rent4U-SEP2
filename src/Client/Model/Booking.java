@@ -1,19 +1,21 @@
 package Client.Model;
 
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 import java.util.GregorianCalendar;
 
-public class Booking
+public class Booking implements Serializable
 {
+  private int booking_id;
   private int idOfCustomer;
   private String licencePlate;
   private GregorianCalendar startTime;
   private GregorianCalendar endTime;
-  private int price;
+  private double price;
 
-  public Booking(int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,int price){
+  public Booking(int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
     this.idOfCustomer = idOfCustomer;
     this.licencePlate = licencePlate;
     this.startTime = startTime;
@@ -21,12 +23,29 @@ public class Booking
     this.price = price;
   }
 
-  public void setPrice(int price)
+  public Booking(int booking_id, int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
+    this.booking_id = booking_id;
+    this.idOfCustomer = idOfCustomer;
+    this.licencePlate = licencePlate;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.price = price;
+  }
+
+  public void setBooking_id(int booking_id) {
+    this.booking_id = booking_id;
+  }
+
+  public int getBooking_id() {
+    return booking_id;
+  }
+
+  public void setPrice(double price)
   {
     this.price = price;
   }
 
-  public int getPrice()
+  public double getPrice()
   {
     return price;
   }
@@ -69,5 +88,17 @@ public class Booking
   public GregorianCalendar getStartTime()
   {
     return startTime;
+  }
+
+  @Override
+  public String toString() {
+    return "Booking{" +
+            "booking_id=" + booking_id +
+            ", idOfCustomer=" + idOfCustomer +
+            ", licencePlate='" + licencePlate + '\'' +
+            ", startTime=" + startTime.getTime() +
+            ", endTime=" + endTime.getTime() +
+            ", price=" + price +
+            '}';
   }
 }

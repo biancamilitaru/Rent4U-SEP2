@@ -17,9 +17,8 @@ public class EditVehicleInfoViewModel
 
   public void editVehicleInfo(Vehicle vehicle,String licensePlate, int enginePower, String type, String make, String model, int year,
       String gearBoxType, String fuelType, int numberOfSeats, double price)
-      throws RemoteException
-  {
-    Vehicle newVehicle = new Vehicle(licensePlate, enginePower, type, make, model, year, type, fuelType, numberOfSeats, price);
-    //userModel.editVehicleInfo(vehicle, newVehicle.getTypeOfGearbox(), );
+          throws RemoteException, SQLException {
+    Vehicle newVehicle = new Vehicle(licensePlate, enginePower, type, make, model, year, gearBoxType, fuelType, numberOfSeats, price);
+    userModel.editVehicleInfo(vehicle, newVehicle);
   }
 }

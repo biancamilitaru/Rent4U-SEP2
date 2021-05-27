@@ -63,16 +63,13 @@ public class ClientImpl implements Client, ClientCallBack
         server.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking) throws RemoteException {
+    @Override public void createBooking(Booking booking) throws RemoteException, SQLException {
         server.createBooking(booking);
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
-        int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price)
-        throws RemoteException
-    {
-        server.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehivle)
+            throws RemoteException, SQLException {
+        server.editVehicleInfo(vehicle,newVehivle);
     }
 
     @Override public ArrayList<Booking> getListOfBookings()
@@ -81,10 +78,7 @@ public class ClientImpl implements Client, ClientCallBack
         return server.viewAllBookings();
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price)
-    {
-
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+        server.editBookingInfo(booking,newBooking);
     }
 }

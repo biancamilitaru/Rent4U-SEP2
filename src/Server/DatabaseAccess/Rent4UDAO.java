@@ -7,8 +7,8 @@ import Client.Model.Vehicle;
 
 import java.rmi.RemoteException;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 
@@ -97,39 +97,145 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
 
     @Override public void setStatus(Vehicle vehicle, Status status) throws SQLException {
         try(Connection connection = getConnection()){
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Status(license_plate, " +
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO status(license_plate, " +
                     "start_time, end_time, status) VALUES (?, ?, ?, ?)");
-            GregorianCalendar gregorianCalendar = new GregorianCalendar(2000,8,9, 20, 30);
-            Timestamp timestamp = new Timestamp(gregorianCalendar.getTimeInMillis());
             statement.setString(1, vehicle.getLicensePlate());
-            statement.setTimestamp(2, timestamp);
-            statement.setTimestamp(3, timestamp);
+            Timestamp start_time = new Timestamp(status.getStartDate().getTimeInMillis());
+            statement.setTimestamp(2, start_time);
+            Timestamp end_time = new Timestamp(status.getEndDate().getTimeInMillis());
+            statement.setTimestamp(3, end_time);
             statement.setString(4, status.getStatus());
             statement.executeUpdate();
         }
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
-        int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price)
-    {
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws SQLException {
+        try(Connection connection = getConnection()){
 
+            PreparedStatement statement = connection.prepareStatement("UPDATE vehicle SET licence_plate = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getLicensePlate());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET type = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getType());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET make = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getMake());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET model = ? WHERE licence_plate = ?");
+            statement.setString(1, newVehicle.getModel());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET year = ? WHERE licence_plate = ?");
+            statement.setInt(1, newVehicle.getYear());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET engine_power = ? WHERE licence_plate = ?");
+            statement.setInt(1, newVehicle.getEnginesPower());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET type_of_gearbox = ? WHERE licence_plate = ?");
+            if(newVehicle.getTypeOfGearbox().equalsIgnoreCase("automatic"))
+                statement.setString(1, "Automatic");
+            else
+                statement.setString(1, "Manual");
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET number_of_seats = ? WHERE licence_plate = ?");
+            statement.setInt(1, newVehicle.getNumberOfSeats());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET type_of_fuel = ? WHERE licence_plate = ?");
+            if(newVehicle.getTypeOfFuel().equalsIgnoreCase("petrol"))
+                statement.setString(1, "Petrol");
+            else if(newVehicle.getTypeOfFuel().equalsIgnoreCase("diesel"))
+                statement.setString(1, "Diesel");
+            else if(newVehicle.getTypeOfFuel().equalsIgnoreCase("electric"))
+                statement.setString(1, "Electric");
+            else
+                statement.setString(1, "Hybrid");
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE Vehicle SET price = ? WHERE licence_plate = ?");
+            statement.setDouble(1, newVehicle.getPrice());
+            statement.setString(2, vehicle.getLicensePlate());
+            statement.executeUpdate();
+        }
     }
 
-    @Override public void createBooking(Booking booking)
-    {
-
+    @Override public void createBooking(Booking booking) throws SQLException {
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO booking(start_time," +
+                    "end_time, cpr_of_customer, licence_plate, total_price) VALUES (?, ?, ?, ?, ?)");
+            Timestamp start_time = new Timestamp(booking.getStartTime().getTimeInMillis());
+            statement.setTimestamp(1, start_time);
+            Timestamp end_time = new Timestamp(booking.getStartTime().getTimeInMillis());
+            statement.setTimestamp(2, end_time);
+            statement.setInt(3, booking.getIdOfCustomer());
+            statement.setString(4, booking.getLicencePlate());
+            statement.setDouble(5, booking.getPrice());
+            statement.executeUpdate();
+        }
     }
 
     @Override public ArrayList<Booking> viewAllBookings() throws SQLException
     {
-        return null;
+        ArrayList<Booking> bookings = new ArrayList<>();
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM booking");
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next())
+            {
+                bookings.add(getBooking(resultSet));
+            }
+        }
+        return bookings;
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price) throws RemoteException
+    private Booking getBooking(ResultSet resultSet) throws SQLException
     {
+        int booking_id = resultSet.getInt(1);
+        Timestamp start_time_timestamp = resultSet.getTimestamp(2);
+        LocalDateTime start_time_local = start_time_timestamp.toLocalDateTime();
+        GregorianCalendar start_time = new GregorianCalendar(start_time_local.getYear(), start_time_local.getMonthValue(),
+                start_time_local.getDayOfMonth(), start_time_local.getHour(), start_time_local.getMinute());
+        Timestamp end_time_timestamp = resultSet.getTimestamp(3);
+        LocalDateTime end_time_local = end_time_timestamp.toLocalDateTime();
+        GregorianCalendar end_time = new GregorianCalendar(end_time_local.getYear(), end_time_local.getMonthValue(),
+                end_time_local.getDayOfMonth(), end_time_local.getHour(), end_time_local.getMinute());
+        int id_of_customer = resultSet.getInt(4);
+        String license_plate = resultSet.getString(5);
+        double price = resultSet.getDouble(6);
+        return new Booking(booking_id, id_of_customer, license_plate, start_time, end_time, price);
+    }
 
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+        try (Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("UPDATE booking SET start_time = ? " +
+                    "WHERE booking_id = ?");
+            Timestamp start_time = new Timestamp(newBooking.getStartTime().getTimeInMillis());
+            statement.setTimestamp(1, start_time);
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE booking SET end_time = ? WHERE booking_id = ?");
+            Timestamp end_time = new Timestamp(newBooking.getEndTime().getTimeInMillis());
+            statement.setTimestamp(1, end_time);
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE booking SET cpr_of_customer = ? WHERE booking_id = ?");
+            statement.setInt(1, newBooking.getIdOfCustomer());
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE booking SET licence_plate = ? WHERE booking_id = ?");
+            statement.setString(1, newBooking.getLicencePlate());
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE booking SET total_price = ? WHERE booking_id = ?");
+            statement.setDouble(1, newBooking.getPrice());
+            statement.setInt(2, booking.getBooking_id());
+            statement.executeUpdate();
+        }
     }
 }

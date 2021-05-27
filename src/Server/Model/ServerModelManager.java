@@ -34,17 +34,13 @@ public class ServerModelManager implements ServerModel
         manageVehicles.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking)
-    {
+    @Override public void createBooking(Booking booking) throws SQLException {
         manageBookings.createBooking(booking);
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
-        int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price) throws
-        RemoteException
-    {
-        manageVehicles.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws
+            RemoteException, SQLException {
+        manageVehicles.editVehicleInfo(vehicle, newVehicle);
     }
 
     public ArrayList<Booking> viewAllBookings() throws SQLException
@@ -52,10 +48,7 @@ public class ServerModelManager implements ServerModel
         return manageBookings.viewAllBookings();
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price) throws RemoteException
-    {
-        manageBookings.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+        manageBookings.editBookingInfo(booking, newBooking);
     }
 }

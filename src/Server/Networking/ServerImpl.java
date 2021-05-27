@@ -50,16 +50,12 @@ public class ServerImpl implements RMIServer
         serverModelManager.setStatus(vehicle,status);
     }
 
-    @Override public void createBooking(Booking booking)
-    {
+    @Override public void createBooking(Booking booking) throws SQLException {
         serverModelManager.createBooking(booking);
     }
 
-    @Override public void editVehicleInfo(Vehicle vehicle, String licensePlate,
-        int enginePower, String type, String make, String model, int year,
-        String gearBoxType, String fuelType, int numberOfSeats, double price) throws RemoteException
-    {
-        serverModelManager.editVehicleInfo(vehicle,licensePlate,enginePower,type,make,model,year,gearBoxType,fuelType,numberOfSeats,price);
+    @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws RemoteException, SQLException {
+        serverModelManager.editVehicleInfo(vehicle,newVehicle);
 
     }
 
@@ -68,10 +64,7 @@ public class ServerImpl implements RMIServer
         return serverModelManager.viewAllBookings();
     }
 
-    @Override public void editBookingInfo(Booking booking, int idOfCustomer,
-        String licencePlate, GregorianCalendar startTime,
-        GregorianCalendar endTime, int price) throws RemoteException
-    {
-        serverModelManager.editBookingInfo(booking,idOfCustomer,licencePlate,startTime,endTime,price);
+    @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
+        serverModelManager.editBookingInfo(booking, newBooking);
     }
 }

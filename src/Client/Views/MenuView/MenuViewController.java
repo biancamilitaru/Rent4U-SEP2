@@ -36,6 +36,9 @@ public class MenuViewController implements ViewController
   public void onListOfVehicleButton(ActionEvent evt) throws SQLException, RemoteException {
     viewHandler.openListOfVehicleView();
   }
+  public void onListOfBookingButton(ActionEvent evt) throws SQLException, RemoteException {
+    viewHandler.openListOfBookingsView();
+  }
 
   public void onLogOutButton(ActionEvent evt)
   {
