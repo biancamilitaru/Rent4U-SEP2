@@ -95,4 +95,10 @@ public class EmployeeModelManager implements ClientModel
         client.deleteCustomer(customer);
     }
 
+    @Override public boolean checkForPassword(String emailAddress,
+        String password) throws RemoteException, SQLException
+    {
+        return client.checkForPassword(emailAddress,password);
+    }
+
 }

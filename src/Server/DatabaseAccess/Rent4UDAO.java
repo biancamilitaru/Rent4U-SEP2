@@ -267,6 +267,12 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
 
     }
 
+    @Override public boolean checkForPassword(String emailAddress,
+        String password) throws RemoteException, SQLException
+    {
+        return false;
+    }
+
     @Override
     public void addCustomer(Customer customer) throws RemoteException, SQLException {
         try (Connection connection = getConnection()) {
@@ -317,7 +323,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     }
 
 
-    @Override public void editCustomerInfo(Customer customer,Customer newCustomer){
+    @Override public void editCustomerInfo(Customer customer,Customer newCustomer) throws SQLException{
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("UPDATE customer SET cpr = ? WHERE cpr = ?");
             statement.setString(1, newCustomer.getCpr_number());
