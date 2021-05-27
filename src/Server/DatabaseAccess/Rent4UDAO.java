@@ -293,6 +293,12 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         return customer.getPassword().equals(password);
     }
 
+    @Override public void editPersonalInfo(Customer customer,
+        Customer newCustomer) throws RemoteException, SQLException
+    {
+
+    }
+
     @Override
     public void addCustomer(Customer customer) throws RemoteException, SQLException {
         try (Connection connection = getConnection()) {

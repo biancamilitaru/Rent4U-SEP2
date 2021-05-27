@@ -108,4 +108,10 @@ public class ServerModelManager implements ServerModel
     {
         return manageCustomers.checkForPassword(emailAddress,password);
     }
+
+    @Override public void editPersonalInfo(Customer customer,
+        Customer newCustomer) throws RemoteException, SQLException
+    {
+        manageCustomers.editPersonalInfo(customer,newCustomer);
+    }
 }

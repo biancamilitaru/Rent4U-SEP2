@@ -116,4 +116,10 @@ public class ServerImpl implements RMIServer
     {
         return serverModelManager.checkForPassword(emailAddress,password);
     }
+
+    @Override public void editPersonalInfo(Customer customer,
+        Customer newCustomer) throws RemoteException, SQLException
+    {
+        serverModelManager.editPersonalInfo(customer,newCustomer);
+    }
 }

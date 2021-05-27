@@ -96,14 +96,22 @@ public class EmployeeModelManager implements ClientModel
     }
 
     @Override
-    public void createPersonalAccount(Customer customer) {
-
+    public void createPersonalAccount(Customer customer)
+        throws RemoteException, SQLException
+    {
+        client.createPersonalAccount(customer);
     }
 
     @Override public boolean checkForPassword(String emailAddress,
         String password) throws RemoteException, SQLException
     {
         return client.checkForPassword(emailAddress,password);
+    }
+
+    @Override public void editPersonalInfo(Customer customer,
+        Customer newCustomer) throws RemoteException, SQLException
+    {
+        client.editPersonalInfo(customer,newCustomer);
     }
 
 }

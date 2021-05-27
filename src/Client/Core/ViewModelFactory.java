@@ -25,6 +25,7 @@ public class ViewModelFactory
   private EditCustomerInfoViewModel editCustomerInfoViewModel;
   private ListOfCustomersViewModel listOfCustomersViewModel;
   private AddPersonalAccountViewModel addpersonalAccountViewModel;
+  private EditPersonalInfoViewModel editPersonalInfoViewModel;
 
   private ViewModelFactory() {
   }
@@ -112,5 +113,11 @@ public class ViewModelFactory
     if(addpersonalAccountViewModel==null)
       addpersonalAccountViewModel=new AddPersonalAccountViewModel(ModelFactory.getInstance().getClientModel());
     return addpersonalAccountViewModel;
+  }
+  public EditPersonalInfoViewModel getEditPersonalInfoViewModelViewModel()
+  {
+    if(editPersonalInfoViewModel==null)
+      editPersonalInfoViewModel=new EditPersonalInfoViewModel(ModelFactory.getInstance().getClientModel());
+    return editPersonalInfoViewModel;
   }
 }

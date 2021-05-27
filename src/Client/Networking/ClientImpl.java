@@ -114,6 +114,12 @@ public class ClientImpl implements Client, ClientCallBack
         return server.checkForPassword(emailAddress,password);
     }
 
+    @Override public void editPersonalInfo(Customer customer,
+        Customer newCustomer) throws RemoteException, SQLException
+    {
+        server.editPersonalInfo(customer,newCustomer);
+    }
+
     @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
     {
         server.deleteVehicle(vehicle);

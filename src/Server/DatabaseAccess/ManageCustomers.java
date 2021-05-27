@@ -15,4 +15,5 @@ public interface ManageCustomers
     void deleteCustomer(Customer customer) throws RemoteException, SQLException;
     void createPersonalAccount(Customer customer) throws RemoteException, SQLException;
     boolean checkForPassword(String emailAddress, String password) throws RemoteException, SQLException;
+    void editPersonalInfo(Customer customer,Customer newCustomer)throws RemoteException, SQLException;
 }
