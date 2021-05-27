@@ -1,7 +1,11 @@
 package Client.Core;
 
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Vehicle;
+import Client.ViewModel.LogInCustomerViewModel;
+import Client.ViewModel.MenuForLogInViewModel;
+import Client.ViewModel.EditCustomerInfoViewModel;
 import Client.Views.AddBookingView.AddBookingViewController;
 import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
 import Client.Views.AddPersonalAccountView.AddPersonalAccountViewController;
@@ -9,7 +13,9 @@ import Client.Views.EditBookingInfoView.EditBookingInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
+import Client.Views.LogInForCustomerView.LogInForCustomerViewController;
 import Client.Views.LogInView.LoginViewController;
+import Client.Views.MenuForLogInView.MenuForLogInViewController;
 import Client.Views.MenuView.MenuViewController;
 import Client.Views.AddVehicleView.AddVehicleViewController;
 import Client.Views.SetStatusView.SetStatusViewController;
@@ -38,7 +44,7 @@ public class ViewHandler
 
   public void start() throws IOException, SQLException {
     stage = new Stage();
-    openLogInEmployee();
+    openLogInMenu();
   }
 
   public void openLogInEmployee()
@@ -322,4 +328,77 @@ public class ViewHandler
     stage.show();
   }
 
+  public void openEditCustomerInfo(Customer customer) throws SQLException, RemoteException {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource(""));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    EditCustomerInfoViewModel view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Edit booking");
+    view.setCustomer(customer);
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openLogInCustomer() throws SQLException, RemoteException
+  {
+    //Still need to do the fxml for the login for the customer
+    //The path might not be correct
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/LogInForCustomerView/LogInForCustomerView"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    LogInForCustomerViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Log in for Customer");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openLogInMenu() throws SQLException, RemoteException
+  {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/MenuForLogInView/MenuForLogInView"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    MenuForLogInViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Log In Menu");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
 }

@@ -97,12 +97,12 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button layoutX="538.0" layoutY="9.0" mnemonicParsing="false" text="EDIT" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="27.5" AnchorPane.topAnchor="10.0">
+      <Button onAction="#onClickedEditButton" layoutX="538.0" layoutY="9.0" mnemonicParsing="false" text="EDIT" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="27.5" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="575.0" layoutY="9.0" mnemonicParsing="false" text="X" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+      <Button onAction="#onClickedDeleteButton" layoutX="575.0" layoutY="9.0" mnemonicParsing="false" text="X" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="10.0" />
          </font>
