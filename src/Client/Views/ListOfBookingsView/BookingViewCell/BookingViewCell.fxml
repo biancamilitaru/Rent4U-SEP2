@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="221.0" layoutY="2.0" prefHeight="73.0" prefWidth="93.0" style="-fx-background-color: #E5E5E5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="213.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -70,9 +70,14 @@
       </AnchorPane>
       <AnchorPane layoutX="470.0" layoutY="-2.0" prefHeight="73.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button alignment="CENTER" layoutX="8.0" layoutY="23.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="41.0" text="EDIT" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
+            <Button alignment="CENTER" layoutX="8.0" layoutY="23.0" mnemonicParsing="false" onAction="#onClickedEditButton" prefHeight="24.0" prefWidth="36.0" text="EDIT" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
                <font>
-                  <Font size="12.0" />
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button onAction="#onClickedDeleteButton" layoutX="42.0" layoutY="24.0" mnemonicParsing="false" text="X" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font size="10.0" />
                </font>
             </Button>
          </children>

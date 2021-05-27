@@ -38,7 +38,7 @@ public class ListOfBookingsViewController implements ViewController
     getBookingData(listOfBookingsViewModel.getBookings());
 
     listView.setItems(bookingsObservableList);
-    listView.setCellFactory(vehicleListView -> new BookingListViewCell());
+    listView.setCellFactory(vehicleListView -> new BookingListViewCell(this));
 
     listView.setFixedCellSize(73);
   }
@@ -61,6 +61,16 @@ public class ListOfBookingsViewController implements ViewController
       bookingsObservableList.add(bookingsArrayList.get(x));
     }
     return bookingsObservableList;
+  }
+
+  public void onEdit(Booking booking) throws SQLException, RemoteException
+  {
+    viewHandler.openEditBooking(booking);
+  }
+
+  public void onDelete(Booking booking) throws RemoteException, SQLException
+  {
+    listOfBookingsViewModel.deleteBooking(booking);
   }
 
 }
