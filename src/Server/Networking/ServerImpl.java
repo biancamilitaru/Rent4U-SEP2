@@ -69,18 +69,14 @@ public class ServerImpl implements RMIServer
         serverModelManager.editBookingInfo(booking, newBooking);
     }
 
-    @Override public void createCustomerAccount(String firstName,
-        String lastName, GregorianCalendar dateOfBirth, String email,
-        String password, String phoneNumber, String drivingLicenseNumber,
-        String cpr_number)
-    {
-        serverModelManager.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    @Override public void createCustomerAccount(Customer customer) throws RemoteException, SQLException {
+        serverModelManager.addCustomer(customer);
     }
 
     @Override public ArrayList<Customer> getCustomers()
         throws RemoteException, SQLException
     {
-        return serverModelManager.getCustomers();
+        return serverModelManager.viewAllCustomers();
     }
 
     @Override

@@ -20,9 +20,8 @@ public interface ServerModel
   ArrayList<Booking> viewAllBookings() throws SQLException;
   void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
   ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws SQLException, RemoteException;
-  void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password,
-      String phoneNumber, String drivingLicenseNumber, String cpr_number);
-  ArrayList<Customer> getCustomers() throws SQLException;
+  void addCustomer(Customer customer) throws RemoteException, SQLException;
+  ArrayList<Customer> viewAllCustomers() throws RemoteException, SQLException;
 }
 
 

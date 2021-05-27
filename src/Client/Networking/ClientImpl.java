@@ -83,12 +83,8 @@ public class ClientImpl implements Client, ClientCallBack
         server.editBookingInfo(booking,newBooking);
     }
 
-    @Override public void createCustomerAccount(String firstName,
-        String lastName, GregorianCalendar dateOfBirth, String email,
-        String password, String phoneNumber, String drivingLicenseNumber,
-        String cpr_number)
-    {
-        server.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    @Override public void createCustomerAccount(Customer customer) throws RemoteException, SQLException {
+        server.createCustomerAccount(customer);
     }
 
     @Override public ArrayList<Customer> getCustomers()
