@@ -356,4 +356,9 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
             statement.executeUpdate();
         }
     }
+
+    @Override public void createPersonalAccount(Customer customer)
+    {
+
+    }
 }

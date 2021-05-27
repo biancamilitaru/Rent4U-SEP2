@@ -98,4 +98,9 @@ public class ServerModelManager implements ServerModel
     {
         manageCustomers.deleteCustomer(customer);
     }
+
+    @Override public void createPersonalAccount(Customer customer)
+    {
+        manageCustomers.createPersonalAccount(customer);
+    }
 }

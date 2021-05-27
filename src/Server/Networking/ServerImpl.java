@@ -96,6 +96,10 @@ public class ServerImpl implements RMIServer
         serverModelManager.deleteVehicle(vehicle);
     }
 
+    @Override public void createPersonalAccount(Customer customer)
+    {
+        serverModelManager.createPersonalAccount(customer);
+    }
     @Override public void deleteBooking(Booking booking)
         throws RemoteException, SQLException
     {
