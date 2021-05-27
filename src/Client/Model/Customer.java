@@ -14,6 +14,8 @@ public class Customer implements Serializable
   private String drivingLicenseNumber;
   private String cpr_number;
 
+  public Customer(){};
+
   public Customer(String firstName,String lastName,GregorianCalendar dateOfBirth,String email,String password,String phoneNumber,String drivingLicenseNumber,String cpr_number)
   {
     this.firstName=firstName;
