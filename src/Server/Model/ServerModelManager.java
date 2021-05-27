@@ -75,4 +75,22 @@ public class ServerModelManager implements ServerModel
     {
         manageCustomers.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
     }
+
+    @Override public void deleteVehicle(Vehicle vehicle)
+        throws RemoteException, SQLException
+    {
+        manageVehicles.deleteVehicle(vehicle);
+    }
+
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        manageBookings.deleteBooking(booking);
+    }
+
+    @Override public void deleteCustomer(Customer customer)
+        throws RemoteException, SQLException
+    {
+        manageCustomers.deleteCustomer(customer);
+    }
 }

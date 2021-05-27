@@ -26,4 +26,7 @@ public interface Client
     ArrayList<Customer> getCustomers() throws SQLException, RemoteException;
   void editCustomerInfo(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password, String phoneNumber,
       String drivingLicenseNumber, String cpr_number)throws RemoteException, SQLException;
+  void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException;
+  void deleteBooking(Booking booking) throws RemoteException, SQLException;
+  void deleteCustomer(Customer customer) throws RemoteException, SQLException;
 }

@@ -166,6 +166,12 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings,ManageCustomers
         }
     }
 
+    @Override public void deleteVehicle(Vehicle vehicle)
+        throws RemoteException, SQLException
+    {
+
+    }
+
     @Override public void createBooking(Booking booking) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("INSERT INTO booking(start_time," +
@@ -240,6 +246,12 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings,ManageCustomers
         }
     }
 
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+
+    }
+
     @Override public void createCustomerAccount(String firstName,
         String lastName, GregorianCalendar dateOfBirth, String email,
         String password, String phoneNumber, String drivingLicenseNumber,
@@ -256,6 +268,12 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings,ManageCustomers
     @Override public void editCustomerInfo(String firstName, String lastName,
         GregorianCalendar dateOfBirth, String email, String password,
         String phoneNumber, String drivingLicenseNumber, String cpr_number)
+        throws RemoteException, SQLException
+    {
+
+    }
+
+    @Override public void deleteCustomer(Customer customer)
         throws RemoteException, SQLException
     {
 

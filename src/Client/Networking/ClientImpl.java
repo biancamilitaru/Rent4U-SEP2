@@ -102,6 +102,23 @@ public class ClientImpl implements Client, ClientCallBack
         String phoneNumber, String drivingLicenseNumber, String cpr_number)
         throws RemoteException, SQLException
     {
-        server.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number )
+        server.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number );
+    }
+
+    @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
+    {
+        server.deleteVehicle(vehicle);
+    }
+
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        server.deleteBooking(booking);
+    }
+
+    @Override public void deleteCustomer(Customer customer)
+        throws RemoteException, SQLException
+    {
+        server.deleteCustomer(customer);
     }
 }
