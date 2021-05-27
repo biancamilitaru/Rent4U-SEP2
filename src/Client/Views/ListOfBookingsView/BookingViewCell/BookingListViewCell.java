@@ -1,6 +1,8 @@
 package Client.Views.ListOfBookingsView.BookingViewCell;
 
+import Client.Core.ViewHandler;
 import Client.Model.Booking;
+import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +11,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class BookingListViewCell extends ListCell<Booking>
@@ -23,8 +27,16 @@ public class BookingListViewCell extends ListCell<Booking>
   @FXML Label endDateLabel;
   @FXML Label priceLabel;
 
+  private ListOfBookingsViewController listOfBookingsViewController;
+  public Booking booking;
+
+  public BookingListViewCell(ListOfBookingsViewController listOfBookingsViewController){
+    this.listOfBookingsViewController=listOfBookingsViewController;
+  }
+
   @Override protected void updateItem(Booking booking, boolean empty)
   {
+    this.booking=booking;
     super.updateItem(booking, empty);
 
     if (empty || booking == null)
@@ -64,6 +76,16 @@ public class BookingListViewCell extends ListCell<Booking>
 
       setGraphic(this.anchorPane);
     }
+  }
+
+  public void onClickedEditButton() throws SQLException, RemoteException
+  {
+    listOfBookingsViewController.onEdit(booking);
+  }
+
+  public void onClickedDeleteButton() throws RemoteException, SQLException
+  {
+    listOfBookingsViewController.onDelete(booking);
   }
 
 }
