@@ -98,7 +98,7 @@ public class ClientImpl implements Client, ClientCallBack
         String phoneNumber, String drivingLicenseNumber, String cpr_number)
         throws RemoteException, SQLException
     {
-        server.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number )
+        server.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number );
     }
 
     @Override
