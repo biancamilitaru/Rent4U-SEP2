@@ -18,4 +18,5 @@ public interface ClientModel
   void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password,
       String phoneNumber, String drivingLicenseNumber, String cpr_number);
   ArrayList<Customer> getCustomers() throws SQLException, RemoteException, SQLException;;
+  void editCustomerInfo(Customer customer, Customer newCustomer);
 }

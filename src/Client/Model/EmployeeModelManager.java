@@ -70,4 +70,10 @@ public class EmployeeModelManager implements ClientModel
         return client.getCustomers();
     }
 
+    @Override public void editCustomerInfo(Customer customer,
+        Customer newCustomer)
+    {
+
+    }
+
 }
