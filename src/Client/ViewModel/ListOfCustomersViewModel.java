@@ -20,4 +20,9 @@ public class ListOfCustomersViewModel
   {
     return userModel.getCustomers();
   }
+
+  public void deleteCustomer(Customer customer) throws RemoteException, SQLException
+  {
+    userModel.deleteCustomer(customer);
+  }
 }
