@@ -23,6 +23,8 @@ public interface ServerModel
   void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password,
       String phoneNumber, String drivingLicenseNumber, String cpr_number);
   ArrayList<Customer> getCustomers() throws SQLException;
+  void editCustomerInfo(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password, String phoneNumber,
+      String drivingLicenseNumber, String cpr_number) throws RemoteException, SQLException;
 }
 
 
