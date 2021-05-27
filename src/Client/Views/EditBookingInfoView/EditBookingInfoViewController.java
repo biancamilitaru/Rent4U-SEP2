@@ -50,7 +50,7 @@ public class EditBookingInfoViewController implements ViewController
     editBookingInfoViewModel=viewModelFactory.getEditBookingInfoViewModel();
     getVehicleData(editBookingInfoViewModel.getVehicles());
     listView.setItems(vehiclesObservableList);
-    listView.setCellFactory(studentListView -> new VehicleListViewCell(this));
+    listView.setCellFactory(studentListView -> new VehicleListViewCell(null));
   }
 
   public ObservableList<Vehicle> getVehicleData(
