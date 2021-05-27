@@ -20,4 +20,6 @@ public interface Client
     void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws RemoteException, SQLException;
     ArrayList<Booking> getListOfBookings() throws SQLException, RemoteException;
     void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
+  void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password,
+      String phoneNumber, String drivingLicenseNumber, String cpr_number);
 }

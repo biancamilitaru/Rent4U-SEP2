@@ -50,7 +50,7 @@ public class EditBookingInfoViewController implements ViewController
     editBookingInfoViewModel=viewModelFactory.getEditBookingInfoViewModel();
     getVehicleData(editBookingInfoViewModel.getVehicles());
     listView.setItems(vehiclesObservableList);
-    listView.setCellFactory(studentListView -> new VehicleListViewCell());
+    listView.setCellFactory(studentListView -> new VehicleListViewCell(this));
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -67,7 +67,8 @@ public class EditBookingInfoViewController implements ViewController
     this.booking=booking;
   }
 
-  public void onUpdateBookingButton(ActionEvent evt) throws RemoteException
+  public void onUpdateBookingButton(ActionEvent evt)
+      throws RemoteException, SQLException
   {
 
     int startHour1 = Integer.parseInt(startHour.getText());
