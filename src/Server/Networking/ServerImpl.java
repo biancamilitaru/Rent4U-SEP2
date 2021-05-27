@@ -83,4 +83,12 @@ public class ServerImpl implements RMIServer
     public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException {
         return serverModelManager.getFreeVehicles(startDate, endDate, type);
     }
+
+    @Override public void editCustomerInfo(String firstName, String lastName,
+        GregorianCalendar dateOfBirth, String email, String password,
+        String phoneNumber, String drivingLicenseNumber, String cpr_number)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    }
 }

@@ -70,4 +70,13 @@ public class EmployeeModelManager implements ClientModel
     {
         return client.getFreeVehicles(startDate, endDate, type);
     }
+    @Override public void editCustomerInfo(String firstName, String lastName,
+        GregorianCalendar dateOfBirth, String email, String password,
+        String phoneNumber, String drivingLicenseNumber, String cpr_number)
+        throws RemoteException, SQLException
+    {
+        client.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+
+    }
+
 }
