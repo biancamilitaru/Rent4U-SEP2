@@ -27,8 +27,8 @@
       <Label layoutX="321.0" layoutY="61.0" text="Choose a password:" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="60.0" />
       <TextField fx:id="passwordField" layoutX="321.0" layoutY="85.0" prefHeight="27.0" prefWidth="188.0" promptText="Enter password" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="85.0" />
       <TextField fx:id="rePasswordField" layoutX="321.0" layoutY="124.0" prefHeight="27.0" prefWidth="188.0" promptText="Confirm password" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="120.0" />
-      <Label layoutX="321.0" layoutY="183.0" text="Phone number:" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="180.0" />
-      <Label fx:id="passwordCheckLabel" layoutX="320.0" layoutY="150.0" text="Passwords are not the same" AnchorPane.leftAnchor="320.0"
+      <Label layoutX="321.0" layoutY="183.0" text="Phone number:" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="180.0"></Label>
+      <Label fx:id="passwordCheckLabel" layoutX="320.0" layoutY="150.0" text="Passwords are not the same" AnchorPane.leftAnchor="320.0"/>
       <TextField fx:id="phoneField" layoutX="321.0" layoutY="200.0" prefHeight="27.0" prefWidth="188.0" promptText=" +45 00 00 00 00" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="205.0" />
       <Label layoutX="27.0" layoutY="239.0" text="Driving license number:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="240.0" />
       <TextField fx:id="drivingLicenseField" layoutX="25.0" layoutY="256.0" prefHeight="27.0" prefWidth="245.0" promptText="XXXXX" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="265.0" />
