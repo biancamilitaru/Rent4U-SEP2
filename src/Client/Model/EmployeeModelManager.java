@@ -56,6 +56,20 @@ public class EmployeeModelManager implements ClientModel
          client.editBookingInfo(booking,newBooking);
     }
 
+    @Override public void createCustomerAccount(String firstName,
+        String lastName, GregorianCalendar dateOfBirth, String email,
+        String password, String phoneNumber, String drivingLicenseNumber,
+        String cpr_number)
+    {
+        client.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    }
+
+    @Override public ArrayList<Customer> getCustomers()
+        throws SQLException, RemoteException, SQLException
+    {
+        return client.getCustomers();
+    }
+
     @Override
     public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException
     {

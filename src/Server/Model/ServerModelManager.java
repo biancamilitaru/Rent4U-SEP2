@@ -1,9 +1,11 @@
 package Server.Model;
 
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Status;
 import Client.Model.Vehicle;
 import Server.DatabaseAccess.ManageBookings;
+import Server.DatabaseAccess.ManageCustomers;
 import Server.DatabaseAccess.ManageVehicles;
 import Server.DatabaseAccess.Rent4UDAO;
 
@@ -16,6 +18,7 @@ public class ServerModelManager implements ServerModel
 {
     private ManageVehicles manageVehicles;
     private ManageBookings manageBookings;
+    private ManageCustomers manageCustomers;
 
     public ServerModelManager() throws SQLException {
         manageVehicles = new Rent4UDAO();
@@ -51,6 +54,19 @@ public class ServerModelManager implements ServerModel
 
     @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
         manageBookings.editBookingInfo(booking, newBooking);
+    }
+
+    @Override public void createCustomerAccount(String firstName,
+        String lastName, GregorianCalendar dateOfBirth, String email,
+        String password, String phoneNumber, String drivingLicenseNumber,
+        String cpr_number)
+    {
+        manageCustomers.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    }
+
+    @Override public ArrayList<Customer> getCustomers() throws SQLException
+    {
+        return manageCustomers.getCustomers();
     }
 
     @Override

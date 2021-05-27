@@ -1,6 +1,7 @@
 package Client.Networking;
 
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Status;
 import Client.Model.Vehicle;
 import Shared.ClientCallBack;
@@ -80,6 +81,20 @@ public class ClientImpl implements Client, ClientCallBack
 
     @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
         server.editBookingInfo(booking,newBooking);
+    }
+
+    @Override public void createCustomerAccount(String firstName,
+        String lastName, GregorianCalendar dateOfBirth, String email,
+        String password, String phoneNumber, String drivingLicenseNumber,
+        String cpr_number)
+    {
+        server.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    }
+
+    @Override public ArrayList<Customer> getCustomers()
+        throws SQLException, RemoteException
+    {
+        return server.getCustomers();
     }
 
     @Override
