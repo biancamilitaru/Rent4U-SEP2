@@ -2,6 +2,7 @@ package Server.DatabaseAccess;
 
 import Client.Model.Customer;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
