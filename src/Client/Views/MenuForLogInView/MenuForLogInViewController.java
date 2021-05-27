@@ -4,10 +4,10 @@ import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
 import Client.ViewModel.MenuForLogInViewModel;
 import Client.Views.ViewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -31,9 +31,9 @@ public class MenuForLogInViewController implements ViewController
     viewHandler.openLogInEmployee();
   }
 
-  public void onLogInForCustomerButton(ActionEvent evt)
-      throws SQLException, RemoteException
+  public void onLogInForCustomerButton(ActionEvent evt) throws SQLException, RemoteException
   {
     viewHandler.openLogInCustomer();
   }
+
 }

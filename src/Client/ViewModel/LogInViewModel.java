@@ -24,7 +24,6 @@ public class LogInViewModel
 
   public boolean logIn()
   {
-    System.out.println(password.get());
     return userModel.login(password.get());
   }
 

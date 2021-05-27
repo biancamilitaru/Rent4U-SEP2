@@ -343,9 +343,9 @@ public class ViewHandler
       System.out.println(loader.getLocation());
     }
     EditCustomerInfoViewModel view = loader.getController();
-    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    //view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Edit booking");
-    view.setCustomer(customer);
+    //view.setCustomer(customer);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
@@ -358,7 +358,7 @@ public class ViewHandler
     //The path might not be correct
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/LogInForCustomerView/LogInForCustomerView"));
+    loader.setLocation(getClass().getResource("../Views/LogInForCustomerView/LogInForCustomerView.fxml"));
     Parent root = null;
     try
     {
@@ -382,7 +382,7 @@ public class ViewHandler
   {
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/MenuForLogInView/MenuForLogInView"));
+    loader.setLocation(getClass().getResource("../Views/MenuForLogInView/MenuForLogInView.fxml"));
     Parent root = null;
     try
     {
