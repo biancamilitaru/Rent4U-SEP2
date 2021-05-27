@@ -6,6 +6,7 @@ import Client.Model.Vehicle;
 import Client.ViewModel.EditVehicleInfoViewModel;
 import Client.Views.ViewController;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -135,6 +137,9 @@ public class EditVehicleInfoViewController implements ViewController
     });
     viewHandler.openListOfVehicleView();
   }
+
+
+
   public void onExitButton(){
     viewHandler.openMainMenu();
   }

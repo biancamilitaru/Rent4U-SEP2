@@ -7,12 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-
 import java.io.IOException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 
 public class VehicleListViewCell extends ListCell<Vehicle>
 {
@@ -31,6 +27,10 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
   private FXMLLoader mLLoader;
   private AddBookingViewController viewController;
+
+  public VehicleListViewCell(AddBookingViewController addBookingViewController){
+    this.viewController=addBookingViewController;
+  }
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {
@@ -70,19 +70,13 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
       setText(null);
-
       setGraphic(this.anchorPane);
     }
   }
 
   public void onChooseButton()
   {
+    viewController.setVehicle(vehicle);
     viewController.setTotalPriceOfBooking();
-  }
-
-
-  public Vehicle getVehicle()
-  {
-    return vehicle;
   }
 }

@@ -33,11 +33,10 @@ public class AddBookingViewController implements ViewController {
   @FXML TextField endHour;
   @FXML TextField endMinute;
   @FXML ComboBox<String> type;
-
-  @FXML static Label totalPriceOfBooking;
+  @FXML Label totalPriceOfBooking;
 
   public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
-  private VehicleListViewCell vehicleLVC;
+  private Vehicle chosenVehicle;
 
   @Override
   public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
@@ -47,9 +46,8 @@ public class AddBookingViewController implements ViewController {
     viewModel = viewModelFactory.getAddBookingViewModel();
     getVehicleData(viewModel.getVehicles());
     listView.setItems(vehiclesObservableList);
-    listView.setCellFactory(vehicleListView -> new VehicleListViewCell());
+    listView.setCellFactory(vehicleListView -> new VehicleListViewCell(this));
     listView.setFixedCellSize(125);
-
     listView.setVisible(false);
 
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
@@ -85,7 +83,7 @@ public class AddBookingViewController implements ViewController {
   }
 
   public void onCreateBookingButton() throws RemoteException, SQLException {
-    viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),vehicleLVC.getVehicle().getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
+    viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
   }
 
   public int daysBetween(Date d1, Date d2) {
@@ -95,23 +93,30 @@ public class AddBookingViewController implements ViewController {
   public double getTotalPrice(){
     int daysBetween = daysBetween(getStartDate().getTime(),getEndDate().getTime());
 
-    return vehicleLVC.getVehicle().getPrice()*daysBetween;
+    if (chosenVehicle!=null){
+      return chosenVehicle.getPrice()*daysBetween;
+    }
+    else return 0;
   }
 
   public void setTotalPriceOfBooking(){
     totalPriceOfBooking.setText(String.valueOf(getTotalPrice()));
   }
 
+  public void setVehicle(Vehicle vehicle){
+    this.chosenVehicle=vehicle;
+  }
+
   public void onChoseType(){
-    if (!startDatePicker.equals(null) &&
-        !endDatePicker.equals(null) &&
-        !startHour.equals(null) &&
-        !startMinute.equals(null) &&
-        !endHour.equals(null) &&
-        !endMinute.equals(null)
+    if (!startDatePicker.getValue().equals(null) &&
+        !endDatePicker.getValue().equals(null) &&
+        !startHour.getText().equals(null) &&
+        !startMinute.getText().equals(null) &&
+        !endHour.getText().equals(null) &&
+        !endMinute.getText().equals(null)
         //!customersID.getSelectionModel().isEmpty()
         ){
       listView.setVisible(true);
-    }
+    } else listView.setVisible(false);
   }
 }

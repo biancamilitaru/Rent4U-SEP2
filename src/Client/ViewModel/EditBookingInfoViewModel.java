@@ -2,7 +2,12 @@ package Client.ViewModel;
 
 import Client.Model.Booking;
 import Client.Model.ClientModel;
+import Client.Model.Vehicle;
+import javafx.collections.ObservableList;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.GregorianCalendar;
@@ -20,5 +25,9 @@ public class EditBookingInfoViewModel
             throws RemoteException, RemoteException, SQLException {
         Booking newBooking = new Booking(idOfCustomer, licencePlate, startTime, endTime, price);
         userModel.editBookingInfo(booking, newBooking);
+    }
+
+    public ArrayList<Vehicle> getVehicles() throws SQLException, RemoteException {
+        return userModel.getVehicles();
     }
 }
