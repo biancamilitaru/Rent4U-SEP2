@@ -1,4 +1,4 @@
-package Client.Views.CreateCustomerAccount;
+package Client.Views.AddCustomerAccountView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
-public class CreateCustomerAccountViewController implements ViewController
+public class AddCustomerAccountViewController implements ViewController
 {
   private ViewHandler viewHandler;
   private AddCustomerAccountViewModel addCustomerAccountViewModel;

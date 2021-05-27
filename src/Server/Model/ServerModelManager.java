@@ -74,15 +74,29 @@ public class ServerModelManager implements ServerModel
         return manageCustomers.viewAllCustomers();
     }
 
-    @Override
-    public void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password, String phoneNumber, String drivingLicenseNumber, String cpr_number) {
 
-    }
-
-    @Override public void editCustomerInfo(Customer customer,Customer newCustomer)
+    @Override public void editCustomerInfo(Customer customer, Customer newCustomer)
         throws RemoteException, SQLException
     {
-        manageCustomers.editCustomerInfo(customer,newCustomer);
+        manageCustomers.editCustomerInfo(customer, newCustomer);
+    }
+
+    @Override public void deleteVehicle(Vehicle vehicle)
+        throws RemoteException, SQLException
+    {
+        manageVehicles.deleteVehicle(vehicle);
+    }
+
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        manageBookings.deleteBooking(booking);
+    }
+
+    @Override public void deleteCustomer(Customer customer)
+        throws RemoteException, SQLException
+    {
+        manageCustomers.deleteCustomer(customer);
     }
 
     @Override public void createPersonalAccount(Customer customer)

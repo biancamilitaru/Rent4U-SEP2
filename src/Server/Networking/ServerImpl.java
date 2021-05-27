@@ -84,14 +84,31 @@ public class ServerImpl implements RMIServer
         return serverModelManager.getFreeVehicles(startDate, endDate, type);
     }
 
-    @Override public void editCustomerInfo(Customer customer,Customer newCustomer)
+    @Override public void editCustomerInfo(Customer customer, Customer newCustomer)
         throws RemoteException, SQLException
     {
-        serverModelManager.editCustomerInfo(customer,newCustomer);
+        serverModelManager.editCustomerInfo(customer, newCustomer);
+    }
+
+    @Override public void deleteVehicle(Vehicle vehicle)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.deleteVehicle(vehicle);
     }
 
     @Override public void createPersonalAccount(Customer customer)
     {
         serverModelManager.createPersonalAccount(customer);
+    }
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.deleteBooking(booking);
+    }
+
+    @Override public void deleteCustomer(Customer customer)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.deleteCustomer(customer);
     }
 }
