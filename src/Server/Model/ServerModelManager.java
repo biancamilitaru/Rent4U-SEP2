@@ -84,4 +84,9 @@ public class ServerModelManager implements ServerModel
     {
         manageCustomers.editCustomerInfo(customer,newCustomer);
     }
+
+    @Override public void createPersonalAccount(Customer customer)
+    {
+        manageCustomers.createPersonalAccount(customer);
+    }
 }

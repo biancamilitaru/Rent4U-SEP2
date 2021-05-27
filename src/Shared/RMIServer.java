@@ -27,5 +27,6 @@ public interface RMIServer extends Remote
     void createCustomerAccount(Customer customer) throws RemoteException, SQLException;
     ArrayList<Customer> getCustomers() throws RemoteException, SQLException;
     void editCustomerInfo(Customer customer,Customer newCustomer)throws RemoteException, SQLException;
+    void createPersonalAccount(Customer customer);
 
 }

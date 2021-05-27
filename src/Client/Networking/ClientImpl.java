@@ -99,6 +99,11 @@ public class ClientImpl implements Client, ClientCallBack
         server.editCustomerInfo(customer,newCustomer);
     }
 
+    @Override public void createPersonalAccount(Customer customer)
+    {
+        server.createPersonalAccount(customer);
+    }
+
     @Override
     public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException {
         return server.getFreeVehicles(startDate, endDate, type);

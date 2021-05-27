@@ -22,6 +22,7 @@ public class ViewModelFactory
   private EditBookingInfoViewModel editBookingInfoViewModel;
   private ListOfBookingsViewModel listOfBookingsViewModel;
   private AddCustomerAccountViewModel addCustomerAccountViewModel;
+  private EditCustomerInfoViewModel editCustomerInfoViewModel;
   private ViewModelFactory() {
   }
 
@@ -89,5 +90,11 @@ public class ViewModelFactory
     if(addCustomerAccountViewModel==null)
       addCustomerAccountViewModel=new AddCustomerAccountViewModel(ModelFactory.getInstance().getClientModel());
     return addCustomerAccountViewModel;
+  }
+  public EditCustomerInfoViewModel getEditCustomerInfoViewModelViewModel()
+  {
+    if(editCustomerInfoViewModel==null)
+      editCustomerInfoViewModel=new EditCustomerInfoViewModel(ModelFactory.getInstance().getClientModel());
+    return editCustomerInfoViewModel;
   }
 }
