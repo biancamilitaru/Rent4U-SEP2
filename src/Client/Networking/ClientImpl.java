@@ -103,4 +103,21 @@ public class ClientImpl implements Client, ClientCallBack
     public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException {
         return server.getFreeVehicles(startDate, endDate, type);
     }
+
+    @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
+    {
+        server.deleteVehicle(vehicle);
+    }
+
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        server.deleteBooking(booking);
+    }
+
+    @Override public void deleteCustomer(Customer customer)
+        throws RemoteException, SQLException
+    {
+        server.deleteCustomer(customer);
+    }
 }

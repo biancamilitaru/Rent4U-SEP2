@@ -89,4 +89,22 @@ public class ServerImpl implements RMIServer
     {
         serverModelManager.editCustomerInfo(customer, newCustomer);
     }
+
+    @Override public void deleteVehicle(Vehicle vehicle)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.deleteVehicle(vehicle);
+    }
+
+    @Override public void deleteBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.deleteBooking(booking);
+    }
+
+    @Override public void deleteCustomer(Customer customer)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.deleteCustomer(customer);
+    }
 }

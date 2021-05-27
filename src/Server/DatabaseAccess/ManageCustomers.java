@@ -11,5 +11,6 @@ public interface ManageCustomers
 {
     void addCustomer(Customer customer) throws RemoteException, SQLException;
     ArrayList<Customer> viewAllCustomers() throws RemoteException, SQLException;
-    void editCustomerInfo(Customer customer, Customer newCustomer) throws RemoteException, SQLException;
+    void editCustomerInfo(Customer customer,Customer newCustomer) throws RemoteException, SQLException;
+  void deleteCustomer(Customer customer) throws RemoteException, SQLException;
 }
