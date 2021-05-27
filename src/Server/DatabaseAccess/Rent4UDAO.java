@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 
-public class Rent4UDAO implements ManageVehicles,ManageBookings
+public class Rent4UDAO implements ManageVehicles,ManageBookings,ManageCustomers
 {
     //We are using singleton for this class because we want to have only one instance in our program
     private static Rent4UDAO instance;
@@ -237,5 +237,13 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings
             statement.setInt(2, booking.getBooking_id());
             statement.executeUpdate();
         }
+    }
+
+    @Override public void createCustomerAccount(String firstName,
+        String lastName, GregorianCalendar dateOfBirth, String email,
+        String password, String phoneNumber, String drivingLicenseNumber,
+        String cpr_number)
+    {
+
     }
 }
