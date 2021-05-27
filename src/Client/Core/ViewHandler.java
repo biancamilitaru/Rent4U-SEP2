@@ -343,10 +343,10 @@ public class ViewHandler
       System.out.println(e.getMessage());
       System.out.println(loader.getLocation());
     }
-    EditCustomerInfoViewModel view = loader.getController();
-    //view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    EditCustomerAccountInfoViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Edit booking");
-    //view.setCustomer(customer);
+    view.setCustomer(customer);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
@@ -371,7 +371,6 @@ public class ViewHandler
       System.out.println(loader.getLocation());
     }
     LogInForCustomerViewController view = loader.getController();
-    EditCustomerAccountInfoViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Log in for Customer");
 
