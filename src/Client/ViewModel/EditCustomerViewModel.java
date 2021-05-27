@@ -1,6 +1,7 @@
 package Client.ViewModel;
 
 import Client.Model.ClientModel;
+import Client.Model.Customer;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -15,10 +16,11 @@ public class EditCustomerViewModel
     this.userModel=userModel;
   }
 
-  public void editCustomerInfo(String firstName,String lastName,
+  public void editCustomerInfo(Customer customer, String firstName,String lastName,
       GregorianCalendar dateOfBirth,String email,String password,String phoneNumber,String drivingLicenseNumber,String cpr_number)
       throws RemoteException, SQLException
   {
-    userModel.editCustomerInfo(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    Customer newCustomer = new Customer(firstName, lastName, dateOfBirth, email, password, phoneNumber, drivingLicenseNumber, cpr_number);
+    userModel.editCustomerInfo(customer, newCustomer);
   }
 }

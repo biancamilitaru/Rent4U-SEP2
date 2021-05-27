@@ -24,6 +24,5 @@ public interface Client
     ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException;
     void createCustomerAccount(Customer customer) throws RemoteException, SQLException;
     ArrayList<Customer> getCustomers() throws SQLException, RemoteException;
-  void editCustomerInfo(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password, String phoneNumber,
-      String drivingLicenseNumber, String cpr_number)throws RemoteException, SQLException;
+    void editCustomerInfo(Customer customer, Customer newCustomer)throws RemoteException, SQLException;
 }

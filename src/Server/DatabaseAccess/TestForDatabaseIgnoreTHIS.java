@@ -30,10 +30,13 @@ public class TestForDatabaseIgnoreTHIS {
         //manageBookings.editBookingInfo(booking1, booking2);
         //System.out.println(manageBookings.viewAllBookings());
         GregorianCalendar date_of_birth = new GregorianCalendar(2000,9,9);
-        Customer customer = new Customer("alex", "alexandri", date_of_birth, "email",
+        Customer customer1 = new Customer("alex", "alexandri", date_of_birth, "email",
+                "password", "5678", "license", "2000000000");
+        Customer customer2 = new Customer("andrei", "alexandri", date_of_birth, "email",
                 "password", "5678", "license", "2000000000");
         ManageCustomers manageCustomers = new Rent4UDAO();
         //manageCustomers.addCustomer(customer);
-        System.out.println(manageCustomers.viewAllCustomers());
+        //System.out.println(manageCustomers.viewAllCustomers());
+        manageCustomers.editCustomerInfo(customer1, customer2);
     }
 }
