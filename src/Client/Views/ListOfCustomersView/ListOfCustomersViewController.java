@@ -31,7 +31,7 @@ public class ListOfCustomersViewController implements ViewController
     this.listOfCustomersViewModel = viewModelFactory.getListOfCustomersViewModel();
     getCustomersData(listOfCustomersViewModel.getCustomers());
     listView.setItems(customersObservableList);
-    listView.setCellFactory(customerListView -> new CustomerListViewCell());
+    listView.setCellFactory(customerListView -> new CustomerListViewCell(this));
     listView.setFixedCellSize(40);
   }
 
@@ -50,6 +50,16 @@ public class ListOfCustomersViewController implements ViewController
 
   public void onMenuButton(){
     viewHandler.openMainMenu();
+  }
+
+  public void Edit(Customer customer) throws SQLException, RemoteException
+  {
+    viewHandler.openEditCustomerInfo(customer);
+  }
+
+  public void Delete(Customer customer) throws RemoteException, SQLException
+  {
+    listOfCustomersViewModel.deleteCustomer(customer);
   }
 
 
