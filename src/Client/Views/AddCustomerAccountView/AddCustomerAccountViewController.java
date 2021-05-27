@@ -50,7 +50,7 @@ public class AddCustomerAccountViewController implements ViewController
   }
 
   private String getCpr(){
-    return cprFirstField.getText()+cprSecondField.getText();
+    return cprFirstField.getText()+"/"+cprSecondField.getText();
   }
 
   public GregorianCalendar getDateBirth(){
