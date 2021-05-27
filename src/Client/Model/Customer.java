@@ -1,0 +1,107 @@
+package Client.Model;
+
+import java.util.GregorianCalendar;
+
+public class Customer
+{
+  private String firstName;
+  private String lastName;
+  private GregorianCalendar dateOfBirth;
+  private String email;
+  private String password;
+  private String phoneNumber;
+  private String drivingLicenseNumber;
+  private String cpr_number;
+
+  public Customer(String firstName,String lastName,GregorianCalendar dateOfBirth,String email,String password,String phoneNumber,String drivingLicenseNumber,String cpr_number)
+  {
+    this.firstName=firstName;
+    this.lastName=lastName;
+    this.dateOfBirth=dateOfBirth;
+    this.email=email;
+    this.password=password;
+    this.phoneNumber=phoneNumber;
+    this.drivingLicenseNumber= drivingLicenseNumber;
+    this.cpr_number=cpr_number;
+  }
+
+  public void setFirstName(String firstName)
+  {
+    this.firstName = firstName;
+  }
+
+  public void setLastName(String lastName)
+  {
+    this.lastName = lastName;
+  }
+
+  public void setDateOfBirth(GregorianCalendar dateOfBirth)
+  {
+    this.dateOfBirth = dateOfBirth;
+  }
+
+  public void setEmail(String email)
+  {
+    this.email = email;
+  }
+
+  public void setPassword(String password)
+  {
+    this.password = password;
+  }
+
+  public void setPhoneNumber(String phoneNumber)
+  {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public void setDrivingLicenseNumber(String drivingLicenseNumber)
+  {
+    this.drivingLicenseNumber = drivingLicenseNumber;
+  }
+
+  public void setCpr_number(String cpr_number)
+  {
+    this.cpr_number = cpr_number;
+  }
+
+  public String getFirstName()
+  {
+    return firstName;
+  }
+
+  public String getLastName()
+  {
+    return lastName;
+  }
+
+  public GregorianCalendar getDateOfBirth()
+  {
+    return dateOfBirth;
+  }
+
+  public String getEmail()
+  {
+    return email;
+  }
+
+  public String getPassword()
+  {
+    return password;
+  }
+
+  public String getPhoneNumber()
+  {
+    return phoneNumber;
+  }
+
+  public String getDrivingLicenseNumber()
+  {
+    return drivingLicenseNumber;
+  }
+
+  public String getCpr_number()
+  {
+    return cpr_number;
+  }
+}
