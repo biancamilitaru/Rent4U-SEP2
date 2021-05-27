@@ -317,7 +317,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     }
 
 
-    @Override public void editCustomerInfo(Customer customer,Customer newCustomer){
+    @Override public void editCustomerInfo(Customer customer,Customer newCustomer) throws RemoteException, SQLException{
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("UPDATE customer SET cpr = ? WHERE cpr = ?");
             statement.setString(1, newCustomer.getCpr_number());
