@@ -8,6 +8,7 @@ import Client.Views.AddBookingView.AddBookingViewController;
 import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
 import Client.Views.AddPersonalAccountView.AddPersonalAccountViewController;
 import Client.Views.EditBookingInfoView.EditBookingInfoViewController;
+import Client.Views.EditCustomerAccountInfoView.EditCustomerAccountInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
@@ -338,7 +339,7 @@ public class ViewHandler
       System.out.println(e.getMessage());
       System.out.println(loader.getLocation());
     }
-    EditCustomerInfoViewModel view = loader.getController();
+    EditCustomerAccountInfoViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Edit booking");
     view.setCustomer(customer);
