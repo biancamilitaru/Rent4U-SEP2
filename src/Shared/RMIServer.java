@@ -30,6 +30,6 @@ public interface RMIServer extends Remote
   void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException;
   void deleteBooking(Booking booking) throws RemoteException, SQLException;
   void deleteCustomer(Customer customer) throws RemoteException, SQLException;
-    void createPersonalAccount(Customer customer);
+    void createPersonalAccount(Customer customer) throws RemoteException, SQLException;
 
 }

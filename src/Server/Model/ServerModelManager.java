@@ -99,8 +99,7 @@ public class ServerModelManager implements ServerModel
         manageCustomers.deleteCustomer(customer);
     }
 
-    @Override public void createPersonalAccount(Customer customer)
-    {
+    @Override public void createPersonalAccount(Customer customer) throws RemoteException, SQLException {
         manageCustomers.createPersonalAccount(customer);
     }
 }

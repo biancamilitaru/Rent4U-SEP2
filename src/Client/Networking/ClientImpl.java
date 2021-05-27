@@ -99,8 +99,7 @@ public class ClientImpl implements Client, ClientCallBack
         server.editCustomerInfo(customer, newCustomer);
     }
 
-    @Override public void createPersonalAccount(Customer customer)
-    {
+    @Override public void createPersonalAccount(Customer customer) throws RemoteException, SQLException {
         server.createPersonalAccount(customer);
     }
 

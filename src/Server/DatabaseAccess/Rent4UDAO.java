@@ -166,10 +166,13 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         }
     }
 
-    @Override public void deleteVehicle(Vehicle vehicle)
-        throws RemoteException, SQLException
+    @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
     {
-
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM vehicle WHERE licence_plate = ?");
+            statement.setString(1, vehicle.getLicensePlate());
+            statement.executeUpdate();
+        }
     }
 
     @Override public void createBooking(Booking booking) throws SQLException {
@@ -258,13 +261,21 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     @Override public void deleteBooking(Booking booking)
         throws RemoteException, SQLException
     {
-
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM booking WHERE booking_id = ?");
+            statement.setInt(1, booking.getBooking_id());
+            statement.executeUpdate();
+        }
     }
 
     @Override public void deleteCustomer(Customer customer)
         throws RemoteException, SQLException
     {
-
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM customer WHERE cpr = ?");
+            statement.setString(1, customer.getCpr_number());
+            statement.executeUpdate();
+        }
     }
 
     @Override
@@ -357,8 +368,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         }
     }
 
-    @Override public void createPersonalAccount(Customer customer)
-    {
-
+    @Override public void createPersonalAccount(Customer customer) throws RemoteException, SQLException {
+        addCustomer(customer);
     }
 }

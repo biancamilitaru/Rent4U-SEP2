@@ -95,4 +95,9 @@ public class EmployeeModelManager implements ClientModel
         client.deleteCustomer(customer);
     }
 
+    @Override
+    public void createPersonalAccount(Customer customer) {
+
+    }
+
 }
