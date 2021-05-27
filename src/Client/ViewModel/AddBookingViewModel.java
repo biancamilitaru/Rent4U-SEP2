@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class AddBookingViewModel
 {
@@ -18,10 +19,9 @@ public class AddBookingViewModel
     this.userModel= userModel;
 
   }
-  public void createBooking(/*int idOfCustomer,String licencePlate, Date startTime,Date endTime,int price*/) throws RemoteException
+  public void createBooking(int idOfCustomer,String licencePlate, GregorianCalendar startTime,GregorianCalendar endTime,int price) throws RemoteException
   {
-
-    //userModel.createBooking(new Booking(idOfCustomer,licencePlate,startTime,endTime,price));
+    userModel.createBooking(new Booking(idOfCustomer,licencePlate,startTime,endTime,price));
   }
 
   public ArrayList<Vehicle> getVehicles() throws SQLException, RemoteException {

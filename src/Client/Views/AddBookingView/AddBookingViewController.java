@@ -56,6 +56,7 @@ public class AddBookingViewController implements ViewController {
 
   public void onCreateBookingButton(ActionEvent evt) throws RemoteException
   {
+
     int startHour1 = Integer.parseInt(startHour.getText());
     int endHour1 = Integer.parseInt(endHour.getText());
     int startMinute1 = Integer.parseInt(startMinute.getText());
@@ -66,6 +67,7 @@ public class AddBookingViewController implements ViewController {
 
     GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
     GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
+
 
   }
 }
