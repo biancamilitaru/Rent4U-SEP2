@@ -19,6 +19,8 @@ public interface ServerModel
           throws RemoteException, SQLException;
   ArrayList<Booking> viewAllBookings() throws SQLException;
   void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
+  void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password,
+      String phoneNumber, String drivingLicenseNumber, String cpr_number);
 }
 
 

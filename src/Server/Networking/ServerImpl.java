@@ -67,4 +67,12 @@ public class ServerImpl implements RMIServer
     @Override public void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException {
         serverModelManager.editBookingInfo(booking, newBooking);
     }
+
+    @Override public void createCustomerAccount(String firstName,
+        String lastName, GregorianCalendar dateOfBirth, String email,
+        String password, String phoneNumber, String drivingLicenseNumber,
+        String cpr_number)
+    {
+        serverModelManager.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    }
 }
