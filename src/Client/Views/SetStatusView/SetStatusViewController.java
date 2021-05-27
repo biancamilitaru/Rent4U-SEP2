@@ -54,6 +54,7 @@ public class SetStatusViewController implements ViewController
     makeAndModelLabel.setText(vehicle.getMake()+" + "+vehicle.getModel());
     licensePlateLabel.setText(vehicle.getLicensePlate());
   }
+
   public void onMenuButton(ActionEvent evt)
   {
     viewHandler.openMainMenu();
