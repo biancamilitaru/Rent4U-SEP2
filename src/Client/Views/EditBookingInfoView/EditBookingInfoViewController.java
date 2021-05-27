@@ -90,7 +90,6 @@ public class EditBookingInfoViewController implements ViewController
 
     editBookingInfoViewModel.editBookingInfo(booking,idOfCustomer,licensePlate,startDate1,endDate1,price);
 
-
   }
 
 

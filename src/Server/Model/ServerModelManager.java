@@ -22,6 +22,8 @@ public class ServerModelManager implements ServerModel
 
     public ServerModelManager() throws SQLException {
         manageVehicles = new Rent4UDAO();
+        manageBookings = new Rent4UDAO();
+        manageCustomers = new Rent4UDAO();
     }
 
     @Override
@@ -55,17 +57,26 @@ public class ServerModelManager implements ServerModel
         manageBookings.editBookingInfo(booking, newBooking);
     }
 
-    @Override public void createCustomerAccount(String firstName,
-        String lastName, GregorianCalendar dateOfBirth, String email,
-        String password, String phoneNumber, String drivingLicenseNumber,
-        String cpr_number)
-    {
-        manageCustomers.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+
+
+    @Override
+    public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException {
+        return manageVehicles.getFreeVehicles(startDate, endDate, type);
     }
 
-    @Override public ArrayList<Customer> getCustomers() throws SQLException
-    {
-        return manageCustomers.getCustomers();
+    @Override
+    public void addCustomer(Customer customer) throws RemoteException, SQLException {
+        manageCustomers.addCustomer(customer);
+    }
+
+    @Override
+    public ArrayList<Customer> viewAllCustomers() throws RemoteException, SQLException {
+        return manageCustomers.viewAllCustomers();
+    }
+
+    @Override
+    public void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password, String phoneNumber, String drivingLicenseNumber, String cpr_number) {
+
     }
 
     @Override public void editCustomerInfo(String firstName, String lastName,

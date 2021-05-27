@@ -1,6 +1,7 @@
 package Client.Views.ListOfBookingsView.BookingViewCell;
 
 import Client.Model.Booking;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -19,9 +20,7 @@ public class BookingListViewCell extends ListCell<Booking>
   @FXML Label customerIdLabel;
   @FXML Label licensePlateLabel;
   @FXML Label startDateLabel;
-  @FXML Label startTimeLabel;
   @FXML Label endDateLabel;
-  @FXML Label endTimeLabel;
   @FXML Label priceLabel;
 
   @Override protected void updateItem(Booking booking, boolean empty)
@@ -50,16 +49,15 @@ public class BookingListViewCell extends ListCell<Booking>
         }
 
       }
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-      SimpleDateFormat timeFormat = new SimpleDateFormat("H:m");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy \n hh:mm");
 
       bookingIdLabel.setText(String.valueOf(booking.getBooking_id()));
       customerIdLabel.setText(String.valueOf(booking.getIdOfCustomer()));
       licensePlateLabel.setText(booking.getLicencePlate());
-      startDateLabel.setText(dateFormat.format(booking.getStartTime()));
-      startTimeLabel.setText(timeFormat.format(booking.getStartTime()));
-      endDateLabel.setText(dateFormat.format(booking.getEndTime()));
-      endTimeLabel.setText(timeFormat.format(booking.getEndTime()));
+      dateFormat.setCalendar(booking.getStartTime());
+      startDateLabel.setText(dateFormat.format(booking.getStartTime().getTime()));
+      dateFormat.setCalendar(booking.getEndTime());
+      endDateLabel.setText(dateFormat.format(booking.getEndTime().getTime()));
       priceLabel.setText(String.valueOf(booking.getPrice()));
 
       setText(null);

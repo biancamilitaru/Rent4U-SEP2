@@ -25,7 +25,6 @@ public class AddBookingViewController implements ViewController {
   private ViewHandler viewHandler;
   private AddBookingViewModel viewModel;
   @FXML ListView<Vehicle> listView;
-
   @FXML DatePicker startDatePicker;
   @FXML DatePicker endDatePicker;
   @FXML ComboBox<Integer> customersID;

@@ -26,4 +26,9 @@ public class AddBookingViewModel
   public ArrayList<Vehicle> getVehicles() throws SQLException, RemoteException {
     return userModel.getVehicles();
   }
+
+  public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws SQLException, RemoteException
+  {
+    return userModel.getFreeVehicles(startDate, endDate, type);
+  }
 }

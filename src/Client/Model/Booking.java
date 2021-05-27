@@ -2,6 +2,7 @@ package Client.Model;
 
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import java.util.GregorianCalendar;
@@ -92,13 +93,14 @@ public class Booking implements Serializable
 
   @Override
   public String toString() {
-    return "Booking{" +
-            "booking_id=" + booking_id +
-            ", idOfCustomer=" + idOfCustomer +
-            ", licencePlate='" + licencePlate + '\'' +
-            ", startTime=" + startTime.getTime() +
-            ", endTime=" + endTime.getTime() +
-            ", price=" + price +
-            '}';
+    String str =  booking_id + ", " +idOfCustomer +", "+ licencePlate;
+    SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+    fmt.setCalendar(startTime);
+    String startTimeDateFormatted = fmt.format(startTime.getTime());
+    fmt.setCalendar(endTime);
+    String endTimeDateFormatted = fmt.format(endTime.getTime());
+    str += ", startTime = " + startTimeDateFormatted +
+            ", endTime = " + endTimeDateFormatted + ", " + price;
+    return str;
   }
 }
