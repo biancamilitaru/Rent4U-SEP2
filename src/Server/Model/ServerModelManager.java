@@ -1,6 +1,7 @@
 package Server.Model;
 
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Status;
 import Client.Model.Vehicle;
 import Server.DatabaseAccess.ManageBookings;
@@ -60,5 +61,10 @@ public class ServerModelManager implements ServerModel
         String cpr_number)
     {
         manageCustomers.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    }
+
+    @Override public ArrayList<Customer> getCustomers() throws SQLException
+    {
+        return manageCustomers.getCustomers();
     }
 }

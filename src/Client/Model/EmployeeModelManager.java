@@ -64,4 +64,10 @@ public class EmployeeModelManager implements ClientModel
         client.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
     }
 
+    @Override public ArrayList<Customer> getCustomers()
+        throws SQLException, RemoteException, SQLException
+    {
+        return client.getCustomers();
+    }
+
 }

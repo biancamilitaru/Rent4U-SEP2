@@ -1,6 +1,7 @@
 package Server.Networking;
 
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Status;
 import Client.Model.Vehicle;
 import Server.Model.ServerModelManager;
@@ -74,5 +75,11 @@ public class ServerImpl implements RMIServer
         String cpr_number)
     {
         serverModelManager.createCustomerAccount(firstName,lastName,dateOfBirth,email,password,phoneNumber,drivingLicenseNumber,cpr_number);
+    }
+
+    @Override public ArrayList<Customer> getCustomers()
+        throws RemoteException, SQLException
+    {
+        return serverModelManager.getCustomers();
     }
 }

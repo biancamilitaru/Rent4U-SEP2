@@ -1,6 +1,7 @@
 package Client.Networking;
 
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Status;
 import Client.Model.Vehicle;
 
@@ -22,4 +23,5 @@ public interface Client
     void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
   void createCustomerAccount(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password,
       String phoneNumber, String drivingLicenseNumber, String cpr_number);
+    ArrayList<Customer> getCustomers() throws SQLException, RemoteException;
 }

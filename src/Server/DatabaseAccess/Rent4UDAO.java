@@ -1,6 +1,7 @@
 package Server.DatabaseAccess;
 
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Status;
 import Client.Model.Vehicle;
 
@@ -245,5 +246,10 @@ public class Rent4UDAO implements ManageVehicles,ManageBookings,ManageCustomers
         String cpr_number)
     {
 
+    }
+
+    @Override public ArrayList<Customer> getCustomers() throws SQLException
+    {
+        return null;
     }
 }
