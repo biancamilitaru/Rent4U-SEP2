@@ -42,12 +42,13 @@ public class EditCustomerAccountInfoViewController implements ViewController
   {
     this.viewHandler=viewHandler;
     this.editCustomerInfoViewModel=viewModelFactory.getEditCustomerInfoViewModelViewModel();
-    loadData();
+
   }
 
   public void setCustomer(Customer customer)
   {
     this.customer=customer;
+    loadData();
   }
 
   private String[] splitCpr(String cprFull){
@@ -92,7 +93,7 @@ public class EditCustomerAccountInfoViewController implements ViewController
     return dateOfBirth;
   }
 
-  public void onUpdateBooking() throws RemoteException, SQLException
+  public void onUpdateCustomer() throws RemoteException, SQLException
   {
     editCustomerInfoViewModel.editCustomerInfo(
         customer,
