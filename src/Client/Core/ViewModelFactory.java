@@ -28,6 +28,7 @@ public class ViewModelFactory
   private MenuForLogInViewModel menuForLogInViewModel;
   private EditPersonalInfoViewModel editPersonalInfoViewModel;
   private LogInCustomerViewModel logInCustomerViewModel;
+  private MenuCustomerViewModel menuCustomerViewModel;
 
   private ViewModelFactory() {
   }
@@ -135,5 +136,11 @@ public class ViewModelFactory
     if(logInCustomerViewModel==null)
       logInCustomerViewModel=new LogInCustomerViewModel(ModelFactory.getInstance().getClientModel());
     return logInCustomerViewModel;
+  }
+
+  public MenuCustomerViewModel getMenuCustomerViewModel(){
+    if(menuCustomerViewModel==null)
+      menuCustomerViewModel=new MenuCustomerViewModel(ModelFactory.getInstance().getClientModel());
+    return menuCustomerViewModel;
   }
 }
