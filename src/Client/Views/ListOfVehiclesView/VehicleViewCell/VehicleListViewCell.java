@@ -72,6 +72,11 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
       setText(null);
       setGraphic(this.anchorPane);
+
+      if (getIndex()%2==0){
+        setStyle("-fx-background-color:F4AF82;");
+      } else setStyle("-fx-background-color:FFFFFF;");
+
     }
   }
 

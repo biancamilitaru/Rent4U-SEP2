@@ -11,6 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 import java.rmi.RemoteException;
@@ -25,6 +27,7 @@ public class ListOfVehiclesViewController implements ViewController
   //@FXML TableView table = new TableView();
 
   @FXML ListView<Vehicle> listView;
+  @FXML ImageView logoLabel;
   public final ObservableList<Vehicle> tableObservableList = FXCollections.observableArrayList();
 
 
@@ -34,7 +37,12 @@ public class ListOfVehiclesViewController implements ViewController
     this.listOfVehiclesViewModel = viewModelFactory.getListOfVehiclesViewModel();
     //addStatusButton();
     //addEditButton();
+
+    Image logo = new Image("/GUI/Logo.png");
+    logoLabel.setImage(logo);
+
     getVehicleData(listOfVehiclesViewModel.getVehicles());
+
     //table.setItems(tableObservableList);
 
     listView.setItems(tableObservableList);
