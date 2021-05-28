@@ -78,12 +78,12 @@ public class CustomerListViewCell extends ListCell<Customer>
 
   public void onClickedEditButton() throws SQLException, RemoteException
   {
-    listOfCustomersViewController.Edit(customer);
+    listOfCustomersViewController.editCustomer(customer);
   }
 
   public void onClickedDeleteButton() throws RemoteException, SQLException
   {
-    listOfCustomersViewController.Delete(customer);
+    listOfCustomersViewController.deleteCustomer(customer);
   }
 
 }
