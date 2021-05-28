@@ -47,4 +47,12 @@ public class MenuViewController implements ViewController
   public void onAddBookingButton(ActionEvent evt) throws SQLException, RemoteException {
     viewHandler.openAddBooking();
   }
+
+  public void onAddNewCustomerButton(ActionEvent evt) throws SQLException, RemoteException {
+    viewHandler.openAddCustomer();
+  }
+
+  public void onListOfAllCustomersButton(ActionEvent evt ) throws SQLException, RemoteException {
+    viewHandler.openListOfCustomers();
+  }
 }

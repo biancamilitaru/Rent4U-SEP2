@@ -9,6 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 
 public class LoginViewController implements ViewController
 {
@@ -32,5 +35,9 @@ public class LoginViewController implements ViewController
         if (viewModel.logIn())
             viewHandler.openMainMenu();
         textField.clear();
+    }
+
+    public void onBackButton(ActionEvent evt) throws SQLException, RemoteException {
+        viewHandler.openLogInMenu();
     }
 }
