@@ -30,6 +30,7 @@ public class ViewModelFactory
   private EditPersonalInfoViewModel editPersonalInfoViewModel;
   private AddBookingCustomerViewModel addBookingCustomerViewModel;
   private LogInCustomerViewModel logInCustomerViewModel;
+  private MenuCustomerViewModel menuCustomerViewModel;
 
   private ViewModelFactory() {
   }
@@ -149,4 +150,10 @@ public class ViewModelFactory
   }
 
 
+
+  public MenuCustomerViewModel getMenuCustomerViewModel(){
+    if(menuCustomerViewModel==null)
+      menuCustomerViewModel=new MenuCustomerViewModel(ModelFactory.getInstance().getClientModel());
+    return menuCustomerViewModel;
+  }
 }

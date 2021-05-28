@@ -2,6 +2,7 @@ package Client.Views.LogInForCustomerView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
+import Client.Model.Customer;
 import Client.ViewModel.LogInCustomerViewModel;
 import Client.Model.Customer;
 import Client.Views.ViewController;
@@ -19,6 +20,8 @@ public class LogInForCustomerViewController implements ViewController
 
   private ViewHandler viewHandler;
   private LogInCustomerViewModel logInCustomerViewModel;
+
+  private Customer customer;
 
 
   private Customer customer;
@@ -42,7 +45,7 @@ public class LogInForCustomerViewController implements ViewController
   public void logIn() throws RemoteException, SQLException
   {
     if (logInCustomerViewModel.checkForPassword(emailField.getText(),passwordField.getText()))
-      //viewHandler.; openToCustomerMenu
+      viewHandler.openMenuCustomerView(customer); //We are missing function to set Customer
     emailField.clear();
     passwordField.clear();
   }

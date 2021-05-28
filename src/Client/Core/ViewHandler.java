@@ -19,6 +19,7 @@ import Client.Views.ListOfCustomersView.ListOfCustomersViewController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
 import Client.Views.LogInForCustomerView.LogInForCustomerViewController;
 import Client.Views.LogInView.LoginViewController;
+import Client.Views.MenuCustomerView.MenuCustomerViewController;
 import Client.Views.MenuForLogInView.MenuForLogInViewController;
 import Client.Views.MenuView.MenuViewController;
 import Client.Views.AddVehicleView.AddVehicleViewController;
@@ -449,6 +450,30 @@ public class ViewHandler
     ListOfCustomersViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("List of customers");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openMenuCustomerView(Customer customer) throws SQLException, RemoteException {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/EditCustomerAccountInfoView/EditCustomerAccountInfo.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    MenuCustomerViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Menu");
+    view.setCustomer(customer);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
