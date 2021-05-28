@@ -125,7 +125,6 @@ public class AddBookingCustomerViewController implements ViewController {
         !startMinute.getText().equals(null) &&
         !endHour.getText().equals(null) &&
         !endMinute.getText().equals(null)
-        //!customersID.getSelectionModel().isEmpty()
         ){
       listView.setVisible(true);
     } else listView.setVisible(false);
