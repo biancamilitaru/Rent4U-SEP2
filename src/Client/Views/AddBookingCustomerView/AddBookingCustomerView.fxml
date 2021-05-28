@@ -34,6 +34,6 @@
         <DatePicker fx:id="endDatePicker" layoutX="80.0" layoutY="215.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="215.0" />
         <ListView fx:id="listView" fixedCellSize="2.0" layoutX="297.0" layoutY="82.0" prefHeight="250.0" prefWidth="300.0" AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="20.0" />
         <Label layoutX="27.0" layoutY="326.0" text="Total price for this booking:" AnchorPane.bottomAnchor="56.39999999999998" AnchorPane.leftAnchor="27.0" />
-        <Label fx:id="totalPriceOfBooking" alignment="CENTER_RIGHT" layoutX="173.0" layoutY="326.0" prefHeight="17.0" prefWidth="61.0" text="1450" AnchorPane.bottomAnchor="56.39999999999998" AnchorPane.leftAnchor="173.0" />
+        <Label fx:id="totalPriceOfBooking" alignment="CENTER_RIGHT" layoutX="173.0" layoutY="326.0" prefHeight="17.0" prefWidth="61.0" text="00.0" AnchorPane.bottomAnchor="56.39999999999998" AnchorPane.leftAnchor="173.0" />
     </children>
 </AnchorPane>

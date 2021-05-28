@@ -103,8 +103,8 @@ public class ServerModelManager implements ServerModel
         manageCustomers.createPersonalAccount(customer);
     }
 
-    @Override public boolean checkForPassword(String emailAddress,
-        String password) throws RemoteException, SQLException
+    @Override public Customer checkForPassword(String emailAddress,
+                                               String password) throws RemoteException, SQLException
     {
         return manageCustomers.checkForPassword(emailAddress,password);
     }

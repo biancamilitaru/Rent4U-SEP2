@@ -29,19 +29,19 @@ public class MenuCustomerViewController implements ViewController
     this.customer = customer;
   }
 
-  public void onCreateBooking(){
-
+  public void onCreateBooking() throws SQLException, RemoteException {
+    viewHandler.openAddBookingCustomer(customer);
   }
 
   public void onMyBooking(){
 
   }
 
-  public void onMyAccount(){
-
+  public void onMyAccount() throws SQLException, RemoteException {
+    viewHandler.openEditPersonalInfo(customer);
   }
 
-  public void onLogOutButton(){
-
+  public void onLogOutButton() throws SQLException, RemoteException {
+    viewHandler.openLogInMenu();
   }
 }
