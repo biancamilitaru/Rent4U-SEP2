@@ -1,6 +1,7 @@
 package Client.Core;
 
 import Client.ViewModel.*;
+import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
 
 public class ViewModelFactory
 {
@@ -27,6 +28,7 @@ public class ViewModelFactory
   private AddPersonalAccountViewModel addpersonalAccountViewModel;
   private MenuForLogInViewModel menuForLogInViewModel;
   private EditPersonalInfoViewModel editPersonalInfoViewModel;
+  private AddBookingCustomerViewModel addBookingCustomerViewModel;
   private LogInCustomerViewModel logInCustomerViewModel;
 
   private ViewModelFactory() {
@@ -136,4 +138,15 @@ public class ViewModelFactory
       logInCustomerViewModel=new LogInCustomerViewModel(ModelFactory.getInstance().getClientModel());
     return logInCustomerViewModel;
   }
+
+  public AddBookingCustomerViewModel getAddBookingCustomerViewModel()
+  {
+    if (addBookingCustomerViewModel == null)
+    {
+      addBookingCustomerViewModel = new AddBookingCustomerViewModel(ModelFactory.getInstance().getClientModel());
+    }
+    return addBookingCustomerViewModel;
+  }
+
+
 }
