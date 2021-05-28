@@ -428,9 +428,10 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
-  public void openEditPersonalInfo(Customer customer) throws SQLException, RemoteException {
-    FXMLLoader loader = new FXMLLoader();
 
+  public void openEditPersonalInfo(Customer customer) throws SQLException, RemoteException {
+
+    FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("../Views/EditPersonalAccountInfoView/EditPersonalAccountInfo.fxml"));
     Parent root = null;
     try
@@ -451,4 +452,6 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
+
+
 }
