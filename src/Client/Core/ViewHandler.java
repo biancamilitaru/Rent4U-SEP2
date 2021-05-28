@@ -11,6 +11,7 @@ import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
 import Client.Views.AddPersonalAccountView.AddPersonalAccountViewController;
 import Client.Views.EditBookingInfoView.EditBookingInfoViewController;
 import Client.Views.EditCustomerAccountInfoView.EditCustomerAccountInfoViewController;
+import Client.Views.EditPersonalInfoView.EditPersonalInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfCustomersView.ListOfCustomersViewController;
@@ -231,7 +232,7 @@ public class ViewHandler
     }
     AddBookingViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("Edit vehicle");
+    stage.setTitle("Add Booking");
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
@@ -333,7 +334,7 @@ public class ViewHandler
   public void openEditCustomerInfo(Customer customer) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource(""));
+    loader.setLocation(getClass().getResource("../Views/EditCustomerAccountInfoView/EditCustomerAccountInfo.fxml"));
     Parent root = null;
     try
     {
@@ -346,7 +347,7 @@ public class ViewHandler
     }
     EditCustomerAccountInfoViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("Edit booking");
+    stage.setTitle("Edit Customer Info");
     view.setCustomer(customer);
 
     Scene scene = new Scene(root);
@@ -422,6 +423,29 @@ public class ViewHandler
     ListOfCustomersViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("List of customers");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+  public void openEditPersonalInfo(Customer customer) throws SQLException, RemoteException {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/EditPersonalAccountInfoView/EditPersonalAccountInfo.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    EditPersonalInfoViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Edit Personal Info");
+    view.setCustomer(customer);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
