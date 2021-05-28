@@ -23,7 +23,7 @@
       <Label layoutX="22.0" layoutY="175.0" text="Enter the new status:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="175.0" />
       <TextField fx:id="statusTextField" layoutX="22.0" layoutY="200.0" prefHeight="27.0" prefWidth="184.0" promptText="New Status" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="200.0" />
       <Line endX="449.0" layoutX="125.0" layoutY="145.0" startX="-100.0" AnchorPane.leftAnchor="24.5" AnchorPane.rightAnchor="25.5" AnchorPane.topAnchor="144.5" />
-      <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" onAction="#setSetStatusButton" text="Change Status" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
+      <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" onAction="#setSetStatusButton" text="Set Status" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
       <DatePicker fx:id="startDatePicker" layoutX="90.0" layoutY="255.0" promptText="Enter date" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="255.0" />
       <Label layoutX="50.0" layoutY="260.0" text="Date:" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="260.0" />
       <Label layoutX="50.0" layoutY="294.0" text="Time:" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="295.0" />
