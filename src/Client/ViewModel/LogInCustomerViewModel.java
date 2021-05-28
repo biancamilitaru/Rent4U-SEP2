@@ -15,7 +15,8 @@ public class LogInCustomerViewModel
     this.userModel=userModel;
   }
 
-  public boolean checkForPassword(String emailAddress, String password) throws
+
+  public Customer checkForPassword(String emailAddress, String password) throws
       RemoteException, SQLException
   {
    return userModel.checkForPassword(emailAddress,password);
