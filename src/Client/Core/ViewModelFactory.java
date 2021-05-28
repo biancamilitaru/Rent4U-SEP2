@@ -27,6 +27,7 @@ public class ViewModelFactory
   private AddPersonalAccountViewModel addpersonalAccountViewModel;
   private MenuForLogInViewModel menuForLogInViewModel;
   private EditPersonalInfoViewModel editPersonalInfoViewModel;
+  private LogInCustomerViewModel logInCustomerViewModel;
 
   private ViewModelFactory() {
   }
@@ -127,5 +128,12 @@ public class ViewModelFactory
     if(menuForLogInViewModel==null)
       menuForLogInViewModel=new MenuForLogInViewModel(ModelFactory.getInstance().getClientModel());
     return menuForLogInViewModel;
+  }
+
+  public LogInCustomerViewModel getLogInCustomerViewModel()
+  {
+    if(logInCustomerViewModel==null)
+      logInCustomerViewModel=new LogInCustomerViewModel(ModelFactory.getInstance().getClientModel());
+    return logInCustomerViewModel;
   }
 }
