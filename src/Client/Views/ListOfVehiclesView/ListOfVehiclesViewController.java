@@ -4,15 +4,13 @@ import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
 import Client.Model.Vehicle;
 import Client.ViewModel.ListOfVehiclesViewModel;
+import Client.Views.ListOfVehiclesView.VehicleViewCell.VehicleListViewCell;
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.util.Callback;
 
 import java.rmi.RemoteException;
@@ -24,8 +22,9 @@ public class ListOfVehiclesViewController implements ViewController
   private ViewHandler viewHandler;
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
 
-  @FXML TableView table = new TableView();
+  //@FXML TableView table = new TableView();
 
+  @FXML ListView<Vehicle> listView;
   public final ObservableList<Vehicle> tableObservableList = FXCollections.observableArrayList();
 
 
@@ -33,10 +32,15 @@ public class ListOfVehiclesViewController implements ViewController
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException {
     this.viewHandler = viewHandler;
     this.listOfVehiclesViewModel = viewModelFactory.getListOfVehiclesViewModel();
-    addStatusButton();
-    addEditButton();
+    //addStatusButton();
+    //addEditButton();
     getVehicleData(listOfVehiclesViewModel.getVehicles());
-    table.setItems(tableObservableList);
+    //table.setItems(tableObservableList);
+
+    listView.setItems(tableObservableList);
+    listView.setCellFactory(vehicleListView -> new VehicleListViewCell(this));
+
+    listView.setFixedCellSize(50);
   }
 
   public void onAddVehicleButton(ActionEvent evt)
@@ -49,6 +53,17 @@ public class ListOfVehiclesViewController implements ViewController
     viewHandler.openMainMenu();
   }
 
+  public void onEdit(Vehicle vehicle) throws SQLException, RemoteException
+  {
+    viewHandler.openEditVehicle(vehicle);
+  }
+
+  public void onClickedDelete(Vehicle vehicle)
+      throws RemoteException, SQLException
+  {
+    listOfVehiclesViewModel.deleteVehicle(vehicle);
+  }
+
   public ObservableList<Vehicle> getVehicleData(ArrayList<Vehicle> vehiclesArrayList)
   {
     for (int x = 0; x<vehiclesArrayList.size(); x++){
@@ -57,6 +72,8 @@ public class ListOfVehiclesViewController implements ViewController
     return tableObservableList;
 }
 
+
+/*
   private void addStatusButton() {
     TableColumn<Vehicle, Void> colBtn = new TableColumn("Status");
 
@@ -141,5 +158,6 @@ public class ListOfVehiclesViewController implements ViewController
     table.getColumns().add(colBtn);
 
   }
+ */
 
 }
