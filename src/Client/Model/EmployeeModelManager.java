@@ -102,7 +102,7 @@ public class EmployeeModelManager implements ClientModel
         client.createPersonalAccount(customer);
     }
 
-    @Override public boolean checkForPassword(String emailAddress,
+    @Override public Customer checkForPassword(String emailAddress,
         String password) throws RemoteException, SQLException
     {
         return client.checkForPassword(emailAddress,password);

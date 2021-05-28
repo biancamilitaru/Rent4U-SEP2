@@ -278,7 +278,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         }
     }
 
-    @Override public boolean checkForPassword(String emailAddress, String password) throws RemoteException, SQLException
+    @Override public Customer checkForPassword(String emailAddress, String password) throws RemoteException, SQLException
     {
         Customer customer = new Customer();
         try(Connection connection = getConnection()){
@@ -290,7 +290,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
                 customer = getCustomer(resultSet);
             }
         }
-        return customer.getPassword().equals(password);
+        return customer;
     }
 
     @Override public void editPersonalInfo(Customer customer,

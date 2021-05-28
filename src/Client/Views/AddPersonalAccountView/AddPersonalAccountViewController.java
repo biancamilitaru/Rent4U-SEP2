@@ -76,8 +76,8 @@ public class AddPersonalAccountViewController implements ViewController
     }
   }
 
-  public void onMenuButton(){
-    viewHandler.openMainMenu();
+  public void onMenuButton() throws SQLException, RemoteException {
+    viewHandler.openLogInCustomer();
   }
 
 }

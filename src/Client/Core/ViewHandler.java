@@ -313,7 +313,7 @@ public class ViewHandler
   public void openAddPersonalAccount() throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/AddPersonalAccountView/AddPersonalAccount.fxml"));
+    loader.setLocation(getClass().getResource("../Views/AddPersonalAccountView/AddPersonalAccountView.fxml"));
     Parent root = null;
     try
     {
@@ -387,7 +387,7 @@ public class ViewHandler
   {
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/MenuForLogInView/MenuForLogInView.fxml"));
+    loader.setLocation(getClass().getResource("../Views/AddBookingCustomerView/AddBookingCustomerView.fxml"));
     Parent root = null;
     try
     {
@@ -459,7 +459,7 @@ public class ViewHandler
   public void openMenuCustomerView(Customer customer) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/EditCustomerAccountInfoView/EditCustomerAccountInfo.fxml"));
+    loader.setLocation(getClass().getResource("../Views/MenuCustomerView/MenuCustomerView.fxml"));
     Parent root = null;
     try
     {

@@ -7,6 +7,7 @@ import Client.ViewModel.LogInCustomerViewModel;
 import Client.Model.Customer;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 
@@ -17,12 +18,10 @@ public class LogInForCustomerViewController implements ViewController
 {
   @FXML TextField emailField;
   @FXML TextField passwordField;
+  @FXML Label incorrectPasswordLabel;
 
   private ViewHandler viewHandler;
   private LogInCustomerViewModel logInCustomerViewModel;
-
-  private Customer customer;
-
 
   private Customer customer;
 
@@ -44,8 +43,11 @@ public class LogInForCustomerViewController implements ViewController
 
   public void logIn() throws RemoteException, SQLException
   {
-    if (logInCustomerViewModel.checkForPassword(emailField.getText(),passwordField.getText()))
-      viewHandler.openMenuCustomerView(customer); //We are missing function to set Customer
+    incorrectPasswordLabel.setVisible(false);
+    customer = logInCustomerViewModel.checkForPassword(emailField.getText(), passwordField.getText());
+    if (customer.getPassword().equals(passwordField.getText()))
+      viewHandler.openMenuCustomerView(customer);//We are missing function to set Customer
+    else incorrectPasswordLabel.setVisible(true);
     emailField.clear();
     passwordField.clear();
   }
