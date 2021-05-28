@@ -8,10 +8,10 @@ import Client.Views.AddBookingView.VehicleViewCell.VehicleListViewCell;
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -49,7 +49,8 @@ public class AddBookingViewController implements ViewController {
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell(this));
     listView.setFixedCellSize(125);
     listView.setVisible(false);
-
+    customersID.getItems().addAll(viewModel.getAllCustomersID());
+    System.out.println(customersID.getItems());
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }
 
@@ -84,6 +85,7 @@ public class AddBookingViewController implements ViewController {
 
   public void onCreateBookingButton() throws RemoteException, SQLException {
     viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
+    viewHandler.openMainMenu();
   }
 
   public int daysBetween(Date d1, Date d2) {
@@ -113,10 +115,15 @@ public class AddBookingViewController implements ViewController {
         !startHour.getText().equals(null) &&
         !startMinute.getText().equals(null) &&
         !endHour.getText().equals(null) &&
-        !endMinute.getText().equals(null)
-        //!customersID.getSelectionModel().isEmpty()
+        !endMinute.getText().equals(null) &&
+        !customersID.getSelectionModel().isEmpty()
         ){
       listView.setVisible(true);
     } else listView.setVisible(false);
+  }
+
+  public void onMainMenuButton(ActionEvent evt)
+  {
+    viewHandler.openMainMenu();
   }
 }

@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.AddBookingView.AddBookingViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.AddBookingView.AddBookingViewController">
    <children>
-      <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" text="Back to MENU" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+      <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" onAction="#onMainMenuButton" text="Back to MENU" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
       <Label layoutX="25.0" layoutY="31.0" text="Create a booking" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="30.0">
          <font>
             <Font name="System Bold" size="17.0" />
@@ -36,6 +36,6 @@
       <DatePicker fx:id="endDatePicker" layoutX="254.0" layoutY="177.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="250.0" />
       <ListView fx:id="listView" fixedCellSize="2.0" layoutX="297.0" layoutY="82.0" prefHeight="250.0" prefWidth="300.0" AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="20.0" />
       <Label layoutX="25.0" layoutY="348.0" text="Total price for this booking:" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="25.0" />
-      <Label fx:id="totalPriceOfBooking" alignment="CENTER_RIGHT" layoutX="176.0" layoutY="348.0" prefHeight="17.0" prefWidth="61.0" text="1450" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="175.0" />
+      <Label fx:id="totalPriceOfBooking" alignment="CENTER_RIGHT" layoutX="176.0" layoutY="348.0" prefHeight="17.0" prefWidth="61.0" text="00.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="175.0" />
    </children>
 </AnchorPane>

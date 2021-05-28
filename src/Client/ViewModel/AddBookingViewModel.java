@@ -2,6 +2,7 @@ package Client.ViewModel;
 
 import Client.Model.Booking;
 import Client.Model.ClientModel;
+import Client.Model.Customer;
 import Client.Model.Vehicle;
 
 import java.rmi.RemoteException;
@@ -30,5 +31,15 @@ public class AddBookingViewModel
   public ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws SQLException, RemoteException
   {
     return userModel.getFreeVehicles(startDate, endDate, type);
+  }
+
+  public ArrayList<Integer> getAllCustomersID() throws RemoteException, SQLException {
+    ArrayList<Integer> IDs = new ArrayList<>();
+    ArrayList<Customer> customers = userModel.getCustomers();
+    for (int i = 0; i < customers.size(); i++)
+    {
+      IDs.add(Integer.parseInt(customers.get(i).getCpr_number()));
+    }
+    return IDs;
   }
 }
