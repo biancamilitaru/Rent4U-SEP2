@@ -52,12 +52,12 @@ public class ListOfCustomersViewController implements ViewController
     viewHandler.openMainMenu();
   }
 
-  public void Edit(Customer customer) throws SQLException, RemoteException
+  public void editCustomer(Customer customer) throws SQLException, RemoteException
   {
     viewHandler.openEditCustomerInfo(customer);
   }
 
-  public void Delete(Customer customer) throws RemoteException, SQLException
+  public void deleteCustomer(Customer customer) throws RemoteException, SQLException
   {
     listOfCustomersViewModel.deleteCustomer(customer);
   }
