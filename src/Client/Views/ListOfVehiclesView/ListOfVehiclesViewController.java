@@ -65,7 +65,7 @@ public class ListOfVehiclesViewController implements ViewController
       public TableCell<Vehicle, Void> call(final TableColumn<Vehicle, Void> param) {
         final TableCell<Vehicle, Void> cell = new TableCell<Vehicle, Void>() {
 
-          private final Button btn = new Button("Change Status");
+          private final Button btn = new Button("New");
 
           {
             btn.setOnAction((ActionEvent event) -> {
