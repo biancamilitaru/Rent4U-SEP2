@@ -483,7 +483,7 @@ public class ViewHandler
   public void openEditPersonalInfo(Customer customer) throws SQLException, RemoteException {
 
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("../Views/EditPersonalAccountInfoView/EditPersonalAccountInfo.fxml"));
+    loader.setLocation(getClass().getResource("../Views/EditPersonalInfoView/EditPersonalInfoView.fxml"));
     Parent root = null;
     try
     {
