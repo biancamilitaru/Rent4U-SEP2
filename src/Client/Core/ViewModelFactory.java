@@ -35,6 +35,7 @@ public class ViewModelFactory
   private MenuCustomerViewModel menuCustomerViewModel;
   private ListOfPersonalBookingsViewModel listOfPersonalBookingsViewModel;
   private AddEmployeeViewModel addEmployeeViewModel;
+  private EditEmployeeInfoViewModel editEmployeeInfoViewModel;
   private ViewModelFactory() {
   }
 
@@ -180,5 +181,13 @@ public class ViewModelFactory
     if (addEmployeeViewModel == null)
       addEmployeeViewModel = new AddEmployeeViewModel(ModelFactory.getInstance().getClientModel());
     return addEmployeeViewModel;
+  }
+
+  public EditEmployeeInfoViewModel getEditEmployeeViewModel()
+  {
+    if (editEmployeeInfoViewModel == null)
+      editEmployeeInfoViewModel = new EditEmployeeInfoViewModel(ModelFactory.getInstance()
+          .getClientModel());
+    return editEmployeeInfoViewModel;
   }
 }

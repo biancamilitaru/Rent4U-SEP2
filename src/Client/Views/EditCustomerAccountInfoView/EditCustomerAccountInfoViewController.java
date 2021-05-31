@@ -106,5 +106,11 @@ public class EditCustomerAccountInfoViewController implements ViewController
   public void onMenu(){
     viewHandler.openMainMenu();
   }
+
+  public void onDeleteButton() throws RemoteException, SQLException
+  {
+    editCustomerInfoViewModel.deleteCustomer(customer);
+    viewHandler.openLogInCustomer();
+  }
 }
 

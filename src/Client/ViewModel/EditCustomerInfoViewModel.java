@@ -24,4 +24,10 @@ public class EditCustomerInfoViewModel
     Customer newCustomer = new Customer(firstName, lastName, dateOfBirth, email , password ,phoneNumber , drivingLicenseNumber , cpr_number);
     userModel.editCustomerInfo(customer, newCustomer);
   }
+
+  public void deleteCustomer(Customer customer)
+      throws RemoteException, SQLException
+  {
+    userModel.deleteCustomer(customer);
+  }
 }
