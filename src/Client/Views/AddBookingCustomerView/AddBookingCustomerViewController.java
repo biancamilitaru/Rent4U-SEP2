@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import javax.swing.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -96,6 +97,7 @@ public class AddBookingCustomerViewController implements ViewController {
     int id = Integer.parseInt(customer.getCpr_number());
     viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
     viewHandler.openMenuCustomerView(customer);
+    JOptionPane.showMessageDialog(null, "The booking has been created", "Rent4U", JOptionPane.INFORMATION_MESSAGE);
   }
 
   public int daysBetween(Date d1, Date d2) {
