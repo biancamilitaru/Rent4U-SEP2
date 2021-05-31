@@ -10,11 +10,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class EditCustomerAccountInfoViewController implements ViewController
@@ -51,11 +51,6 @@ public class EditCustomerAccountInfoViewController implements ViewController
     loadData();
   }
 
-  private String[] splitCpr(String cprFull){
-    String[] parts = cprFull.split("/");
-    return parts;
-  }
-
   public static final LocalDate dateConvertor (String dateString){
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     LocalDate localDate = LocalDate.parse(dateString, formatter);
@@ -68,13 +63,13 @@ public class EditCustomerAccountInfoViewController implements ViewController
     lastNameField.setText(customer.getLastName());
     dateOfBirthPicker.setValue(
         dateConvertor(
-            customer.getDateOfBirth().getTime().getDay()+ "-" +
-                      customer.getDateOfBirth().getTime().getMonth()+"-"+
-                      customer.getDateOfBirth().getTime().getYear()));
+            customer.getDateOfBirth().get(Calendar.DATE)+ "-" +
+                      customer.getDateOfBirth().get(Calendar.MONTH)+"-"+
+                      customer.getDateOfBirth().get(Calendar.YEAR)));
     eMailField.setText(customer.getEmail());
     drivingLicenseField.setText(customer.getDrivingLicenseNumber());
-    cprFirstField.setText(splitCpr(String.valueOf(customer.getCpr_number()))[0]);
-    cprSecondField.setText(splitCpr(String.valueOf(customer.getCpr_number()))[1]);
+    cprFirstField.setText(customer.getCpr_number().substring(0,6));
+    cprSecondField.setText(customer.getCpr_number().substring(7,11));
     passwordField.setText(customer.getPassword());
     rePasswordField.setText(customer.getPassword());
     phoneField.setText(customer.getPhoneNumber());
