@@ -1,9 +1,6 @@
 package Client.Networking;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Status;
-import Client.Model.Vehicle;
+import Client.Model.*;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
 
@@ -129,6 +126,12 @@ public class ClientImpl implements Client, ClientCallBack
         Booking newBooking) throws RemoteException, SQLException
     {
         server.editPersonalBooking(booking,newBooking);
+    }
+
+    @Override public void createEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+        server.createEmployee(employee);
     }
 
     @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException

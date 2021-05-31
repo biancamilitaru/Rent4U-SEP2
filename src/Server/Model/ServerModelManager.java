@@ -1,13 +1,7 @@
 package Server.Model;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Status;
-import Client.Model.Vehicle;
-import Server.DatabaseAccess.ManageBookings;
-import Server.DatabaseAccess.ManageCustomers;
-import Server.DatabaseAccess.ManageVehicles;
-import Server.DatabaseAccess.Rent4UDAO;
+import Client.Model.*;
+import Server.DatabaseAccess.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -19,6 +13,7 @@ public class ServerModelManager implements ServerModel
     private ManageVehicles manageVehicles;
     private ManageBookings manageBookings;
     private ManageCustomers manageCustomers;
+    private ManageEmployees manageEmployees;
 
     public ServerModelManager() throws SQLException {
         manageVehicles = new Rent4UDAO();
@@ -125,5 +120,11 @@ public class ServerModelManager implements ServerModel
         throws RemoteException, SQLException
     {
         return manageBookings.getPersonalBookings(customer);
+    }
+
+    @Override public void createEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+        manageEmployees.createEmployee(employee);
     }
 }

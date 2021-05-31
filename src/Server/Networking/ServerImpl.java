@@ -1,9 +1,6 @@
 package Server.Networking;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Status;
-import Client.Model.Vehicle;
+import Client.Model.*;
 import Server.Model.ServerModelManager;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
@@ -127,6 +124,12 @@ public class ServerImpl implements RMIServer
         Booking newBooking) throws RemoteException, SQLException
     {
         serverModelManager.editPersonalBooking(booking,newBooking);
+    }
+
+    @Override public void createEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.createEmployee(employee);
     }
 
     @Override public ArrayList<Booking> getPersonalBookings(Customer customer)

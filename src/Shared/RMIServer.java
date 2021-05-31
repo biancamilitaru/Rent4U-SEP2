@@ -1,10 +1,6 @@
 package Shared;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Status;
-import Client.Model.Vehicle;
-
+import Client.Model.*;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.Remote;
@@ -35,5 +31,5 @@ public interface RMIServer extends Remote
     void editPersonalInfo(Customer customer, Customer newCustomer)throws RemoteException, SQLException;
     ArrayList<Booking> getPersonalBookings(Customer customer) throws RemoteException, SQLException;
     void editPersonalBooking(Booking booking, Booking newBooking) throws RemoteException, SQLException;
-
+    void createEmployee(Employee employee) throws RemoteException, SQLException;
 }

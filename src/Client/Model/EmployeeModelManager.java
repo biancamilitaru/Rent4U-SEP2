@@ -126,4 +126,10 @@ public class EmployeeModelManager implements ClientModel
         client.editPersonalBooking(booking,newBooking);
     }
 
+    @Override public void createEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+        client.createEmployee(employee);
+    }
+
 }
