@@ -1,9 +1,6 @@
 package Server.DatabaseAccess;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Status;
-import Client.Model.Vehicle;
+import Client.Model.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -41,6 +38,13 @@ public class TestForDatabaseIgnoreTHIS {
         //manageVehicles.deleteVehicle(vehicle1);
         //manageBookings.deleteBooking(booking2);
         //manageCustomers.deleteCustomer(customer1);
-        System.out.println(manageCustomers.checkForPassword("304312@via.dk", "maria5561"));
+        //System.out.println(manageCustomers.checkForPassword("304312@via.dk", "maria5561"));
+        ManageEmployees manageEmployees = new Rent4UDAO();
+        Employee employee1 = new Employee("1212121212", "bianca", "militaru", date_of_birth, "3456",
+                "email.ro", 2000, "employee");
+        //manageEmployees.createEmployee(employee);
+        Employee employee2 = new Employee("1212121212", "bianca", "militaru", date_of_birth, "3456",
+                "email.ro", 56, "manager");
+        manageEmployees.editEmployeeInfo(employee1, employee2);
     }
 }

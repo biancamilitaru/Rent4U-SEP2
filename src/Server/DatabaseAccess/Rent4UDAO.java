@@ -1,9 +1,6 @@
 package Server.DatabaseAccess;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Status;
-import Client.Model.Vehicle;
+import Client.Model.*;
 
 
 import java.rmi.RemoteException;
@@ -13,7 +10,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 
-public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomers
+public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomers, ManageEmployees
 {
     //We are using singleton for this class because we want to have only one instance in our program
     private static Rent4UDAO instance;
@@ -201,7 +198,6 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
                 bookings.add(getBooking(resultSet));
             }
         }
-        System.out.println(bookings);
         return bookings;
     }
 
@@ -272,7 +268,6 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
         throws RemoteException, SQLException
     {
-        System.out.println(customer);
         ArrayList<Booking> bookings = new ArrayList<>();
         try(Connection connection = getConnection())
         {
@@ -296,7 +291,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     @Override public void deletePersonalBooking(Booking booking)
         throws RemoteException, SQLException
     {
-
+        deleteBooking(booking);
     }
 
     @Override public void deleteCustomer(Customer customer)
@@ -422,5 +417,69 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
 
     @Override public void createPersonalAccount(Customer customer) throws RemoteException, SQLException {
         addCustomer(customer);
+    }
+
+    @Override
+    public void createEmployee(Employee employee) throws RemoteException, SQLException {
+        try (Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO employee(cpr, first_name, last_name," +
+                    "date_of_birth, phone_number, email, position, salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ");
+            statement.setString(1, employee.getCpr());
+            statement.setString(2, employee.getFirstName());
+            statement.setString(3, employee.getLastName());
+            Timestamp date_of_birth = new Timestamp(employee.getDateOfBirth().getTimeInMillis());
+            statement.setTimestamp(4, date_of_birth);
+            statement.setString(5, employee.getPhoneNumber());
+            statement.setString(6, employee.getEmail());
+            if(employee.getPosition().equalsIgnoreCase("manager"))
+                statement.setString(7, "MNG");
+            else if (employee.getPosition().equalsIgnoreCase("employee"))
+                statement.setString(7, "EMP");
+            statement.setDouble(8, employee.getSalary());
+            statement.executeUpdate();
+        }
+    }
+
+    @Override
+    public void editEmployeeInfo(Employee employee, Employee newEmployee) throws RemoteException, SQLException {
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("UPDATE employee SET cpr = ? WHERE cpr = ?");
+            statement.setString(1, newEmployee.getCpr());
+            statement.setString(2, employee.getCpr());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE employee SET first_name = ? WHERE cpr = ?");
+            statement.setString(1, newEmployee.getFirstName());
+            statement.setString(2, employee.getCpr());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE employee SET last_name = ? WHERE cpr = ?");
+            statement.setString(1, newEmployee.getLastName());
+            statement.setString(2, employee.getCpr());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE employee SET date_of_birth = ? WHERE cpr = ?");
+            Timestamp date_of_birth = new Timestamp(newEmployee.getDateOfBirth().getTimeInMillis());
+            statement.setTimestamp(1, date_of_birth);
+            statement.setString(2, employee.getCpr());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE employee SET phone_number = ? WHERE cpr = ?");
+            statement.setString(1, newEmployee.getPhoneNumber());
+            statement.setString(2, employee.getCpr());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE employee SET email = ? WHERE cpr = ?");
+            statement.setString(1, newEmployee.getEmail());
+            statement.setString(2, employee.getCpr());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE employee SET position = ? WHERE cpr = ?");
+            if(newEmployee.getPosition().equalsIgnoreCase("manager"))
+                statement.setString(1, "MNG");
+            else if (newEmployee.getPosition().equalsIgnoreCase("employee"))
+                statement.setString(1, "EMP");
+            statement.setString(2, employee.getCpr());
+            statement.executeUpdate();
+            statement = connection.prepareStatement("UPDATE employee SET salary = ? WHERE cpr = ?");
+            statement.setDouble(1, newEmployee.getSalary());
+            statement.setString(2, employee.getCpr());
+            statement.executeUpdate();
+        }
+
     }
 }
