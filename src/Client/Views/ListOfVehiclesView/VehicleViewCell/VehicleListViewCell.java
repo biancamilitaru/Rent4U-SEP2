@@ -2,27 +2,16 @@ package Client.Views.ListOfVehiclesView.VehicleViewCell;
 
 import Client.Model.Vehicle;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.css.Stylesheet;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.CacheHint;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class VehicleListViewCell extends ListCell<Vehicle>
 {
@@ -54,15 +43,13 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   public VehicleListViewCell(ListOfVehiclesViewController listOfVehiclesViewController)
   {
     this.listOfVehiclesViewController=listOfVehiclesViewController;
-
-    Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getCarSymbolImageOrange()));
-    Platform.runLater(() ->  seatSymbol.setImage(listOfVehiclesViewController.getSeatSymbolImageOrange()));
-    Platform.runLater(() ->  gearboxSymbol.setImage(listOfVehiclesViewController.getGearboxSymbolImageOrange()));
-    Platform.runLater(() ->  fuelSymbol.setImage(listOfVehiclesViewController.getFuelSymbolImageOrange()));
+    Platform.runLater(() ->  seatSymbol.setImage(listOfVehiclesViewController.getSeatSymbolImage()));
+    Platform.runLater(() ->  gearboxSymbol.setImage(listOfVehiclesViewController.getGearboxSymbolImage()));
+    Platform.runLater(() ->  fuelSymbol.setImage(listOfVehiclesViewController.getFuelSymbolImage()));
     Platform.runLater(() ->  licensePlateSymbol.setImage(listOfVehiclesViewController.getLicensePlateSymbolImage()));
-    Platform.runLater(() ->  engineSymbol.setImage(listOfVehiclesViewController.getEngineSymbolImageOrange()));
-    Platform.runLater(() ->  editSymbol.setImage(listOfVehiclesViewController.getEditSymbolImageOrange()));
-    Platform.runLater(() ->  deleteSymbol.setImage(listOfVehiclesViewController.getDeleteSymbolImageOrange()));
+    Platform.runLater(() ->  engineSymbol.setImage(listOfVehiclesViewController.getEngineSymbolImage()));
+    Platform.runLater(() ->  editSymbol.setImage(listOfVehiclesViewController.getEditSymbolImage()));
+    Platform.runLater(() ->  deleteSymbol.setImage(listOfVehiclesViewController.getDeleteSymbolImage()));
   }
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
@@ -102,7 +89,13 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       enginesPowerLabel.setText(String.valueOf(vehicle.getEnginesPower()));
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
-      System.out.println(getId());
+      if (vehicle.getType().equals("Motorcycle")){
+        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getMotorcycleImage()));
+      } else if (vehicle.getType().equals("Bus")) {
+        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getBusImage()));
+      } else if (vehicle.getType().equals("Minivan")) {
+        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getMinivanSymbolImage()));
+      } else Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getCarSymbolImage()));
 
       if (getIndex()%2==0){
         //OnOrange
@@ -110,7 +103,6 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       } else {
         //OnWhite
         setStyle("-fx-background-color: F4AF82");
-        System.out.println(getStyle());
       }
 
 
