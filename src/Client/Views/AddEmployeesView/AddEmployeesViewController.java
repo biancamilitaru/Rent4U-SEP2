@@ -45,7 +45,7 @@ public class AddEmployeesViewController implements ViewController
   public GregorianCalendar getDateBirth(){
     LocalDate date = dateOfBirthPicker.getValue();
 
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
 
     return dateOfBirth;
   }
@@ -71,7 +71,8 @@ public class AddEmployeesViewController implements ViewController
     }
     if(success)
       addedLabel.setVisible(true);
-    viewHandler.openListOfEmployees();
+    //viewHandler.openListOfEmployees();
+
   }
 
   public void onMenuButton(){

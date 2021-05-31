@@ -71,7 +71,7 @@ public class ListOfPersonalBookingsViewController implements ViewController
 
   public void onDelete(Booking booking) throws RemoteException, SQLException
   {
-    listOfPersonalBookingsViewModel.deleteBooking(booking);
+    listOfPersonalBookingsViewModel.deletePersonalBooking(booking);
     viewHandler.openPersonalBookings(customer);
   }
 }
