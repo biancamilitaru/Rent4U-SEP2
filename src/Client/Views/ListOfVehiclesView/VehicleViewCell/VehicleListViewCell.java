@@ -2,12 +2,13 @@ package Client.Views.ListOfVehiclesView.VehicleViewCell;
 
 import Client.Model.Vehicle;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -30,8 +31,26 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   @FXML Label priceLabel;
   @FXML Label typeLabel;
 
-  public VehicleListViewCell(ListOfVehiclesViewController listOfVehiclesViewController){
+  @FXML public ImageView carSymbol = new ImageView();
+  @FXML public ImageView seatSymbol = new ImageView();
+  @FXML public ImageView gearboxSymbol = new ImageView();
+  @FXML public ImageView fuelSymbol = new ImageView();
+  @FXML public ImageView licensePlateSymbol = new ImageView();
+  @FXML public ImageView engineSymbol = new ImageView();
+  @FXML public ImageView editSymbol = new ImageView();
+  @FXML public ImageView deleteSymbol = new ImageView();
+
+
+  public VehicleListViewCell(ListOfVehiclesViewController listOfVehiclesViewController)
+  {
     this.listOfVehiclesViewController=listOfVehiclesViewController;
+    Platform.runLater(() ->  seatSymbol.setImage(listOfVehiclesViewController.getSeatSymbolImage()));
+    Platform.runLater(() ->  gearboxSymbol.setImage(listOfVehiclesViewController.getGearboxSymbolImage()));
+    Platform.runLater(() ->  fuelSymbol.setImage(listOfVehiclesViewController.getFuelSymbolImage()));
+    Platform.runLater(() ->  licensePlateSymbol.setImage(listOfVehiclesViewController.getLicensePlateSymbolImage()));
+    Platform.runLater(() ->  engineSymbol.setImage(listOfVehiclesViewController.getEngineSymbolImage()));
+    Platform.runLater(() ->  editSymbol.setImage(listOfVehiclesViewController.getEditSymbolImage()));
+    Platform.runLater(() ->  deleteSymbol.setImage(listOfVehiclesViewController.getDeleteSymbolImage()));
   }
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
@@ -72,15 +91,29 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       enginesPowerLabel.setText(String.valueOf(vehicle.getEnginesPower()));
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
-      setText(null);
-      setGraphic(this.anchorPane);
+      if (vehicle.getType().equals("Motorcycle")){
+        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getMotorcycleImage()));
+      } else if (vehicle.getType().equals("Bus")) {
+        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getBusImage()));
+      } else if (vehicle.getType().equals("Minivan")) {
+        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getMinivanSymbolImage()));
+      } else Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getCarSymbolImage()));
 
       if (getIndex()%2==0){
-        setStyle("-fx-background-color:F4AF82;");
-      } else setStyle("-fx-background-color:FFFFFF;");
+        //OnOrange
+        setStyle("-fx-background-color: FFFFFF");
+      } else {
+        //OnWhite
+        setStyle("-fx-background-color: F4AF82");
+      }
+
+
+      setText(null);
+      setGraphic(this.anchorPane);
+    }
 
     }
-  }
+
 
   public void clickedEditButton() throws SQLException, RemoteException
   {

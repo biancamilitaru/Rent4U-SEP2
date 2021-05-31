@@ -3,9 +3,10 @@ package Client.Views.MenuCustomerView;
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
 import Client.Model.Customer;
-import Client.ViewModel.LogInCustomerViewModel;
 import Client.ViewModel.MenuCustomerViewModel;
 import Client.Views.ViewController;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ public class MenuCustomerViewController implements ViewController
 {
   private ViewHandler viewHandler;
   private MenuCustomerViewModel menuCustomerViewModel;
+  @FXML Label nameLabel;
 
   private Customer customer;
 
@@ -27,6 +29,7 @@ public class MenuCustomerViewController implements ViewController
   public void setCustomer(Customer customer)
   {
     this.customer = customer;
+    nameLabel.setText(customer.getFirstName() + " " + customer.getLastName());
   }
 
   public void onCreateBooking() throws SQLException, RemoteException {

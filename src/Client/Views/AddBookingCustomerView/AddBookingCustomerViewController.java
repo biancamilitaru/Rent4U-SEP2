@@ -95,7 +95,7 @@ public class AddBookingCustomerViewController implements ViewController {
   public void onCreateBookingButton() throws RemoteException, SQLException {
     int id = Integer.parseInt(customer.getCpr_number());
     viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
-
+    viewHandler.openMenuCustomerView(customer);
   }
 
   public int daysBetween(Date d1, Date d2) {
@@ -129,5 +129,9 @@ public class AddBookingCustomerViewController implements ViewController {
         ){
       listView.setVisible(true);
     } else listView.setVisible(false);
+  }
+
+  public void onMainMenuButton(javafx.event.ActionEvent actionEvent) throws SQLException, RemoteException {
+    viewHandler.openMenuCustomerView(customer);
   }
 }

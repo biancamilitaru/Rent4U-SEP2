@@ -13,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Callback;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -24,31 +23,50 @@ public class ListOfVehiclesViewController implements ViewController
   private ViewHandler viewHandler;
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
 
-  //@FXML TableView table = new TableView();
-
   @FXML ListView<Vehicle> listView;
-  @FXML ImageView logoLabel;
+  @FXML ImageView logoSymbol;
+
+
   public final ObservableList<Vehicle> tableObservableList = FXCollections.observableArrayList();
+
+  public Image carSymbolImage = new Image("/GUI/Vehicle/CarSymbol.png");
+  public Image minivanSymbolImage = new Image("/GUI/Vehicle/MiniVanSymbol.png");
+  public Image busImage = new Image("/GUI/Vehicle/BusSymbol.png");
+  public Image motorcycleImage = new Image("/GUI/Vehicle/MotorcycleSymbol.png");
+  public Image seatSymbolImage = new Image("/GUI/Vehicle/SeatSymbol.png");
+  public Image gearboxSymbolImage = new Image("/GUI/Vehicle/GearboxSymbol.png");
+  public Image fuelSymbolImage = new Image("/GUI/Vehicle/FuelSymbol.png");
+  public Image engineSymbolImage = new Image("/GUI/Vehicle/EnginePowerSymbol.png");
+  public Image editSymbolImage = new Image("/GUI/Vehicle/EditSymbol.png");
+  public Image deleteSymbolImage = new Image("/GUI/Vehicle/DeleteSymbol.png");
+  public Image licensePlateSymbol = new Image("/GUI/Vehicle/LicensePlate.png");
+
+  public Image getCarSymbolImage() { return carSymbolImage; }
+  public Image getMinivanSymbolImage() { return minivanSymbolImage; }
+  public Image getBusImage() { return busImage; }
+  public Image getMotorcycleImage() { return motorcycleImage; }
+  public Image getSeatSymbolImage() { return seatSymbolImage; }
+  public Image getGearboxSymbolImage() { return gearboxSymbolImage; }
+  public Image getFuelSymbolImage() { return fuelSymbolImage; }
+  public Image getEngineSymbolImage() { return engineSymbolImage; }
+  public Image getEditSymbolImage() { return editSymbolImage; }
+  public Image getDeleteSymbolImage() { return deleteSymbolImage; }
+  public Image getLicensePlateSymbolImage() { return licensePlateSymbol; }
 
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException {
     this.viewHandler = viewHandler;
     this.listOfVehiclesViewModel = viewModelFactory.getListOfVehiclesViewModel();
-    //addStatusButton();
-    //addEditButton();
-
-    Image logo = new Image("/GUI/Logo.png");
-    logoLabel.setImage(logo);
-
     getVehicleData(listOfVehiclesViewModel.getVehicles());
 
-    //table.setItems(tableObservableList);
-
+    Image logo = new Image("/GUI/Logo.png");
+    logoSymbol.setImage(logo);
     listView.setItems(tableObservableList);
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell(this));
-
     listView.setFixedCellSize(50);
+
+    listView.setFocusTraversable( false );
   }
 
   public void onAddVehicleButton(ActionEvent evt)
@@ -80,93 +98,4 @@ public class ListOfVehiclesViewController implements ViewController
     }
     return tableObservableList;
 }
-
-
-/*
-  private void addStatusButton() {
-    TableColumn<Vehicle, Void> colBtn = new TableColumn("Status");
-
-    Callback<TableColumn<Vehicle, Void>, TableCell<Vehicle, Void>> cellFactory = new Callback<TableColumn<Vehicle, Void>, TableCell<Vehicle, Void>>() {
-      @Override
-      public TableCell<Vehicle, Void> call(final TableColumn<Vehicle, Void> param) {
-        final TableCell<Vehicle, Void> cell = new TableCell<Vehicle, Void>() {
-
-          private final Button btn = new Button("New");
-
-          {
-            btn.setOnAction((ActionEvent event) -> {
-              Vehicle data = getTableView().getItems().get(getIndex());
-              System.out.println("selectedData: " + data);
-              viewHandler.openSetStatusView(data);
-
-            });
-          }
-
-          @Override
-          public void updateItem(Void item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-              setGraphic(null);
-            } else {
-              setGraphic(btn);
-            }
-          }
-        };
-        return cell;
-      }
-    };
-
-    colBtn.setCellFactory(cellFactory);
-    colBtn.setPrefWidth(82.5);
-
-    table.getColumns().add(colBtn);
-
-  }
-
-  private void addEditButton() {
-    TableColumn<Vehicle, Void> colBtn = new TableColumn("Edit");
-
-    Callback<TableColumn<Vehicle, Void>, TableCell<Vehicle, Void>> cellFactory = new Callback<TableColumn<Vehicle, Void>, TableCell<Vehicle, Void>>() {
-      @Override
-      public TableCell<Vehicle, Void> call(final TableColumn<Vehicle, Void> param) {
-        final TableCell<Vehicle, Void> cell = new TableCell<Vehicle, Void>() {
-
-          private final Button btn = new Button("Edit");
-
-          {
-            btn.setOnAction((ActionEvent event) -> {
-              Vehicle data = getTableView().getItems().get(getIndex());
-              System.out.println("selectedData: " + data);
-              try {
-                viewHandler.openEditVehicle(data);
-              } catch (SQLException throwables) {
-                throwables.printStackTrace();
-              } catch (RemoteException e) {
-                e.printStackTrace();
-              }
-            });
-          }
-
-          @Override
-          public void updateItem(Void item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-              setGraphic(null);
-            } else {
-              setGraphic(btn);
-            }
-          }
-        };
-        return cell;
-      }
-    };
-
-    colBtn.setCellFactory(cellFactory);
-    colBtn.setPrefWidth(82.5);
-
-    table.getColumns().add(colBtn);
-
-  }
- */
-
 }

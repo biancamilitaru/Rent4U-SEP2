@@ -2,6 +2,7 @@ package Client.Views.AddPersonalAccountView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
+import Client.Model.Customer;
 import Client.ViewModel.AddPersonalAccountViewModel;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;
@@ -63,6 +64,7 @@ public class AddPersonalAccountViewController implements ViewController
 
   public void onCreateButton() throws RemoteException, SQLException {
     if (checkPassword()){
+      Customer customer =
       addPersonalAccountViewModel.createPersonalAccount(
           firstNameField.getText(),
           lastNameField.getText(),
@@ -73,6 +75,7 @@ public class AddPersonalAccountViewController implements ViewController
           drivingLicenseField.getText(),
           getCpr()
       );
+      viewHandler.openMenuCustomerView(customer);
     }
   }
 
