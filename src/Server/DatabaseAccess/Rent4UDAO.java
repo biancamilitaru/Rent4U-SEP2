@@ -272,13 +272,25 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
         throws RemoteException, SQLException
     {
-        return null;
+        System.out.println(customer);
+        ArrayList<Booking> bookings = new ArrayList<>();
+        try(Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM booking WHERE cpr_of_customer = ?");
+            statement.setString(1, customer.getCpr_number());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next())
+            {
+                bookings.add(getBooking(resultSet));
+            }
+        }
+        return bookings;
     }
 
     @Override public void editPersonalBooking(Booking booking,
         Booking newBooking) throws RemoteException, SQLException
     {
-
+        editBookingInfo(booking, newBooking);
     }
 
     @Override public void deletePersonalBooking(Booking booking)

@@ -1,9 +1,10 @@
 package Client.Views.ListOfPersonalBookings.PersonalBookingCell;
 
+import Client.Core.ViewHandler;
 import Client.Model.Booking;
-import Client.Model.Customer;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfPersonalBookings.ListOfPersonalBookingsViewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -27,71 +28,65 @@ public class PersonalBookingCellViewController extends ListCell<Booking>
   @FXML Label endDateLabel;
   @FXML Label priceLabel;
 
-  private ListOfPersonalBookingsViewController listOfPersonalBookingsViewController;
+  private ListOfPersonalBookingsViewController listOfBookingsViewController;
   public Booking booking;
-  private Customer customer;
 
-  public PersonalBookingCellViewController(ListOfPersonalBookingsViewController listOfPersonalBookingsViewController)
-  {
-    this.listOfPersonalBookingsViewController = listOfPersonalBookingsViewController;
+  public PersonalBookingCellViewController(ListOfPersonalBookingsViewController listOfBookingsViewController){
+    this.listOfBookingsViewController=listOfBookingsViewController;
   }
 
   @Override protected void updateItem(Booking booking, boolean empty)
   {
-    int id = Integer.parseInt(customer.getCpr_number());
-    if (booking.getIdOfCustomer() == id)
+    this.booking=booking;
+    super.updateItem(booking, empty);
+
+    if (empty || booking == null)
     {
-      this.booking=booking;
-      super.updateItem(booking, empty);
+      setText(null);
+      setGraphic(null);
+    }
+    else
+    {
+      if (mLLoader == null)
+      {
+        mLLoader = new FXMLLoader(getClass().getResource("BookingViewCell.fxml"));
+        mLLoader.setController(this);
 
-      if (empty || booking == null)
-      {
-        setText(null);
-        setGraphic(null);
-      }
-      else
-      {
-        if (mLLoader == null)
+        try
         {
-          mLLoader = new FXMLLoader(getClass().getResource("BookingViewCell.fxml"));
-          mLLoader.setController(this);
-
-          try
-          {
-            anchorPane = mLLoader.load();
-          }
-          catch (IOException e)
-          {
-            e.printStackTrace();
-          }
-
+          anchorPane = mLLoader.load();
         }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy \n hh:mm");
+        catch (IOException e)
+        {
+          e.printStackTrace();
+        }
 
-        bookingIdLabel.setText(String.valueOf(booking.getBooking_id()));
-        customerIdLabel.setText(String.valueOf(booking.getIdOfCustomer()));
-        licensePlateLabel.setText(booking.getLicencePlate());
-        dateFormat.setCalendar(booking.getStartTime());
-        startDateLabel.setText(dateFormat.format(booking.getStartTime().getTime()));
-        dateFormat.setCalendar(booking.getEndTime());
-        endDateLabel.setText(dateFormat.format(booking.getEndTime().getTime()));
-        priceLabel.setText(String.valueOf(booking.getPrice()));
-
-        setText(null);
-
-        setGraphic(this.anchorPane);
       }
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy \n hh:mm");
+
+      bookingIdLabel.setText(String.valueOf(booking.getBooking_id()));
+      customerIdLabel.setText(String.valueOf(booking.getIdOfCustomer()));
+      licensePlateLabel.setText(booking.getLicencePlate());
+      dateFormat.setCalendar(booking.getStartTime());
+      startDateLabel.setText(dateFormat.format(booking.getStartTime().getTime()));
+      dateFormat.setCalendar(booking.getEndTime());
+      endDateLabel.setText(dateFormat.format(booking.getEndTime().getTime()));
+      priceLabel.setText(String.valueOf(booking.getPrice()));
+
+      setText(null);
+
+      setGraphic(this.anchorPane);
     }
   }
 
   public void onClickedEditButton() throws SQLException, RemoteException
   {
-    listOfPersonalBookingsViewController.onEdit(booking);
+    listOfBookingsViewController.onEdit(booking);
   }
 
   public void onClickedDeleteButton() throws RemoteException, SQLException
   {
-    listOfPersonalBookingsViewController.onDelete(booking);
+    listOfBookingsViewController.onDelete(booking);
   }
 
 }

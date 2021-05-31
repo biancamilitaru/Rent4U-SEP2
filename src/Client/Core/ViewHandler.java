@@ -530,7 +530,7 @@ public class ViewHandler
   public void openPersonalBookings(Customer customer) throws SQLException, RemoteException {
 
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("../Views/ListOfPersonalBookings.ListOfPersonalBookingsView.fxml"));
+    loader.setLocation(getClass().getResource("../Views/ListOfPersonalBookings/ListOfPersonalBookingsView.fxml"));
     Parent root = null;
     try
     {
@@ -541,7 +541,6 @@ public class ViewHandler
       System.out.println(e.getMessage());
       System.out.println(loader.getLocation());
     }
-    //Check what Milan named the controller
     ListOfPersonalBookingsViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Personal Bookings");
@@ -551,8 +550,4 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
-
-
-
-
 }

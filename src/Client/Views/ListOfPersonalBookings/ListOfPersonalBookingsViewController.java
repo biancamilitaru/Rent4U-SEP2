@@ -5,13 +5,15 @@ import Client.Core.ViewModelFactory;
 import Client.Model.Booking;
 import Client.Model.Customer;
 import Client.ViewModel.ListOfPersonalBookingsViewModel;
+import Client.Views.ListOfBookingsView.BookingViewCell.BookingListViewCell;
+import Client.Views.ListOfPersonalBookings.PersonalBookingCell.PersonalBookingCellViewController;
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
-import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,16 +29,19 @@ public class ListOfPersonalBookingsViewController implements ViewController
 
 
   @Override public void init(ViewHandler viewHandler,
-      ViewModelFactory viewModelFactory) throws SQLException, RemoteException
+      ViewModelFactory viewModelFactory)
   {
     this.viewHandler = viewHandler;
     this.listOfPersonalBookingsViewModel = viewModelFactory.getListOfPersonalBookingViewModel();
-    getBookingData(listOfPersonalBookingsViewModel.getPersonalBookings(customer));
   }
 
-  public void setCustomer(Customer customer)
-  {
+  public void setCustomer(Customer customer) throws SQLException, RemoteException {
     this.customer = customer;
+    getBookingData(listOfPersonalBookingsViewModel.getPersonalBookings(customer));
+    listView.setItems(bookingsObservableList);
+    listView.setCellFactory(vehicleListView -> new PersonalBookingCellViewController(this));
+
+    listView.setFixedCellSize(73);
   }
 
   public void onAddBookingButton(ActionEvent evt) throws SQLException, RemoteException
@@ -69,5 +74,4 @@ public class ListOfPersonalBookingsViewController implements ViewController
     listOfPersonalBookingsViewModel.deleteBooking(booking);
     viewHandler.openPersonalBookings(customer);
   }
-
 }

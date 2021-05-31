@@ -108,8 +108,8 @@ public class EditPersonalInfoViewController implements ViewController
     );
   }
 
-  public void onMenuButton(ActionEvent actionEvent) throws SQLException, RemoteException {
-    viewHandler.openMenuCustomerView(customer);
-  }
+    public void onMenu(ActionEvent actionEvent) throws SQLException, RemoteException {
+      viewHandler.openMenuCustomerView(customer);
+    }
 }
 
