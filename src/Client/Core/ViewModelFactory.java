@@ -2,6 +2,7 @@ package Client.Core;
 
 import Client.ViewModel.*;
 import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
+import Client.Views.EditPersonalBookingView.EditPersonalBookingViewController;
 
 public class ViewModelFactory
 {
@@ -13,6 +14,7 @@ public class ViewModelFactory
     return instance;
   }
 
+  private EditPersonalBookingViewModel editPersonalBookingViewModel;
   private LogInViewModel logInViewModel;
   private AddVehicleViewModel addVehicleViewModel;
   private MenuViewModel menuViewModel;
@@ -32,9 +34,7 @@ public class ViewModelFactory
   private LogInCustomerViewModel logInCustomerViewModel;
   private MenuCustomerViewModel menuCustomerViewModel;
   private ListOfPersonalBookingsViewModel listOfPersonalBookingsViewModel;
-  private EditPersonalBookingViewModel editPersonalBookingViewModel;
   private AddEmployeeViewModel addEmployeeViewModel;
-
   private ViewModelFactory() {
   }
 

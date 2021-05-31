@@ -1,12 +1,11 @@
-package Client.Views.EditBookingInfoView;
+package Client.Views.EditPersonalBookingView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Vehicle;
-import Client.ViewModel.AddBookingViewModel;
-import Client.ViewModel.EditBookingInfoViewModel;
-import Client.Views.AddBookingView.VehicleViewCell.VehicleListViewCell;
+import Client.Views.EditPersonalBookingView.VehicleViewCell.VehicleListViewCell;
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,39 +16,39 @@ import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class EditBookingInfoViewController implements ViewController
+public class EditPersonalBookingViewController implements ViewController
 {
-  private ViewHandler viewHandler;
-  private EditBookingInfoViewModel editBookingInfoViewModel;
-  private Vehicle vehicle;
+  //Maybe more private fields?? I am not sure (Kyra)
   @FXML DatePicker startDatePicker;
   @FXML DatePicker endDatePicker;
   @FXML TextField startHour;
   @FXML TextField startMinute;
   @FXML TextField endHour;
   @FXML TextField endMinute;
-  @FXML ComboBox<String> type;
   @FXML ListView listView;
-  @FXML ComboBox<String> customerID;
-  @FXML Label totalPrice;
-
-  public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
+  @FXML Label totalPriceOfBooking;
+  @FXML ComboBox<String> type;
+  private ViewHandler viewHandler;
+  private Customer customer;
+  private EditPersonalBookingViewModel editPersonalBookingViewModel;
   private Booking booking;
+  public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
+  private Vehicle vehicle;
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
   {
     this.viewHandler=viewHandler;
-    editBookingInfoViewModel=viewModelFactory.getEditBookingInfoViewModel();
-    getVehicleData(editBookingInfoViewModel.getVehicles());
-    listView.setItems(vehiclesObservableList);
-    listView.setCellFactory(studentListView -> new VehicleListViewCell(null));
+    editPersonalBookingViewModel=viewModelFactory.getEditPersonalBookingViewModel();
+    getVehicleData(editPersonalBookingViewModel.getVehicles());
+    listView.setCellFactory(vehiclesObservableList-> new VehicleListViewCell(this));
+    listView.setFixedCellSize(125);
+    listView.setVisible(false);
+    type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -59,16 +58,6 @@ public class EditBookingInfoViewController implements ViewController
       vehiclesObservableList.add(vehiclesArrayList.get(x));
     }
     return vehiclesObservableList;
-  }
-
-  public void setBooking(Booking booking)
-  {
-    this.booking=booking;
-  }
-
-  public void setVehicle(Vehicle vehicle)
-  {
-    this.vehicle = vehicle;
   }
   public GregorianCalendar getStartDate(){
     int startHour1 = Integer.parseInt(startHour.getText());
@@ -89,21 +78,20 @@ public class EditBookingInfoViewController implements ViewController
 
     return endDate;
   }
-  public int daysBetween(Date d1, Date d2) {
-  return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
-}
 
-  public double getTotalPrice(){
-    int daysBetween = daysBetween(getStartDate().getTime(),getEndDate().getTime());
-
-    if (vehicle!=null){
-      return vehicle.getPrice()*daysBetween;
-    }
-    else return 0;
+  public void setCustomer(Customer customer)
+  {
+    this.customer=customer;
   }
 
-  public void setTotalPriceOfBooking(){
-    totalPrice.setText(String.valueOf(getTotalPrice()));
+  public void setBooking(Booking booking)
+  {
+    this.booking=booking;
+  }
+
+  public void setVehicle(Vehicle vehicle)
+  {
+    this.vehicle=vehicle;
   }
 
   public void onUpdateBookingButton(ActionEvent evt)
@@ -127,12 +115,32 @@ public class EditBookingInfoViewController implements ViewController
     GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
     GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
 
-    editBookingInfoViewModel.editBookingInfo(booking,idOfCustomer,licensePlate,startDate1,endDate1,price);
+    editPersonalBookingViewModel.editBookingInfo(booking,idOfCustomer,licensePlate,startDate1,endDate1,price);
 
+  }
+  public int daysBetween(Date d1, Date d2) {
+    return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+  }
+
+  public double getTotalPrice(){
+    int daysBetween = daysBetween(getStartDate().getTime(),getEndDate().getTime());
+
+    if (vehicle!=null){
+      return vehicle.getPrice()*daysBetween;
+    }
+    else return 0;
+  }
+
+  public void setTotalPriceOfBooking(){
+    totalPriceOfBooking.setText(String.valueOf(getTotalPrice()));
   }
 
 
-  public void onExitButton(){
-    viewHandler.openMainMenu();
+
+  public void onExitButton() throws SQLException, RemoteException
+  {
+    viewHandler.openMenuCustomerView(customer);
   }
+
+
 }
