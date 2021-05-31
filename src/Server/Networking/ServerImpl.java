@@ -123,6 +123,12 @@ public class ServerImpl implements RMIServer
         serverModelManager.editPersonalInfo(customer,newCustomer);
     }
 
+    @Override public void editPersonalBooking(Booking booking,
+        Booking newBooking) throws RemoteException, SQLException
+    {
+        serverModelManager.editPersonalBooking(booking,newBooking);
+    }
+
     @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
         throws RemoteException, SQLException
     {
