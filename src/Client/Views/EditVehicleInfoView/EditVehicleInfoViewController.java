@@ -127,7 +127,9 @@ public class EditVehicleInfoViewController implements ViewController
             getFuelType(),
             parseInt(nbOfSeatsField.getText()),
             parseDouble(priceField.getText())
+
         );
+        viewHandler.openListOfVehicleView();
       }
       catch (NumberFormatException | RemoteException | SQLException e)
       {
@@ -135,10 +137,7 @@ public class EditVehicleInfoViewController implements ViewController
       }
 
     });
-    viewHandler.openListOfVehicleView();
   }
-
-
 
   public void onExitButton(){
     viewHandler.openMainMenu();

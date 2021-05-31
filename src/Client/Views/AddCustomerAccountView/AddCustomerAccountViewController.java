@@ -50,7 +50,7 @@ public class AddCustomerAccountViewController implements ViewController
   }
 
   private String getCpr(){
-    return cprFirstField.getText()+"/"+cprSecondField.getText();
+    return cprFirstField.getText()+cprSecondField.getText();
   }
 
   public GregorianCalendar getDateBirth(){
@@ -73,6 +73,7 @@ public class AddCustomerAccountViewController implements ViewController
           drivingLicenseField.getText(),
           getCpr()
       );
+      viewHandler.openListOfCustomers();
     }
   }
 

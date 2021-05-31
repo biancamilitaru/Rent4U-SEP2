@@ -28,6 +28,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   @FXML Label licensePlateLabel;
   @FXML Label enginesPowerLabel;
   @FXML Label priceLabel;
+  @FXML Label typeLabel;
 
   public VehicleListViewCell(ListOfVehiclesViewController listOfVehiclesViewController){
     this.listOfVehiclesViewController=listOfVehiclesViewController;
@@ -60,6 +61,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
         }
 
       }
+      typeLabel.setText(vehicle.getType());
       makeLabel.setText(vehicle.getMake());
       modelLabel.setText(vehicle.getModel());
       yearLabel.setText(String.valueOf(vehicle.getYear()));

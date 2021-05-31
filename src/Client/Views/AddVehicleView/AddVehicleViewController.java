@@ -45,7 +45,7 @@ public class AddVehicleViewController implements ViewController
         this.viewHandler = vh;
         this.addVehicleViewModel = vmf.getAddVehicleViewModel();
 
-        types.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+        types.getItems().addAll("Car", "Minibus", "Van", "Motorcycle");
 
     }
 
@@ -93,11 +93,11 @@ public class AddVehicleViewController implements ViewController
                     parseInt(nbOfSeatsField.getText()),
                     parseDouble(priceField.getText())
                     );
+                viewHandler.openListOfVehicleView();
             } catch (SQLException | RemoteException e) {
                 e.printStackTrace();
             }
         });
-        viewHandler.openMainMenu();
   }
 
   public void onExitButton(){

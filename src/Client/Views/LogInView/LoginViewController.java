@@ -7,6 +7,7 @@ import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.rmi.RemoteException;
@@ -17,6 +18,7 @@ public class LoginViewController implements ViewController
 {
     @FXML Button logInButton;
     @FXML TextField textField;
+    @FXML Label wrongPassword;
 
     private ViewHandler viewHandler;
     private LogInViewModel viewModel;
@@ -34,7 +36,10 @@ public class LoginViewController implements ViewController
     {
         if (viewModel.logIn())
             viewHandler.openMainMenu();
-        textField.clear();
+        {
+            textField.clear();
+            wrongPassword.setVisible(true);
+        }
     }
 
     public void onBackButton(ActionEvent evt) throws SQLException, RemoteException {

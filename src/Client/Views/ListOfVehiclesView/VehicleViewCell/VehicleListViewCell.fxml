@@ -5,10 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0"
-            prefWidth="580.0" xmlns="http://javafx.com/javafx/15.0.1"
-            xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="10.0" layoutY="3.0" prefHeight="50.0" prefWidth="67.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,7 +14,7 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="TOP" layoutX="19.0" layoutY="20.0" text="Car" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="typeLabel" alignment="CENTER" contentDisplay="TOP" layoutX="19.0" layoutY="20.0" text="Car" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="59.0" layoutY="10.0" prefHeight="50.0" prefWidth="67.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="67.0" AnchorPane.topAnchor="0.0">
@@ -47,12 +44,12 @@
       </AnchorPane>
       <AnchorPane layoutX="198.0" layoutY="2.0" prefHeight="50.0" prefWidth="67.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="268.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="gearboxTypeLabel" alignment="CENTER" layoutX="19.0" layoutY="2.0" prefHeight="13.0" prefWidth="37.0" text="Gearbox &amp; Fuel" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+            <Label alignment="CENTER" layoutX="19.0" layoutY="2.0" prefHeight="13.0" prefWidth="37.0" text="Gearbox &amp; Fuel" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="TOP" layoutX="19.0" layoutY="20.0" text="automatic" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="gearboxTypeLabel" alignment="CENTER" contentDisplay="TOP" layoutX="19.0" layoutY="20.0" text="automatic" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="10.0" />
                </font>
@@ -109,12 +106,12 @@
             <Label fx:id="nbOfSeatsLabel" alignment="CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="29.0" text="4 seats" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
-      <Button onAction="#clickedEditButton" layoutX="537.0" layoutY="13.0" mnemonicParsing="false" text="Edit" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="30.0">
+      <Button layoutX="537.0" layoutY="13.0" mnemonicParsing="false" onAction="#clickedEditButton" text="Edit" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="30.0">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button onAction="#clickedDeleteButton" layoutX="572.0" layoutY="15.0" mnemonicParsing="false" text="X" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="7.0">
+      <Button layoutX="572.0" layoutY="15.0" mnemonicParsing="false" onAction="#clickedDeleteButton" text="X" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="7.0">
          <font>
             <Font size="10.0" />
          </font>
