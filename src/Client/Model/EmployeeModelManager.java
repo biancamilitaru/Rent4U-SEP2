@@ -138,4 +138,10 @@ public class EmployeeModelManager implements ClientModel
         client.deletePersonalBooking(booking);
     }
 
+    @Override public void editEmployeeInfo(Employee employee, Employee newEmployee)
+        throws RemoteException, SQLException
+    {
+        client.editEmployeeInfo(employee,newEmployee);
+    }
+
 }
