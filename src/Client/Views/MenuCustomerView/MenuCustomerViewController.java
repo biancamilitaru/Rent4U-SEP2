@@ -33,8 +33,9 @@ public class MenuCustomerViewController implements ViewController
     viewHandler.openAddBookingCustomer(customer);
   }
 
-  public void onMyBooking(){
-
+  public void onMyBooking() throws SQLException, RemoteException
+  {
+    viewHandler.openPersonalBookings(customer);
   }
 
   public void onMyAccount() throws SQLException, RemoteException {

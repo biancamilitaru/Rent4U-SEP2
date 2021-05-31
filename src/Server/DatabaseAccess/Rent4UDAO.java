@@ -269,6 +269,12 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         }
     }
 
+    @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
+        throws RemoteException, SQLException
+    {
+        return null;
+    }
+
     @Override public void deleteCustomer(Customer customer)
         throws RemoteException, SQLException
     {
