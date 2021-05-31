@@ -15,6 +15,7 @@ import Client.Views.EditCustomerAccountInfoView.EditCustomerAccountInfoViewContr
 import Client.Views.EditEmployeeInfoView.EditEmployeeInfoViewController;
 import Client.Views.EditPersonalInfoView.EditPersonalInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
+import Client.Views.ListOfEmployeesView.ListOfEmployeesViewController;
 import Client.Views.ListOfPersonalBookings.ListOfPersonalBookingsViewController;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfCustomersView.ListOfCustomersViewController;
@@ -582,8 +583,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openListOfEmployees() throws SQLException, RemoteException
-  {
+  public void openListOfEmployees() throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/ListOfEmployeesView.ListOfEmployeesView.fxml"));
@@ -606,8 +606,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openAddEmployee() throws SQLException, RemoteException
-  {
+  public void openAddEmployee() throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/AddEmployeesView/AddEmployeesView.fxml"));
@@ -628,9 +627,5 @@ public class ViewHandler
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
-  }
-
-  public void openEditEmployeeInfo(Employee employee)
-  {
   }
 }

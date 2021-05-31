@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import javax.swing.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -54,5 +55,13 @@ public class MenuViewController implements ViewController
 
   public void onListOfAllCustomersButton(ActionEvent evt ) throws SQLException, RemoteException {
     viewHandler.openListOfCustomers();
+  }
+
+  public void onAddNewEmployeeButton(ActionEvent evt) throws SQLException, RemoteException {
+    viewHandler.openAddEmployee();
+  }
+
+  public void onListOfAllEmployeesButton(ActionEvent event) throws SQLException, RemoteException {
+    viewHandler.openListOfEmployees();
   }
 }

@@ -5,6 +5,7 @@ import Client.Core.ViewModelFactory;
 import Client.Model.Customer;
 import Client.Model.Employee;
 import Client.ViewModel.ListOfCustomersViewModel;
+import Client.ViewModel.ListOfEmployeesViewModel;
 import Client.Views.ListOfEmployeesView.EmployeeCellView.EmployeeCellViewController;
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
@@ -30,7 +31,7 @@ public class ListOfEmployeesViewController implements ViewController
   {
     this.viewHandler = viewHandler;
     this.listOfEmployeesViewModel = viewModelFactory.getListOfEmployeesViewModel();
-    getEmployeesData(listOfEmployeesViewModel.getCustomers());
+    getEmployeesData(listOfEmployeesViewModel.getEmployees());
     listView.setItems(employeesArrayList);
     listView.setCellFactory(employeeListView -> new EmployeeCellViewController(this));
     listView.setFixedCellSize(40);
@@ -49,7 +50,7 @@ public class ListOfEmployeesViewController implements ViewController
   public void onAddEmployeeButton() throws SQLException, RemoteException {
     viewHandler.openAddEmployee();
   }
-
+/*
   public void onMenuButton(){
     //Menu for manager or employee? maybe it is the same
     viewHandler.openManagerMenu();
@@ -67,9 +68,10 @@ public class ListOfEmployeesViewController implements ViewController
     viewHandler.openListOfEmployees();
   }
 
-  public void editEmployee(Employee employee)
-  {
+  public void editEmployee(Employee employee) throws SQLException, RemoteException {
     viewHandler.openEditEmployeeInfo(employee);
   }
+
+ */
 
 }

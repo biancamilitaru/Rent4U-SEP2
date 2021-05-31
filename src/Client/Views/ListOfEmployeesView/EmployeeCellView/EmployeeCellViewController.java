@@ -85,7 +85,7 @@ public class EmployeeCellViewController extends ListCell<Employee>
       setGraphic(this.anchorPane);
     }
   }
-
+/*
   public void onClickedEditButton() throws SQLException, RemoteException
   {
     listOfEmployeesViewController.editEmployee(employee);
@@ -94,5 +94,7 @@ public class EmployeeCellViewController extends ListCell<Employee>
   {
     listOfEmployeesViewController.deleteEmployee(employee);
   }
+
+ */
 
 }

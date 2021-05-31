@@ -188,15 +188,14 @@ public class ViewModelFactory
   public EditEmployeeInfoViewModel getEditEmployeeViewModel()
   {
     if (editEmployeeInfoViewModel == null)
-      editEmployeeInfoViewModel = new EditEmployeeInfoViewModel(ModelFactory.getInstance()
-          .getClientModel());
+      editEmployeeInfoViewModel = new EditEmployeeInfoViewModel(ModelFactory.getInstance().getClientModel());
     return editEmployeeInfoViewModel;
   }
 
   public ListOfEmployeesViewModel getListOfEmployeesViewModel()
   {
     if(listOfEmployeesViewModel==null)
-      listOfEmployeesViewModel=new ListOfEmployeesViewModel();
+      listOfEmployeesViewModel=new ListOfEmployeesViewModel(ModelFactory.getInstance().getClientModel());
     return listOfEmployeesViewModel;
   }
 }
