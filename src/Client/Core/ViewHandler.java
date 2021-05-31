@@ -14,6 +14,7 @@ import Client.Views.EditBookingInfoView.EditBookingInfoViewController;
 import Client.Views.EditCustomerAccountInfoView.EditCustomerAccountInfoViewController;
 import Client.Views.EditPersonalInfoView.EditPersonalInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
+import Client.Views.ListOfBookingsCustomerView.ListOfBookingCustomerViewController;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfCustomersView.ListOfCustomersViewController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
@@ -479,6 +480,31 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
+
+  public void openListOfBookingCustomer(Customer customer) throws SQLException, RemoteException {
+
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("../Views/EditPersonalInfoView/EditPersonalInfoView.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    ListOfBookingCustomerViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Edit Personal Info");
+    view.setCustomer(customer);
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
 
   public void openEditPersonalInfo(Customer customer) throws SQLException, RemoteException {
 
