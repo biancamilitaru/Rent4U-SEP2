@@ -22,8 +22,8 @@ public class ListOfEmployeesViewModel
     return userModel.getEmployees();
   }
 
-  /*public void deleteEmployee(Employee employee) throws RemoteException, SQLException
+  public void deleteEmployee(Employee employee) throws RemoteException, SQLException
   {
     userModel.deleteEmployee(employee);
-  }*/
+  }
 }

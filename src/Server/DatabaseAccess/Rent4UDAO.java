@@ -516,4 +516,10 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         double salary = resultSet.getDouble(8);
         return new Employee(cpr, firstName, lastName, dateOfBirth, phoneNumber, email, salary, position);
     }
+
+    @Override public void deleteEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+
+    }
 }
