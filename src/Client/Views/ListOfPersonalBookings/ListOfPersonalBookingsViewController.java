@@ -30,7 +30,7 @@ public class ListOfPersonalBookingsViewController implements ViewController
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
   {
     this.viewHandler = viewHandler;
-    this.listOfPersonalBookingsViewModel = viewModelFactory.getListOfPersonalBookingViewModel()
+    this.listOfPersonalBookingsViewModel = viewModelFactory.getListOfPersonalBookingViewModel();
     getBookingData(listOfPersonalBookingsViewModel.getPersonalBookings(customer));
   }
 
@@ -61,7 +61,7 @@ public class ListOfPersonalBookingsViewController implements ViewController
 
   public void onEdit(Booking booking) throws SQLException, RemoteException
   {
-    viewHandler.openEditPersonalBooking(booking);
+    //viewHandler.openEditPersonalBooking(booking);
   }
 
   public void onDelete(Booking booking) throws RemoteException, SQLException
