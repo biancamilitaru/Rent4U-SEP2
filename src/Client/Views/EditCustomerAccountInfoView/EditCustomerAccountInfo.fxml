@@ -16,7 +16,7 @@
          </font>
       </Label>
       <Label layoutX="25.0" layoutY="61.0" text="Full name of a customer:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="60.0" />
-      <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" onAction="#onUpdateCustomer" text="Create an account" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
+      <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" onAction="#onUpdateCustomer" text="Save" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
       <TextField fx:id="firstNameField" layoutX="25.0" layoutY="85.0" prefHeight="27.0" prefWidth="120.0" promptText="Fisrt name" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="85.0" />
       <TextField fx:id="lastNameField" layoutX="150.0" layoutY="85.0" prefHeight="27.0" prefWidth="120.0" promptText="Last name" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="85.0" />
       <Label layoutX="25.0" layoutY="120.0" text="Date of birth:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="120.0" />

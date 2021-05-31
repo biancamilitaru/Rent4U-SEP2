@@ -72,9 +72,6 @@ public class AddEmployeesViewController implements ViewController
     if(success)
       addedLabel.setVisible(true);
     viewHandler.openListOfEmployees();
-
-
-
   }
 
   public void onMenuButton(){

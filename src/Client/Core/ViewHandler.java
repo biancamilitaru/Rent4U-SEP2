@@ -2,6 +2,7 @@ package Client.Core;
 
 import Client.Model.Booking;
 import Client.Model.Customer;
+import Client.Model.Employee;
 import Client.Model.Vehicle;
 import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
 import Client.Views.AddBookingView.AddBookingViewController;
@@ -9,6 +10,7 @@ import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
 import Client.Views.AddPersonalAccountView.AddPersonalAccountViewController;
 import Client.Views.EditBookingInfoView.EditBookingInfoViewController;
 import Client.Views.EditCustomerAccountInfoView.EditCustomerAccountInfoViewController;
+import Client.Views.EditEmployeeInfoView.EditEmployeeInfoViewController;
 import Client.Views.EditPersonalInfoView.EditPersonalInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
 import Client.Views.ListOfPersonalBookings.ListOfPersonalBookingsViewController;
@@ -526,6 +528,32 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
+
+  public void openEditEmployeeInfo(Employee employee) throws SQLException, RemoteException {
+
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("../Views/EditEmployeeInfoView/EditEmployeeInfo.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    EditEmployeeInfoViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Edit Personal Info");
+    view.setEmployee(employee);
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+
 
   public void openPersonalBookings(Customer customer) throws SQLException, RemoteException {
 
