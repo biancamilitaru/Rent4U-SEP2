@@ -16,4 +16,5 @@ public interface ManageBookings
   void deleteBooking(Booking booking) throws RemoteException, SQLException;
   ArrayList<Booking> getPersonalBookings(Customer customer) throws RemoteException, SQLException;
   void editPersonalBooking(Booking booking, Booking newBooking) throws RemoteException, SQLException;
+  void deletePersonalBooking(Booking booking) throws RemoteException, SQLException;
 }

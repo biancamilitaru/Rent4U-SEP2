@@ -132,6 +132,12 @@ public class ServerImpl implements RMIServer
         serverModelManager.createEmployee(employee);
     }
 
+    @Override public void deletePersonalBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        serverModelManager.deletePersonalBooking(booking);
+    }
+
     @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
         throws RemoteException, SQLException
     {

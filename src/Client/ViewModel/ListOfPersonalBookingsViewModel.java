@@ -23,9 +23,9 @@ public class ListOfPersonalBookingsViewModel
     return userModel.getPersonalBookings(customer);
   }
 
-  public void deleteBooking(Booking booking) throws RemoteException,SQLException
+  public void deletePersonalBooking(Booking booking) throws RemoteException,SQLException
   {
-    userModel.deleteBooking(booking);
+    userModel.deletePersonalBooking(booking);
   }
 
 
