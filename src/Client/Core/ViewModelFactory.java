@@ -31,6 +31,7 @@ public class ViewModelFactory
   private AddBookingCustomerViewModel addBookingCustomerViewModel;
   private LogInCustomerViewModel logInCustomerViewModel;
   private MenuCustomerViewModel menuCustomerViewModel;
+  private EditPersonalBookingViewModel editPersonalBookingViewModel;
 
   private ViewModelFactory() {
   }
@@ -155,5 +156,12 @@ public class ViewModelFactory
     if(menuCustomerViewModel==null)
       menuCustomerViewModel=new MenuCustomerViewModel(ModelFactory.getInstance().getClientModel());
     return menuCustomerViewModel;
+  }
+
+  public EditPersonalBookingViewModel getEditPersonalBookingViewModel()
+  {
+    if(editPersonalBookingViewModel==null)
+      editPersonalBookingViewModel=new EditPersonalBookingViewModel(ModelFactory.getInstance().getClientModel());
+    return editPersonalBookingViewModel;
   }
 }

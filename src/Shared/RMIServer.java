@@ -33,5 +33,6 @@ public interface RMIServer extends Remote
     void deleteCustomer(Customer customer) throws RemoteException, SQLException;
     Customer checkForPassword(String emailAddress, String password) throws RemoteException, SQLException;
     void editPersonalInfo(Customer customer, Customer newCustomer)throws RemoteException, SQLException;
+    void editPersonalBooking(Booking booking, Booking newBooking) throws RemoteException, SQLException;
 
 }

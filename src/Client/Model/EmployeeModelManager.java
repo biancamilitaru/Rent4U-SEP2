@@ -114,4 +114,10 @@ public class EmployeeModelManager implements ClientModel
         client.editPersonalInfo(customer,newCustomer);
     }
 
+    @Override public void editPersonalBooking(Booking booking,
+        Booking newBooking) throws RemoteException, SQLException
+    {
+        client.editPersonalBooking(booking,newBooking);
+    }
+
 }
