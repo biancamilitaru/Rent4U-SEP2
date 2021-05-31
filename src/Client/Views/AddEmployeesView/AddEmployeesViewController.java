@@ -66,7 +66,7 @@ public class AddEmployeesViewController implements ViewController
   }
 
   public void onMenuButton(){
-    viewHandler.openManagerMenu();
+    viewHandler.openMainMenu();
   }
 
 }

@@ -15,6 +15,7 @@ import Client.Views.EditCustomerAccountInfoView.EditCustomerAccountInfoViewContr
 import Client.Views.EditEmployeeInfoView.EditEmployeeInfoViewController;
 import Client.Views.EditPersonalInfoView.EditPersonalInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
+import Client.Views.ListOfEmployeesView.ListOfEmployeesViewController;
 import Client.Views.ListOfPersonalBookings.ListOfPersonalBookingsViewController;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfCustomersView.ListOfCustomersViewController;

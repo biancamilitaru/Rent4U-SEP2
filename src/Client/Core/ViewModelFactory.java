@@ -196,7 +196,8 @@ public class ViewModelFactory
   public ListOfEmployeesViewModel getListOfEmployeesViewModel()
   {
     if(listOfEmployeesViewModel==null)
-      listOfEmployeesViewModel=new ListOfEmployeesViewModel();
+      listOfEmployeesViewModel=new ListOfEmployeesViewModel(ModelFactory.getInstance()
+          .getClientModel());
     return listOfEmployeesViewModel;
   }
 }
