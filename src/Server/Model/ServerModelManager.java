@@ -127,4 +127,10 @@ public class ServerModelManager implements ServerModel
     {
         manageEmployees.createEmployee(employee);
     }
+
+    @Override public void deletePersonalBooking(Booking booking)
+        throws RemoteException, SQLException
+    {
+        manageBookings.deletePersonalBooking(booking);
+    }
 }
