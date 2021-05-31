@@ -78,7 +78,7 @@ public class BookingListViewCell extends ListCell<Booking>
     }
   }
 
-  public void onClickedEditButton() throws SQLException, RemoteException
+  public void onClickedEdit() throws SQLException, RemoteException
   {
     listOfBookingsViewController.onEdit(booking);
   }

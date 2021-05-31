@@ -2,6 +2,7 @@ package Client.ViewModel;
 
 import Client.Model.Booking;
 import Client.Model.ClientModel;
+import Client.Model.Customer;
 import Client.Model.Vehicle;
 import javafx.collections.ObservableList;
 
@@ -21,7 +22,7 @@ public class EditBookingInfoViewModel
       this.userModel= userModel;
 
     }
-    public void editBookingInfo(Booking booking , int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price)
+    public void editBookingInfo(Booking booking , int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price)
             throws RemoteException, RemoteException, SQLException {
         Booking newBooking = new Booking(idOfCustomer, licencePlate, startTime, endTime, price);
         userModel.editBookingInfo(booking, newBooking);
@@ -29,5 +30,9 @@ public class EditBookingInfoViewModel
 
     public ArrayList<Vehicle> getVehicles() throws SQLException, RemoteException {
         return userModel.getVehicles();
+    }
+
+    public ArrayList<Customer> getCustomers() throws SQLException, RemoteException {
+        return userModel.getCustomers();
     }
 }

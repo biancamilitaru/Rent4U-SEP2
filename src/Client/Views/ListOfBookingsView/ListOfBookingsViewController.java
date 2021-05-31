@@ -14,7 +14,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -41,7 +40,6 @@ public class ListOfBookingsViewController implements ViewController
     listView.setCellFactory(vehicleListView -> new BookingListViewCell(this));
 
     listView.setFixedCellSize(73);
-    System.out.println(bookingsObservableList);
   }
 
   public void onAddBookingButton(ActionEvent evt)

@@ -50,7 +50,6 @@ public class SetStatusViewController implements ViewController
   public void setVehicle(Vehicle vehicle)
   {
     this.vehicle = vehicle;
-    System.out.println(vehicle.getMake() + " " + vehicle.getModel());
     makeAndModelLabel.setText(vehicle.getMake()+" + "+vehicle.getModel());
     licensePlateLabel.setText(vehicle.getLicensePlate());
   }

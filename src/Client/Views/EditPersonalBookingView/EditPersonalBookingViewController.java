@@ -34,7 +34,7 @@ public class EditPersonalBookingViewController implements ViewController
   @FXML ComboBox<String> type;
   private ViewHandler viewHandler;
   private Customer customer;
-  private EditPersonalBookingViewModel editPersonalBookingViewModel;
+  //private EditPersonalBookingViewModel editPersonalBookingViewModel;
   private Booking booking;
   public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
   private Vehicle vehicle;
@@ -43,8 +43,8 @@ public class EditPersonalBookingViewController implements ViewController
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
   {
     this.viewHandler=viewHandler;
-    editPersonalBookingViewModel=viewModelFactory.getEditPersonalBookingViewModel();
-    getVehicleData(editPersonalBookingViewModel.getVehicles());
+    //editPersonalBookingViewModel=viewModelFactory.getEditPersonalBookingViewModel();
+    //getVehicleData(editPersonalBookingViewModel.getVehicles());
     listView.setCellFactory(vehiclesObservableList-> new VehicleListViewCell(this));
     listView.setFixedCellSize(125);
     listView.setVisible(false);
@@ -115,7 +115,7 @@ public class EditPersonalBookingViewController implements ViewController
     GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
     GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
 
-    editPersonalBookingViewModel.editBookingInfo(booking,idOfCustomer,licensePlate,startDate1,endDate1,price);
+    //editPersonalBookingViewModel.editBookingInfo(booking,idOfCustomer,licensePlate,startDate1,endDate1,price);
 
   }
   public int daysBetween(Date d1, Date d2) {
