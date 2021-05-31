@@ -114,4 +114,10 @@ public class EmployeeModelManager implements ClientModel
         client.editPersonalInfo(customer,newCustomer);
     }
 
+    @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
+        throws RemoteException, SQLException
+    {
+        return client.getPersonalBookings(customer);
+    }
+
 }
