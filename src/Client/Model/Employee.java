@@ -11,11 +11,11 @@ public class Employee
   private GregorianCalendar dateOfBirth;
   private String phoneNumber;
   private String email;
-  private int salary;
+  private double salary;
   private String position;
 
   public Employee(String cpr, String firstName, String lastName, GregorianCalendar dateOfBirth,String phoneNumber,
-                  String email, int salary,String position){
+                  String email, double salary,String position){
     this.cpr = cpr;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -96,13 +96,27 @@ public class Employee
     return position;
   }
 
-  public void setSalary(int salary)
+  public void setSalary(double salary)
   {
     this.salary = salary;
   }
 
-  public int getSalary()
+  public double getSalary()
   {
     return salary;
+  }
+
+  @Override
+  public String toString() {
+    return "Employee{" +
+            "cpr='" + cpr + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", dateOfBirth=" + dateOfBirth +
+            ", phoneNumber='" + phoneNumber + '\'' +
+            ", email='" + email + '\'' +
+            ", salary=" + salary +
+            ", position='" + position + '\'' +
+            '}';
   }
 }
