@@ -630,7 +630,5 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openEditEmployeeInfo(Employee employee)
-  {
-  }
+
 }
