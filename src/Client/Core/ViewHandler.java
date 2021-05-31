@@ -3,9 +3,6 @@ package Client.Core;
 import Client.Model.Booking;
 import Client.Model.Customer;
 import Client.Model.Vehicle;
-import Client.ViewModel.LogInCustomerViewModel;
-import Client.ViewModel.MenuForLogInViewModel;
-import Client.ViewModel.EditCustomerInfoViewModel;
 import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
 import Client.Views.AddBookingView.AddBookingViewController;
 import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
@@ -14,7 +11,7 @@ import Client.Views.EditBookingInfoView.EditBookingInfoViewController;
 import Client.Views.EditCustomerAccountInfoView.EditCustomerAccountInfoViewController;
 import Client.Views.EditPersonalInfoView.EditPersonalInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
-import Client.Views.ListOfBookingsCustomerView.ListOfBookingCustomerViewController;
+import Client.Views.ListOfPersonalBookings.ListOfPersonalBookingsViewController;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfCustomersView.ListOfCustomersViewController;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
@@ -495,7 +492,7 @@ public class ViewHandler
       System.out.println(e.getMessage());
       System.out.println(loader.getLocation());
     }
-    ListOfBookingCustomerViewController view = loader.getController();
+    ListOfPersonalBookingsViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Edit Personal Info");
     view.setCustomer(customer);
