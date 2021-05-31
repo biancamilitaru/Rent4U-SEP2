@@ -152,6 +152,12 @@ public class ClientImpl implements Client, ClientCallBack
         return server.getEmployees();
     }
 
+    @Override public void deleteEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+        server.deleteEmployee(employee);
+    }
+
     @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
     {
         server.deleteVehicle(vehicle);

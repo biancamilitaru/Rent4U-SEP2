@@ -146,4 +146,10 @@ public class ServerModelManager implements ServerModel
     {
         return manageEmployees.getEmployees();
     }
+
+    @Override public void deleteEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+        manageEmployees.deleteEmployee(employee);
+    }
 }

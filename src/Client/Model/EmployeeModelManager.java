@@ -150,4 +150,10 @@ public class EmployeeModelManager implements ClientModel
         return client.getEmployees();
     }
 
+    @Override public void deleteEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+        client.deleteEmployee(employee);
+    }
+
 }
