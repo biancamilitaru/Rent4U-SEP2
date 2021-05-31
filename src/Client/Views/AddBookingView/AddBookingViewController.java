@@ -50,7 +50,6 @@ public class AddBookingViewController implements ViewController {
     listView.setFixedCellSize(125);
     listView.setVisible(false);
     customersID.getItems().addAll(viewModel.getAllCustomersID());
-    System.out.println(customersID.getItems());
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }
 

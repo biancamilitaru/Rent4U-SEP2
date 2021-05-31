@@ -5,6 +5,7 @@ import Client.Core.ViewModelFactory;
 import Client.Model.Customer;
 import Client.ViewModel.EditPersonalInfoViewModel;
 import Client.Views.ViewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -107,8 +108,8 @@ public class EditPersonalInfoViewController implements ViewController
     );
   }
 
-  public void onMenu(){
-    viewHandler.openMainMenu();
+  public void onMenuButton(ActionEvent actionEvent) throws SQLException, RemoteException {
+    viewHandler.openMenuCustomerView(customer);
   }
 }
 
