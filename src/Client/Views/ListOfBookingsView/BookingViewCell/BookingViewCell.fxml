@@ -70,7 +70,7 @@
       </AnchorPane>
       <AnchorPane layoutX="470.0" layoutY="-2.0" prefHeight="73.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button alignment="CENTER" layoutX="8.0" layoutY="23.0" mnemonicParsing="false" onAction="#onClickedEditButton" prefHeight="24.0" prefWidth="36.0" text="EDIT" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
+            <Button onAction="#onClickedEdit" alignment="CENTER" layoutX="8.0" layoutY="23.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="36.0" text="EDIT" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
                <font>
                   <Font size="10.0" />
                </font>

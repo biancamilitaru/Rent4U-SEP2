@@ -3,10 +3,10 @@ package Client.Views.EditBookingInfoView;
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
 import Client.Model.Booking;
+import Client.Model.Customer;
 import Client.Model.Vehicle;
-import Client.ViewModel.AddBookingViewModel;
 import Client.ViewModel.EditBookingInfoViewModel;
-import Client.Views.AddBookingView.VehicleViewCell.VehicleListViewCell;
+import Client.Views.EditBookingInfoView.EditVehicleViewCell.EditVehicleViewCell;
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +18,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,9 +38,10 @@ public class EditBookingInfoViewController implements ViewController
   @FXML ComboBox<String> type;
   @FXML ListView listView;
   @FXML ComboBox<String> customerID;
-  @FXML Label totalPrice;
+  @FXML Label totalPriceOfBooking;
 
   public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
+  public final ObservableList<String> customersObservableList = FXCollections.observableArrayList();
   private Booking booking;
 
   @Override public void init(ViewHandler viewHandler,
@@ -47,9 +49,47 @@ public class EditBookingInfoViewController implements ViewController
   {
     this.viewHandler=viewHandler;
     editBookingInfoViewModel=viewModelFactory.getEditBookingInfoViewModel();
+
     getVehicleData(editBookingInfoViewModel.getVehicles());
     listView.setItems(vehiclesObservableList);
-    listView.setCellFactory(studentListView -> new VehicleListViewCell(null));
+
+    getCustomerData(editBookingInfoViewModel.getCustomers());
+    customerID.setItems(customersObservableList);
+
+
+    listView.setCellFactory(studentListView -> new EditVehicleViewCell(this));
+
+    listView.setFixedCellSize(120);
+  }
+
+  public static final LocalDate dateConvertor (String dateString){
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
+    LocalDate localDate = LocalDate.parse(dateString, formatter);
+    return localDate;
+  }
+
+  public String getVehiclePlate(){
+    return booking.getLicencePlate();
+  }
+
+  public void loadData(){
+    startDatePicker.setValue(
+        dateConvertor(
+            booking.getStartTime().get(Calendar.DATE)+ "-" +
+                      booking.getStartTime().get(Calendar.MONTH)+"-"+
+                      booking.getStartTime().get(Calendar.YEAR)));
+    endDatePicker.setValue(
+        dateConvertor(
+            booking.getEndTime().get(Calendar.DATE)+ "-" +
+                      booking.getEndTime().get(Calendar.MONTH)+"-"+
+                      booking.getEndTime().get(Calendar.YEAR)));
+    startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR)));
+    startMinute.setText(String.valueOf(booking.getStartTime().get(Calendar.MINUTE)));
+    endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR)));
+    endMinute.setText(String.valueOf(booking.getEndTime().get(Calendar.MINUTE)));
+    totalPriceOfBooking.setText(String.valueOf(booking.getPrice()));
+    customerID.setPromptText(String.valueOf(booking.getIdOfCustomer()));
+
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -61,14 +101,26 @@ public class EditBookingInfoViewController implements ViewController
     return vehiclesObservableList;
   }
 
+  public ObservableList<String> getCustomerData(
+      ArrayList<Customer> customersArrayList)
+  {
+    for (int x = 0; x<customersArrayList.size(); x++){
+      customersObservableList.add(customersArrayList.get(x).getCpr_number());
+    }
+    return customersObservableList;
+  }
+
   public void setBooking(Booking booking)
   {
     this.booking=booking;
+    loadData();
+    System.out.println(booking);
   }
 
   public void setVehicle(Vehicle vehicle)
   {
     this.vehicle = vehicle;
+    System.out.println(vehicle);
   }
   public GregorianCalendar getStartDate(){
     int startHour1 = Integer.parseInt(startHour.getText());
@@ -103,10 +155,10 @@ public class EditBookingInfoViewController implements ViewController
   }
 
   public void setTotalPriceOfBooking(){
-    totalPrice.setText(String.valueOf(getTotalPrice()));
+    totalPriceOfBooking.setText(String.valueOf(getTotalPrice()));
   }
 
-  public void onUpdateBookingButton(ActionEvent evt)
+  public void onUpdateBookingButton()
       throws RemoteException, SQLException
   {
 
@@ -115,10 +167,17 @@ public class EditBookingInfoViewController implements ViewController
     int startMinute1 = Integer.parseInt(startMinute.getText());
     int endMinute1 = Integer.parseInt(endMinute.getText());
 
-    //Still need to develop these functions
-    int idOfCustomer=2;
-    String licensePlate="Need to develop this";
-    int price=100;
+    String idOfCustomer = String.valueOf(booking.getIdOfCustomer());
+    if (customerID.getValue()!=null){
+      idOfCustomer = customerID.getValue();
+    }
+
+    String licensePlate = booking.getLicencePlate();
+    if (vehicle!=null){
+      licensePlate=vehicle.getLicensePlate();
+    }
+
+    double price=Double.valueOf(totalPriceOfBooking.getText());
     ///////////////////////////////////////
 
     LocalDate date1 = startDatePicker.getValue();
@@ -127,7 +186,7 @@ public class EditBookingInfoViewController implements ViewController
     GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
     GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
 
-    editBookingInfoViewModel.editBookingInfo(booking,idOfCustomer,licensePlate,startDate1,endDate1,price);
+    editBookingInfoViewModel.editBookingInfo(booking,Integer.valueOf(idOfCustomer),licensePlate,startDate1,endDate1,price);
 
   }
 
