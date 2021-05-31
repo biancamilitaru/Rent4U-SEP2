@@ -50,15 +50,15 @@ public class ListOfEmployeesViewController implements ViewController
   public void onAddEmployeeButton() throws SQLException, RemoteException {
     viewHandler.openAddEmployee();
   }
-/*
+
   public void onMenuButton(){
-    //Menu for manager or employee? maybe it is the same
-    viewHandler.openManagerMenu();
+    viewHandler.openMainMenu();
   }
 
   public void onEditEmployee(Employee employee)
+      throws SQLException, RemoteException
   {
-    viewHandler.editEmployeeInfo(employee);
+    viewHandler.openEditEmployeeInfo(employee);
   }
   
   public void deleteEmployee(Employee employee)
@@ -68,10 +68,10 @@ public class ListOfEmployeesViewController implements ViewController
     viewHandler.openListOfEmployees();
   }
 
-  public void editEmployee(Employee employee) throws SQLException, RemoteException {
+  public void editEmployee(Employee employee)
+      throws SQLException, RemoteException
+  {
     viewHandler.openEditEmployeeInfo(employee);
   }
-
- */
 
 }

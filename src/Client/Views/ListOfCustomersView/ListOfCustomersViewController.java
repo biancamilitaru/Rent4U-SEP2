@@ -60,7 +60,7 @@ public class ListOfCustomersViewController implements ViewController
   public void deleteCustomer(Customer customer) throws RemoteException, SQLException
   {
     listOfCustomersViewModel.deleteCustomer(customer);
-    viewHandler.openListOfCustomers();
+    viewHandler.openLogInCustomer();
   }
 
 

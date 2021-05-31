@@ -33,4 +33,5 @@ public interface Client
   void deletePersonalBooking(Booking booking) throws RemoteException, SQLException;
   void editEmployeeInfo(Employee employee,Employee newEmployee) throws RemoteException, SQLException;
   ArrayList<Employee> getEmployees() throws RemoteException, SQLException;
+  void deleteEmployee(Employee employee) throws RemoteException, SQLException;
 }
