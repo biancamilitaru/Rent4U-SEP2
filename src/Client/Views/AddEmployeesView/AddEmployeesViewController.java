@@ -50,10 +50,7 @@ public class AddEmployeesViewController implements ViewController
     return dateOfBirth;
   }
 
-  public void onCreateButton() throws RemoteException, SQLException{
-
-    boolean success=false;
-    try{
+  public void onCreateButton() throws RemoteException, SQLException, NumberFormatException{
       addEmployeeViewModel.createEmployee(
           getCpr(),
           firstNameField.getText(),
@@ -65,18 +62,11 @@ public class AddEmployeesViewController implements ViewController
           position.getText()
 
       );
-    success=true;}
-    catch(NumberFormatException e){
-      e.printStackTrace();
-    }
-    if(success)
-      addedLabel.setVisible(true);
-    //viewHandler.openListOfEmployees();
-
+    viewHandler.openListOfEmployees();
   }
 
   public void onMenuButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openManagerMenu();
   }
 
 }
