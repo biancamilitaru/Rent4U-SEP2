@@ -1,10 +1,6 @@
 package Server.DatabaseAccess;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Status;
-import Client.Model.Vehicle;
-
+import Client.Model.*;
 
 import java.rmi.RemoteException;
 import java.sql.*;
@@ -13,7 +9,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 
-public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomers
+public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomers, ManageEmployees
 {
     //We are using singleton for this class because we want to have only one instance in our program
     private static Rent4UDAO instance;
@@ -422,5 +418,23 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
 
     @Override public void createPersonalAccount(Customer customer) throws RemoteException, SQLException {
         addCustomer(customer);
+    }
+
+    @Override public void createEmployee(Employee employee)
+        throws RemoteException, SQLException
+    {
+
+    }
+
+    @Override public void editEmployeeInfo(Employee employee,
+        Employee newEmployee) throws RemoteException, SQLException
+    {
+
+    }
+
+    @Override public ArrayList<Employee> getEmployees()
+        throws RemoteException, SQLException
+    {
+        return null;
     }
 }

@@ -144,4 +144,10 @@ public class EmployeeModelManager implements ClientModel
         client.editEmployeeInfo(employee,newEmployee);
     }
 
+    @Override public ArrayList<Employee> getEmployees()
+        throws RemoteException, SQLException
+    {
+        return client.getEmployees();
+    }
+
 }

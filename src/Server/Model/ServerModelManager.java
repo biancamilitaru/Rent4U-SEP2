@@ -19,6 +19,7 @@ public class ServerModelManager implements ServerModel
         manageVehicles = new Rent4UDAO();
         manageBookings = new Rent4UDAO();
         manageCustomers = new Rent4UDAO();
+        manageEmployees = new Rent4UDAO();
     }
 
     @Override
@@ -138,5 +139,11 @@ public class ServerModelManager implements ServerModel
         Employee newEmployee) throws RemoteException, SQLException
     {
         manageEmployees.editEmployeeInfo(employee,newEmployee);
+    }
+
+    @Override public ArrayList<Employee> getEmployees()
+        throws RemoteException, SQLException
+    {
+        return manageEmployees.getEmployees();
     }
 }
