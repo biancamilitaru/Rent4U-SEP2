@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.AddPersonalAccountView.AddPersonalAccountViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.EditPersonalInfoView.EditPersonalInfoViewController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" onAction="#onMenuButton" text="Back to MENU" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+            <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" onAction="#onMenu" text="Back to MENU" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
             <Label layoutX="25.0" layoutY="31.0" text="Edit personal account" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="30.0">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
             <Label layoutX="25.0" layoutY="61.0" text="Edit full name:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="60.0" />
-            <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCreateButton" text="Edit account" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
+            <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" onAction="#onUpdatePersonalAccount" text="Edit account" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
             <TextField fx:id="firstNameField" layoutX="25.0" layoutY="85.0" prefHeight="27.0" prefWidth="120.0" promptText="Fisrt name" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="85.0" />
             <TextField fx:id="lastNameField" layoutX="150.0" layoutY="85.0" prefHeight="27.0" prefWidth="120.0" promptText="Last name" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="85.0" />
             <Label layoutX="25.0" layoutY="120.0" text="Date of birth:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="120.0" />
