@@ -31,6 +31,7 @@ public class ViewModelFactory
   private AddBookingCustomerViewModel addBookingCustomerViewModel;
   private LogInCustomerViewModel logInCustomerViewModel;
   private MenuCustomerViewModel menuCustomerViewModel;
+  private ListOfPersonalBookingsViewModel listOfPersonalBookingsViewModel;
 
   private ViewModelFactory() {
   }
@@ -155,5 +156,15 @@ public class ViewModelFactory
     if(menuCustomerViewModel==null)
       menuCustomerViewModel=new MenuCustomerViewModel(ModelFactory.getInstance().getClientModel());
     return menuCustomerViewModel;
+  }
+
+  public ListOfPersonalBookingsViewModel getListOfPersonalBookingViewModel()
+  {
+    if (listOfVehiclesViewModel == null)
+    {
+      listOfPersonalBookingsViewModel = new ListOfPersonalBookingsViewModel(ModelFactory.getInstance()
+          .getClientModel());
+    }
+    return listOfPersonalBookingsViewModel;
   }
 }
