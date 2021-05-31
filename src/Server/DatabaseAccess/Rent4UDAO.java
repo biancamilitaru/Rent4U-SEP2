@@ -498,7 +498,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         return employees;
     }
 
-    private Employee getEmployee(ResultSet resultSet) throws SQLException {
+    private Employee getEmployee(ResultSet resultSet) throws SQLException, RemoteException {
         String cpr = resultSet.getString(1);
         String firstName = resultSet.getString(2);
         String lastName = resultSet.getString(3);
