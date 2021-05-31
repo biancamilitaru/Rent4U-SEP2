@@ -25,7 +25,6 @@ public class AddEmployeesViewController implements ViewController
   @FXML TextField cprSecondField;
   @FXML TextField salary;
   @FXML TextField phoneField;
-  @FXML Label addedLabel;
 
   private ViewHandler viewHandler;
   private AddEmployeeViewModel addEmployeeViewModel;
@@ -35,7 +34,6 @@ public class AddEmployeesViewController implements ViewController
   {
     this.viewHandler=viewHandler;
     addEmployeeViewModel=viewModelFactory.getAddEmployeeViewModel();
-    addedLabel.setVisible(false);
   }
 
   private String getCpr(){
@@ -50,10 +48,7 @@ public class AddEmployeesViewController implements ViewController
     return dateOfBirth;
   }
 
-  public void onCreateButton() throws RemoteException, SQLException{
-
-    boolean success=false;
-    try{
+  public void onCreateButton() throws RemoteException, SQLException, NumberFormatException{
       addEmployeeViewModel.createEmployee(
           getCpr(),
           firstNameField.getText(),
@@ -65,20 +60,11 @@ public class AddEmployeesViewController implements ViewController
           position.getText()
 
       );
-    success=true;}
-    catch(NumberFormatException e){
-      e.printStackTrace();
-    }
-    if(success)
-      addedLabel.setVisible(true);
     viewHandler.openListOfEmployees();
-
-
-
   }
 
   public void onMenuButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openManagerMenu();
   }
 
 }

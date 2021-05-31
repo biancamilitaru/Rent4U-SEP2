@@ -2,15 +2,19 @@ package Client.Core;
 
 import Client.Model.Booking;
 import Client.Model.Customer;
+import Client.Model.Employee;
 import Client.Model.Vehicle;
+import Client.ViewModel.AddEmployeeViewModel;
 import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
 import Client.Views.AddBookingView.AddBookingViewController;
 import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
+import Client.Views.AddEmployeesView.AddEmployeesViewController;
 import Client.Views.AddPersonalAccountView.AddPersonalAccountViewController;
 import Client.Views.EditBookingInfoView.EditBookingInfoViewController;
 import Client.Views.EditCustomerAccountInfoView.EditCustomerAccountInfoViewController;
 import Client.Views.EditPersonalInfoView.EditPersonalInfoViewController;
 import Client.Views.EditVehicleInfoView.EditVehicleInfoViewController;
+import Client.Views.ListOfEmployeesView.ListOfEmployeesViewController;
 import Client.Views.ListOfPersonalBookings.ListOfPersonalBookingsViewController;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfCustomersView.ListOfCustomersViewController;
@@ -552,7 +556,55 @@ public class ViewHandler
     stage.show();
   }
 
+  public void openListOfEmployees() throws SQLException, RemoteException
+  {
+    FXMLLoader loader = new FXMLLoader();
 
+    loader.setLocation(getClass().getResource("../Views/ListOfEmployeesView.ListOfEmployeesView.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    ListOfEmployeesViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("List of employees");
 
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
 
+  public void openAddEmployee() throws SQLException, RemoteException
+  {
+    FXMLLoader loader = new FXMLLoader();
+
+    loader.setLocation(getClass().getResource("../Views/AddEmployeesView/AddEmployeesView.fxml"));
+    Parent root = null;
+    try
+    {
+      root = loader.load();
+    } catch (Exception e)
+    {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(loader.getLocation());
+    }
+    AddEmployeesViewController view = loader.getController();
+    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    stage.setTitle("Add Employees");
+
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openEditEmployeeInfo(Employee employee)
+  {
+  }
 }
