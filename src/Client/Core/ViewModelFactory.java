@@ -33,6 +33,7 @@ public class ViewModelFactory
   private MenuCustomerViewModel menuCustomerViewModel;
   private ListOfPersonalBookingsViewModel listOfPersonalBookingsViewModel;
   private EditPersonalBookingViewModel editPersonalBookingViewModel;
+  private AddEmployeeViewModel addEmployeeViewModel;
 
   private ViewModelFactory() {
   }
@@ -174,5 +175,10 @@ public class ViewModelFactory
           .getClientModel());
     }
     return listOfPersonalBookingsViewModel;
+  }
+  public AddEmployeeViewModel getAddEmployeeViewModel() {
+    if (addEmployeeViewModel == null)
+      addEmployeeViewModel = new AddEmployeeViewModel(ModelFactory.getInstance().getClientModel());
+    return addEmployeeViewModel;
   }
 }

@@ -16,7 +16,7 @@ public interface ClientModel
   ArrayList<Booking> getBookings() throws RemoteException, SQLException;
   void editBookingInfo(Booking booking, Booking newBooking) throws RemoteException, SQLException;
   void createCustomerAccount(Customer customer) throws RemoteException, SQLException;
-  ArrayList<Customer> getCustomers() throws RemoteException, SQLException;;
+  ArrayList<Customer> getCustomers() throws RemoteException, SQLException;
   ArrayList<Vehicle> getFreeVehicles(GregorianCalendar startDate, GregorianCalendar endDate, String type) throws RemoteException, SQLException;
   void editCustomerInfo(Customer customer,Customer newCustomer) throws RemoteException, SQLException;
   void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException;
@@ -27,4 +27,5 @@ public interface ClientModel
   void editPersonalInfo(Customer customer,Customer newCustomer) throws RemoteException, SQLException;
   ArrayList<Booking> getPersonalBookings(Customer customer) throws RemoteException, SQLException;
   void editPersonalBooking(Booking booking, Booking newBooking) throws RemoteException, SQLException;
+  void createEmployee(Employee employee) throws RemoteException, SQLException;
 }
