@@ -364,7 +364,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         Timestamp date_of_birthStamp = resultset.getTimestamp(4);
         LocalDateTime date_of_birthTime = date_of_birthStamp.toLocalDateTime();
         GregorianCalendar date_of_birth = new GregorianCalendar(date_of_birthTime.getYear(),
-                date_of_birthTime.getMonthValue(), date_of_birthTime.getDayOfMonth());
+                date_of_birthTime.getMonthValue()-1, date_of_birthTime.getDayOfMonth());
         String phoneNumber = resultset.getString(5);
         String email = resultset.getString(6);
         String drivingLicense = resultset.getString(7);
@@ -486,6 +486,34 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     @Override public ArrayList<Employee> getEmployees()
             throws RemoteException, SQLException
     {
-        return null;
+        ArrayList<Employee> employees = new ArrayList<>();
+        try (Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM employee");
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next())
+            {
+                employees.add(getEmployee(resultSet));
+            }
+        }
+        return employees;
+    }
+
+    private Employee getEmployee(ResultSet resultSet) throws SQLException {
+        String cpr = resultSet.getString(1);
+        String firstName = resultSet.getString(2);
+        String lastName = resultSet.getString(3);
+        Timestamp date_of_birth = resultSet.getTimestamp(4);
+        LocalDateTime date_of_birth_local = date_of_birth.toLocalDateTime();
+        GregorianCalendar dateOfBirth = new GregorianCalendar(date_of_birth_local.getYear(), date_of_birth_local.getMonthValue()-1,
+                date_of_birth_local.getDayOfMonth());
+        String phoneNumber = resultSet.getString(5);
+        String email = resultSet.getString(6);
+        String position = resultSet.getString(7);
+        if(position.equals("MNG"))
+            position = "Manager";
+        else if(position.equals("EMP"))
+            position = "Employee";
+        double salary = resultSet.getDouble(8);
+        return new Employee(cpr, firstName, lastName, dateOfBirth, phoneNumber, email, salary, position);
     }
 }

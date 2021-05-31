@@ -45,6 +45,7 @@ public class TestForDatabaseIgnoreTHIS {
         //manageEmployees.createEmployee(employee);
         Employee employee2 = new Employee("1212121212", "bianca", "militaru", date_of_birth, "3456",
                 "email.ro", 56, "manager");
-        manageEmployees.editEmployeeInfo(employee1, employee2);
+        //manageEmployees.editEmployeeInfo(employee1, employee2);
+        System.out.println(manageEmployees.getEmployees());
     }
 }

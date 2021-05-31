@@ -66,7 +66,7 @@ public class EditEmployeeInfoViewController implements ViewController
     cprSecondField.setText(employee.getCpr().substring(7,11));
     phoneField.setText(employee.getPhoneNumber());
     position.setText(employee.getPosition());
-    String str = Integer.toString(employee.getSalary());
+    String str = Double.toString(employee.getSalary());
     salaryField.setText(str);
   }
 
