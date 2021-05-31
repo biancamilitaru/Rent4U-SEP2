@@ -120,6 +120,11 @@ public class ClientImpl implements Client, ClientCallBack
         server.editPersonalInfo(customer,newCustomer);
     }
 
+    @Override public ArrayList<Booking> getPersonalBookings(Customer customer) throws RemoteException, SQLException
+    {
+        return server.getPersonalBookings(customer);
+    }
+
     @Override public void deleteVehicle(Vehicle vehicle) throws RemoteException, SQLException
     {
         server.deleteVehicle(vehicle);

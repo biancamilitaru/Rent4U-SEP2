@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.LogInView.LoginViewController">
     <children>
-        <Button fx:id="logInButton" layoutX="276.0" layoutY="264.0" mnemonicParsing="false" onAction="#logIn" text="LogIn" />
+        <Button fx:id="logInButton" layoutX="276.0" layoutY="294.0" mnemonicParsing="false" onAction="#logIn" text="LogIn" />
         <TextField fx:id="textField" layoutX="220.0" layoutY="229.0" promptText="Password" />
         <Label layoutX="237.0" layoutY="81.0" text="Rent4U">
             <font>
@@ -16,5 +16,6 @@
             </font>
         </Label>
       <Button layoutX="278.0" layoutY="359.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
+      <Label fx:id="wrongPassword" layoutX="254.0" layoutY="266.0" text="Wrong password" visible="false" />
     </children>
 </AnchorPane>

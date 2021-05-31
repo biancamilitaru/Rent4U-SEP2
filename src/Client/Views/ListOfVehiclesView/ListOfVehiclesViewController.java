@@ -88,6 +88,7 @@ public class ListOfVehiclesViewController implements ViewController
       throws RemoteException, SQLException
   {
     listOfVehiclesViewModel.deleteVehicle(vehicle);
+    viewHandler.openListOfVehicleView();
   }
 
   public ObservableList<Vehicle> getVehicleData(ArrayList<Vehicle> vehiclesArrayList)

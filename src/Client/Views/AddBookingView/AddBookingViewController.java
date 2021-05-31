@@ -50,7 +50,6 @@ public class AddBookingViewController implements ViewController {
     listView.setFixedCellSize(125);
     listView.setVisible(false);
     customersID.getItems().addAll(viewModel.getAllCustomersID());
-    System.out.println(customersID.getItems());
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }
 
@@ -68,7 +67,7 @@ public class AddBookingViewController implements ViewController {
     int startMinute1 = Integer.parseInt(startMinute.getText());
     LocalDate date1 = startDatePicker.getValue();
 
-    GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
+    GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
 
     return startDate;
   }
@@ -78,14 +77,14 @@ public class AddBookingViewController implements ViewController {
     int endMinute1 = Integer.parseInt(endMinute.getText());
     LocalDate date2 = endDatePicker.getValue();
 
-    GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
+    GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
 
     return endDate;
   }
 
   public void onCreateBookingButton() throws RemoteException, SQLException {
     viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
-    viewHandler.openMainMenu();
+    viewHandler.openListOfBookingsView();
   }
 
   public int daysBetween(Date d1, Date d2) {

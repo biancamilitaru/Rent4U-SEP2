@@ -114,4 +114,10 @@ public class ServerModelManager implements ServerModel
     {
         manageCustomers.editPersonalInfo(customer,newCustomer);
     }
+
+    @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
+        throws RemoteException, SQLException
+    {
+        return manageBookings.getPersonalBookings(customer);
+    }
 }

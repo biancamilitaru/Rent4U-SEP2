@@ -67,7 +67,7 @@ public class AddBookingCustomerViewController implements ViewController {
     int startMinute1 = Integer.parseInt(startMinute.getText());
     LocalDate date1 = startDatePicker.getValue();
 
-    GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
+    GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
 
     return startDate;
   }
@@ -77,7 +77,7 @@ public class AddBookingCustomerViewController implements ViewController {
     int endMinute1 = Integer.parseInt(endMinute.getText());
     LocalDate date2 = endDatePicker.getValue();
 
-    GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
+    GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
 
     return endDate;
   }
@@ -95,6 +95,7 @@ public class AddBookingCustomerViewController implements ViewController {
   public void onCreateBookingButton() throws RemoteException, SQLException {
     int id = Integer.parseInt(customer.getCpr_number());
     viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
+    viewHandler.openMenuCustomerView(customer);
   }
 
   public int daysBetween(Date d1, Date d2) {
@@ -128,5 +129,9 @@ public class AddBookingCustomerViewController implements ViewController {
         ){
       listView.setVisible(true);
     } else listView.setVisible(false);
+  }
+
+  public void onMainMenuButton(javafx.event.ActionEvent actionEvent) throws SQLException, RemoteException {
+    viewHandler.openMenuCustomerView(customer);
   }
 }

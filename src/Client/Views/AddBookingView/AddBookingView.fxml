@@ -33,7 +33,7 @@
       <TextField fx:id="endHour" alignment="CENTER" layoutX="85.0" layoutY="295.0" prefHeight="27.0" prefWidth="40.0" promptText="HH" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="280.0" />
       <TextField fx:id="endMinute" alignment="CENTER" layoutX="124.0" layoutY="295.0" prefHeight="27.0" prefWidth="40.0" promptText="MM" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="280.0" />
       <DatePicker fx:id="startDatePicker" editable="false" layoutX="266.0" layoutY="172.0" showWeekNumbers="true" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="155.0" />
-      <DatePicker fx:id="endDatePicker" layoutX="254.0" layoutY="177.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="250.0" />
+      <DatePicker fx:id="endDatePicker" editable="false" layoutX="254.0" layoutY="177.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="250.0" />
       <ListView fx:id="listView" fixedCellSize="2.0" layoutX="297.0" layoutY="82.0" prefHeight="250.0" prefWidth="300.0" AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="20.0" />
       <Label layoutX="25.0" layoutY="348.0" text="Total price for this booking:" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="25.0" />
       <Label fx:id="totalPriceOfBooking" alignment="CENTER_RIGHT" layoutX="176.0" layoutY="348.0" prefHeight="17.0" prefWidth="61.0" text="00.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="175.0" />

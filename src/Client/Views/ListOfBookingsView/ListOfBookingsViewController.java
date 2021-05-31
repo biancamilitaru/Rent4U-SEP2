@@ -41,6 +41,7 @@ public class ListOfBookingsViewController implements ViewController
     listView.setCellFactory(vehicleListView -> new BookingListViewCell(this));
 
     listView.setFixedCellSize(73);
+    System.out.println(bookingsObservableList);
   }
 
   public void onAddBookingButton(ActionEvent evt)
@@ -71,6 +72,7 @@ public class ListOfBookingsViewController implements ViewController
   public void onDelete(Booking booking) throws RemoteException, SQLException
   {
     listOfBookingsViewModel.deleteBooking(booking);
+    viewHandler.openListOfBookingsView();
   }
 
 }

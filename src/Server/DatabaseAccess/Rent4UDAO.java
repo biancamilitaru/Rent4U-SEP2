@@ -181,7 +181,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
                     "end_time, cpr_of_customer, licence_plate, total_price) VALUES (?, ?, ?, ?, ?)");
             Timestamp start_time = new Timestamp(booking.getStartTime().getTimeInMillis());
             statement.setTimestamp(1, start_time);
-            Timestamp end_time = new Timestamp(booking.getStartTime().getTimeInMillis());
+            Timestamp end_time = new Timestamp(booking.getEndTime().getTimeInMillis());
             statement.setTimestamp(2, end_time);
             statement.setInt(3, booking.getIdOfCustomer());
             statement.setString(4, booking.getLicencePlate());
@@ -201,6 +201,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
                 bookings.add(getBooking(resultSet));
             }
         }
+        System.out.println(bookings);
         return bookings;
     }
 
@@ -209,11 +210,11 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         int booking_id = resultSet.getInt(1);
         Timestamp start_time_timestamp = resultSet.getTimestamp(2);
         LocalDateTime start_time_local = start_time_timestamp.toLocalDateTime();
-        GregorianCalendar start_time = new GregorianCalendar(start_time_local.getYear(), start_time_local.getMonthValue(),
+        GregorianCalendar start_time = new GregorianCalendar(start_time_local.getYear(), start_time_local.getMonthValue()-1,
                 start_time_local.getDayOfMonth(), start_time_local.getHour(), start_time_local.getMinute());
         Timestamp end_time_timestamp = resultSet.getTimestamp(3);
         LocalDateTime end_time_local = end_time_timestamp.toLocalDateTime();
-        GregorianCalendar end_time = new GregorianCalendar(end_time_local.getYear(), end_time_local.getMonthValue(),
+        GregorianCalendar end_time = new GregorianCalendar(end_time_local.getYear(), end_time_local.getMonthValue()-1,
                 end_time_local.getDayOfMonth(), end_time_local.getHour(), end_time_local.getMinute());
         int id_of_customer = resultSet.getInt(4);
         String license_plate = resultSet.getString(5);
@@ -268,6 +269,12 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         }
     }
 
+    @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
+        throws RemoteException, SQLException
+    {
+        return null;
+    }
+
     @Override public void deleteCustomer(Customer customer)
         throws RemoteException, SQLException
     {
@@ -296,7 +303,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     @Override public void editPersonalInfo(Customer customer,
         Customer newCustomer) throws RemoteException, SQLException
     {
-
+        editCustomerInfo(customer, newCustomer);
     }
 
     @Override
@@ -305,7 +312,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
             PreparedStatement statement = connection.prepareStatement("INSERT INTO customer(cpr, first_name, " +
                     "last_name, date_of_birth, phone_number, email, driving_licence, password) VALUES (?, ?, ?, ?," +
                     "?, ?, ?, ?)");
-            statement.setInt(1, Integer.parseInt(customer.getCpr_number()));
+            statement.setString(1, customer.getCpr_number());
             statement.setString(2, customer.getFirstName());
             statement.setString(3, customer.getLastName());
             Timestamp date_of_birth = new Timestamp(customer.getDateOfBirth().getTimeInMillis());

@@ -122,4 +122,10 @@ public class ServerImpl implements RMIServer
     {
         serverModelManager.editPersonalInfo(customer,newCustomer);
     }
+
+    @Override public ArrayList<Booking> getPersonalBookings(Customer customer)
+        throws RemoteException, SQLException
+    {
+        return serverModelManager.getPersonalBookings(customer);
+    }
 }
