@@ -52,8 +52,7 @@ public class ListOfEmployeesViewController implements ViewController
   }
 
   public void onMenuButton(){
-    //Menu for manager or employee? maybe it is the same
-    viewHandler.openManagerMenu();
+    viewHandler.openMainMenu();
   }
 
   public void onEditEmployee(Employee employee)
