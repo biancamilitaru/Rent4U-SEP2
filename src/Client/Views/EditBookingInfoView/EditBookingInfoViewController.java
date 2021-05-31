@@ -11,10 +11,7 @@ import Client.Views.ViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
@@ -33,12 +30,14 @@ public class EditBookingInfoViewController implements ViewController
   private Vehicle vehicle;
   @FXML DatePicker startDatePicker;
   @FXML DatePicker endDatePicker;
-  @FXML javafx.scene.control.TextField startHour;
+  @FXML TextField startHour;
   @FXML TextField startMinute;
   @FXML TextField endHour;
   @FXML TextField endMinute;
+  @FXML ComboBox<String> type;
   @FXML ListView listView;
   @FXML ComboBox<String> customerID;
+  @FXML Label totalPrice;
 
   public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
   private Booking booking;
@@ -65,6 +64,46 @@ public class EditBookingInfoViewController implements ViewController
   public void setBooking(Booking booking)
   {
     this.booking=booking;
+  }
+
+  public void setVehicle(Vehicle vehicle)
+  {
+    this.vehicle = vehicle;
+  }
+  public GregorianCalendar getStartDate(){
+    int startHour1 = Integer.parseInt(startHour.getText());
+    int startMinute1 = Integer.parseInt(startMinute.getText());
+    LocalDate date1 = startDatePicker.getValue();
+
+    GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
+
+    return startDate;
+  }
+
+  public GregorianCalendar getEndDate(){
+    int endHour1 = Integer.parseInt(endHour.getText());
+    int endMinute1 = Integer.parseInt(endMinute.getText());
+    LocalDate date2 = endDatePicker.getValue();
+
+    GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
+
+    return endDate;
+  }
+  public int daysBetween(Date d1, Date d2) {
+  return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+  public double getTotalPrice(){
+    int daysBetween = daysBetween(getStartDate().getTime(),getEndDate().getTime());
+
+    if (vehicle!=null){
+      return vehicle.getPrice()*daysBetween;
+    }
+    else return 0;
+  }
+
+  public void setTotalPriceOfBooking(){
+    totalPrice.setText(String.valueOf(getTotalPrice()));
   }
 
   public void onUpdateBookingButton(ActionEvent evt)
