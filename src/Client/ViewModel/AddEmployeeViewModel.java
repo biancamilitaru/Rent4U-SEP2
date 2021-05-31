@@ -15,7 +15,7 @@ public class AddEmployeeViewModel
   {
     this.userModel=userModel;
   }
-  public void CreateEmployee(String cpr, String firstName, String lastName, GregorianCalendar dateOfBirth,String phoneNumber,
+  public void createEmployee(String cpr, String firstName, String lastName, GregorianCalendar dateOfBirth,String phoneNumber,
       String email, int salary,String position)
       throws RemoteException, SQLException
   {
