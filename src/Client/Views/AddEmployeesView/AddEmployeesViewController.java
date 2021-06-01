@@ -5,6 +5,7 @@ import Client.Core.ViewModelFactory;
 import Client.ViewModel.AddEmployeeViewModel;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -50,26 +51,37 @@ public class AddEmployeesViewController implements ViewController
   }
 
   public GregorianCalendar getDateBirth(){
+    GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
-
-    return dateOfBirth;
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+    if(dateOfBirth.before(now))
+      return null;
+    return  dateOfBirth;
   }
 
   public void onCreateButton() throws RemoteException, SQLException, NumberFormatException{
-      addEmployeeViewModel.createEmployee(
-          getCpr(),
-          firstNameField.getText(),
-          lastNameField.getText(),
-          getDateBirth(),
-          phoneField.getText(),
-          eMailField.getText(),
-          Integer.parseInt(salary.getText()),
+    if(dateOfBirthPicker!=null)
+    {
+      addEmployeeViewModel.createEmployee(getCpr(), firstNameField.getText(),
+          lastNameField.getText(), getDateBirth(), phoneField.getText(),
+          eMailField.getText(), Integer.parseInt(salary.getText()),
           position.getText()
 
       );
-    viewHandler.openListOfEmployees(manager);
+      viewHandler.openListOfEmployees(manager);
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      alert.setTitle("Employee created");
+      alert.setContentText("The employee has been created!\nThank you!");
+      alert.showAndWait();
+    }
+    else
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText(
+          "Please enter a valid time of birth\nPlease try again!");
+      alert.showAndWait();
+    }
   }
 
   public void onMenuButton(){
