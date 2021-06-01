@@ -44,6 +44,10 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   public VehicleListViewCell(ListOfVehiclesViewController listOfVehiclesViewController)
   {
     this.listOfVehiclesViewController=listOfVehiclesViewController;
+    t.start();
+  }
+
+  Thread t = new Thread(() -> {
     Platform.runLater(() ->  seatSymbol.setImage(listOfVehiclesViewController.getSeatSymbolImage()));
     Platform.runLater(() ->  gearboxSymbol.setImage(listOfVehiclesViewController.getGearboxSymbolImage()));
     Platform.runLater(() ->  fuelSymbol.setImage(listOfVehiclesViewController.getFuelSymbolImage()));
@@ -51,7 +55,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
     Platform.runLater(() ->  engineSymbol.setImage(listOfVehiclesViewController.getEngineSymbolImage()));
     Platform.runLater(() ->  editSymbol.setImage(listOfVehiclesViewController.getEditSymbolImage()));
     Platform.runLater(() ->  deleteSymbol.setImage(listOfVehiclesViewController.getDeleteSymbolImage()));
-  }
+  });
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {
