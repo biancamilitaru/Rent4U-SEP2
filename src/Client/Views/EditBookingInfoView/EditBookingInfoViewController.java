@@ -80,7 +80,6 @@ public class EditBookingInfoViewController implements ViewController
     endMinute.setText(String.valueOf(booking.getEndTime().get(Calendar.MINUTE)));
     totalPriceOfBooking.setText(String.valueOf(booking.getPrice()));
     customerID.setPromptText(String.valueOf(booking.getIdOfCustomer()));
-
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -105,7 +104,6 @@ public class EditBookingInfoViewController implements ViewController
   {
     this.booking=booking;
     loadData();
-    System.out.println(booking);
   }
 
   public void setManager(boolean manager)
@@ -173,7 +171,7 @@ public class EditBookingInfoViewController implements ViewController
       licensePlate=vehicle.getLicensePlate();
     }
 
-    double price=Double.valueOf(totalPriceOfBooking.getText());
+    double price=getTotalPrice();
     ///////////////////////////////////////
 
     LocalDate date1 = startDatePicker.getValue();

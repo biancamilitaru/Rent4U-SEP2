@@ -17,7 +17,7 @@ public class EditPersonalBookingViewModel
     this.userModel= userModel;
 
   }
-  public void editPersonalBooking(Booking booking , int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, int price)
+  public void editPersonalBooking(Booking booking , int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price)
       throws RemoteException, RemoteException, SQLException
   {
     Booking newBooking = new Booking(idOfCustomer, licencePlate, startTime, endTime, price);
