@@ -17,13 +17,14 @@ import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class EditPersonalBookingViewController implements ViewController
 {
-  //Maybe more private fields?? I am not sure (Kyra)
   @FXML DatePicker startDatePicker;
   @FXML DatePicker endDatePicker;
   @FXML TextField startHour;
@@ -46,9 +47,9 @@ public class EditPersonalBookingViewController implements ViewController
     this.viewHandler=viewHandler;
     editPersonalBookingViewModel=viewModelFactory.getEditPersonalBookingViewModel();
     getVehicleData(editPersonalBookingViewModel.getVehicles());
+    listView.setItems(vehiclesObservableList);
     listView.setCellFactory(vehiclesObservableList-> new VehicleListViewCell(this));
     listView.setFixedCellSize(125);
-    listView.setVisible(false);
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }
 
@@ -80,6 +81,31 @@ public class EditPersonalBookingViewController implements ViewController
     return endDate;
   }
 
+  public Vehicle getVehicle()
+  {
+    return vehicle;
+  }
+
+  public void setTotalPriceOfBooking(){
+    totalPriceOfBooking.setText(String.valueOf(getTotalPrice()));
+  }
+
+  public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+    return dateToConvert.toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate();
+  }
+
+  public void loadData(){
+    startDatePicker.setValue(convertToLocalDateViaInstant(booking.getStartTime().getTime()));
+    endDatePicker.setValue(convertToLocalDateViaInstant(booking.getEndTime().getTime()));
+    startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR)));
+    startMinute.setText(String.valueOf(booking.getStartTime().get(Calendar.MINUTE)));
+    endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR)));
+    endMinute.setText(String.valueOf(booking.getEndTime().get(Calendar.MINUTE)));
+    totalPriceOfBooking.setText(String.valueOf(booking.getPrice()));
+  }
+
   public void setCustomer(Customer customer)
   {
     this.customer=customer;
@@ -88,6 +114,12 @@ public class EditPersonalBookingViewController implements ViewController
   public void setBooking(Booking booking)
   {
     this.booking=booking;
+    loadData();
+  }
+
+  public Booking getBooking()
+  {
+    return booking;
   }
 
   public void setVehicle(Vehicle vehicle)
@@ -95,7 +127,7 @@ public class EditPersonalBookingViewController implements ViewController
     this.vehicle=vehicle;
   }
 
-  public void onUpdateBookingButton(ActionEvent evt)
+  public void onUpdateBooking()
       throws RemoteException, SQLException
   {
 
@@ -104,11 +136,12 @@ public class EditPersonalBookingViewController implements ViewController
     int startMinute1 = Integer.parseInt(startMinute.getText());
     int endMinute1 = Integer.parseInt(endMinute.getText());
 
-    //Still need to develop these functions
-    int idOfCustomer=2;
-    String licensePlate="Need to develop this";
-    int price=100;
-    ///////////////////////////////////////
+    String idOfCustomer = String.valueOf(booking.getIdOfCustomer());
+    String licensePlate = booking.getLicencePlate();
+    if (vehicle!=null){
+      licensePlate=vehicle.getLicensePlate();
+    }
+    double price=Double.valueOf(totalPriceOfBooking.getText());
 
     LocalDate date1 = startDatePicker.getValue();
     LocalDate date2 = endDatePicker.getValue();
@@ -116,7 +149,7 @@ public class EditPersonalBookingViewController implements ViewController
     GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
     GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
 
-    editPersonalBookingViewModel.editPersonalBooking(booking,idOfCustomer,licensePlate,startDate1,endDate1,price);
+    editPersonalBookingViewModel.editPersonalBooking(booking,Integer.valueOf(idOfCustomer),licensePlate,startDate1,endDate1,price);
 
   }
   public int daysBetween(Date d1, Date d2) {
@@ -131,11 +164,6 @@ public class EditPersonalBookingViewController implements ViewController
     }
     else return 0;
   }
-
-  public void setTotalPriceOfBooking(){
-    totalPriceOfBooking.setText(String.valueOf(getTotalPrice()));
-  }
-
 
 
   public void onExitButton() throws SQLException, RemoteException

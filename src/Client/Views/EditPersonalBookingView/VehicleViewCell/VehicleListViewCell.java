@@ -71,6 +71,10 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       enginesPowerLabel.setText(String.valueOf(vehicle.getEnginesPower()));
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
+      if (viewController.getBooking().getLicencePlate().equals(vehicle.getLicensePlate())){
+        setStyle("-fx-background-color: F4AF82");
+      }
+
       setText(null);
       setGraphic(this.anchorPane);
     }
@@ -79,6 +83,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   public void onChooseButton()
   {
     viewController.setVehicle(vehicle);
+    setStyle("-fx-background-color: D87737");
     viewController.setTotalPriceOfBooking();
   }
 }

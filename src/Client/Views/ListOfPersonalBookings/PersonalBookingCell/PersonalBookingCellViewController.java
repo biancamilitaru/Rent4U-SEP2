@@ -49,7 +49,7 @@ public class PersonalBookingCellViewController extends ListCell<Booking>
     {
       if (mLLoader == null)
       {
-        mLLoader = new FXMLLoader(getClass().getResource("BookingViewCell.fxml"));
+        mLLoader = new FXMLLoader(getClass().getResource("PersonalBookingViewCell.fxml"));
         mLLoader.setController(this);
 
         try

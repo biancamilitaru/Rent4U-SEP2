@@ -19,7 +19,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" onAction="#onUpdateBookingButton" text="Update Booking" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
+            <Button layoutX="365.0" layoutY="343.0" mnemonicParsing="false" onAction="#onUpdateBooking" text="Update Booking" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="140.0" />
             <Label layoutX="299.0" layoutY="52.0" text="Select a vehicle type:" AnchorPane.leftAnchor="299.0" AnchorPane.topAnchor="52.0" />
             <ComboBox fx:id="type" layoutX="427.0" layoutY="47.0" prefHeight="27.0" prefWidth="121.0" promptText="Desire type" AnchorPane.leftAnchor="427.0" AnchorPane.topAnchor="47.0" />
             <Label layoutX="25.0" layoutY="85.0" text="Select a start time:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="85.0" />
