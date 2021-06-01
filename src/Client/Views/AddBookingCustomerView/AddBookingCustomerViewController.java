@@ -11,8 +11,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 import javax.swing.*;
+import java.awt.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -23,6 +27,7 @@ import java.util.GregorianCalendar;
 public class AddBookingCustomerViewController implements ViewController {
 
 
+  @FXML AnchorPane anchorPane;
   private ViewHandler viewHandler;
   private AddBookingViewModel viewModel;
   @FXML ListView<Vehicle> listView;
@@ -99,10 +104,19 @@ public class AddBookingCustomerViewController implements ViewController {
     GregorianCalendar now=new GregorianCalendar();
 
     if(licensePlate.length()>7)
-     JOptionPane.showMessageDialog(null, "The license plate number is not correct!\nPlease enter again!",
-         "Error", JOptionPane.ERROR_MESSAGE);
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid license plate number\nPlease try again!");
+      alert.showAndWait();
+    }
     if(getStartDate().before(now) || getEndDate().before(getStartDate())|| getEndDate().before(now))
-      JOptionPane.showMessageDialog(null, "Please enter a valid end time\nTry again!","Error", JOptionPane.ERROR_MESSAGE);
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid end time\nTry again!");
+      alert.showAndWait();
+    }
     else
     {
       viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
