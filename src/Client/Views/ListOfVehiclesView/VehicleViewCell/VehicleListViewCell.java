@@ -7,8 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -43,15 +47,21 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
   public VehicleListViewCell(ListOfVehiclesViewController listOfVehiclesViewController)
   {
+    super();
     this.listOfVehiclesViewController=listOfVehiclesViewController;
-    Platform.runLater(() ->  seatSymbol.setImage(listOfVehiclesViewController.getSeatSymbolImage()));
-    Platform.runLater(() ->  gearboxSymbol.setImage(listOfVehiclesViewController.getGearboxSymbolImage()));
-    Platform.runLater(() ->  fuelSymbol.setImage(listOfVehiclesViewController.getFuelSymbolImage()));
-    Platform.runLater(() ->  licensePlateSymbol.setImage(listOfVehiclesViewController.getLicensePlateSymbolImage()));
-    Platform.runLater(() ->  engineSymbol.setImage(listOfVehiclesViewController.getEngineSymbolImage()));
-    Platform.runLater(() ->  editSymbol.setImage(listOfVehiclesViewController.getEditSymbolImage()));
-    Platform.runLater(() ->  deleteSymbol.setImage(listOfVehiclesViewController.getDeleteSymbolImage()));
   }
+
+  public Image carS = new Image("/GUI/Vehicle/CarSymbol.png");
+  public Image minivanSymbolImage = new Image("/GUI/Vehicle/MiniVanSymbol.png");
+  public Image busImage = new Image("/GUI/Vehicle/BusSymbol.png");
+  public Image motorcycleImage = new Image("/GUI/Vehicle/MotorcycleSymbol.png");
+  public Image seatSymbolImage = new Image("/GUI/Vehicle/SeatSymbol.png");
+  public Image gearboxSymbolImage = new Image("/GUI/Vehicle/GearboxSymbol.png");
+  public Image fuelSymbolImage = new Image("/GUI/Vehicle/FuelSymbol.png");
+  public Image engineSymbolImage = new Image("/GUI/Vehicle/EnginePowerSymbol.png");
+  public Image editSymbolImage = new Image("/GUI/Vehicle/Edit.png");
+  public Image deleteSymbolImage = new Image("/GUI/Vehicle/Delete.png");
+  public Image licensePlateImage = new Image("/GUI/Vehicle/LicensePlate.png");
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {
@@ -80,6 +90,15 @@ public class VehicleListViewCell extends ListCell<Vehicle>
         }
 
       }
+      seatSymbol.setImage(seatSymbolImage);
+      gearboxSymbol.setImage(gearboxSymbolImage);
+      fuelSymbol.setImage(fuelSymbolImage);
+      licensePlateSymbol.setImage(licensePlateImage);
+      engineSymbol.setImage(engineSymbolImage);
+      editSymbol.setImage(editSymbolImage);
+      deleteSymbol.setImage(deleteSymbolImage);
+
+
       makeLabel.setText(vehicle.getMake());
       modelLabel.setText(vehicle.getModel());
       yearLabel.setText(String.valueOf(vehicle.getYear()));
@@ -91,12 +110,12 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
       if (vehicle.getType().equals("Motorcycle")){
-        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getMotorcycleImage()));
-      } else if (vehicle.getType().equals("Minibus")) {
-        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getBusImage()));
-      } else if (vehicle.getType().equals("Van")) {
-        Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getMinivanSymbolImage()));
-      } else Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getCarSymbolImage()));
+        carSymbol.setImage(carS);
+      } else if (vehicle.getType().equals("Bus")) {
+        carSymbol.setImage(busImage);
+      } else if (vehicle.getType().equals("Minivan")) {
+        carSymbol.setImage(minivanSymbolImage);
+      } else carSymbol.setImage(carS);
 
       if (getIndex()%2==0){
         //OnOrange
