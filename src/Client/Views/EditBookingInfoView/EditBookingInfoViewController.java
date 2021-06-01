@@ -171,7 +171,7 @@ public class EditBookingInfoViewController implements ViewController
       licensePlate=vehicle.getLicensePlate();
     }
 
-    double price=getTotalPrice();
+    double price=Double.valueOf(totalPriceOfBooking.getText());
     ///////////////////////////////////////
 
     LocalDate date1 = startDatePicker.getValue();

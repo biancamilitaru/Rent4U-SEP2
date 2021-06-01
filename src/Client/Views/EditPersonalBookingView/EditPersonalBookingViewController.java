@@ -47,6 +47,7 @@ public class EditPersonalBookingViewController implements ViewController
     this.viewHandler=viewHandler;
     editPersonalBookingViewModel=viewModelFactory.getEditPersonalBookingViewModel();
     getVehicleData(editPersonalBookingViewModel.getVehicles());
+    listView.setItems(vehiclesObservableList);
     listView.setCellFactory(vehiclesObservableList-> new VehicleListViewCell(this));
     listView.setFixedCellSize(125);
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
@@ -126,7 +127,7 @@ public class EditPersonalBookingViewController implements ViewController
     this.vehicle=vehicle;
   }
 
-  public void onUpdateBookingButton(ActionEvent evt)
+  public void onUpdateBooking()
       throws RemoteException, SQLException
   {
 
@@ -140,7 +141,7 @@ public class EditPersonalBookingViewController implements ViewController
     if (vehicle!=null){
       licensePlate=vehicle.getLicensePlate();
     }
-    double price=getTotalPrice();
+    double price=Double.valueOf(totalPriceOfBooking.getText());
 
     LocalDate date1 = startDatePicker.getValue();
     LocalDate date2 = endDatePicker.getValue();
