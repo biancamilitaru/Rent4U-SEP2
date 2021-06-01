@@ -80,7 +80,6 @@ public class VehicleListViewCell extends ListCell<Vehicle>
         }
 
       }
-      typeLabel.setText(vehicle.getType());
       makeLabel.setText(vehicle.getMake());
       modelLabel.setText(vehicle.getModel());
       yearLabel.setText(String.valueOf(vehicle.getYear()));
@@ -106,7 +105,6 @@ public class VehicleListViewCell extends ListCell<Vehicle>
         //OnWhite
         setStyle("-fx-background-color: F4AF82");
       }
-
 
       setText(null);
       setGraphic(this.anchorPane);
