@@ -79,9 +79,24 @@ public class AddPersonalAccountViewController implements ViewController
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
     GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
+    if(now.before(dateOfBirth))
       return null;
     return  dateOfBirth;
+  }
+  public String getPhoneNumber()
+  {
+    String phoneNumberString=phoneField.getText();
+    if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
+      return null;
+
+    int phoneNumber=0;
+    try {
+      phoneNumber=Integer.parseInt(phoneField.getText());
+    }
+    catch (NumberFormatException e){
+      return null;
+    }
+    return phoneNumberString;
   }
 
   public void onCreateButton() throws RemoteException, SQLException {
@@ -104,14 +119,30 @@ public class AddPersonalAccountViewController implements ViewController
         alert.setContentText("Your personal profile is ready!\nThank you!");
         alert.showAndWait();
     }
-    else
+    if(getCpr()==null)
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setContentText(
-          "Please enter valid information to the fields!\nPlease try again!");
+          "Please enter a valid CPR!\nPlease try again!");
       alert.showAndWait();
-    }}
+    }
+    if(getDateBirth()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText(
+          "Please enter a date of birth!\nPlease try again!");
+      alert.showAndWait();
+    }
+    if(getPhoneNumber()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
+  }
 
   public void onMenuButton() throws SQLException, RemoteException {
     viewHandler.openLogInCustomer();

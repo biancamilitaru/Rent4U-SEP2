@@ -82,21 +82,43 @@ public class AddCustomerAccountViewController implements ViewController
   }
 
   public GregorianCalendar getDateBirth(){
+    GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
     GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+    if(now.before(dateOfBirth))
+    {
+      return null;
+    }
     return  dateOfBirth;
   }
 
+  public String getPhoneNumber()
+  {
+    String phoneNumberString=phoneField.getText();
+    if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
+      return null;
+
+    int phoneNumber=0;
+    try {
+      phoneNumber=Integer.parseInt(phoneField.getText());
+    }
+    catch (NumberFormatException e){
+      return null;
+    }
+    return phoneNumberString;
+  }
+
+
   public void onCreateButton() throws RemoteException, SQLException {
 
-    if (checkPassword() && getCpr()!=null){
+    if (checkPassword() && getCpr()!=null && getDateBirth()!=null &&getPhoneNumber()!=null){
       addCustomerAccountViewModel.createCustomerAccount(
           firstNameField.getText(),
           lastNameField.getText(),
           getDateBirth(),
           eMailField.getText(),
           passwordField.getText(),
-          phoneField.getText(),
+          getPhoneNumber(),
           drivingLicenseField.getText(),
           getCpr()
 
@@ -107,12 +129,25 @@ public class AddCustomerAccountViewController implements ViewController
       alert.showAndWait();
       viewHandler.openListOfCustomers(manager);
     }
-    Alert alert = new Alert(Alert.AlertType.WARNING);
-    alert.setTitle("Invalid input");
-    alert.setContentText("Please enter a valid cpr number!");
-    alert.showAndWait();
+    if(getCpr()==null){
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid cpr number!");
+      alert.showAndWait();}
 
-
+    if(getDateBirth()==null){
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid birthday!");
+      alert.showAndWait();
+    }
+    if(getPhoneNumber()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
   }
 
   public void onMenuButton(){
