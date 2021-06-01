@@ -32,6 +32,13 @@ public class LoginViewController implements ViewController
         textField.textProperty().bindBidirectional(viewModel.passwordProperty());
     }
 
+    /**
+     * After pressing the "Log in" button this methods decides who is trying to log into the system.
+     * If a manager than extra functionalities will be shown on the main menu.
+     * If not the, the original menu for employees will appear.
+     * The TextField is clear after each button press.
+     * @param event
+     */
     public void logIn(ActionEvent event)
     {
         if (viewModel.logIn() == 1)

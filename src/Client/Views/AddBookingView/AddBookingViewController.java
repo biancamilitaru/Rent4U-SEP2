@@ -214,6 +214,7 @@ public class AddBookingViewController implements ViewController {
     this.chosenVehicle=vehicle;
   }
 
+
   public void onChoseType(){
     if (!startDatePicker.getValue().equals(null) &&
         !endDatePicker.getValue().equals(null) &&
