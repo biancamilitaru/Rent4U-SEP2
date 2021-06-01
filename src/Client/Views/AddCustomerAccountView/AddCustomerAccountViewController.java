@@ -58,7 +58,27 @@ public class AddCustomerAccountViewController implements ViewController
   }
 
   private String getCpr(){
-    return cprFirstField.getText()+cprSecondField.getText();
+    boolean setter=true;
+    int firstPart=0;
+    int secondPart=0;
+    try{
+      firstPart=Integer.parseInt(cprFirstField.getText());
+      secondPart=Integer.parseInt(cprSecondField.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText(
+          "Please enter a valid cpr!\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
+      setter=false;
+    if(setter)
+      return cprFirstField.getText()+cprSecondField.getText();
+    return null;
   }
 
   public GregorianCalendar getDateBirth(){
@@ -82,7 +102,7 @@ public class AddCustomerAccountViewController implements ViewController
       setter=false;
     }
 
-    if (checkPassword() && setter){
+    if (checkPassword() && setter && getCpr()!=null){
       addCustomerAccountViewModel.createCustomerAccount(
           firstNameField.getText(),
           lastNameField.getText(),
@@ -98,9 +118,15 @@ public class AddCustomerAccountViewController implements ViewController
       alert.setTitle("Customer created");
       alert.setContentText("The customer has been created!\nThank you!");
       alert.showAndWait();
-
-    }
       viewHandler.openListOfCustomers(manager);
+    }
+    else{
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Customer was not created");
+      alert.setContentText("Please enter correct information to the fields!\nThank you!");
+      alert.showAndWait();
+    }
+
 
   }
 

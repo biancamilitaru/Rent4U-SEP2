@@ -52,7 +52,27 @@ public class AddPersonalAccountViewController implements ViewController
   }
 
   private String getCpr(){
-    return cprFirstField.getText()+cprSecondField.getText();
+    boolean setter=true;
+    int firstPart=0;
+    int secondPart=0;
+    try{
+      firstPart=Integer.parseInt(cprFirstField.getText());
+      secondPart=Integer.parseInt(cprSecondField.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText(
+          "Please enter a valid cpr!\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
+      setter=false;
+    if(setter)
+      return cprFirstField.getText()+cprSecondField.getText();
+    return null;
   }
 
   public GregorianCalendar getDateBirth(){
@@ -65,9 +85,8 @@ public class AddPersonalAccountViewController implements ViewController
   }
 
   public void onCreateButton() throws RemoteException, SQLException {
-    if (getDateBirth() != null)
-    {
-      if (checkPassword()){
+
+      if (checkPassword() && getDateBirth()!=null && getCpr()!=null){
         Customer customer =
             addPersonalAccountViewModel.createPersonalAccount(
                 firstNameField.getText(),
@@ -84,18 +103,15 @@ public class AddPersonalAccountViewController implements ViewController
         alert.setTitle("Your profile was created");
         alert.setContentText("Your personal profile is ready!\nThank you!");
         alert.showAndWait();
-    }}
+    }
     else
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setContentText(
-          "Please enter a valid time of birth\nPlease try again!");
+          "Please enter valid information to the fields!\nPlease try again!");
       alert.showAndWait();
-    }
-
-
-  }
+    }}
 
   public void onMenuButton() throws SQLException, RemoteException {
     viewHandler.openLogInCustomer();
