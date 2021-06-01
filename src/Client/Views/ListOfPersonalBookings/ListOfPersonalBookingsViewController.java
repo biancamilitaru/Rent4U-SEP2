@@ -11,11 +11,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ListOfPersonalBookingsViewController implements ViewController
 {
@@ -70,7 +73,16 @@ public class ListOfPersonalBookingsViewController implements ViewController
 
   public void onDelete(Booking booking) throws RemoteException, SQLException
   {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Delete your booking");
+    alert.setHeaderText("");
+    alert.setContentText("Are you sure you would like to delete your booking?");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
     listOfPersonalBookingsViewModel.deletePersonalBooking(booking);
-    viewHandler.openPersonalBookings(customer);
+    viewHandler.openPersonalBookings(customer);}
+    else if(result.get()==ButtonType.CANCEL)
+      viewHandler.openPersonalBookings(customer);
   }
 }

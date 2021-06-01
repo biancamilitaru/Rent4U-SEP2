@@ -89,7 +89,7 @@ public class ListOfVehiclesViewController implements ViewController
   public void onClickedDelete(Vehicle vehicle)
       throws RemoteException, SQLException
   {
-    Alert alert = new Alert(Alert.AlertType.WARNING);
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Delete Vehicle");
     alert.setHeaderText("");
     alert.setContentText("Are you sure you would like to delete this vehicle?");
