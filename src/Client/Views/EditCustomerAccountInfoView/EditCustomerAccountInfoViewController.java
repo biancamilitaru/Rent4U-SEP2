@@ -14,8 +14,10 @@ import javafx.scene.control.TextField;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class EditCustomerAccountInfoViewController implements ViewController
@@ -65,15 +67,17 @@ public class EditCustomerAccountInfoViewController implements ViewController
     return localDate;
   }
 
+  public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+    return dateToConvert.toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate();
+  }
+
 
   public void loadData(){
     firstNameField.setText(customer.getFirstName());
     lastNameField.setText(customer.getLastName());
-    dateOfBirthPicker.setValue(
-        dateConvertor(
-            customer.getDateOfBirth().get(Calendar.DATE)+ "-" +
-                      customer.getDateOfBirth().get(Calendar.MONTH)+"-"+
-                      customer.getDateOfBirth().get(Calendar.YEAR)));
+    dateOfBirthPicker.setValue(convertToLocalDateViaInstant(customer.getDateOfBirth().getTime()));
     eMailField.setText(customer.getEmail());
     drivingLicenseField.setText(customer.getDrivingLicenseNumber());
     cprFirstField.setText(customer.getCpr_number().substring(0,6));
