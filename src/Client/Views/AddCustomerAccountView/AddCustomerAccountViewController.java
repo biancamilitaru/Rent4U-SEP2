@@ -107,6 +107,11 @@ public class AddCustomerAccountViewController implements ViewController
       alert.showAndWait();
       viewHandler.openListOfCustomers(manager);
     }
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Invalid input");
+    alert.setContentText("Please enter a valid cpr number!");
+    alert.showAndWait();
+
 
   }
 
