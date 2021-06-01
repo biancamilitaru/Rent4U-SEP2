@@ -32,7 +32,7 @@ public class TestForDatabaseIgnoreTHIS {
         Customer customer2 = new Customer("andrei", "alexandri", date_of_birth, "email",
                 "password", "5678", "license", "2000000000");
         ManageCustomers manageCustomers = new Rent4UDAO();
-        //manageCustomers.addCustomer(customer);
+        //manageCustomers.addCustomer(customer1);
         //System.out.println(manageCustomers.viewAllCustomers());
         //manageCustomers.editCustomerInfo(customer1, customer2);
         //manageVehicles.deleteVehicle(vehicle1);
@@ -47,6 +47,6 @@ public class TestForDatabaseIgnoreTHIS {
                 "email.ro", 56, "manager");
         //manageEmployees.editEmployeeInfo(employee1, employee2);
         System.out.println(manageEmployees.getEmployees());
-        manageEmployees.deleteEmployee(employee1);
+        //manageEmployees.deleteEmployee(employee1);
     }
 }

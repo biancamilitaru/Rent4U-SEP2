@@ -92,9 +92,9 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
       if (vehicle.getType().equals("Motorcycle")){
         Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getMotorcycleImage()));
-      } else if (vehicle.getType().equals("Bus")) {
+      } else if (vehicle.getType().equals("Minibus")) {
         Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getBusImage()));
-      } else if (vehicle.getType().equals("Minivan")) {
+      } else if (vehicle.getType().equals("Van")) {
         Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getMinivanSymbolImage()));
       } else Platform.runLater(() ->  carSymbol.setImage(listOfVehiclesViewController.getCarSymbolImage()));
 
