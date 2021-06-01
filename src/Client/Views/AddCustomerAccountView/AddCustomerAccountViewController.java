@@ -82,27 +82,14 @@ public class AddCustomerAccountViewController implements ViewController
   }
 
   public GregorianCalendar getDateBirth(){
-    GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
     GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
-      return null;
     return  dateOfBirth;
   }
 
   public void onCreateButton() throws RemoteException, SQLException {
-    boolean setter=true;
-    if(getDateBirth()==null)
-    {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
-      alert.setContentText(
-          "Please enter a valid time of birth\nPlease try again!");
-      alert.showAndWait();
-      setter=false;
-    }
 
-    if (checkPassword() && setter && getCpr()!=null){
+    if (checkPassword() && getCpr()!=null){
       addCustomerAccountViewModel.createCustomerAccount(
           firstNameField.getText(),
           lastNameField.getText(),
@@ -120,13 +107,6 @@ public class AddCustomerAccountViewController implements ViewController
       alert.showAndWait();
       viewHandler.openListOfCustomers(manager);
     }
-    else{
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Customer was not created");
-      alert.setContentText("Please enter correct information to the fields!\nThank you!");
-      alert.showAndWait();
-    }
-
 
   }
 

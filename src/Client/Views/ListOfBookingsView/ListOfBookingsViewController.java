@@ -68,7 +68,7 @@ public class ListOfBookingsViewController implements ViewController
 
   public void onDelete(Booking booking) throws RemoteException, SQLException
   {
-    Alert alert = new Alert(Alert.AlertType.WARNING);
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Delete Booking");
     alert.setHeaderText("");
     alert.setContentText("Are you sure you would like to delete the booking?");
@@ -77,7 +77,7 @@ public class ListOfBookingsViewController implements ViewController
     if (result.get() == ButtonType.OK){
       listOfBookingsViewModel.deleteBooking(booking);
       viewHandler.openListOfBookingsView(manager);
-    } else {
+    } else if(result.get()==ButtonType.CANCEL){
       viewHandler.openListOfBookingsView(manager);
     }
 
