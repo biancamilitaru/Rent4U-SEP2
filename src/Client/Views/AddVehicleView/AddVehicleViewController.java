@@ -134,7 +134,7 @@ public class AddVehicleViewController implements ViewController
                     parseDouble(priceField.getText())
                     );
                 viewHandler.openListOfVehicleView(manager);
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("The vehicle was added");
                 alert.setContentText("The vehicle was created in the system!\nThank you!");
                 alert.showAndWait();
