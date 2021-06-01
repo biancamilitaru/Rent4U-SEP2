@@ -89,8 +89,8 @@ public class EditEmployeeInfoViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText(
           "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
@@ -115,30 +115,83 @@ public class EditEmployeeInfoViewController implements ViewController
 
   public int getSalary()
   {
-    int salary = Integer.parseInt(salaryField.getText());
-    return salary;
+    String salaryString=salaryField.getText();
+    int salaryInt=0;
+    try{
+      salaryInt=Integer.parseInt(salaryString);
+    }
+    catch (NumberFormatException e)
+    {
+      return 0;
+    }
+    return salaryInt;
+  }
+  public String getPhoneNumber()
+  {
+    String phoneNumberString=phoneField.getText();
+    if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
+      return null;
+
+    int phoneNumber=0;
+    try {
+      phoneNumber=Integer.parseInt(phoneField.getText());
+    }
+    catch (NumberFormatException e){
+      return null;
+    }
+    return phoneNumberString;
   }
 
   public void onSaveButton() throws RemoteException, SQLException
   {
-    if (getDateOfBirth() != null && getCpr() != null)
+    if (getDateOfBirth() != null && getCpr() != null && getDateOfBirth()!=null && getPhoneNumber()!=null && getSalary()!=0)
     {
-      editEmployeeInfoViewModel
-          .editEmployeeInfo(employee, getCpr(), firstNameField.getText(),
-              lastNameField.getText(), getDateOfBirth(), phoneField.getText(),
-              eMailField.getText(), getSalary(), position.getText());
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      editEmployeeInfoViewModel.editEmployeeInfo(
+          employee,
+          getCpr(),
+          firstNameField.getText(),
+          lastNameField.getText(),
+          getDateOfBirth(),
+          getPhoneNumber(),
+          eMailField.getText(),
+          getSalary(),
+          position.getText());
+
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Employee information edited");
       alert.setContentText(
           "The employee information has been successfully edited!\nThank you!");
       alert.showAndWait();
     }
-    else
+    if(getCpr()==null)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
-          "Please enter a valid information to the fields!\nPlease try again!");
+          "Please enter a valid CPR!\nPlease try again!");
+      alert.showAndWait();
+    }
+    if(getDateOfBirth()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
+      alert.setContentText(
+          "Please enter a valid birth date!\nPlease try again!");
+      alert.showAndWait();
+    }
+    if(getPhoneNumber()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
+    if(getSalary()==0)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
+      alert.setContentText(
+          "Please enter a valid salary!\nPlease try again!");
       alert.showAndWait();
     }
   }

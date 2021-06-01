@@ -98,8 +98,8 @@ public class EditCustomerAccountInfoViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText(
           "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
@@ -120,10 +120,26 @@ public class EditCustomerAccountInfoViewController implements ViewController
       return null;
     return  dateOfBirth;
   }
+  public String getPhoneNumber()
+  {
+    String phoneNumberString=phoneField.getText();
+    if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
+      return null;
+
+    int phoneNumber=0;
+    try {
+      phoneNumber=Integer.parseInt(phoneField.getText());
+    }
+    catch (NumberFormatException e){
+      return null;
+    }
+    return phoneNumberString;
+  }
 
   public void onUpdateCustomer() throws RemoteException, SQLException
   {
-    if(getDateBirth()!=null && getCpr()!=null){
+    if(getDateBirth()!=null && getCpr()!=null)
+    {
     editCustomerInfoViewModel.editCustomerInfo(
         customer,
         firstNameField.getText(),
@@ -131,20 +147,32 @@ public class EditCustomerAccountInfoViewController implements ViewController
         getDateBirth(),
         eMailField.getText(),
         passwordField.getText(),
-        phoneField.getText(),
+        getPhoneNumber(),
         drivingLicenseField.getText(),
-        getCpr()
-    );
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        getCpr());
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Customer information edited");
       alert.setContentText("The customer information has been successfully edited!\nThank you!");
-      alert.showAndWait();}
-    else
+      alert.showAndWait();
+    }
+
+    if(getCpr()==null){
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Invalid input");
+    alert.setContentText("Please enter a valid cpr number!");
+    alert.showAndWait();}
+
+    if(getDateBirth()==null){
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid birthday!");
+      alert.showAndWait();
+    }
+    if(getPhoneNumber()==null)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
-      alert.setContentText(
-          "Please enter a valid information to the fields!\nPlease try again!");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a phone number!");
       alert.showAndWait();
     }
   }

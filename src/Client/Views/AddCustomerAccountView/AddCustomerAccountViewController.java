@@ -67,8 +67,8 @@ public class AddCustomerAccountViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
@@ -82,34 +82,72 @@ public class AddCustomerAccountViewController implements ViewController
   }
 
   public GregorianCalendar getDateBirth(){
+    GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
     GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+    if(now.before(dateOfBirth))
+    {
+      return null;
+    }
     return  dateOfBirth;
   }
 
+  public String getPhoneNumber()
+  {
+    String phoneNumberString=phoneField.getText();
+    if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
+      return null;
+
+    int phoneNumber=0;
+    try {
+      phoneNumber=Integer.parseInt(phoneField.getText());
+    }
+    catch (NumberFormatException e){
+      return null;
+    }
+    return phoneNumberString;
+  }
+
+
   public void onCreateButton() throws RemoteException, SQLException {
 
-    if (checkPassword() && getCpr()!=null){
+    if (checkPassword() && getCpr()!=null && getDateBirth()!=null &&getPhoneNumber()!=null){
       addCustomerAccountViewModel.createCustomerAccount(
           firstNameField.getText(),
           lastNameField.getText(),
           getDateBirth(),
           eMailField.getText(),
           passwordField.getText(),
-          phoneField.getText(),
+          getPhoneNumber(),
           drivingLicenseField.getText(),
           getCpr()
+
       );
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Customer created");
       alert.setContentText("The customer has been created!\nThank you!");
       alert.showAndWait();
       viewHandler.openListOfCustomers(manager);
     }
-    Alert alert = new Alert(Alert.AlertType.WARNING);
-    alert.setTitle("Invalid input");
-    alert.setContentText("Please enter a valid cpr number!");
-    alert.showAndWait();
+    if(getCpr()==null){
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid cpr number!");
+      alert.showAndWait();}
+
+    if(getDateBirth()==null){
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid birthday!");
+      alert.showAndWait();
+    }
+    if(getPhoneNumber()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
   }
 
   public void onMenuButton(){

@@ -92,8 +92,8 @@ public class EditPersonalInfoViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
@@ -114,31 +114,62 @@ public class EditPersonalInfoViewController implements ViewController
       return null;
     return  dateOfBirth;
   }
+  public String getPhoneNumber()
+  {
+    String phoneNumberString=phoneField.getText();
+    if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
+      return null;
+
+    int phoneNumber=0;
+    try {
+      phoneNumber=Integer.parseInt(phoneField.getText());
+    }
+    catch (NumberFormatException e){
+      return null;
+    }
+    return phoneNumberString;
+  }
 
   public void onUpdatePersonalAccount() throws RemoteException, SQLException
   {
-    if(getCpr()!=null && getDateBirth()!=null){
-    editPersonalInfoViewModel.editPersonalInfo(
+    if(getCpr()!=null && getDateBirth()!=null && getPhoneNumber()!=null)
+    {
+      editPersonalInfoViewModel.editPersonalInfo(
         customer,
         firstNameField.getText(),
         lastNameField.getText(),
         getDateBirth(),
         eMailField.getText(),
         passwordField.getText(),
-        phoneField.getText(),
+        getPhoneNumber(),
         drivingLicenseField.getText(),
-        getCpr()
-    );
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        getCpr());
+
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Your information was edited");
       alert.setContentText(
           "Your personal information has been successfully edited!\nThank you!");
+      alert.showAndWait();
+    }
+    if(getCpr()==null){
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid cpr number!");
       alert.showAndWait();}
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Error");
-    alert.setContentText(
-        "Please enter a valid information to the fields!\nPlease try again!");
-    alert.showAndWait();
+
+    if(getDateBirth()==null){
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid birthday!");
+      alert.showAndWait();
+    }
+    if(getPhoneNumber()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
   }
 
     public void onMenu(ActionEvent actionEvent) throws SQLException, RemoteException {

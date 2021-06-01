@@ -76,16 +76,16 @@ public class AddBookingCustomerViewController implements ViewController {
       }
       catch (NumberFormatException e)
       {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Input");
         alert.setContentText("Please enter a valid time\nPlease try again!");
         alert.showAndWait();
         setter=false;
       }
       if(startHour1>23 || startHour1<0)
       {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Input");
         alert.setContentText("Please enter a valid time\nPlease try again!");
         alert.showAndWait();
         setter=false;
@@ -93,8 +93,8 @@ public class AddBookingCustomerViewController implements ViewController {
       }
       if(startMinute1>59 ||startMinute1<0)
       {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Input");
         alert.setContentText("Please enter a valid time\nPlease try again!");
         alert.showAndWait();
         setter=false;
@@ -121,16 +121,16 @@ public class AddBookingCustomerViewController implements ViewController {
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a time!\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }
     if(endHour1>23 || endHour1<0)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a valid time!\nPlease try again!");
       alert.showAndWait();
       setter=false;
@@ -138,8 +138,8 @@ public class AddBookingCustomerViewController implements ViewController {
     }
     if(endHour1>59 ||endHour1<0)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a valid time!\nPlease try again!");
       alert.showAndWait();
       setter=false;
@@ -173,16 +173,16 @@ public class AddBookingCustomerViewController implements ViewController {
 
     if(licensePlate.length()>7)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a valid license plate number\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }
     if(getStartDate().before(now) || getEndDate().before(getStartDate())|| getEndDate().before(now) ||getEndDate()==null||getStartDate()==null)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a valid end time\nTry again!");
       alert.showAndWait();
       setter=false;
@@ -191,7 +191,7 @@ public class AddBookingCustomerViewController implements ViewController {
     {
       viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
       viewHandler.openMenuCustomerView(customer);
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Booking created");
       alert.setContentText("The booking has been created!\nThank you!");
       alert.showAndWait();

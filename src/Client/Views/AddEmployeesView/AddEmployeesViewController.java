@@ -56,8 +56,8 @@ public class AddEmployeesViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
@@ -74,32 +74,90 @@ public class AddEmployeesViewController implements ViewController
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
     GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
+    if(now.before(dateOfBirth))
       return null;
     return  dateOfBirth;
   }
+  public String getPhoneNumber()
+  {
+    String phoneNumberString=phoneField.getText();
+    if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
+      return null;
+
+    int phoneNumber=0;
+    try {
+      phoneNumber=Integer.parseInt(phoneField.getText());
+    }
+    catch (NumberFormatException e){
+      return null;
+    }
+    return phoneNumberString;
+  }
+
+  public int getSalary()
+  {
+    String salaryString=salary.getText();
+    int salaryInt=0;
+    try{
+        salaryInt=Integer.parseInt(salaryString);
+    }
+    catch (NumberFormatException e)
+    {
+      return 0;
+    }
+    return salaryInt;
+  }
 
   public void onCreateButton() throws RemoteException, SQLException, NumberFormatException{
-    if(dateOfBirthPicker!=null && getCpr()!=null)
+
+    if(dateOfBirthPicker!=null && getCpr()!=null &&getDateBirth()!=null && getPhoneNumber()!=null && getSalary()!=0)
     {
-      addEmployeeViewModel.createEmployee(getCpr(), firstNameField.getText(),
-          lastNameField.getText(), getDateBirth(), phoneField.getText(),
-          eMailField.getText(), Integer.parseInt(salary.getText()),
+      addEmployeeViewModel.createEmployee(
+          getCpr(),
+          firstNameField.getText(),
+          lastNameField.getText(),
+          getDateBirth(),
+          phoneField.getText(),
+          eMailField.getText(),
+          getSalary(),
           position.getText()
 
       );
       viewHandler.openListOfEmployees(manager);
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Employee created");
       alert.setContentText("The employee has been created!\nThank you!");
       alert.showAndWait();
     }
-    else
+    if(getCpr()==null)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
-          "Please enter a valid information to the fields!\nPlease try again!");
+          "Please enter a valid CPR!\nPlease try again!");
+      alert.showAndWait();
+    }
+    if(getDateBirth()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
+      alert.setContentText(
+          "Please enter a valid birth date!\nPlease try again!");
+      alert.showAndWait();
+    }
+    if(getPhoneNumber()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
+    if(getSalary()==0)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
+      alert.setContentText(
+          "Please enter a valid salary!\nPlease try again!");
       alert.showAndWait();
     }
   }

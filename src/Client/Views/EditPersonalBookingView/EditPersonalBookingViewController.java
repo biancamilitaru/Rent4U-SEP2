@@ -116,16 +116,16 @@ public class EditPersonalBookingViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a valid license plate number\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }
     if(endHour1>23 || endHour1<0)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
       setter=false;
@@ -133,12 +133,13 @@ public class EditPersonalBookingViewController implements ViewController
     }
     if(endHour1>59 ||endHour1<0)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }
+
     if(setter=true)
     {
       LocalDate date2 = endDatePicker.getValue();
@@ -200,6 +201,7 @@ public class EditPersonalBookingViewController implements ViewController
   public void onUpdateBooking()
       throws RemoteException, SQLException
   {
+    GregorianCalendar now=new GregorianCalendar();
     String idOfCustomer = String.valueOf(booking.getIdOfCustomer());
     String licensePlate = booking.getLicencePlate();
     if (vehicle!=null){
@@ -207,20 +209,29 @@ public class EditPersonalBookingViewController implements ViewController
     }
     double price=Double.valueOf(totalPriceOfBooking.getText());
 
-    if(getEndDate()!=null && getStartDate()!=null)
+    if(getEndDate()!=null && getStartDate()!=null && now.before(getStartDate()) && getStartDate().before(getEndDate()) && now.before(getEndDate()))
     {
-      editPersonalBookingViewModel.editPersonalBooking(booking, Integer.valueOf(idOfCustomer),
-          licensePlate, getStartDate(), getEndDate(), price);
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      editPersonalBookingViewModel.editPersonalBooking(
+          booking,
+          Integer.valueOf(idOfCustomer),
+          licensePlate,
+          getStartDate(),
+          getEndDate(),
+          price);
+
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("The booking is edited");
       alert.setContentText("Your booking has been successfully edited!\nThank you!");
       alert.showAndWait();
     }
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Error");
+    else
+    {
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Invalid Input");
     alert.setContentText(
         "Please enter a valid information to the fields!\nPlease try again!");
     alert.showAndWait();
+    }
 
   }
   public int daysBetween(Date d1, Date d2) {
