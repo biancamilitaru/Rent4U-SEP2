@@ -62,23 +62,93 @@ public class EditPersonalBookingViewController implements ViewController
     return vehiclesObservableList;
   }
   public GregorianCalendar getStartDate(){
-    int startHour1 = Integer.parseInt(startHour.getText());
-    int startMinute1 = Integer.parseInt(startMinute.getText());
-    LocalDate date1 = startDatePicker.getValue();
+    boolean setter=true;
+    int startHour1 =0;
+    int startMinute1 =0;
+    try{
+      startHour1 = Integer.parseInt(startHour.getText());
+      startMinute1 = Integer.parseInt(startMinute.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(startHour1>23 || startHour1<0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
 
-    GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
-
-    return startDate;
+    }
+    if(startMinute1>59 ||startMinute1<0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(setter)
+    {
+      LocalDate date1 = startDatePicker.getValue();
+      GregorianCalendar startDate = new GregorianCalendar(date1.getYear(),
+          date1.getMonth().getValue() - 1, date1.getDayOfMonth(), startHour1,
+          startMinute1);
+      return startDate;
+    }
+    return null;
   }
 
   public GregorianCalendar getEndDate(){
-    int endHour1 = Integer.parseInt(endHour.getText());
-    int endMinute1 = Integer.parseInt(endMinute.getText());
-    LocalDate date2 = endDatePicker.getValue();
+    boolean setter=true;
+    int endHour1 = 0;
+    int endMinute1=0;
 
-    GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
+    try{
+      endHour1 = Integer.parseInt(endHour.getText());
+      endMinute1 = Integer.parseInt(endMinute.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid license plate number\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(endHour1>23 || endHour1<0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
 
-    return endDate;
+    }
+    if(endHour1>59 ||endHour1<0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(setter=true)
+    {
+      LocalDate date2 = endDatePicker.getValue();
+      GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
+          date2.getMonth().getValue() - 1, date2.getDayOfMonth(), endHour1,
+          endMinute1);
+      return endDate;
+    }
+    return null;
+
   }
 
   public Vehicle getVehicle()
@@ -130,12 +200,6 @@ public class EditPersonalBookingViewController implements ViewController
   public void onUpdateBooking()
       throws RemoteException, SQLException
   {
-
-    int startHour1 = Integer.parseInt(startHour.getText());
-    int endHour1 = Integer.parseInt(endHour.getText());
-    int startMinute1 = Integer.parseInt(startMinute.getText());
-    int endMinute1 = Integer.parseInt(endMinute.getText());
-
     String idOfCustomer = String.valueOf(booking.getIdOfCustomer());
     String licensePlate = booking.getLicencePlate();
     if (vehicle!=null){
@@ -143,13 +207,20 @@ public class EditPersonalBookingViewController implements ViewController
     }
     double price=Double.valueOf(totalPriceOfBooking.getText());
 
-    LocalDate date1 = startDatePicker.getValue();
-    LocalDate date2 = endDatePicker.getValue();
-
-    GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
-    GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
-
-    editPersonalBookingViewModel.editPersonalBooking(booking,Integer.valueOf(idOfCustomer),licensePlate,startDate1,endDate1,price);
+    if(getEndDate()!=null && getStartDate()!=null)
+    {
+      editPersonalBookingViewModel.editPersonalBooking(booking, Integer.valueOf(idOfCustomer),
+          licensePlate, getStartDate(), getEndDate(), price);
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      alert.setTitle("The booking is edited");
+      alert.setContentText("Your booking has been successfully edited!\nThank you!");
+      alert.showAndWait();
+    }
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setContentText(
+        "Please enter a valid information to the fields!\nPlease try again!");
+    alert.showAndWait();
 
   }
   public int daysBetween(Date d1, Date d2) {

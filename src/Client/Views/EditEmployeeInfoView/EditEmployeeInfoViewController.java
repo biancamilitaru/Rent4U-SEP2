@@ -6,6 +6,7 @@ import Client.Model.Employee;
 import Client.ViewModel.EditEmployeeInfoViewModel;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import java.rmi.RemoteException;
@@ -79,16 +80,37 @@ public class EditEmployeeInfoViewController implements ViewController
 
   private String getCpr()
   {
-    return cprFirstField.getText()+"/"+cprSecondField.getText();
+    boolean setter=true;
+    int firstPart=0;
+    int secondPart=0;
+    try{
+      firstPart=Integer.parseInt(cprFirstField.getText());
+      secondPart=Integer.parseInt(cprSecondField.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText(
+          "Please enter a valid cpr!\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
+      setter=false;
+    if(setter)
+      return cprFirstField.getText()+cprSecondField.getText();
+    return null;
   }
 
   public GregorianCalendar getDateOfBirth()
   {
+    GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-
     GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-
-    return dateOfBirth;
+    if(dateOfBirth.before(now))
+      return null;
+    return  dateOfBirth;
   }
 
   public int getSalary()
@@ -99,10 +121,26 @@ public class EditEmployeeInfoViewController implements ViewController
 
   public void onSaveButton() throws RemoteException, SQLException
   {
-    editEmployeeInfoViewModel.editEmployeeInfo(
-        employee, getCpr(), firstNameField.getText(), lastNameField.getText(),
-        getDateOfBirth(), phoneField.getText(), eMailField.getText(), getSalary(), position.getText()
-    );
+    if (getDateOfBirth() != null && getCpr() != null)
+    {
+      editEmployeeInfoViewModel
+          .editEmployeeInfo(employee, getCpr(), firstNameField.getText(),
+              lastNameField.getText(), getDateOfBirth(), phoneField.getText(),
+              eMailField.getText(), getSalary(), position.getText());
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      alert.setTitle("Employee information edited");
+      alert.setContentText(
+          "The employee information has been successfully edited!\nThank you!");
+      alert.showAndWait();
+    }
+    else
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText(
+          "Please enter a valid information to the fields!\nPlease try again!");
+      alert.showAndWait();
+    }
   }
 
   public void onMenu()

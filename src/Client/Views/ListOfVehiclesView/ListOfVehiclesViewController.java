@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ListOfVehiclesViewController implements ViewController
 {
@@ -88,9 +89,19 @@ public class ListOfVehiclesViewController implements ViewController
   public void onClickedDelete(Vehicle vehicle)
       throws RemoteException, SQLException
   {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Delete Vehicle");
+    alert.setHeaderText("");
+    alert.setContentText("Are you sure you would like to delete this vehicle?");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
     listOfVehiclesViewModel.deleteVehicle(vehicle);
-    viewHandler.openListOfVehicleView(manager);
-  }
+    viewHandler.openListOfVehicleView(manager);}
+    else if(result.get()==ButtonType.CANCEL)
+      viewHandler.openListOfVehicleView(manager);}
+
+
 
   public ObservableList<Vehicle> getVehicleData(ArrayList<Vehicle> vehiclesArrayList) {
     for (int x = 0; x < vehiclesArrayList.size(); x++) {

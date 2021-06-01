@@ -26,8 +26,6 @@ import java.util.GregorianCalendar;
 
 public class AddBookingCustomerViewController implements ViewController {
 
-
-  @FXML AnchorPane anchorPane;
   private ViewHandler viewHandler;
   private AddBookingViewModel viewModel;
   @FXML ListView<Vehicle> listView;
@@ -125,7 +123,7 @@ public class AddBookingCustomerViewController implements ViewController {
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
-      alert.setContentText("Please enter a valid license plate number\nPlease try again!");
+      alert.setContentText("Please enter a time!\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }
@@ -133,7 +131,7 @@ public class AddBookingCustomerViewController implements ViewController {
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
-      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.setContentText("Please enter a valid time!\nPlease try again!");
       alert.showAndWait();
       setter=false;
 
@@ -142,7 +140,7 @@ public class AddBookingCustomerViewController implements ViewController {
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
-      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.setContentText("Please enter a valid time!\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }

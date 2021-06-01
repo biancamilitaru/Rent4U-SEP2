@@ -58,31 +58,38 @@ public class AddCustomerAccountViewController implements ViewController
   }
 
   private String getCpr(){
-    return cprFirstField.getText()+cprSecondField.getText();
-  }
-
-  public GregorianCalendar getDateBirth(){
-    GregorianCalendar now=new GregorianCalendar();
-    LocalDate date = dateOfBirthPicker.getValue();
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
-      return null;
-    return  dateOfBirth;
-  }
-
-  public void onCreateButton() throws RemoteException, SQLException {
     boolean setter=true;
-    if(getDateBirth()==null)
+    int firstPart=0;
+    int secondPart=0;
+    try{
+      firstPart=Integer.parseInt(cprFirstField.getText());
+      secondPart=Integer.parseInt(cprSecondField.getText());
+    }
+    catch (NumberFormatException e)
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setContentText(
-          "Please enter a valid time of birth\nPlease try again!");
+          "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }
+    if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
+      setter=false;
+    if(setter)
+      return cprFirstField.getText()+cprSecondField.getText();
+    return null;
+  }
 
-    if (checkPassword() && setter){
+  public GregorianCalendar getDateBirth(){
+    LocalDate date = dateOfBirthPicker.getValue();
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+    return  dateOfBirth;
+  }
+
+  public void onCreateButton() throws RemoteException, SQLException {
+
+    if (checkPassword() && getCpr()!=null){
       addCustomerAccountViewModel.createCustomerAccount(
           firstNameField.getText(),
           lastNameField.getText(),
@@ -98,9 +105,13 @@ public class AddCustomerAccountViewController implements ViewController
       alert.setTitle("Customer created");
       alert.setContentText("The customer has been created!\nThank you!");
       alert.showAndWait();
-
-    }
       viewHandler.openListOfCustomers(manager);
+    }
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Invalid input");
+    alert.setContentText("Please enter a valid cpr number!");
+    alert.showAndWait();
+
 
   }
 
