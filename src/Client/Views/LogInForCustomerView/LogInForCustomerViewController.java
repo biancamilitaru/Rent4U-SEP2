@@ -4,12 +4,10 @@ import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
 import Client.Model.Customer;
 import Client.ViewModel.LogInCustomerViewModel;
-import Client.Model.Customer;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.fxml.FXML;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

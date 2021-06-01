@@ -34,12 +34,15 @@ public class LoginViewController implements ViewController
 
     public void logIn(ActionEvent event)
     {
-        if (viewModel.logIn())
-            viewHandler.openMainMenu();
-        {
+        if (viewModel.logIn() == 1)
+            viewHandler.openMainMenu(true);
+        else if (viewModel.logIn() == 0)
+            viewHandler.openMainMenu(false);
+        else {
             textField.clear();
             wrongPassword.setVisible(true);
         }
+        textField.clear();
     }
 
     public void onBackButton(ActionEvent evt) throws SQLException, RemoteException {

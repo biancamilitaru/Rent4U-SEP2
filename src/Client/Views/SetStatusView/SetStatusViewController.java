@@ -23,6 +23,7 @@ public class SetStatusViewController implements ViewController
 
   private ViewHandler viewHandler;
   private SetStatusViewModel setStatusViewModel;
+  private boolean manager;
 
   @FXML Button setStatusButton;
   @FXML Button goToMenuButton;
@@ -54,9 +55,14 @@ public class SetStatusViewController implements ViewController
     licensePlateLabel.setText(vehicle.getLicensePlate());
   }
 
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
+  }
+
   public void onMenuButton(ActionEvent evt)
   {
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
   public void setSetStatusButton(ActionEvent evt)
@@ -75,7 +81,7 @@ public class SetStatusViewController implements ViewController
 
     Status status = new Status(startDate1, endDate1, statusTextField.getText());
     setStatusViewModel.setStatus(vehicle, status);
-    viewHandler.openListOfVehicleView();
+    viewHandler.openListOfVehicleView(manager);
   }
 
 

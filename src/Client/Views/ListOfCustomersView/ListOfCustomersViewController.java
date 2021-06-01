@@ -22,6 +22,8 @@ public class ListOfCustomersViewController implements ViewController
 
   @FXML ListView<Customer> listView;
 
+  private boolean manager;
+
   public final ObservableList<Customer> customersObservableList = FXCollections.observableArrayList();
 
   @Override public void init(ViewHandler viewHandler,
@@ -35,6 +37,11 @@ public class ListOfCustomersViewController implements ViewController
     listView.setFixedCellSize(40);
   }
 
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
+  }
+
   public ObservableList<Customer> getCustomersData(
       ArrayList<Customer> customersArrayList)
   {
@@ -45,16 +52,16 @@ public class ListOfCustomersViewController implements ViewController
   }
 
   public void onAddCustomerButton() throws SQLException, RemoteException {
-    viewHandler.openAddCustomer();
+    viewHandler.openAddCustomer(manager);
   }
 
   public void onMenuButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
   public void editCustomer(Customer customer) throws SQLException, RemoteException
   {
-    viewHandler.openEditCustomerInfo(customer);
+    viewHandler.openEditCustomerInfo(customer, manager);
   }
 
   public void deleteCustomer(Customer customer) throws RemoteException, SQLException

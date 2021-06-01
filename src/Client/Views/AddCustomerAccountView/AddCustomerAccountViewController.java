@@ -31,12 +31,19 @@ public class AddCustomerAccountViewController implements ViewController
   @FXML TextField phoneField;
   @FXML Label passwordCheckLabel;
 
+  private boolean manager;
+
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
   {
     this.viewHandler=viewHandler;
     this.addCustomerAccountViewModel = viewModelFactory.getAddCustomerAccountViewModelViewModel();
     passwordCheckLabel.setVisible(false);
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
   }
 
   private boolean checkPassword(){
@@ -73,12 +80,12 @@ public class AddCustomerAccountViewController implements ViewController
           drivingLicenseField.getText(),
           getCpr()
       );
-      viewHandler.openListOfCustomers();
+      viewHandler.openListOfCustomers(manager);
     }
   }
 
   public void onMenuButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
 }

@@ -7,7 +7,6 @@ import java.util.GregorianCalendar;
 
 public interface ClientModel
 {
-  boolean login (String s);
   void addVehicle(Vehicle vehicle) throws SQLException, RemoteException;
   ArrayList<Vehicle> getVehicles() throws SQLException, RemoteException;
   void setStatus(Vehicle vehicle, Status status) throws RemoteException, SQLException;

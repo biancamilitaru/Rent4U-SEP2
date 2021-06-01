@@ -6,7 +6,6 @@ import Client.Model.Vehicle;
 import Client.ViewModel.EditVehicleInfoViewModel;
 import Client.Views.ViewController;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -14,7 +13,6 @@ import javafx.scene.control.TextField;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -42,6 +40,7 @@ public class EditVehicleInfoViewController implements ViewController
   private ViewHandler viewHandler;
   private Vehicle vehicle;
   private EditVehicleInfoViewModel editVehicleInfoViewModel;
+  private boolean manager;
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
@@ -49,6 +48,11 @@ public class EditVehicleInfoViewController implements ViewController
     this.viewHandler=viewHandler;
     editVehicleInfoViewModel =viewModelFactory.getEditVehicleInfoViewModel();
     types.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
   }
 
   private String getFuelType(){
@@ -129,7 +133,7 @@ public class EditVehicleInfoViewController implements ViewController
             parseDouble(priceField.getText())
 
         );
-        viewHandler.openListOfVehicleView();
+        viewHandler.openListOfVehicleView(manager);
       }
       catch (NumberFormatException | RemoteException | SQLException e)
       {
@@ -140,7 +144,7 @@ public class EditVehicleInfoViewController implements ViewController
   }
 
   public void onExitButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
 }

@@ -36,6 +36,8 @@ public class EditCustomerAccountInfoViewController implements ViewController
   @FXML TextField phoneField;
   @FXML Label passwordCheckLabel;
 
+  private boolean manager;
+
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
@@ -43,6 +45,11 @@ public class EditCustomerAccountInfoViewController implements ViewController
     this.viewHandler=viewHandler;
     this.editCustomerInfoViewModel=viewModelFactory.getEditCustomerInfoViewModelViewModel();
 
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
   }
 
   public void setCustomer(Customer customer)
@@ -104,7 +111,7 @@ public class EditCustomerAccountInfoViewController implements ViewController
   }
 
   public void onMenu(){
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
   public void onDeleteButton() throws RemoteException, SQLException

@@ -1,7 +1,7 @@
 package Client.Core;
 
 import Client.Model.ClientModel;
-import Client.Model.EmployeeModelManager;
+import Client.Model.ClientModelManager;
 
 public class ModelFactory
 {
@@ -15,7 +15,7 @@ public class ModelFactory
 
   public ClientModel getClientModel(){
     if (clientModel == null)
-      clientModel = new EmployeeModelManager(ClientFactory.getInstance().getClient());
+      clientModel = new ClientModelManager(ClientFactory.getInstance().getClient());
     return clientModel;
   }
 

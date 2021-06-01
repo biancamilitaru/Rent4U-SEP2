@@ -3,10 +3,7 @@ package Client.Views.ListOfBookingsView;
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
 import Client.Model.Booking;
-import Client.Model.Vehicle;
 import Client.ViewModel.ListOfBookingsViewModel;
-import Client.ViewModel.ListOfVehiclesViewModel;
-import Client.Views.AddBookingView.VehicleViewCell.VehicleListViewCell;
 import Client.Views.ListOfBookingsView.BookingViewCell.BookingListViewCell;
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
@@ -23,6 +20,7 @@ public class ListOfBookingsViewController implements ViewController
 {
   private ViewHandler viewHandler;
   private ListOfBookingsViewModel listOfBookingsViewModel;
+  private boolean manager;
 
   @FXML ListView<Booking> listView;
 
@@ -45,12 +43,12 @@ public class ListOfBookingsViewController implements ViewController
   public void onAddBookingButton(ActionEvent evt)
       throws SQLException, RemoteException
   {
-    viewHandler.openAddBooking();
+    viewHandler.openAddBooking(manager);
   }
 
   public void onMenuButton(ActionEvent evt)
   {
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
   public ObservableList<Booking> getBookingData(
@@ -64,13 +62,16 @@ public class ListOfBookingsViewController implements ViewController
 
   public void onEdit(Booking booking) throws SQLException, RemoteException
   {
-    viewHandler.openEditBooking(booking);
+    viewHandler.openEditBooking(booking,manager);
   }
 
   public void onDelete(Booking booking) throws RemoteException, SQLException
   {
     listOfBookingsViewModel.deleteBooking(booking);
-    viewHandler.openListOfBookingsView();
+    viewHandler.openListOfBookingsView(manager);
   }
 
+  public void setManager(boolean manager) {
+    this.manager = manager;
+  }
 }

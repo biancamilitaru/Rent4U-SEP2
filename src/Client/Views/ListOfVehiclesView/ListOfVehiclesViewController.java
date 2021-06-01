@@ -22,6 +22,7 @@ public class ListOfVehiclesViewController implements ViewController
 {
   private ViewHandler viewHandler;
   private ListOfVehiclesViewModel listOfVehiclesViewModel;
+  private boolean manager;
 
   @FXML ListView<Vehicle> listView;
   @FXML ImageView logoSymbol;
@@ -71,31 +72,35 @@ public class ListOfVehiclesViewController implements ViewController
 
   public void onAddVehicleButton(ActionEvent evt)
   {
-    viewHandler.openAddVehicle();
+    viewHandler.openAddVehicle(manager);
   }
 
   public void onMenuButton(ActionEvent evt)
   {
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
   public void onEdit(Vehicle vehicle) throws SQLException, RemoteException
   {
-    viewHandler.openEditVehicle(vehicle);
+    viewHandler.openEditVehicle(vehicle, manager);
   }
 
   public void onClickedDelete(Vehicle vehicle)
       throws RemoteException, SQLException
   {
     listOfVehiclesViewModel.deleteVehicle(vehicle);
-    viewHandler.openListOfVehicleView();
+    viewHandler.openListOfVehicleView(manager);
   }
 
-  public ObservableList<Vehicle> getVehicleData(ArrayList<Vehicle> vehiclesArrayList)
-  {
-    for (int x = 0; x<vehiclesArrayList.size(); x++){
+  public ObservableList<Vehicle> getVehicleData(ArrayList<Vehicle> vehiclesArrayList) {
+    for (int x = 0; x < vehiclesArrayList.size(); x++) {
       tableObservableList.add(vehiclesArrayList.get(x));
     }
     return tableObservableList;
-}
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
+  }
 }

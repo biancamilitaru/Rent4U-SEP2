@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import javax.swing.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -17,10 +16,10 @@ public class MenuViewController implements ViewController
 
   private ViewHandler viewHandler;
   private MenuViewModel menuViewModel;
+  private boolean manager;
 
-  @FXML private Button openAddVehicleButton;
-  @FXML private Button openLogOutButton;
-  @FXML private Button listOfVehicleButton;
+  @FXML private Button openAddEmployeeButton;
+  @FXML private Button listOfEmployeesButton;
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory)
@@ -31,14 +30,14 @@ public class MenuViewController implements ViewController
 
   public void onAddVehicleButton(ActionEvent evt)
   {
-    viewHandler.openAddVehicle();
+    viewHandler.openAddVehicle(manager);
   }
 
   public void onListOfVehicleButton(ActionEvent evt) throws SQLException, RemoteException {
-    viewHandler.openListOfVehicleView();
+    viewHandler.openListOfVehicleView(manager);
   }
   public void onListOfBookingButton(ActionEvent evt) throws SQLException, RemoteException {
-    viewHandler.openListOfBookingsView();
+    viewHandler.openListOfBookingsView(manager);
   }
 
   public void onLogOutButton(ActionEvent evt) throws SQLException, RemoteException {
@@ -46,22 +45,34 @@ public class MenuViewController implements ViewController
   }
 
   public void onAddBookingButton(ActionEvent evt) throws SQLException, RemoteException {
-    viewHandler.openAddBooking();
+    viewHandler.openAddBooking(manager);
   }
 
   public void onAddNewCustomerButton(ActionEvent evt) throws SQLException, RemoteException {
-    viewHandler.openAddCustomer();
+    viewHandler.openAddCustomer(manager);
   }
 
   public void onListOfAllCustomersButton(ActionEvent evt ) throws SQLException, RemoteException {
-    viewHandler.openListOfCustomers();
+    viewHandler.openListOfCustomers(manager);
   }
 
   public void onAddNewEmployeeButton(ActionEvent evt) throws SQLException, RemoteException {
-    viewHandler.openAddEmployee();
+    viewHandler.openAddEmployee(manager);
   }
 
   public void onListOfAllEmployeesButton(ActionEvent event) throws SQLException, RemoteException {
-    viewHandler.openListOfEmployees();
+    viewHandler.openListOfEmployees(manager);
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
+    setVisible(manager);
+  }
+
+  public void setVisible(boolean arg)
+  {
+    listOfEmployeesButton.setVisible(arg);
+    openAddEmployeeButton.setVisible(arg);
   }
 }

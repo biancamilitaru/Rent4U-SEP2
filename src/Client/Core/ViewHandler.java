@@ -4,7 +4,6 @@ import Client.Model.Booking;
 import Client.Model.Customer;
 import Client.Model.Employee;
 import Client.Model.Vehicle;
-import Client.ViewModel.AddEmployeeViewModel;
 import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
 import Client.Views.AddBookingView.AddBookingViewController;
 import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
@@ -79,7 +78,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openAddVehicle()
+  public void openAddVehicle(boolean manager)
   {
     FXMLLoader loader = new FXMLLoader();
 
@@ -96,6 +95,7 @@ public class ViewHandler
     }
     AddVehicleViewController view= loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("Add Vehicle");
 
     Scene scene = new Scene(root);
@@ -104,7 +104,7 @@ public class ViewHandler
   }
 
 
-  public void openMainMenu()
+  public void openMainMenu(boolean manager)
   {
     FXMLLoader loader = new FXMLLoader();
 
@@ -121,6 +121,7 @@ public class ViewHandler
     }
     MenuViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("Menu");
 
     Scene scene = new Scene(root);
@@ -128,7 +129,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openListOfVehicleView() throws SQLException, RemoteException {
+  public void openListOfVehicleView(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/ListOfVehiclesView/VehicleListView.fxml"));
@@ -144,13 +145,14 @@ public class ViewHandler
     }
     ListOfVehiclesViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("List of vehicles");
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
-  public void openListOfBookingsView() throws SQLException, RemoteException {
+  public void openListOfBookingsView(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/ListOfBookingsView/ListOfBookingsView.fxml"));
@@ -166,6 +168,7 @@ public class ViewHandler
     }
     ListOfBookingsViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("List of bookings");
 
     Scene scene = new Scene(root);
@@ -173,7 +176,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openSetStatusView(Vehicle vehicle) {
+  public void openSetStatusView(Vehicle vehicle, boolean manager) {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/SetStatusView/SetStatusView.fxml"));
@@ -191,13 +194,14 @@ public class ViewHandler
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Set status");
     view.setVehicle(vehicle);
+    view.setManager(manager);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
 
-  public void openEditVehicle(Vehicle vehicle) throws SQLException, RemoteException {
+  public void openEditVehicle(Vehicle vehicle, boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/EditVehicleInfoView/EditVehicleInfoView.fxml"));
@@ -215,13 +219,14 @@ public class ViewHandler
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Edit vehicle");
     view.setVehicle(vehicle);
+    view.setManager(manager);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
 
-  public void openAddBooking() throws SQLException, RemoteException {
+  public void openAddBooking(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/AddBookingView/AddBookingView.fxml"));
@@ -237,13 +242,14 @@ public class ViewHandler
     }
     AddBookingViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("Add Booking");
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
-  public void openEditBooking(Booking booking) throws SQLException, RemoteException {
+  public void openEditBooking(Booking booking, boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/EditBookingInfoView/EditBookingInfoView.fxml"));
@@ -261,37 +267,14 @@ public class ViewHandler
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Edit booking");
     view.setBooking(booking);
+    view.setManager(manager);
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
 
-  public void openEditBookingInfo(Booking booking) throws SQLException, RemoteException {
-    FXMLLoader loader = new FXMLLoader();
-
-    loader.setLocation(getClass().getResource("../Views/EditBookingInfoView.EditBookingInfoView.fxml"));
-    Parent root = null;
-    try
-    {
-      root = loader.load();
-    } catch (Exception e)
-    {
-      e.printStackTrace();
-      System.out.println(e.getMessage());
-      System.out.println(loader.getLocation());
-    }
-    EditBookingInfoViewController view = loader.getController();
-    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("Edit booking");
-    view.setBooking(booking);
-
-    Scene scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  public void openAddCustomer() throws SQLException, RemoteException {
+  public void openAddCustomer(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/AddCustomerAccountView/AddCustomerAccount.fxml"));
@@ -307,6 +290,7 @@ public class ViewHandler
     }
     AddCustomerAccountViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("Add customer");
 
     Scene scene = new Scene(root);
@@ -336,7 +320,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openEditCustomerInfo(Customer customer) throws SQLException, RemoteException {
+  public void openEditCustomerInfo(Customer customer, boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/EditCustomerAccountInfoView/EditCustomerAccountInfo.fxml"));
@@ -353,6 +337,7 @@ public class ViewHandler
     EditCustomerAccountInfoViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Edit Customer Info");
+    view.setManager(manager);
     view.setCustomer(customer);
 
     Scene scene = new Scene(root);
@@ -362,8 +347,6 @@ public class ViewHandler
 
   public void openLogInCustomer() throws SQLException, RemoteException
   {
-    //Still need to do the fxml for the login for the customer
-    //The path might not be correct
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/LogInForCustomerView/LogInForCustomerView.fxml"));
@@ -435,7 +418,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openListOfCustomers() throws SQLException, RemoteException
+  public void openListOfCustomers(boolean manager) throws SQLException, RemoteException
   {
     FXMLLoader loader = new FXMLLoader();
 
@@ -452,6 +435,7 @@ public class ViewHandler
     }
     ListOfCustomersViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("List of customers");
 
     Scene scene = new Scene(root);
@@ -532,7 +516,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openEditEmployeeInfo(Employee employee) throws SQLException, RemoteException {
+  public void openEditEmployeeInfo(Employee employee, boolean manager) throws SQLException, RemoteException {
 
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("../Views/EditEmployeeInfoView/EditEmployeeInfo.fxml"));
@@ -549,6 +533,7 @@ public class ViewHandler
     EditEmployeeInfoViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Edit Personal Info");
+    view.setManager(manager);
     view.setEmployee(employee);
 
     Scene scene = new Scene(root);
@@ -583,7 +568,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openListOfEmployees() throws SQLException, RemoteException {
+  public void openListOfEmployees(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/ListOfEmployeesView.ListOfEmployeesView.fxml"));
@@ -599,6 +584,7 @@ public class ViewHandler
     }
     ListOfEmployeesViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("List of employees");
 
     Scene scene = new Scene(root);
@@ -606,7 +592,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openAddEmployee() throws SQLException, RemoteException {
+  public void openAddEmployee(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/AddEmployeesView/AddEmployeesView.fxml"));
@@ -622,6 +608,7 @@ public class ViewHandler
     }
     AddEmployeesViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+    view.setManager(manager);
     stage.setTitle("Add Employees");
 
     Scene scene = new Scene(root);

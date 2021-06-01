@@ -32,6 +32,8 @@ public class EditEmployeeInfoViewController implements ViewController
   @FXML TextField position;
   @FXML TextField salaryField;
 
+  private boolean manager;
+
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
@@ -44,6 +46,11 @@ public class EditEmployeeInfoViewController implements ViewController
   {
     this.employee = employee;
     loadData();
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
   }
 
   public static final LocalDate dateConvertor(String dateString){
@@ -100,7 +107,7 @@ public class EditEmployeeInfoViewController implements ViewController
 
   public void onMenu()
   {
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
 }

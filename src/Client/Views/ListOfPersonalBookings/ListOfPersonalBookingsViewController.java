@@ -5,7 +5,6 @@ import Client.Core.ViewModelFactory;
 import Client.Model.Booking;
 import Client.Model.Customer;
 import Client.ViewModel.ListOfPersonalBookingsViewModel;
-import Client.Views.ListOfBookingsView.BookingViewCell.BookingListViewCell;
 import Client.Views.ListOfPersonalBookings.PersonalBookingCell.PersonalBookingCellViewController;
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
@@ -46,7 +45,7 @@ public class ListOfPersonalBookingsViewController implements ViewController
 
   public void onAddBookingButton(ActionEvent evt) throws SQLException, RemoteException
   {
-    viewHandler.openAddBooking();
+    viewHandler.openAddBookingCustomer(customer);
   }
 
   public void onMenuButton(javafx.event.ActionEvent evt)

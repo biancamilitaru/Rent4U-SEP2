@@ -37,6 +37,7 @@ public class AddBookingViewController implements ViewController {
 
   public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
   private Vehicle chosenVehicle;
+  private boolean manager;
 
   @Override
   public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
@@ -51,6 +52,11 @@ public class AddBookingViewController implements ViewController {
     listView.setVisible(false);
     customersID.getItems().addAll(viewModel.getAllCustomersID());
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -84,7 +90,7 @@ public class AddBookingViewController implements ViewController {
 
   public void onCreateBookingButton() throws RemoteException, SQLException {
     viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
-    viewHandler.openListOfBookingsView();
+    viewHandler.openListOfBookingsView(manager);
   }
 
   public int daysBetween(Date d1, Date d2) {
@@ -123,6 +129,6 @@ public class AddBookingViewController implements ViewController {
 
   public void onMainMenuButton(ActionEvent evt)
   {
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 }

@@ -39,6 +39,7 @@ public class AddVehicleViewController implements ViewController
 
     private ViewHandler viewHandler;
     private AddVehicleViewModel addVehicleViewModel;
+    private boolean manager;
 
     @Override public void init(ViewHandler vh, ViewModelFactory vmf)
     {
@@ -131,7 +132,7 @@ public class AddVehicleViewController implements ViewController
                     parseInt(nbOfSeatsField.getText()),
                     parseDouble(priceField.getText())
                     );
-                viewHandler.openListOfVehicleView();
+                viewHandler.openListOfVehicleView(manager);
             } catch (SQLException | RemoteException e) {
                 e.printStackTrace();
             }
@@ -139,6 +140,10 @@ public class AddVehicleViewController implements ViewController
   }
 
   public void onExitButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
+
+    public void setManager(boolean manager) {
+        this.manager = manager;
+    }
 }

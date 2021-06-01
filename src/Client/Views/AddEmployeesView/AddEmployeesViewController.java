@@ -30,12 +30,19 @@ public class AddEmployeesViewController implements ViewController
   private ViewHandler viewHandler;
   private AddEmployeeViewModel addEmployeeViewModel;
 
+  private boolean manager;
+
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
   {
     this.viewHandler=viewHandler;
     addEmployeeViewModel=viewModelFactory.getAddEmployeeViewModel();
     addedLabel.setVisible(false);
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
   }
 
   private String getCpr(){
@@ -62,11 +69,11 @@ public class AddEmployeesViewController implements ViewController
           position.getText()
 
       );
-    viewHandler.openListOfEmployees();
+    viewHandler.openListOfEmployees(manager);
   }
 
   public void onMenuButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
 }

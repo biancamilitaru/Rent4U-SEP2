@@ -43,6 +43,7 @@ public class EditBookingInfoViewController implements ViewController
   public final ObservableList<Vehicle> vehiclesObservableList = FXCollections.observableArrayList();
   public final ObservableList<String> customersObservableList = FXCollections.observableArrayList();
   private Booking booking;
+  private boolean manager;
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
@@ -115,6 +116,11 @@ public class EditBookingInfoViewController implements ViewController
     this.booking=booking;
     loadData();
     System.out.println(booking);
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
   }
 
   public void setVehicle(Vehicle vehicle)
@@ -192,6 +198,6 @@ public class EditBookingInfoViewController implements ViewController
 
 
   public void onExitButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 }

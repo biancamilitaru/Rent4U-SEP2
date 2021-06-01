@@ -8,7 +8,6 @@ public class MenuViewModel
 
   public MenuViewModel(ClientModel userModel){
     this.userModel = userModel;
-
   }
 
 }

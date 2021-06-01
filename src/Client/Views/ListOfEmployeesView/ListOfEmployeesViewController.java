@@ -2,9 +2,7 @@ package Client.Views.ListOfEmployeesView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Customer;
 import Client.Model.Employee;
-import Client.ViewModel.ListOfCustomersViewModel;
 import Client.ViewModel.ListOfEmployeesViewModel;
 import Client.Views.ListOfEmployeesView.EmployeeCellView.EmployeeCellViewController;
 import Client.Views.ViewController;
@@ -26,6 +24,8 @@ public class ListOfEmployeesViewController implements ViewController
 
   public final ObservableList<Employee> employeesArrayList = FXCollections.observableArrayList();
 
+  private boolean manager;
+
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
   {
@@ -35,6 +35,11 @@ public class ListOfEmployeesViewController implements ViewController
     listView.setItems(employeesArrayList);
     listView.setCellFactory(employeeListView -> new EmployeeCellViewController(this));
     listView.setFixedCellSize(40);
+  }
+
+  public void setManager(boolean manager)
+  {
+    this.manager = manager;
   }
 
   public ObservableList<Employee> getEmployeesData(
@@ -48,30 +53,24 @@ public class ListOfEmployeesViewController implements ViewController
   }
 
   public void onAddEmployeeButton() throws SQLException, RemoteException {
-    viewHandler.openAddEmployee();
+    viewHandler.openAddEmployee(manager);
   }
 
   public void onMenuButton(){
-    viewHandler.openMainMenu();
+    viewHandler.openMainMenu(manager);
   }
 
   public void onEditEmployee(Employee employee)
       throws SQLException, RemoteException
   {
-    viewHandler.openEditEmployeeInfo(employee);
+    viewHandler.openEditEmployeeInfo(employee, manager);
   }
   
   public void deleteEmployee(Employee employee)
       throws SQLException, RemoteException
   {
     listOfEmployeesViewModel.deleteEmployee(employee);
-    viewHandler.openListOfEmployees();
-  }
-
-  public void editEmployee(Employee employee)
-      throws SQLException, RemoteException
-  {
-    viewHandler.openEditEmployeeInfo(employee);
+    viewHandler.openListOfEmployees(manager);
   }
 
 }
