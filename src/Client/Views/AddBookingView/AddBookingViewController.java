@@ -69,6 +69,7 @@ public class AddBookingViewController implements ViewController {
   }
 
   public GregorianCalendar getStartDate(){
+    boolean setter=true;
     int startHour1 =0;
     int startMinute1 =0;
     try{
@@ -81,16 +82,38 @@ public class AddBookingViewController implements ViewController {
       alert.setTitle("Error");
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
+      setter=false;
     }
+    if(startHour1>23 || startHour1<0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
 
-    LocalDate date1 = startDatePicker.getValue();
-
-    GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
-
-    return startDate;
+    }
+    if(startMinute1>59 ||startMinute1<0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(setter)
+    {
+      LocalDate date1 = startDatePicker.getValue();
+      GregorianCalendar startDate = new GregorianCalendar(date1.getYear(),
+          date1.getMonth().getValue() - 1, date1.getDayOfMonth(), startHour1,
+          startMinute1);
+      return startDate;
+    }
+    return null;
   }
 
   public GregorianCalendar getEndDate(){
+    boolean setter=true;
     int endHour1 = 0;
     int endMinute1=0;
 
@@ -104,17 +127,39 @@ public class AddBookingViewController implements ViewController {
       alert.setTitle("Error");
       alert.setContentText("Please enter a valid license plate number\nPlease try again!");
       alert.showAndWait();
+      setter=false;
     }
+    if(endHour1>23 || endHour1<0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
 
-    LocalDate date2 = endDatePicker.getValue();
-
-    GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
-
-    return endDate;
+    }
+    if(endHour1>59 ||endHour1<0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(setter=true)
+    {
+      LocalDate date2 = endDatePicker.getValue();
+      GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
+          date2.getMonth().getValue() - 1, date2.getDayOfMonth(), endHour1,
+          endMinute1);
+      return endDate;
+    }
+    return null;
   }
 
   public void onCreateBookingButton() throws RemoteException, SQLException
   {
+    boolean setter=true;
     String licensePlate = chosenVehicle.getLicensePlate();
     GregorianCalendar now = new GregorianCalendar();
 
@@ -125,20 +170,26 @@ public class AddBookingViewController implements ViewController {
       alert.setContentText(
           "Please enter a valid license plate number\nPlease try again!");
       alert.showAndWait();
+      setter=false;
     }
-    if (getStartDate().before(now) || getEndDate().before(getStartDate()) || getEndDate().before(now))
+    if (getStartDate().before(now) || getEndDate().before(getStartDate()) || getEndDate().before(now) || getEndDate()==null || getStartDate()==null)
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setContentText("Please enter a valid end time\nTry again!");
       alert.showAndWait();
+      setter=false;
     }
-    else
+    if(setter)
     {
       viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),
           chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),
           getTotalPrice());
       viewHandler.openListOfBookingsView(manager);
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      alert.setTitle("Booking created");
+      alert.setContentText("The booking has been created!\nThank you!");
+      alert.showAndWait();
     }
   }
 
