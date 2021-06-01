@@ -112,7 +112,6 @@ public class AddCustomerAccountViewController implements ViewController
           phoneField.getText(),
           drivingLicenseField.getText(),
           getCpr()
-
       );
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
       alert.setTitle("Customer created");
@@ -126,8 +125,6 @@ public class AddCustomerAccountViewController implements ViewController
       alert.setContentText("Please enter correct information to the fields!\nThank you!");
       alert.showAndWait();
     }
-
-
   }
 
   public void onMenuButton(){
