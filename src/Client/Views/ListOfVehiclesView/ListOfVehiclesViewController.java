@@ -98,7 +98,7 @@ public class ListOfVehiclesViewController implements ViewController
     if (result.get() == ButtonType.OK){
     listOfVehiclesViewModel.deleteVehicle(vehicle);
     viewHandler.openListOfVehicleView(manager);}
-    else
+    else if(result.get()==ButtonType.CANCEL)
       viewHandler.openListOfVehicleView(manager);}
 
 
