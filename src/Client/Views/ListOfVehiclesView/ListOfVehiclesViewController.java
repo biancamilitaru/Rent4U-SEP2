@@ -38,8 +38,8 @@ public class ListOfVehiclesViewController implements ViewController
   public Image gearboxSymbolImage = new Image("/GUI/Vehicle/GearboxSymbol.png");
   public Image fuelSymbolImage = new Image("/GUI/Vehicle/FuelSymbol.png");
   public Image engineSymbolImage = new Image("/GUI/Vehicle/EnginePowerSymbol.png");
-  public Image editSymbolImage = new Image("/GUI/Vehicle/EditSymbol.png");
-  public Image deleteSymbolImage = new Image("/GUI/Vehicle/DeleteSymbol.png");
+  public Image editSymbolImage = new Image("/GUI/Vehicle/Edit.png");
+  public Image deleteSymbolImage = new Image("/GUI/Vehicle/Delete.png");
   public Image licensePlateSymbol = new Image("/GUI/Vehicle/LicensePlate.png");
 
   public Image getCarSymbolImage() { return carSymbolImage; }
