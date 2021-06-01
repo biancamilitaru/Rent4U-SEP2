@@ -106,7 +106,6 @@ public class AddCustomerAccountViewController implements ViewController
       alert.showAndWait();
       viewHandler.openListOfCustomers(manager);
     }
-
   }
 
   public void onMenuButton(){
