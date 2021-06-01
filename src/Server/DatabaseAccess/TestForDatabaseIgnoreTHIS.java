@@ -20,7 +20,7 @@ public class TestForDatabaseIgnoreTHIS {
         GregorianCalendar start_time = new GregorianCalendar(2021, 5, 26, 8, 30);
         GregorianCalendar end_time = new GregorianCalendar(2021, 5, 27, 10,00);
         Booking booking1 = new Booking(1,1000000000, "CHANGED", start_time, end_time, 200);
-        //manageBookings.createBooking(booking1);
+        manageBookings.createBooking(booking1);
         Status status = new Status(start_time,end_time, "In Service");
         //manageVehicles.setStatus(vehicle1, status);
         Booking booking2 = new Booking(1000000000, "dd34", start_time, end_time, 200);
@@ -32,7 +32,7 @@ public class TestForDatabaseIgnoreTHIS {
         Customer customer2 = new Customer("andrei", "alexandri", date_of_birth, "email",
                 "password", "5678", "license", "2000000000");
         ManageCustomers manageCustomers = new Rent4UDAO();
-        //manageCustomers.addCustomer(customer);
+        //manageCustomers.addCustomer(customer1);
         //System.out.println(manageCustomers.viewAllCustomers());
         //manageCustomers.editCustomerInfo(customer1, customer2);
         //manageVehicles.deleteVehicle(vehicle1);
@@ -47,6 +47,6 @@ public class TestForDatabaseIgnoreTHIS {
                 "email.ro", 56, "manager");
         //manageEmployees.editEmployeeInfo(employee1, employee2);
         System.out.println(manageEmployees.getEmployees());
-        manageEmployees.deleteEmployee(employee1);
+        //manageEmployees.deleteEmployee(employee1);
     }
 }
