@@ -13,12 +13,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,10 +61,10 @@ public class EditBookingInfoViewController implements ViewController
     listView.setFixedCellSize(120);
   }
 
-  public static final LocalDate dateConvertor (String dateString){
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
-    LocalDate localDate = LocalDate.parse(dateString, formatter);
-    return localDate;
+  public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+    return dateToConvert.toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate();
   }
 
   public String getVehiclePlate(){
@@ -74,16 +72,8 @@ public class EditBookingInfoViewController implements ViewController
   }
 
   public void loadData(){
-    startDatePicker.setValue(
-        dateConvertor(
-            booking.getStartTime().get(Calendar.DATE)+ "-" +
-                      booking.getStartTime().get(Calendar.MONTH)+"-"+
-                      booking.getStartTime().get(Calendar.YEAR)));
-    endDatePicker.setValue(
-        dateConvertor(
-            booking.getEndTime().get(Calendar.DATE)+ "-" +
-                      booking.getEndTime().get(Calendar.MONTH)+"-"+
-                      booking.getEndTime().get(Calendar.YEAR)));
+    startDatePicker.setValue(convertToLocalDateViaInstant(booking.getStartTime().getTime()));
+    endDatePicker.setValue(convertToLocalDateViaInstant(booking.getEndTime().getTime()));
     startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR)));
     startMinute.setText(String.valueOf(booking.getStartTime().get(Calendar.MINUTE)));
     endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR)));
