@@ -48,7 +48,7 @@ public class EditVehicleInfoViewController implements ViewController
   {
     this.viewHandler=viewHandler;
     editVehicleInfoViewModel =viewModelFactory.getEditVehicleInfoViewModel();
-    types.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+    types.getItems().addAll("Car", "Minibus", "Van", "Motorcycle");
   }
 
   public void setManager(boolean manager)
@@ -134,12 +134,12 @@ public class EditVehicleInfoViewController implements ViewController
             parseDouble(priceField.getText())
 
         );
+        viewHandler.openListOfVehicleView(manager);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Car information edited");
         alert.setContentText(
-            "The car information has been successfully edited!\nThank you!");
+                "The car information has been successfully edited!\nThank you!");
         alert.showAndWait();
-        viewHandler.openListOfVehicleView(manager);
       }
       catch (NumberFormatException | RemoteException | SQLException e)
       {

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="-10.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -14,7 +14,10 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="firstNameLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="Name" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="firstNameLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="Name" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="12.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="69.0" layoutY="5.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="68.125" AnchorPane.topAnchor="0.0">
@@ -24,7 +27,10 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="lastNameLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="Surname" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="lastNameLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="Surname" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="12.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="140.0" layoutY="5.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="136.25" AnchorPane.topAnchor="0.0">
@@ -34,42 +40,42 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="dateOfBirtLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="00/00/0000" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="dateOfBirtLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="00/00/0000" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="210.0" layoutY="2.0" prefHeight="40.0" prefWidth="125.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="204.375" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="204.0" layoutY="2.0" prefHeight="40.0" prefWidth="96.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="204.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="2.0" layoutY="6.0" prefHeight="13.0" prefWidth="64.0" text="E-Mail" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="eMailLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="17.0" prefWidth="125.0" text="rent4u@rent4u.com" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="eMailLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="17.0" prefWidth="104.0" text="rent4u@rent4u.com" textAlignment="CENTER" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="321.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="332.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="300.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="2.0" layoutY="6.0" prefHeight="13.0" prefWidth="64.0" text="Phone" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="phoneLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="00 00 00 00" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="phoneLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="00 00 00 00" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="378.0" layoutY="1.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="401.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="369.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="369.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="2.0" layoutY="6.0" prefHeight="13.0" prefWidth="64.0" text="Driving license" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                <font>
@@ -83,26 +89,26 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="388.0" layoutY="11.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="438.0" prefHeight="40.0" prefWidth="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="438.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="2.0" layoutY="6.0" prefHeight="13.0" prefWidth="64.0" text="CPR" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="cprLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="000000/0000" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="cprLabel" alignment="CENTER" layoutX="1.0" layoutY="18.0" prefHeight="13.0" prefWidth="65.0" text="000000/0000" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Button onAction="#onClickedEditButton" layoutX="538.0" layoutY="9.0" mnemonicParsing="false" text="EDIT" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="27.5" AnchorPane.topAnchor="10.0">
+      <Button layoutX="507.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickedEditButton" text="EDIT" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="48.5" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button onAction="#onClickedDeleteButton" layoutX="575.0" layoutY="9.0" mnemonicParsing="false" text="X" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+      <Button layoutX="555.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickedDeleteButton" text="X" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="10.0" />
          </font>

@@ -99,7 +99,6 @@ public class AddCustomerAccountViewController implements ViewController
           phoneField.getText(),
           drivingLicenseField.getText(),
           getCpr()
-
       );
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
       alert.setTitle("Customer created");
@@ -111,8 +110,6 @@ public class AddCustomerAccountViewController implements ViewController
     alert.setTitle("Invalid input");
     alert.setContentText("Please enter a valid cpr number!");
     alert.showAndWait();
-
-
   }
 
   public void onMenuButton(){

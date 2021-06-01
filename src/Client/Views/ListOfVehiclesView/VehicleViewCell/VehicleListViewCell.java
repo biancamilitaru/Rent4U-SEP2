@@ -2,7 +2,6 @@ package Client.Views.ListOfVehiclesView.VehicleViewCell;
 
 import Client.Model.Vehicle;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -10,8 +9,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -51,7 +48,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
     this.listOfVehiclesViewController=listOfVehiclesViewController;
   }
 
-  public Image carS = new Image("/GUI/Vehicle/CarSymbol.png");
+  public Image carImage = new Image("/GUI/Vehicle/CarSymbol.png");
   public Image minivanSymbolImage = new Image("/GUI/Vehicle/MiniVanSymbol.png");
   public Image busImage = new Image("/GUI/Vehicle/BusSymbol.png");
   public Image motorcycleImage = new Image("/GUI/Vehicle/MotorcycleSymbol.png");
@@ -110,12 +107,12 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
       if (vehicle.getType().equals("Motorcycle")){
-        carSymbol.setImage(carS);
-      } else if (vehicle.getType().equals("Bus")) {
+        carSymbol.setImage(motorcycleImage);
+      } else if (vehicle.getType().equals("Minibus")) {
         carSymbol.setImage(busImage);
-      } else if (vehicle.getType().equals("Minivan")) {
+      } else if (vehicle.getType().equals("Van")) {
         carSymbol.setImage(minivanSymbolImage);
-      } else carSymbol.setImage(carS);
+      } else carSymbol.setImage(carImage);
 
       if (getIndex()%2==0){
         //OnOrange
