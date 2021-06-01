@@ -110,8 +110,6 @@ public class AddCustomerAccountViewController implements ViewController
     alert.setTitle("Invalid input");
     alert.setContentText("Please enter a valid cpr number!");
     alert.showAndWait();
-
-
   }
 
   public void onMenuButton(){
