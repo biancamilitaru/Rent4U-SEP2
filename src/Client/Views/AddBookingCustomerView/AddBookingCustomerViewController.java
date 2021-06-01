@@ -69,8 +69,20 @@ public class AddBookingCustomerViewController implements ViewController {
   }
 
   public GregorianCalendar getStartDate(){
-    int startHour1 = Integer.parseInt(startHour.getText());
-    int startMinute1 = Integer.parseInt(startMinute.getText());
+    int startHour1 =0;
+    int startMinute1 =0;
+    try{
+      startHour1 = Integer.parseInt(startHour.getText());
+      startMinute1 = Integer.parseInt(startMinute.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+    }
+
     LocalDate date1 = startDatePicker.getValue();
 
     GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
@@ -79,8 +91,21 @@ public class AddBookingCustomerViewController implements ViewController {
   }
 
   public GregorianCalendar getEndDate(){
-    int endHour1 = Integer.parseInt(endHour.getText());
-    int endMinute1 = Integer.parseInt(endMinute.getText());
+    int endHour1 = 0;
+    int endMinute1=0;
+
+    try{
+      endHour1 = Integer.parseInt(endHour.getText());
+      endMinute1 = Integer.parseInt(endMinute.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid license plate number\nPlease try again!");
+      alert.showAndWait();
+    }
+
     LocalDate date2 = endDatePicker.getValue();
 
     GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
