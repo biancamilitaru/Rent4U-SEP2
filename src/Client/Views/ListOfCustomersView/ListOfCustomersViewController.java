@@ -9,11 +9,14 @@ import Client.Views.ViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ListOfCustomersViewController implements ViewController
 {
@@ -66,9 +69,16 @@ public class ListOfCustomersViewController implements ViewController
 
   public void deleteCustomer(Customer customer) throws RemoteException, SQLException
   {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Delete Customer");
+    alert.setHeaderText("");
+    alert.setContentText("Are you sure you would like to delete this customer?");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
     listOfCustomersViewModel.deleteCustomer(customer);
-    viewHandler.openLogInCustomer();
+    viewHandler.openLogInCustomer();}
+    else if(result.get()==ButtonType.CANCEL){
+      viewHandler.openLogInCustomer(); }
   }
-
-
 }
