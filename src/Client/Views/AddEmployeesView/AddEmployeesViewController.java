@@ -56,8 +56,8 @@ public class AddEmployeesViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
@@ -94,33 +94,53 @@ public class AddEmployeesViewController implements ViewController
     return phoneNumberString;
   }
 
-  public void onCreateButton() throws RemoteException, SQLException, NumberFormatException{
-    if(dateOfBirthPicker!=null && getCpr()!=null &&getDateBirth()!=null && getPhoneNumber()!=null)
+  public int getSalary()
+  {
+    String salaryString=salary.getText();
+    int salaryInt=0;
+    try{
+        salaryInt=Integer.parseInt(salaryString);
+    }
+    catch (NumberFormatException e)
     {
-      addEmployeeViewModel.createEmployee(getCpr(), firstNameField.getText(),
-          lastNameField.getText(), getDateBirth(), phoneField.getText(),
-          eMailField.getText(), Integer.parseInt(salary.getText()),
+      return 0;
+    }
+    return salaryInt;
+  }
+
+  public void onCreateButton() throws RemoteException, SQLException, NumberFormatException{
+
+    if(dateOfBirthPicker!=null && getCpr()!=null &&getDateBirth()!=null && getPhoneNumber()!=null && getSalary()!=0)
+    {
+      addEmployeeViewModel.createEmployee(
+          getCpr(),
+          firstNameField.getText(),
+          lastNameField.getText(),
+          getDateBirth(),
+          phoneField.getText(),
+          eMailField.getText(),
+          getSalary(),
           position.getText()
 
       );
       viewHandler.openListOfEmployees(manager);
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Employee created");
       alert.setContentText("The employee has been created!\nThank you!");
       alert.showAndWait();
     }
     if(getCpr()==null)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid CPR!\nPlease try again!");
       alert.showAndWait();
     }
     if(getDateBirth()==null)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid birth date!\nPlease try again!");
       alert.showAndWait();
@@ -130,6 +150,14 @@ public class AddEmployeesViewController implements ViewController
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
+    if(getSalary()==0)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
+      alert.setContentText(
+          "Please enter a valid salary!\nPlease try again!");
       alert.showAndWait();
     }
   }

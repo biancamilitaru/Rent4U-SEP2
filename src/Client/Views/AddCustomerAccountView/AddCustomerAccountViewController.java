@@ -67,8 +67,8 @@ public class AddCustomerAccountViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
@@ -123,7 +123,7 @@ public class AddCustomerAccountViewController implements ViewController
           getCpr()
 
       );
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Customer created");
       alert.setContentText("The customer has been created!\nThank you!");
       alert.showAndWait();

@@ -61,8 +61,8 @@ public class AddPersonalAccountViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText(
           "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
@@ -114,23 +114,23 @@ public class AddPersonalAccountViewController implements ViewController
                 getCpr()
             );
         viewHandler.openMenuCustomerView(customer);
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Your profile was created");
         alert.setContentText("Your personal profile is ready!\nThank you!");
         alert.showAndWait();
     }
     if(getCpr()==null)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText(
           "Please enter a valid CPR!\nPlease try again!");
       alert.showAndWait();
     }
     if(getDateBirth()==null)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText(
           "Please enter a date of birth!\nPlease try again!");
       alert.showAndWait();

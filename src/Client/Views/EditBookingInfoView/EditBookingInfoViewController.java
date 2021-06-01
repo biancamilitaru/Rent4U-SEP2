@@ -126,16 +126,16 @@ public class EditBookingInfoViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }
     if(startHour1>23 || startHour1<0)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
       setter=false;
@@ -143,8 +143,8 @@ public class EditBookingInfoViewController implements ViewController
     }
     if(startMinute1>59 ||startMinute1<0)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
       setter=false;
@@ -172,16 +172,16 @@ public class EditBookingInfoViewController implements ViewController
     }
     catch (NumberFormatException e)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText("Please enter a valid license plate number\nPlease try again!");
       alert.showAndWait();
       setter=false;
     }
     if(endHour1>23 || endHour1<0)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
       setter=false;
@@ -189,8 +189,8 @@ public class EditBookingInfoViewController implements ViewController
     }
     if(endHour1>59 ||endHour1<0)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
       setter=false;
@@ -226,6 +226,8 @@ public class EditBookingInfoViewController implements ViewController
       throws RemoteException, SQLException
   {
 
+    GregorianCalendar now=new GregorianCalendar();
+
     String idOfCustomer = String.valueOf(booking.getIdOfCustomer());
     if (customerID.getValue()!=null){
       idOfCustomer = customerID.getValue();
@@ -239,12 +241,20 @@ public class EditBookingInfoViewController implements ViewController
     double price=Double.valueOf(totalPriceOfBooking.getText());
     ///////////////////////////////////////
 
-    if(getEndDate()!=null && getStartDate()!=null)
+    if(getEndDate()!=null && getStartDate()!=null && now.before(getStartDate()) && getStartDate().before(getEndDate()) && now.before(getEndDate()))
     {
       editBookingInfoViewModel.editBookingInfo(booking,Integer.valueOf(idOfCustomer),licensePlate,getStartDate(),getEndDate(),price);
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("The booking is edited");
       alert.setContentText("The booking has been edited!\nThank you!");
+      alert.showAndWait();
+    }
+    else
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText(
+          "Please enter a valid date!\nPlease try again!");
       alert.showAndWait();
     }
   }

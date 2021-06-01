@@ -118,28 +118,127 @@ public class EditVehicleInfoViewController implements ViewController
     else if (vehicle.getTypeOfFuel().equalsIgnoreCase("electric"))
       electricTypeButton.fire();
   }
+  public String getLicensePlate()
+  {
+    String licenseP=licensePlateField.getText();
+    if(licenseP.length()!=7)
+      return null;
+    return licenseP;
+  }
+
+  public int getEnginePower()
+  {
+    int enginePow=0;
+    String enginePower=enginePowerField.getText();
+    try{
+      enginePow=parseInt(enginePower);
+    }
+    catch(NumberFormatException e){
+      return 0;
+    }
+    return enginePow;
+  }
+
+  public int getYear()
+  {
+    int year=0;
+    String yearString=yearField.getText();
+    try{
+      year=parseInt(yearString);
+    }
+    catch(NumberFormatException e){
+      return 0;
+    }
+    return year;
+  }
+
+  public int getNumberOfSeats()
+  {
+    String numberOfSeatsString=nbOfSeatsField.getText();
+    int numberOfSeats=0;
+    try{
+      numberOfSeats=parseInt(numberOfSeatsString);
+    }
+    catch (NumberFormatException e)
+    {
+      return 0;
+    }
+    return numberOfSeats;
+  }
+
+  public double getPrice()
+  {
+    String priceString=priceField.getText();
+    double price=0;
+    try{
+      price=parseDouble(priceString);
+    }
+    catch (NumberFormatException e)
+    {
+      return 0;
+    }
+    return price;
+  }
 
   public void onUpdateVehicleButton() throws SQLException, RemoteException {
     Platform.runLater(()->{
       try{
-        editVehicleInfoViewModel.editVehicleInfo(vehicle,licensePlateField.getText(),
-            parseInt(enginePowerField.getText()),
+        if(getLicensePlate()!=null && getEnginePower()!=0 && getYear()!=0 && getNumberOfSeats()!=0 && getPrice()!=0)
+        {
+          editVehicleInfoViewModel.editVehicleInfo(
+            vehicle,
+            getLicensePlate(),
+            getEnginePower(),
             types.getSelectionModel().getSelectedItem(),
             makeField.getText(),
             modelField.getText(),
-            parseInt(yearField.getText()),
+            getYear(),
             getGearBoxType(),
             getFuelType(),
-            parseInt(nbOfSeatsField.getText()),
-            parseDouble(priceField.getText())
+            getNumberOfSeats(),
+            getPrice());
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setTitle("Car information edited");
+          alert.setContentText(
+              "The car information has been successfully edited!\nThank you!");
+          alert.showAndWait();
+          viewHandler.openListOfVehicleView(manager);}
 
-        );
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Car information edited");
-        alert.setContentText(
-            "The car information has been successfully edited!\nThank you!");
-        alert.showAndWait();
-        viewHandler.openListOfVehicleView(manager);
+          if(getPrice()==0)
+          {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Invalid input");
+            alert.setContentText("Please enter a valid price!\nTry again!");
+            alert.showAndWait();
+          }
+          if(getNumberOfSeats()==0)
+          {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Invalid input");
+            alert.setContentText("Please enter a valid number of seats!\nTry again!");
+            alert.showAndWait();
+          }
+          if(getYear()==0)
+          {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Invalid input");
+            alert.setContentText("Please enter a valid year!\nTry again!");
+            alert.showAndWait();
+          }
+          if(getLicensePlate()==null)
+          {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Invalid input");
+            alert.setContentText("Please enter a valid year!\nTry again!");
+            alert.showAndWait();
+          }
+          if(getEnginePower()==0)
+          {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Invalid input");
+            alert.setContentText("Please enter a valid year!\nTry again!");
+            alert.showAndWait();
+        }
       }
       catch (NumberFormatException | RemoteException | SQLException e)
       {

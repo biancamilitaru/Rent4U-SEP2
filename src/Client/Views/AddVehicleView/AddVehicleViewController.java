@@ -205,35 +205,35 @@ public class AddVehicleViewController implements ViewController
 
                 if(getPrice()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid input");
                     alert.setContentText("Please enter a valid price!\nTry again!");
                     alert.showAndWait();
                 }
                 if(getNumberOfSeats()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid input");
                     alert.setContentText("Please enter a valid number of seats!\nTry again!");
                     alert.showAndWait();
                 }
                 if(getYear()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid input");
                     alert.setContentText("Please enter a valid year!\nTry again!");
                     alert.showAndWait();
                 }
                 if(getLicensePlate()==null)
                 {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid input");
                     alert.setContentText("Please enter a valid year!\nTry again!");
                     alert.showAndWait();
                 }
                 if(getEnginePower()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid input");
                     alert.setContentText("Please enter a valid year!\nTry again!");
                     alert.showAndWait();
