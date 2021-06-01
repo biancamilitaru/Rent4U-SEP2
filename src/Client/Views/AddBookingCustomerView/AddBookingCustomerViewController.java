@@ -95,9 +95,21 @@ public class AddBookingCustomerViewController implements ViewController {
 
   public void onCreateBookingButton() throws RemoteException, SQLException {
     int id = Integer.parseInt(customer.getCpr_number());
-    viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
-    viewHandler.openMenuCustomerView(customer);
-    JOptionPane.showMessageDialog(null, "The booking has been created", "Rent4U", JOptionPane.INFORMATION_MESSAGE);
+    String licensePlate=chosenVehicle.getLicensePlate();
+    GregorianCalendar now=new GregorianCalendar();
+
+    if(licensePlate.length()>7)
+     JOptionPane.showMessageDialog(null, "The license plate number is not correct!\nPlease enter again!",
+         "Error", JOptionPane.ERROR_MESSAGE);
+    if(getStartDate().before(now) || getEndDate().before(getStartDate())|| getEndDate().before(now))
+      JOptionPane.showMessageDialog(null, "Please enter a valid end time\nTry again!","Error", JOptionPane.ERROR_MESSAGE);
+    else
+    {
+      viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
+      viewHandler.openMenuCustomerView(customer);
+      JOptionPane.showMessageDialog(null, "The booking has been created", "Rent4U", JOptionPane.INFORMATION_MESSAGE);
+    }
+
   }
 
   public int daysBetween(Date d1, Date d2) {
