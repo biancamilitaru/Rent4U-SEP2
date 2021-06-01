@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ListOfBookingsViewController implements ViewController
 {
@@ -67,8 +68,19 @@ public class ListOfBookingsViewController implements ViewController
 
   public void onDelete(Booking booking) throws RemoteException, SQLException
   {
-    listOfBookingsViewModel.deleteBooking(booking);
-    viewHandler.openListOfBookingsView(manager);
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Delete Booking");
+    alert.setHeaderText("");
+    alert.setContentText("Are you sure you would like to delete the booking?");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
+      listOfBookingsViewModel.deleteBooking(booking);
+      viewHandler.openListOfBookingsView(manager);
+    } else {
+      viewHandler.openListOfBookingsView(manager);
+    }
+
   }
 
   public void setManager(boolean manager) {

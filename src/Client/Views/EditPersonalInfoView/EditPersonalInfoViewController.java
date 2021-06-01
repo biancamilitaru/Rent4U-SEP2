@@ -7,6 +7,7 @@ import Client.ViewModel.EditPersonalInfoViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -82,19 +83,41 @@ public class EditPersonalInfoViewController implements ViewController
   }
 
   private String getCpr(){
-    return cprFirstField.getText()+"/"+cprSecondField.getText();
+    boolean setter=true;
+    int firstPart=0;
+    int secondPart=0;
+    try{
+      firstPart=Integer.parseInt(cprFirstField.getText());
+      secondPart=Integer.parseInt(cprSecondField.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText(
+          "Please enter a valid cpr!\nPlease try again!");
+      alert.showAndWait();
+      setter=false;
+    }
+    if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
+      setter=false;
+    if(setter)
+      return cprFirstField.getText()+cprSecondField.getText();
+    return null;
   }
 
   public GregorianCalendar getDateBirth(){
+    GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-
     GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-
-    return dateOfBirth;
+    if(dateOfBirth.before(now))
+      return null;
+    return  dateOfBirth;
   }
 
   public void onUpdatePersonalAccount() throws RemoteException, SQLException
   {
+    if(getCpr()!=null && getDateBirth()!=null){
     editPersonalInfoViewModel.editPersonalInfo(
         customer,
         firstNameField.getText(),
@@ -106,6 +129,16 @@ public class EditPersonalInfoViewController implements ViewController
         drivingLicenseField.getText(),
         getCpr()
     );
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      alert.setTitle("Your information was edited");
+      alert.setContentText(
+          "Your personal information has been successfully edited!\nThank you!");
+      alert.showAndWait();}
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setContentText(
+        "Please enter a valid information to the fields!\nPlease try again!");
+    alert.showAndWait();
   }
 
     public void onMenu(ActionEvent actionEvent) throws SQLException, RemoteException {

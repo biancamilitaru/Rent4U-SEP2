@@ -7,6 +7,7 @@ import Client.ViewModel.EditVehicleInfoViewModel;
 import Client.Views.ViewController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -133,6 +134,11 @@ public class EditVehicleInfoViewController implements ViewController
             parseDouble(priceField.getText())
 
         );
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Car information edited");
+        alert.setContentText(
+            "The car information has been successfully edited!\nThank you!");
+        alert.showAndWait();
         viewHandler.openListOfVehicleView(manager);
       }
       catch (NumberFormatException | RemoteException | SQLException e)
