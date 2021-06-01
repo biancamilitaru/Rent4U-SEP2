@@ -69,8 +69,20 @@ public class AddBookingViewController implements ViewController {
   }
 
   public GregorianCalendar getStartDate(){
-    int startHour1 = Integer.parseInt(startHour.getText());
-    int startMinute1 = Integer.parseInt(startMinute.getText());
+    int startHour1 =0;
+    int startMinute1 =0;
+    try{
+      startHour1 = Integer.parseInt(startHour.getText());
+      startMinute1 = Integer.parseInt(startMinute.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid time\nPlease try again!");
+      alert.showAndWait();
+    }
+
     LocalDate date1 = startDatePicker.getValue();
 
     GregorianCalendar startDate = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
@@ -79,8 +91,21 @@ public class AddBookingViewController implements ViewController {
   }
 
   public GregorianCalendar getEndDate(){
-    int endHour1 = Integer.parseInt(endHour.getText());
-    int endMinute1 = Integer.parseInt(endMinute.getText());
+    int endHour1 = 0;
+    int endMinute1=0;
+
+    try{
+      endHour1 = Integer.parseInt(endHour.getText());
+      endMinute1 = Integer.parseInt(endMinute.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid license plate number\nPlease try again!");
+      alert.showAndWait();
+    }
+
     LocalDate date2 = endDatePicker.getValue();
 
     GregorianCalendar endDate = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
@@ -88,9 +113,33 @@ public class AddBookingViewController implements ViewController {
     return endDate;
   }
 
-  public void onCreateBookingButton() throws RemoteException, SQLException {
-    viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
-    viewHandler.openListOfBookingsView(manager);
+  public void onCreateBookingButton() throws RemoteException, SQLException
+  {
+    String licensePlate = chosenVehicle.getLicensePlate();
+    GregorianCalendar now = new GregorianCalendar();
+
+    if (licensePlate.length() > 7)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText(
+          "Please enter a valid license plate number\nPlease try again!");
+      alert.showAndWait();
+    }
+    if (getStartDate().before(now) || getEndDate().before(getStartDate()) || getEndDate().before(now))
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setContentText("Please enter a valid end time\nTry again!");
+      alert.showAndWait();
+    }
+    else
+    {
+      viewModel.createBooking(customersID.getSelectionModel().getSelectedItem(),
+          chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),
+          getTotalPrice());
+      viewHandler.openListOfBookingsView(manager);
+    }
   }
 
   public int daysBetween(Date d1, Date d2) {

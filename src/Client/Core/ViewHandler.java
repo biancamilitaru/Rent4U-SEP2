@@ -617,29 +617,27 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openEditPersonalBooking(Booking booking)
-      throws SQLException, RemoteException
-  {
-    FXMLLoader loader = new FXMLLoader();
+    public void openEditPersonalBooking(Booking booking) throws SQLException, RemoteException {
+      FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/EditPersonalBookingView/EditPersonalBookingView.fxml"));
-    Parent root = null;
-    try
-    {
-      root = loader.load();
-    } catch (Exception e)
-    {
-      e.printStackTrace();
-      System.out.println(e.getMessage());
-      System.out.println(loader.getLocation());
+      loader.setLocation(getClass().getResource("../Views/EditPersonalBookingView/EditPersonalBookingView.fxml"));
+      Parent root = null;
+      try
+      {
+        root = loader.load();
+      } catch (Exception e)
+      {
+        e.printStackTrace();
+        System.out.println(e.getMessage());
+        System.out.println(loader.getLocation());
+      }
+      EditPersonalBookingViewController view = loader.getController();
+      view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+      view.setBooking(booking);
+      stage.setTitle("Edit booking");
+
+      Scene scene = new Scene(root);
+      stage.setScene(scene);
+      stage.show();
     }
-    EditPersonalBookingViewController view = loader.getController();
-    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    view.setBooking(booking);
-    stage.setTitle("Edit booking");
-
-    Scene scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
 }
