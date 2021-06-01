@@ -47,5 +47,6 @@ public class TestForDatabaseIgnoreTHIS {
                 "email.ro", 56, "manager");
         //manageEmployees.editEmployeeInfo(employee1, employee2);
         System.out.println(manageEmployees.getEmployees());
+        manageEmployees.deleteEmployee(employee1);
     }
 }

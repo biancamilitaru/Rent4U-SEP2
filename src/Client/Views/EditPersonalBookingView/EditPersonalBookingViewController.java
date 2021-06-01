@@ -113,8 +113,8 @@ public class EditPersonalBookingViewController implements ViewController
     LocalDate date1 = startDatePicker.getValue();
     LocalDate date2 = endDatePicker.getValue();
 
-    GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue(), date1.getDayOfMonth(), startHour1, startMinute1);
-    GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue(), date2.getDayOfMonth(), endHour1, endMinute1);
+    GregorianCalendar startDate1 = new GregorianCalendar(date1.getYear(), date1.getMonth().getValue()-1, date1.getDayOfMonth(), startHour1, startMinute1);
+    GregorianCalendar endDate1 = new GregorianCalendar(date2.getYear(), date2.getMonth().getValue()-1, date2.getDayOfMonth(), endHour1, endMinute1);
 
     editPersonalBookingViewModel.editPersonalBooking(booking,idOfCustomer,licensePlate,startDate1,endDate1,price);
 

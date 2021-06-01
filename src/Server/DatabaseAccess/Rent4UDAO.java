@@ -520,6 +520,10 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     @Override public void deleteEmployee(Employee employee)
         throws RemoteException, SQLException
     {
-
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM employee WHERE cpr = ?");
+            statement.setString(1, employee.getCpr());
+            statement.executeUpdate();
+        }
     }
 }
