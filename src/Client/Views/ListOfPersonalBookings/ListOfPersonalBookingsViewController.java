@@ -71,6 +71,14 @@ public class ListOfPersonalBookingsViewController implements ViewController
     viewHandler.openEditPersonalBooking(booking);
   }
 
+  /**
+   * @author Peter Blasko
+   * When the "Delete" button is clicked a warning messsage pops up to confirm the action.
+   * If the warning is confirmed the booking is deleted from the system and the user is redericted to list of bookings.
+   * @param booking
+   * @throws RemoteException
+   * @throws SQLException
+   */
   public void onDelete(Booking booking) throws RemoteException, SQLException
   {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

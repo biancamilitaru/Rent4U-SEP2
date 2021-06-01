@@ -117,7 +117,12 @@ public class AddVehicleViewController implements ViewController
         checkRadioButton(hybridTypeButton);
     }
 
-
+    /**
+     * @author Maria Bianca Militaru
+     * When the "Add" button is clicked the this method.
+     * Within the lamdba expression we try to saves all the information from the TextFileds, RadioButtons, and catch the exceptions.
+     * Alerts were implemented to insure a user friendly interface.
+     */
     public void onAddButton(){
         Platform.runLater(() -> {
             try {

@@ -63,7 +63,11 @@ public class EditPersonalInfoViewController implements ViewController
     return localDate;
   }
 
-
+  /**
+   * @author Milan Tolnai
+   * When the user open up this page we load all the existing data into the TextFields, DatePicker.
+   * This method makes it easier to see what kind of data needs or doesn't need to be changed.
+   */
   public void loadData(){
     firstNameField.setText(customer.getFirstName());
     lastNameField.setText(customer.getLastName());
@@ -82,6 +86,13 @@ public class EditPersonalInfoViewController implements ViewController
     passwordCheckLabel.setVisible(false);
   }
 
+  /**
+   * In out GUI we have two TextFields to enter a CPR number. In order to store this data we needed to convert the Integers into String
+   * than combine them into one String that we return.
+   * Alerts have been implemented in order to insure that the data that is stored in the system is correct.
+   * @author Radovan Santa & Kyra Tolnai
+   * @return Returns the full CPR number of the user.
+   */
   private String getCpr(){
     boolean setter=true;
     int firstPart=0;
@@ -115,6 +126,15 @@ public class EditPersonalInfoViewController implements ViewController
     return  dateOfBirth;
   }
 
+  /**
+   * The main purpose of this method is to send all of the new information from this controller to the ViewModel
+   * where we set the data input from the TextFields, DatePicker.
+   * In order to avoid problems, error messages have been implemented that alerts the user if he/she wrote icorrect data into the TextFields.
+   * An alert will confirm the user that the changes have been made in the system.
+   * @author Kyra Tolnai & Milan Tolnai
+   * @throws RemoteException
+   * @throws SQLException
+   */
   public void onUpdatePersonalAccount() throws RemoteException, SQLException
   {
     if(getCpr()!=null && getDateBirth()!=null){

@@ -29,6 +29,15 @@ public class ListOfCustomersViewController implements ViewController
 
   public final ObservableList<Customer> customersObservableList = FXCollections.observableArrayList();
 
+  /**
+   * This method is from the ViewController interface, which class implements.
+   * Whe set both of the parameters and access the data which shows all the customers.
+   * In the list we have specific cells that show the data. These cells size is fixed to 40.
+   * @param viewHandler
+   * @param viewModelFactory
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException
   {
