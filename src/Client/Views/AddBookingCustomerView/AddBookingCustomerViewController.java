@@ -49,6 +49,7 @@ public class AddBookingCustomerViewController implements ViewController {
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell(this));
     listView.setFixedCellSize(125);
     listView.setVisible(false);
+    listView.setFocusTraversable(false);
 
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
   }

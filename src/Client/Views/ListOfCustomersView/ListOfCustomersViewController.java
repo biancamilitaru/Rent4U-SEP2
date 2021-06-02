@@ -47,6 +47,7 @@ public class ListOfCustomersViewController implements ViewController
     listView.setItems(customersObservableList);
     listView.setCellFactory(customerListView -> new CustomerListViewCell(this));
     listView.setFixedCellSize(40);
+    listView.setFocusTraversable(false);
   }
 
   public void setManager(boolean manager)

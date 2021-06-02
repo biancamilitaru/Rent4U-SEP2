@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.EditVehicleInfoView.EditVehicleInfoViewController">
    <children>
-      <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" onAction="#onExitButton" style="-fx-background-color: F4AF82;" text="Exit" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+      <Button layoutX="462.0" layoutY="346.0" mnemonicParsing="false" onAction="#onExitButton" style="-fx-background-color: FFD3B7 FFD3B7;" text="Exit" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
       <Label layoutX="25.0" layoutY="31.0" text="Update vehicle information" textFill="#e28243" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="30.0">
          <font>
             <Font name="System Bold" size="17.0" />
@@ -40,6 +40,6 @@
       <TextField fx:id="licensePlateField" layoutX="348.0" layoutY="230.0" prefHeight="27.0" prefWidth="109.0" promptText="AA 00 000" style="-fx-background-color: E5E5E5;" />
       <TextField fx:id="enginePowerField" layoutX="348.0" layoutY="265.0" prefHeight="27.0" prefWidth="109.0" promptText="0" style="-fx-background-color: E5E5E5;" />
       <Button layoutX="416.0" layoutY="343.0" mnemonicParsing="false" onAction="#onUpdateVehicleButton" style="-fx-background-color: F4AF82;" text="Update vehicle" />
-      <ComboBox fx:id="types" layoutX="67.0" layoutY="343.0" prefHeight="27.0" prefWidth="180.0" promptText="Select type" style="-fx-background-color: FFFFFF;" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="65.0" />
+      <ComboBox fx:id="types" layoutX="67.0" layoutY="343.0" prefHeight="27.0" prefWidth="180.0" promptText="Select type" style="-fx-background-color: FFFFFF; -fx-border-color: F4AF82; -fx-border-radius: 3;" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="65.0" />
    </children>
 </AnchorPane>
