@@ -100,4 +100,9 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   {
     listOfVehiclesViewController.onClickedDelete(vehicle);
   }
+
+  public void clickedStatusButton() throws RemoteException, SQLException
+  {
+    listOfVehiclesViewController.onStatus(vehicle);
+  }
 }

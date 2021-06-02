@@ -106,12 +106,17 @@
             <Label fx:id="nbOfSeatsLabel" alignment="CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="29.0" prefHeight="17.0" prefWidth="32.0" text="4" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
-      <Button onAction="clickedEditButton" layoutX="511.0" layoutY="11.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="37.0" style="-fx-background-color: E28243;" text="EDIT" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
+      <Button layoutX="511.0" layoutY="11.0" mnemonicParsing="false" onAction="#clickedEditButton" prefHeight="18.0" prefWidth="37.0" style="-fx-background-color: E28243;" text="EDIT" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font size="8.0" />
          </font>
       </Button>
-      <Button onAction="clickedDeleteButton" layoutX="517.0" layoutY="29.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="37.0" style="-fx-background-color: E28243;" text="X" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="7.0">
+      <Button layoutX="517.0" layoutY="29.0" mnemonicParsing="false" onAction="#clickedDeleteButton" prefHeight="18.0" prefWidth="17.0" style="-fx-background-color: E28243;" text="X" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </Button>
+      <Button layoutX="522.0" layoutY="29.0" mnemonicParsing="false" onAction="#clickedStatusButton" prefHeight="18.0" prefWidth="17.0" style="-fx-background-color: E28243;" text="S" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="25.0">
          <font>
             <Font size="8.0" />
          </font>
