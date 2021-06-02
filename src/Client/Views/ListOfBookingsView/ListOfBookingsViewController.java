@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Optional;
 
 public class ListOfBookingsViewController implements ViewController
@@ -38,7 +39,8 @@ public class ListOfBookingsViewController implements ViewController
     listView.setItems(bookingsObservableList);
     listView.setCellFactory(vehicleListView -> new BookingListViewCell(this));
 
-    listView.setFixedCellSize(60);
+    listView.setFixedCellSize(55);
+    listView.setFocusTraversable(false);
   }
 
   public void onAddBookingButton(ActionEvent evt)
