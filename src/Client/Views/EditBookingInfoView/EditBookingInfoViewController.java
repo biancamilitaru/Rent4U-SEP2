@@ -73,6 +73,7 @@ public class EditBookingInfoViewController implements ViewController
   }
 
   public void loadData(){
+    System.out.println(booking.getEndTime().get(Calendar.HOUR));
     startDatePicker.setValue(convertToLocalDateViaInstant(booking.getStartTime().getTime()));
     endDatePicker.setValue(convertToLocalDateViaInstant(booking.getEndTime().getTime()));
     startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR)));

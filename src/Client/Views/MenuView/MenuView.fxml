@@ -6,10 +6,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.MenuView.MenuViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.MenuView.MenuViewController">
    <children>
       <Button layoutX="14.0" layoutY="118.0" mnemonicParsing="false" onAction="#onAddVehicleButton" prefHeight="40.0" prefWidth="217.0" style="-fx-background-color: F4AF82;" text="ADD NEW VEHICLE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="120.0" />
-      <Label alignment="CENTER" layoutY="86.0" prefHeight="27.0" prefWidth="600.0" text="Welcome..." AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="86.0" />
+      <Label fx:id="welcomeLabel" alignment="CENTER" layoutY="86.0" prefHeight="27.0" prefWidth="600.0" text="Welcome Employee!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="86.0" />
       <Button layoutX="238.0" layoutY="359.0" mnemonicParsing="false" onAction="#onLogOutButton" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: FFD3B7;" text="LOG OUT" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="360.0" />
       <Button layoutX="14.0" layoutY="169.0" mnemonicParsing="false" onAction="#onListOfVehicleButton" prefHeight="40.0" prefWidth="217.0" style="-fx-background-color: F4AF82;" text="LIST OF ALL VEHICLES" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="170.0" />
       <Button layoutX="15.0" layoutY="223.0" mnemonicParsing="false" onAction="#onAddBookingButton" prefHeight="40.0" prefWidth="217.0" style="-fx-background-color: F4AF82;" text="ADD NEW BOOKING" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="220.0" />

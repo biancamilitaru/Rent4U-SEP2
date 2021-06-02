@@ -33,7 +33,6 @@
       <Label alignment="CENTER" layoutX="154.0" layoutY="277.0" prefHeight="17.0" prefWidth="16.0" text="/" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="277.0" />
       <Label layoutX="356.0" layoutY="128.0" text="Monthly salary:" />
       <TextField fx:id="salary" layoutX="356.0" layoutY="155.0" prefHeight="27.0" prefWidth="140.0" promptText="15000" />
-      <Label fx:id="addedLabel" layoutX="364.0" layoutY="317.0" text="The employee was sucessfully added" />
       <Label layoutX="19.0" layoutY="349.0" text="+" />
    </children>
 </AnchorPane>

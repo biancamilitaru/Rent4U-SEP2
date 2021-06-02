@@ -26,7 +26,6 @@ public class AddEmployeesViewController implements ViewController
   @FXML TextField cprSecondField;
   @FXML TextField salary;
   @FXML TextField phoneField;
-  @FXML Label addedLabel;
 
   private ViewHandler viewHandler;
   private AddEmployeeViewModel addEmployeeViewModel;
@@ -38,7 +37,6 @@ public class AddEmployeesViewController implements ViewController
   {
     this.viewHandler=viewHandler;
     addEmployeeViewModel=viewModelFactory.getAddEmployeeViewModel();
-    addedLabel.setVisible(false);
   }
 
   public void setManager(boolean manager)
@@ -121,7 +119,6 @@ public class AddEmployeesViewController implements ViewController
           eMailField.getText(),
           getSalary(),
           position.getText()
-
       );
       viewHandler.openListOfEmployees(manager);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
