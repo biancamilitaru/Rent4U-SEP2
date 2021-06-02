@@ -167,7 +167,6 @@ public class AddBookingCustomerViewController implements ViewController {
 
   public void onCreateBookingButton() throws RemoteException, SQLException {
     boolean setter=true;
-    int id = Integer.parseInt(customer.getCpr_number());
     String licensePlate=chosenVehicle.getLicensePlate();
     GregorianCalendar now=new GregorianCalendar();
 
@@ -189,7 +188,7 @@ public class AddBookingCustomerViewController implements ViewController {
     }
     if(setter)
     {
-      viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
+      viewModel.createBooking(customer.getCpr_number(),chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
       viewHandler.openMenuCustomerView(customer);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Booking created");

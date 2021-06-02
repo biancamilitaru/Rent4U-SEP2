@@ -38,7 +38,7 @@ public class ListOfBookingsViewController implements ViewController
     listView.setItems(bookingsObservableList);
     listView.setCellFactory(vehicleListView -> new BookingListViewCell(this));
 
-    listView.setFixedCellSize(73);
+    listView.setFixedCellSize(60);
   }
 
   public void onAddBookingButton(ActionEvent evt)

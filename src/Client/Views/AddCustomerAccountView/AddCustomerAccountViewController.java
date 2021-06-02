@@ -84,7 +84,7 @@ public class AddCustomerAccountViewController implements ViewController
   public GregorianCalendar getDateBirth(){
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
     if(now.before(dateOfBirth))
     {
       return null;
@@ -145,7 +145,7 @@ public class AddCustomerAccountViewController implements ViewController
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
-      alert.setContentText("Please enter a phone number!");
+      alert.setContentText("Please enter a valid phone number!");
       alert.showAndWait();
     }
   }

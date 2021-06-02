@@ -13,7 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -213,7 +212,7 @@ public class EditPersonalBookingViewController implements ViewController
     {
       editPersonalBookingViewModel.editPersonalBooking(
           booking,
-          Integer.valueOf(idOfCustomer),
+          idOfCustomer,
           licensePlate,
           getStartDate(),
           getEndDate(),

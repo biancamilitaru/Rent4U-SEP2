@@ -80,8 +80,9 @@ public class EditCustomerAccountInfoViewController implements ViewController
     dateOfBirthPicker.setValue(convertToLocalDateViaInstant(customer.getDateOfBirth().getTime()));
     eMailField.setText(customer.getEmail());
     drivingLicenseField.setText(customer.getDrivingLicenseNumber());
+    System.out.println(customer.getCpr_number());
     cprFirstField.setText(customer.getCpr_number().substring(0,6));
-    cprSecondField.setText(customer.getCpr_number().substring(7,11));
+    cprSecondField.setText(customer.getCpr_number().substring(6,10));
     passwordField.setText(customer.getPassword());
     rePasswordField.setText(customer.getPassword());
     phoneField.setText(customer.getPhoneNumber());
@@ -115,8 +116,8 @@ public class EditCustomerAccountInfoViewController implements ViewController
   public GregorianCalendar getDateBirth(){
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
+    if(now.before(dateOfBirth))
       return null;
     return  dateOfBirth;
   }
@@ -154,6 +155,7 @@ public class EditCustomerAccountInfoViewController implements ViewController
       alert.setTitle("Customer information edited");
       alert.setContentText("The customer information has been successfully edited!\nThank you!");
       alert.showAndWait();
+      viewHandler.openListOfCustomers(manager);
     }
 
     if(getCpr()==null){

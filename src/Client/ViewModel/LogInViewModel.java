@@ -27,7 +27,6 @@ public class LogInViewModel
 
   public int logIn()
   {
-    System.out.println(password.getValue());
     if(password.getValue().equals(employeePassword)) {
       return 0;
     }

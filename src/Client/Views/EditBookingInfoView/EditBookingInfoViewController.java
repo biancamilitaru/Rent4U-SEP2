@@ -239,11 +239,10 @@ public class EditBookingInfoViewController implements ViewController
     }
 
     double price=Double.valueOf(totalPriceOfBooking.getText());
-    ///////////////////////////////////////
 
     if(getEndDate()!=null && getStartDate()!=null && now.before(getStartDate()) && getStartDate().before(getEndDate()) && now.before(getEndDate()))
     {
-      editBookingInfoViewModel.editBookingInfo(booking,Integer.valueOf(idOfCustomer),licensePlate,getStartDate(),getEndDate(),price);
+      editBookingInfoViewModel.editBookingInfo(booking, idOfCustomer,licensePlate,getStartDate(),getEndDate(),price);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("The booking is edited");
       alert.setContentText("The booking has been edited!\nThank you!");
