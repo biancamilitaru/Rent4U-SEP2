@@ -83,9 +83,17 @@ public class EmployeeCellViewController extends ListCell<Employee>
 
       setText(null);
       setGraphic(this.anchorPane);
+
+      if (getIndex()%2==0){
+        //OnOrange
+        setStyle("-fx-background-color: FFFFFF");
+      } else {
+        //OnWhite
+        setStyle("-fx-background-color: F4AF82");
+      }
     }
   }
-/*
+
   public void onClickedEditButton() throws SQLException, RemoteException
   {
     listOfEmployeesViewController.editEmployee(employee);
@@ -94,7 +102,5 @@ public class EmployeeCellViewController extends ListCell<Employee>
   {
     listOfEmployeesViewController.deleteEmployee(employee);
   }
-
- */
 
 }

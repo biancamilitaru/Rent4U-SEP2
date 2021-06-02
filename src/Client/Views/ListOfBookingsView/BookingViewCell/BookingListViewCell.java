@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class BookingListViewCell extends ListCell<Booking>
 {
@@ -25,6 +28,8 @@ public class BookingListViewCell extends ListCell<Booking>
   @FXML Label licensePlateLabel;
   @FXML Label startDateLabel;
   @FXML Label endDateLabel;
+  @FXML Label startTimeLabel;
+  @FXML Label endTimeLabel;
   @FXML Label priceLabel;
 
   private ListOfBookingsViewController listOfBookingsViewController;
@@ -61,21 +66,39 @@ public class BookingListViewCell extends ListCell<Booking>
         }
 
       }
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy \n hh:mm");
-
       bookingIdLabel.setText(String.valueOf(booking.getBooking_id()));
       customerIdLabel.setText(String.valueOf(booking.getIdOfCustomer()));
       licensePlateLabel.setText(booking.getLicencePlate());
-      dateFormat.setCalendar(booking.getStartTime());
-      startDateLabel.setText(dateFormat.format(booking.getStartTime().getTime()));
-      dateFormat.setCalendar(booking.getEndTime());
-      endDateLabel.setText(dateFormat.format(booking.getEndTime().getTime()));
+      startDateLabel.setText(convertToLocalDateViaInstant(booking.getStartTime().getTime()));
+      endDateLabel.setText(convertToLocalDateViaInstant(booking.getEndTime().getTime()));
+      startTimeLabel.setText(convertToLocalTimeViaInstant(booking.getStartTime().getTime()));
+      endTimeLabel.setText(convertToLocalTimeViaInstant(booking.getEndTime().getTime()));
       priceLabel.setText(String.valueOf(booking.getPrice()));
 
       setText(null);
 
       setGraphic(this.anchorPane);
+
+      if (getIndex()%2==0){
+        //OnOrange
+        setStyle("-fx-background-color: FFFFFF");
+      } else {
+        //OnWhite
+        setStyle("-fx-background-color: F4AF82");
+      }
     }
+  }
+
+  public String convertToLocalDateViaInstant(Date dateToConvert) {
+    return dateToConvert.toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate().toString();
+  }
+
+  public String convertToLocalTimeViaInstant(Date dateToConvert) {
+    return dateToConvert.toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalTime().toString();
   }
 
   public void onClickedEdit() throws SQLException, RemoteException

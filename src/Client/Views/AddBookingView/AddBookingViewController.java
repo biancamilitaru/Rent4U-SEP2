@@ -52,6 +52,7 @@ public class AddBookingViewController implements ViewController {
     listView.setVisible(false);
     customersID.getItems().addAll(viewModel.getAllCustomersID());
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+    listView.setFocusTraversable(false);
   }
 
   public void setManager(boolean manager)

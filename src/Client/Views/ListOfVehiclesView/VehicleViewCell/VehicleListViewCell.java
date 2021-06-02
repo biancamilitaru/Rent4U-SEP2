@@ -32,33 +32,11 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   @FXML Label priceLabel;
   @FXML Label typeLabel;
 
-  @FXML public ImageView carSymbol = new ImageView();
-  @FXML public ImageView seatSymbol = new ImageView();
-  @FXML public ImageView gearboxSymbol = new ImageView();
-  @FXML public ImageView fuelSymbol = new ImageView();
-  @FXML public ImageView licensePlateSymbol = new ImageView();
-  @FXML public ImageView engineSymbol = new ImageView();
-  @FXML public ImageView editSymbol = new ImageView();
-  @FXML public ImageView deleteSymbol = new ImageView();
-
-
   public VehicleListViewCell(ListOfVehiclesViewController listOfVehiclesViewController)
   {
     super();
     this.listOfVehiclesViewController=listOfVehiclesViewController;
   }
-
-  public Image carImage = new Image("/GUI/Vehicle/CarSymbol.png");
-  public Image minivanSymbolImage = new Image("/GUI/Vehicle/MiniVanSymbol.png");
-  public Image busImage = new Image("/GUI/Vehicle/BusSymbol.png");
-  public Image motorcycleImage = new Image("/GUI/Vehicle/MotorcycleSymbol.png");
-  public Image seatSymbolImage = new Image("/GUI/Vehicle/SeatSymbol.png");
-  public Image gearboxSymbolImage = new Image("/GUI/Vehicle/GearboxSymbol.png");
-  public Image fuelSymbolImage = new Image("/GUI/Vehicle/FuelSymbol.png");
-  public Image engineSymbolImage = new Image("/GUI/Vehicle/EnginePowerSymbol.png");
-  public Image editSymbolImage = new Image("/GUI/Vehicle/Edit.png");
-  public Image deleteSymbolImage = new Image("/GUI/Vehicle/Delete.png");
-  public Image licensePlateImage = new Image("/GUI/Vehicle/LicensePlate.png");
 
   @Override protected void updateItem(Vehicle vehicle, boolean empty)
   {
@@ -87,15 +65,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
         }
 
       }
-      seatSymbol.setImage(seatSymbolImage);
-      gearboxSymbol.setImage(gearboxSymbolImage);
-      fuelSymbol.setImage(fuelSymbolImage);
-      licensePlateSymbol.setImage(licensePlateImage);
-      engineSymbol.setImage(engineSymbolImage);
-      editSymbol.setImage(editSymbolImage);
-      deleteSymbol.setImage(deleteSymbolImage);
-
-
+      typeLabel.setText(vehicle.getType());
       makeLabel.setText(vehicle.getMake());
       modelLabel.setText(vehicle.getModel());
       yearLabel.setText(String.valueOf(vehicle.getYear()));
@@ -105,14 +75,6 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       licensePlateLabel.setText(vehicle.getLicensePlate());
       enginesPowerLabel.setText(String.valueOf(vehicle.getEnginesPower()));
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
-
-      if (vehicle.getType().equals("Motorcycle")){
-        carSymbol.setImage(motorcycleImage);
-      } else if (vehicle.getType().equals("Minibus")) {
-        carSymbol.setImage(busImage);
-      } else if (vehicle.getType().equals("Van")) {
-        carSymbol.setImage(minivanSymbolImage);
-      } else carSymbol.setImage(carImage);
 
       if (getIndex()%2==0){
         //OnOrange
@@ -137,5 +99,10 @@ public class VehicleListViewCell extends ListCell<Vehicle>
   public void clickedDeleteButton() throws RemoteException, SQLException
   {
     listOfVehiclesViewController.onClickedDelete(vehicle);
+  }
+
+  public void clickedStatusButton() throws RemoteException, SQLException
+  {
+    listOfVehiclesViewController.onStatus(vehicle);
   }
 }
