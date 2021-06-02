@@ -1,9 +1,10 @@
 package Client.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Employee
+public class Employee implements Serializable
 {
   private String cpr;
   private String firstName;
