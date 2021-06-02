@@ -14,10 +14,15 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="startDateLabel" alignment="CENTER" contentDisplay="TOP" layoutX="-3.0" layoutY="28.0" prefHeight="33.0" prefWidth="93.0" text="26/05/2021" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
+            <Label fx:id="startDateLabel" alignment="CENTER" contentDisplay="TOP" layoutX="-3.0" layoutY="28.0" prefHeight="15.0" prefWidth="93.0" text="26/05/2021" textAlignment="CENTER" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
                <font>
                   <Font size="10.0" />
                </font></Label>
+            <Label fx:id="startTimeLabel" alignment="CENTER" contentDisplay="TOP" layoutY="34.0" prefHeight="15.0" prefWidth="93.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutY="4.0" prefHeight="73.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -57,10 +62,15 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="endDateLabel" alignment="CENTER" contentDisplay="TOP" layoutY="28.0" prefHeight="17.0" prefWidth="93.0" text="30/05/2021" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
+            <Label fx:id="endDateLabel" alignment="CENTER" contentDisplay="TOP" layoutY="28.0" prefHeight="17.0" prefWidth="93.0" text="30/05/2021" textAlignment="CENTER" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
                <font>
                   <Font size="11.0" />
                </font></Label>
+            <Label fx:id="endTimeLabel" alignment="CENTER" contentDisplay="TOP" layoutX="12.0" layoutY="33.0" prefHeight="15.0" prefWidth="93.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="416.0" layoutY="-3.0" prefHeight="55.0" prefWidth="71.0" AnchorPane.leftAnchor="403.0" AnchorPane.topAnchor="0.0">

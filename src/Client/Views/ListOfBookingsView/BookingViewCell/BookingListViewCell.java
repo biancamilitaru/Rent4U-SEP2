@@ -28,6 +28,8 @@ public class BookingListViewCell extends ListCell<Booking>
   @FXML Label licensePlateLabel;
   @FXML Label startDateLabel;
   @FXML Label endDateLabel;
+  @FXML Label startTimeLabel;
+  @FXML Label endTimeLabel;
   @FXML Label priceLabel;
 
   private ListOfBookingsViewController listOfBookingsViewController;
@@ -67,8 +69,10 @@ public class BookingListViewCell extends ListCell<Booking>
       bookingIdLabel.setText(String.valueOf(booking.getBooking_id()));
       customerIdLabel.setText(String.valueOf(booking.getIdOfCustomer()));
       licensePlateLabel.setText(booking.getLicencePlate());
-      startDateLabel.setText(convertToLocalDateViaInstant(booking.getStartTime().getTime())+convertToLocalTimeViaInstant(booking.getStartTime().getTime()));
-      endDateLabel.setText(convertToLocalDateViaInstant(booking.getEndTime().getTime())+convertToLocalTimeViaInstant(booking.getEndTime().getTime()));
+      startDateLabel.setText(convertToLocalDateViaInstant(booking.getStartTime().getTime()));
+      endDateLabel.setText(convertToLocalDateViaInstant(booking.getEndTime().getTime()));
+      startTimeLabel.setText(convertToLocalTimeViaInstant(booking.getStartTime().getTime()));
+      endTimeLabel.setText(convertToLocalTimeViaInstant(booking.getEndTime().getTime()));
       priceLabel.setText(String.valueOf(booking.getPrice()));
 
       setText(null);
