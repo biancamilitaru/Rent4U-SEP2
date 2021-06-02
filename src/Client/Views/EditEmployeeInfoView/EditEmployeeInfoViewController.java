@@ -12,8 +12,10 @@ import javafx.scene.control.TextField;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class EditEmployeeInfoViewController implements ViewController
@@ -54,21 +56,17 @@ public class EditEmployeeInfoViewController implements ViewController
     this.manager = manager;
   }
 
-  public static final LocalDate dateConvertor(String dateString){
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    LocalDate localDate = LocalDate.parse(dateString, formatter);
-    return localDate;
+  public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+    return dateToConvert.toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate();
   }
 
   public void loadData()
   {
     firstNameField.setText(employee.getFirstName());
     lastNameField.setText(employee.getLastName());
-    dateOfBirthPicker.setValue(
-        dateConvertor(
-            employee.getDateOfBirth().get(Calendar.DATE)+ "-" +
-                employee.getDateOfBirth().get(Calendar.MONTH)+"-"+
-                employee.getDateOfBirth().get(Calendar.YEAR)));
+    dateOfBirthPicker.setValue(convertToLocalDateViaInstant(employee.getDateOfBirth().getTime());
     eMailField.setText(employee.getEmail());
     cprFirstField.setText(employee.getCpr().substring(0,6));
     cprSecondField.setText(employee.getCpr().substring(7,11));
