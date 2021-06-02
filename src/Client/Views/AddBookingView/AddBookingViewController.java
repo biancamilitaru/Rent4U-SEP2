@@ -51,7 +51,7 @@ public class AddBookingViewController implements ViewController {
     listView.setFixedCellSize(125);
     listView.setVisible(false);
     customersID.getItems().addAll(viewModel.getAllCustomersID());
-    type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+    type.getItems().addAll("Car", "Minibus", "Van", "Motorcycle");
   }
 
   public void setManager(boolean manager)
@@ -176,7 +176,7 @@ public class AddBookingViewController implements ViewController {
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
-      alert.setContentText("Please enter a valid end time\nTry again!");
+      alert.setContentText("Please enter a valid time\nTry again!");
       alert.showAndWait();
       setter=false;
     }

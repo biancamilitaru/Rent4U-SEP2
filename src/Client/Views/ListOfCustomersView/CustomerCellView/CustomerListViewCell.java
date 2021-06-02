@@ -47,8 +47,7 @@ public class CustomerListViewCell extends ListCell<Customer>
     {
       if (mLLoader == null)
       {
-        mLLoader = new FXMLLoader(getClass().getResource(
-            "CustomerViewCell.fxml"));
+        mLLoader = new FXMLLoader(getClass().getResource("CustomerViewCell.fxml"));
         mLLoader.setController(this);
 
         try

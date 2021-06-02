@@ -182,14 +182,14 @@ public class AddBookingCustomerViewController implements ViewController {
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
-      alert.setContentText("Please enter a valid end time\nTry again!");
+      alert.setContentText("Please enter a valid time\nTry again!");
       alert.showAndWait();
       setter=false;
     }
     if(setter)
     {
       viewModel.createBooking(customer.getCpr_number(),chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
-      viewHandler.openMenuCustomerView(customer);
+      viewHandler.openPersonalBookings(customer);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Booking created");
       alert.setContentText("The booking has been created!\nThank you!");

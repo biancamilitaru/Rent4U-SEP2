@@ -468,30 +468,6 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openListOfBookingCustomer(Customer customer) throws SQLException, RemoteException {
-
-    FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("../Views/EditPersonalInfoView/EditPersonalInfoView.fxml"));
-    Parent root = null;
-    try
-    {
-      root = loader.load();
-    } catch (Exception e)
-    {
-      e.printStackTrace();
-      System.out.println(e.getMessage());
-      System.out.println(loader.getLocation());
-    }
-    ListOfPersonalBookingsViewController view = loader.getController();
-    view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("Edit Personal Info");
-    view.setCustomer(customer);
-
-    Scene scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
 
   public void openEditPersonalInfo(Customer customer) throws SQLException, RemoteException {
 
@@ -542,8 +518,6 @@ public class ViewHandler
     stage.show();
   }
 
-
-
   public void openPersonalBookings(Customer customer) throws SQLException, RemoteException {
 
     FXMLLoader loader = new FXMLLoader();
@@ -558,7 +532,6 @@ public class ViewHandler
       System.out.println(e.getMessage());
       System.out.println(loader.getLocation());
     }
-    //Check what Milan named the controller
     ListOfPersonalBookingsViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
     stage.setTitle("Personal Bookings");
@@ -572,7 +545,7 @@ public class ViewHandler
   public void openListOfEmployees(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
-    loader.setLocation(getClass().getResource("../Views/ListOfEmployeesView.ListOfEmployeesView.fxml"));
+    loader.setLocation(getClass().getResource("../Views/ListOfEmployeesView/ListOfEmployeesView.fxml"));
     Parent root = null;
     try
     {
@@ -617,7 +590,7 @@ public class ViewHandler
     stage.show();
   }
 
-    public void openEditPersonalBooking(Booking booking) throws SQLException, RemoteException {
+    public void openEditPersonalBooking(Customer customer, Booking booking) throws SQLException, RemoteException {
       FXMLLoader loader = new FXMLLoader();
 
       loader.setLocation(getClass().getResource("../Views/EditPersonalBookingView/EditPersonalBookingView.fxml"));
@@ -633,6 +606,7 @@ public class ViewHandler
       }
       EditPersonalBookingViewController view = loader.getController();
       view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
+      view.setCustomer(customer);
       view.setBooking(booking);
       stage.setTitle("Edit booking");
 
