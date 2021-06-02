@@ -59,6 +59,7 @@ public class EditBookingInfoViewController implements ViewController
     listView.setCellFactory(studentListView -> new EditVehicleViewCell(this));
 
     listView.setFixedCellSize(120);
+    listView.setFocusTraversable(false);
   }
 
   public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {

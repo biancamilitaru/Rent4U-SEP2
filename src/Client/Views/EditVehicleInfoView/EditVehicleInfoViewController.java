@@ -149,6 +149,44 @@ public class EditVehicleInfoViewController implements ViewController
     });
   }
 
+  public void checkRadioButton(RadioButton radioButton){
+    if (radioButton.isSelected()){
+      radioButton.setSelected(false);
+    }
+  }
+
+  public void selectAutomatic(){
+    checkRadioButton(manualGearBoxButton);
+  }
+
+  public void selectManual(){
+    checkRadioButton(automaticGearBoxButton);
+  }
+
+  public void selectPetrol(){
+    checkRadioButton(dieselTypeButton);
+    checkRadioButton(hybridTypeButton);
+    checkRadioButton(electricTypeButton);
+  }
+
+  public void selectDiesel(){
+    checkRadioButton(petrolTypeButton);
+    checkRadioButton(hybridTypeButton);
+    checkRadioButton(electricTypeButton);
+  }
+
+  public void selectHybrid(){
+    checkRadioButton(petrolTypeButton);
+    checkRadioButton(dieselTypeButton);
+    checkRadioButton(electricTypeButton);
+  }
+
+  public void selectElectric(){
+    checkRadioButton(petrolTypeButton);
+    checkRadioButton(dieselTypeButton);
+    checkRadioButton(hybridTypeButton);
+  }
+
   public void onExitButton(){
     viewHandler.openMainMenu(manager);
   }
