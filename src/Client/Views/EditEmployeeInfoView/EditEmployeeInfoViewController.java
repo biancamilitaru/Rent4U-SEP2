@@ -66,7 +66,7 @@ public class EditEmployeeInfoViewController implements ViewController
   {
     firstNameField.setText(employee.getFirstName());
     lastNameField.setText(employee.getLastName());
-    dateOfBirthPicker.setValue(convertToLocalDateViaInstant(employee.getDateOfBirth().getTime());
+    dateOfBirthPicker.setValue(convertToLocalDateViaInstant(employee.getDateOfBirth().getTime()));
     eMailField.setText(employee.getEmail());
     cprFirstField.setText(employee.getCpr().substring(0,6));
     cprSecondField.setText(employee.getCpr().substring(7,11));
@@ -76,7 +76,7 @@ public class EditEmployeeInfoViewController implements ViewController
     salaryField.setText(str);
   }
 
-  private String getCpr()
+  private String getCpr() throws RemoteException, SQLException
   {
     boolean setter=true;
     int firstPart=0;
@@ -96,12 +96,29 @@ public class EditEmployeeInfoViewController implements ViewController
     }
     if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
       setter=false;
+
+    String cpr=cprFirstField.getText()+cprSecondField.getText();
+    for(int i=0;i<editEmployeeInfoViewModel.getCustomers().size();i++)
+    {
+      if(cpr.equals(editEmployeeInfoViewModel.getCustomers().get(i).getCpr_number()))
+        setter=false;
+    }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
     return null;
   }
+  private String getEmail() throws RemoteException, SQLException
+  {
+    String email=eMailField.getText();
+    for(int i=0;i<editEmployeeInfoViewModel.getCustomers().size();i++)
+    {
+      if(editEmployeeInfoViewModel.getCustomers().get(i).getEmail().equals(email))
+        return null;
+    }
+    return email;
+  }
 
-  public GregorianCalendar getDateOfBirth()
+  private GregorianCalendar getDateOfBirth()
   {
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
@@ -111,7 +128,7 @@ public class EditEmployeeInfoViewController implements ViewController
     return  dateOfBirth;
   }
 
-  public int getSalary()
+  private int getSalary()
   {
     String salaryString=salaryField.getText();
     int salaryInt=0;
@@ -124,7 +141,8 @@ public class EditEmployeeInfoViewController implements ViewController
     }
     return salaryInt;
   }
-  public String getPhoneNumber()
+
+  private String getPhoneNumber()
   {
     String phoneNumberString=phoneField.getText();
     if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
@@ -140,9 +158,17 @@ public class EditEmployeeInfoViewController implements ViewController
     return phoneNumberString;
   }
 
+  private String getPosition()
+  {
+    String positionString=position.getText();
+    if(positionString.equals("employee") || positionString.equals("manager"))
+      return positionString;
+    return null;
+  }
+
   public void onSaveButton() throws RemoteException, SQLException
   {
-    if (getDateOfBirth() != null && getCpr() != null && getDateOfBirth()!=null && getPhoneNumber()!=null && getSalary()!=0)
+    if (getDateOfBirth() != null && getCpr() != null && getDateOfBirth()!=null && getPhoneNumber()!=null && getSalary()!=0 && getEmail()!=null && getPosition()!=null)
     {
       editEmployeeInfoViewModel.editEmployeeInfo(
           employee,
@@ -151,9 +177,9 @@ public class EditEmployeeInfoViewController implements ViewController
           lastNameField.getText(),
           getDateOfBirth(),
           getPhoneNumber(),
-          eMailField.getText(),
+           getEmail(),
           getSalary(),
-          position.getText());
+          getPosition());
 
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Employee information edited");
@@ -190,6 +216,20 @@ public class EditEmployeeInfoViewController implements ViewController
       alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid salary!\nPlease try again!");
+      alert.showAndWait();
+    }
+    if(getEmail()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a unique email address!");
+      alert.showAndWait();
+    }
+    if(getPosition()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid position!");
       alert.showAndWait();
     }
   }

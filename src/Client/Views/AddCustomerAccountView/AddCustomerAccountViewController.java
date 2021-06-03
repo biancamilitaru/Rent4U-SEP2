@@ -57,7 +57,19 @@ public class AddCustomerAccountViewController implements ViewController
     }
   }
 
-  private String getCpr(){
+  private String getEmail() throws RemoteException, SQLException
+  {
+    String email=eMailField.getText();
+    for(int i=0;i<addCustomerAccountViewModel.getCustomers().size();i++)
+    {
+      if(addCustomerAccountViewModel.getCustomers().get(i).getEmail().equals(email))
+        return null;
+    }
+    return email;
+  }
+
+  private String getCpr() throws RemoteException, SQLException
+  {
     boolean setter=true;
     int firstPart=0;
     int secondPart=0;
@@ -76,6 +88,13 @@ public class AddCustomerAccountViewController implements ViewController
     }
     if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
       setter=false;
+
+    String cpr=cprFirstField.getText()+cprSecondField.getText();
+    for(int i=0;i<addCustomerAccountViewModel.getCustomers().size();i++)
+    {
+      if(cpr.equals(addCustomerAccountViewModel.getCustomers().get(i).getCpr_number()))
+        setter=false;
+    }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
     return null;
@@ -111,12 +130,12 @@ public class AddCustomerAccountViewController implements ViewController
 
   public void onCreateButton() throws RemoteException, SQLException {
 
-    if (checkPassword() && getCpr()!=null && getDateBirth()!=null &&getPhoneNumber()!=null){
+    if (checkPassword() && getCpr()!=null && getDateBirth()!=null &&getPhoneNumber()!=null && getEmail()!=null){
       addCustomerAccountViewModel.createCustomerAccount(
           firstNameField.getText(),
           lastNameField.getText(),
           getDateBirth(),
-          eMailField.getText(),
+          getEmail(),
           passwordField.getText(),
           getPhoneNumber(),
           drivingLicenseField.getText(),
@@ -146,6 +165,13 @@ public class AddCustomerAccountViewController implements ViewController
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
+    if(getEmail()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a unique email address!");
       alert.showAndWait();
     }
   }

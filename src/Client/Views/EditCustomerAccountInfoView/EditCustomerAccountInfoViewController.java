@@ -88,7 +88,8 @@ public class EditCustomerAccountInfoViewController implements ViewController
     passwordCheckLabel.setVisible(false);
   }
 
-  private String getCpr(){
+  private String getCpr() throws RemoteException, SQLException
+  {
     boolean setter=true;
     int firstPart=0;
     int secondPart=0;
@@ -107,9 +108,26 @@ public class EditCustomerAccountInfoViewController implements ViewController
     }
     if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
       setter=false;
+    String cpr=cprFirstField.getText()+cprSecondField.getText();
+    for(int i=0;i<editCustomerInfoViewModel.getCustomers().size();i++)
+    {
+      if(cpr.equals(editCustomerInfoViewModel.getCustomers().get(i).getCpr_number()))
+        setter=false;
+    }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
     return null;
+  }
+
+  private String getEmail() throws RemoteException, SQLException
+  {
+    String email=eMailField.getText();
+    for(int i=0;i<editCustomerInfoViewModel.getCustomers().size();i++)
+    {
+      if(editCustomerInfoViewModel.getCustomers().get(i).getEmail().equals(email))
+        return null;
+    }
+    return email;
   }
 
   public GregorianCalendar getDateBirth(){
@@ -138,14 +156,14 @@ public class EditCustomerAccountInfoViewController implements ViewController
 
   public void onUpdateCustomer() throws RemoteException, SQLException
   {
-    if(getDateBirth()!=null && getCpr()!=null)
+    if(getDateBirth()!=null && getCpr()!=null && getPhoneNumber()!=null && getEmail()!=null)
     {
     editCustomerInfoViewModel.editCustomerInfo(
         customer,
         firstNameField.getText(),
         lastNameField.getText(),
         getDateBirth(),
-        eMailField.getText(),
+        getEmail(),
         passwordField.getText(),
         getPhoneNumber(),
         drivingLicenseField.getText(),
@@ -173,6 +191,13 @@ public class EditCustomerAccountInfoViewController implements ViewController
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
+    if(getEmail()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a unique email address!");
       alert.showAndWait();
     }
   }

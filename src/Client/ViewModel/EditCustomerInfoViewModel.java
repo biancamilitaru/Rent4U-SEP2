@@ -6,6 +6,7 @@ import Client.Model.Customer;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class EditCustomerInfoViewModel
@@ -29,5 +30,10 @@ public class EditCustomerInfoViewModel
       throws RemoteException, SQLException
   {
     userModel.deleteCustomer(customer);
+  }
+
+  public ArrayList<Customer> getCustomers() throws RemoteException, SQLException
+  {
+    return userModel.getCustomers();
   }
 }
