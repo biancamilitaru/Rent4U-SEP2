@@ -50,6 +50,7 @@ public class EditPersonalBookingViewController implements ViewController
     listView.setCellFactory(vehiclesObservableList-> new VehicleListViewCell(this));
     listView.setFixedCellSize(125);
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+    listView.setFocusTraversable(false);
   }
 
   public ObservableList<Vehicle> getVehicleData(

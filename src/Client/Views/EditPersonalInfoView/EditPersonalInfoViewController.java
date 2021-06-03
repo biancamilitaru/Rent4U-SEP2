@@ -15,7 +15,9 @@ import javafx.scene.control.TextField;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class EditPersonalInfoViewController implements ViewController
@@ -57,10 +59,10 @@ public class EditPersonalInfoViewController implements ViewController
     return parts;
   }
 
-  public static final LocalDate dateConvertor (String dateString){
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    LocalDate localDate = LocalDate.parse(dateString, formatter);
-    return localDate;
+  public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+    return dateToConvert.toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate();
   }
 
   /**
@@ -71,11 +73,7 @@ public class EditPersonalInfoViewController implements ViewController
   public void loadData(){
     firstNameField.setText(customer.getFirstName());
     lastNameField.setText(customer.getLastName());
-    dateOfBirthPicker.setValue(
-        dateConvertor(
-            customer.getDateOfBirth().getTime().getDay()+ "-" +
-                customer.getDateOfBirth().getTime().getMonth()+"-"+
-                customer.getDateOfBirth().getTime().getYear()));
+    dateOfBirthPicker.setValue(convertToLocalDateViaInstant(customer.getDateOfBirth().getTime()));
     eMailField.setText(customer.getEmail());
     drivingLicenseField.setText(customer.getDrivingLicenseNumber());
     cprFirstField.setText(splitCpr(String.valueOf(customer.getCpr_number()))[0]);

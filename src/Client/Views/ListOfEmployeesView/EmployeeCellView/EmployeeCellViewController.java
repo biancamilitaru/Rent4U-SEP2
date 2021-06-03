@@ -6,7 +6,6 @@ import Client.Model.Customer;
 import Client.Model.Employee;
 import Client.Views.ListOfEmployeesView.ListOfEmployeesViewController;
 import Client.Views.ViewController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -46,7 +45,7 @@ public class EmployeeCellViewController extends ListCell<Employee>
   protected void updateItem(Employee employee, boolean empty)
   {
     super.updateItem(employee, empty);
-    this.employee = employee;
+    this.employee= employee;
     if (empty || employee == null)
     {
       setText(null);
@@ -56,7 +55,8 @@ public class EmployeeCellViewController extends ListCell<Employee>
     {
       if (mLLoader == null)
       {
-        mLLoader = new FXMLLoader(getClass().getResource("EmployeeCellView.fxml"));
+        mLLoader = new FXMLLoader(getClass().getResource(
+            "EmployeeCellView.fxml"));
         mLLoader.setController(this);
 
         try
@@ -80,17 +80,27 @@ public class EmployeeCellViewController extends ListCell<Employee>
       cprLabel.setText(employee.getCpr());
       salaryLabel.setText(String.valueOf(employee.getSalary()));
 
+
       setText(null);
       setGraphic(this.anchorPane);
+
+      if (getIndex()%2==0){
+        //OnOrange
+        setStyle("-fx-background-color: FFFFFF");
+      } else {
+        //OnWhite
+        setStyle("-fx-background-color: F4AF82");
+      }
     }
   }
 
   public void onClickedEditButton() throws SQLException, RemoteException
   {
-    listOfEmployeesViewController.onEditEmployee(employee);
+    listOfEmployeesViewController.editEmployee(employee);
   }
-  public void onClickedDeleteButton() throws SQLException, RemoteException
+  public void onDeleteButton() throws SQLException, RemoteException
   {
     listOfEmployeesViewController.deleteEmployee(employee);
   }
+
 }

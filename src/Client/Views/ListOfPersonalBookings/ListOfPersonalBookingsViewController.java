@@ -43,7 +43,8 @@ public class ListOfPersonalBookingsViewController implements ViewController
     listView.setItems(bookingsObservableList);
     listView.setCellFactory(vehicleListView -> new PersonalBookingCellViewController(this));
 
-    listView.setFixedCellSize(73);
+    listView.setFixedCellSize(55);
+    listView.setFocusTraversable(false);
   }
 
   public void onAddBookingButton(ActionEvent evt) throws SQLException, RemoteException

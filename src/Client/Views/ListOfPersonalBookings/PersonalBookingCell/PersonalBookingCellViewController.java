@@ -76,6 +76,13 @@ public class PersonalBookingCellViewController extends ListCell<Booking>
       setText(null);
 
       setGraphic(this.anchorPane);
+      if (getIndex()%2==0){
+        //OnOrange
+        setStyle("-fx-background-color: FFFFFF");
+      } else {
+        //OnWhite
+        setStyle("-fx-background-color: F4AF82");
+      }
     }
   }
 

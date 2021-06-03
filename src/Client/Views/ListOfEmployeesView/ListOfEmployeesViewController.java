@@ -39,6 +39,7 @@ public class ListOfEmployeesViewController implements ViewController
     listView.setItems(employeesObservableList);
     listView.setCellFactory(employeeListView -> new EmployeeCellViewController(this));
     listView.setFixedCellSize(40);
+    listView.setFocusTraversable(false);
   }
 
   public void setManager(boolean manager)
