@@ -26,7 +26,6 @@ public class AddEmployeesViewController implements ViewController
   @FXML TextField cprSecondField;
   @FXML TextField salary;
   @FXML TextField phoneField;
-  @FXML Label addedLabel;
 
   private ViewHandler viewHandler;
   private AddEmployeeViewModel addEmployeeViewModel;
@@ -38,7 +37,6 @@ public class AddEmployeesViewController implements ViewController
   {
     this.viewHandler=viewHandler;
     addEmployeeViewModel=viewModelFactory.getAddEmployeeViewModel();
-    addedLabel.setVisible(false);
   }
 
   public void setManager(boolean manager)
@@ -83,7 +81,7 @@ public class AddEmployeesViewController implements ViewController
   public GregorianCalendar getDateBirth(){
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
     if(now.before(dateOfBirth))
       return null;
     return  dateOfBirth;
@@ -150,7 +148,6 @@ public class AddEmployeesViewController implements ViewController
           getEmail(),
           getSalary(),
           getPosition()
-
       );
       viewHandler.openListOfEmployees(manager);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);

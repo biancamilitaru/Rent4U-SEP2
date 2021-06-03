@@ -18,7 +18,7 @@ public class EditEmployeeInfoViewModel
     this.userModel=userModel;
   }
   public void editEmployeeInfo(Employee employee,String cpr, String firstName, String lastName, GregorianCalendar dateOfBirth,String phoneNumber,
-      String email, int salary,String position)
+      String email, double salary,String position)
       throws RemoteException, SQLException
   {
     Employee newEmployee = new Employee(cpr,firstName,lastName,dateOfBirth,phoneNumber,email,salary,position);

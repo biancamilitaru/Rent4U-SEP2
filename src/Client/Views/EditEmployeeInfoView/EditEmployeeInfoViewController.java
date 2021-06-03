@@ -69,7 +69,7 @@ public class EditEmployeeInfoViewController implements ViewController
     dateOfBirthPicker.setValue(convertToLocalDateViaInstant(employee.getDateOfBirth().getTime()));
     eMailField.setText(employee.getEmail());
     cprFirstField.setText(employee.getCpr().substring(0,6));
-    cprSecondField.setText(employee.getCpr().substring(7,11));
+    cprSecondField.setText(employee.getCpr().substring(6,10));
     phoneField.setText(employee.getPhoneNumber());
     position.setText(employee.getPosition());
     String str = Double.toString(employee.getSalary());
@@ -122,18 +122,18 @@ public class EditEmployeeInfoViewController implements ViewController
   {
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
+    if(now.before(dateOfBirth))
       return null;
     return  dateOfBirth;
   }
 
-  private int getSalary()
+  private double getSalary()
   {
     String salaryString=salaryField.getText();
-    int salaryInt=0;
+    double salaryInt=0;
     try{
-      salaryInt=Integer.parseInt(salaryString);
+      salaryInt=Double.parseDouble(salaryString);
     }
     catch (NumberFormatException e)
     {
@@ -177,10 +177,10 @@ public class EditEmployeeInfoViewController implements ViewController
           lastNameField.getText(),
           getDateOfBirth(),
           getPhoneNumber(),
-           getEmail(),
+          getEmail(),
           getSalary(),
           getPosition());
-
+      viewHandler.openListOfEmployees(manager);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Employee information edited");
       alert.setContentText(

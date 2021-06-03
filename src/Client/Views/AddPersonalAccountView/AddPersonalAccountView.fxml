@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.AddPersonalAccountView.AddPersonalAccountViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Views.AddPersonalAccountView.AddPersonalAccountViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="600.0" style="-fx-background-color: FFFFFF;">
          <children>
@@ -22,7 +22,7 @@
             <TextField fx:id="firstNameField" layoutX="25.0" layoutY="85.0" prefHeight="27.0" prefWidth="120.0" promptText="Fisrt name" style="-fx-background-color: E5E5E5;" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="85.0" />
             <TextField fx:id="lastNameField" layoutX="150.0" layoutY="85.0" prefHeight="27.0" prefWidth="120.0" promptText="Last name" style="-fx-background-color: E5E5E5;" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="85.0" />
             <Label layoutX="25.0" layoutY="120.0" text="Date of birth:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="120.0" />
-            <DatePicker fx:id="dateOfBirthPicker" layoutX="27.0" layoutY="143.0" prefWidth="180.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="145.0" />
+            <DatePicker fx:id="dateOfBirthPicker" editable="false" layoutX="27.0" layoutY="143.0" prefWidth="180.0" showWeekNumbers="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="145.0" />
             <Label layoutX="27.0" layoutY="183.0" text="Enter E-Mail:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="180.0" />
             <TextField fx:id="eMailField" layoutX="25.0" layoutY="200.0" prefHeight="27.0" prefWidth="245.0" promptText="rent4u@rent4u.dk" style="-fx-background-color: E5E5E5;" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="205.0" />
             <Label layoutX="321.0" layoutY="61.0" text="Choose password:" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="60.0" />

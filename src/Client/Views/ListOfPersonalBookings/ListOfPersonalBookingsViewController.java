@@ -69,7 +69,7 @@ public class ListOfPersonalBookingsViewController implements ViewController
 
   public void onEdit(Booking booking) throws SQLException, RemoteException
   {
-    viewHandler.openEditPersonalBooking(booking);
+    viewHandler.openEditPersonalBooking(customer, booking);
   }
 
   /**

@@ -8,6 +8,7 @@ import Client.Views.ListOfEmployeesView.EmployeeCellView.EmployeeCellViewControl
 import Client.Views.ViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -25,7 +26,7 @@ public class ListOfEmployeesViewController implements ViewController
 
   @FXML ListView<Employee> listView;
 
-  public final ObservableList<Employee> employeesArrayList = FXCollections.observableArrayList();
+  public final ObservableList<Employee> employeesObservableList = FXCollections.observableArrayList();
 
   private boolean manager;
 
@@ -35,7 +36,7 @@ public class ListOfEmployeesViewController implements ViewController
     this.viewHandler = viewHandler;
     this.listOfEmployeesViewModel = viewModelFactory.getListOfEmployeesViewModel();
     getEmployeesData(listOfEmployeesViewModel.getEmployees());
-    listView.setItems(employeesArrayList);
+    listView.setItems(employeesObservableList);
     listView.setCellFactory(employeeListView -> new EmployeeCellViewController(this));
     listView.setFixedCellSize(40);
     listView.setFocusTraversable(false);
@@ -47,16 +48,16 @@ public class ListOfEmployeesViewController implements ViewController
   }
 
   public ObservableList<Employee> getEmployeesData(
-      ArrayList<Employee> customersArrayList)
+      ArrayList<Employee> employeesArrayList)
   {
     for (int x = 0; x < employeesArrayList.size(); x++)
     {
-      employeesArrayList.add(customersArrayList.get(x));
+      employeesObservableList.add(employeesArrayList.get(x));
     }
-    return employeesArrayList;
+    return employeesObservableList;
   }
 
-  public void onAddEmployeeButton() throws SQLException, RemoteException {
+  public void onAddCustomerButton() throws SQLException, RemoteException {
     viewHandler.openAddEmployee(manager);
   }
 

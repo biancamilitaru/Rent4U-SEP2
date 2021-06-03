@@ -22,7 +22,7 @@ public class EditBookingInfoViewModel
       this.userModel= userModel;
 
     }
-    public void editBookingInfo(Booking booking , int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price)
+    public void editBookingInfo(Booking booking , String idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price)
             throws RemoteException, RemoteException, SQLException {
         Booking newBooking = new Booking(idOfCustomer, licencePlate, startTime, endTime, price);
         userModel.editBookingInfo(booking, newBooking);

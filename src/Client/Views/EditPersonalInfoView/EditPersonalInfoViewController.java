@@ -7,10 +7,7 @@ import Client.ViewModel.EditPersonalInfoViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -19,9 +16,9 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Optional;
 
-public class EditPersonalInfoViewController implements ViewController
-{
+public class EditPersonalInfoViewController implements ViewController {
   private ViewHandler viewHandler;
   private EditPersonalInfoViewModel editPersonalInfoViewModel;
 
@@ -40,29 +37,23 @@ public class EditPersonalInfoViewController implements ViewController
   @FXML Label passwordCheckLabel;
 
 
-  @Override public void init(ViewHandler viewHandler,
-      ViewModelFactory viewModelFactory) throws SQLException, RemoteException
-  {
-    this.viewHandler=viewHandler;
-    this.editPersonalInfoViewModel=viewModelFactory.getEditPersonalInfoViewModelViewModel();
+  @Override
+  public void init(ViewHandler viewHandler,
+                   ViewModelFactory viewModelFactory) throws SQLException, RemoteException {
+    this.viewHandler = viewHandler;
+    this.editPersonalInfoViewModel = viewModelFactory.getEditPersonalInfoViewModelViewModel();
 
   }
 
-  public void setCustomer(Customer customer)
-  {
-    this.customer=customer;
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
     loadData();
-  }
-
-  private String[] splitCpr(String cprFull){
-    String[] parts = cprFull.split("/");
-    return parts;
   }
 
   public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
     return dateToConvert.toInstant()
-        .atZone(ZoneId.systemDefault())
-        .toLocalDate();
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
   }
 
   /**
@@ -70,14 +61,14 @@ public class EditPersonalInfoViewController implements ViewController
    * When the user open up this page we load all the existing data into the TextFields, DatePicker.
    * This method makes it easier to see what kind of data needs or doesn't need to be changed.
    */
-  public void loadData(){
+  public void loadData() {
     firstNameField.setText(customer.getFirstName());
     lastNameField.setText(customer.getLastName());
     dateOfBirthPicker.setValue(convertToLocalDateViaInstant(customer.getDateOfBirth().getTime()));
     eMailField.setText(customer.getEmail());
     drivingLicenseField.setText(customer.getDrivingLicenseNumber());
-    cprFirstField.setText(splitCpr(String.valueOf(customer.getCpr_number()))[0]);
-    cprSecondField.setText(splitCpr(String.valueOf(customer.getCpr_number()))[1]);
+    cprFirstField.setText(customer.getCpr_number().substring(0, 6));
+    cprSecondField.setText(customer.getCpr_number().substring(6, 10));
     passwordField.setText(customer.getPassword());
     rePasswordField.setText(customer.getPassword());
     phoneField.setText(customer.getPhoneNumber());
@@ -105,9 +96,9 @@ public class EditPersonalInfoViewController implements ViewController
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
       alert.setContentText(
-          "Please enter a valid cpr!\nPlease try again!");
+              "Please enter a valid cpr!\nPlease try again!");
       alert.showAndWait();
-      setter=false;
+      setter = false;
     }
     if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
       setter=false;
@@ -138,21 +129,20 @@ public class EditPersonalInfoViewController implements ViewController
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
     GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
+    if (now.before(dateOfBirth))
       return null;
-    return  dateOfBirth;
+    return dateOfBirth;
   }
-  public String getPhoneNumber()
-  {
-    String phoneNumberString=phoneField.getText();
-    if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
+
+  public String getPhoneNumber() {
+    String phoneNumberString = phoneField.getText();
+    if (phoneNumberString.length() > 12 || phoneNumberString.length() < 6)
       return null;
 
-    int phoneNumber=0;
+    int phoneNumber = 0;
     try {
-      phoneNumber=Integer.parseInt(phoneField.getText());
-    }
-    catch (NumberFormatException e){
+      phoneNumber = Integer.parseInt(phoneField.getText());
+    } catch (NumberFormatException e) {
       return null;
     }
     return phoneNumberString;
@@ -181,27 +171,27 @@ public class EditPersonalInfoViewController implements ViewController
         getPhoneNumber(),
         drivingLicenseField.getText(),
         getCpr());
-
+      viewHandler.openListOfEmployees(manager);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Your information was edited");
       alert.setContentText(
-          "Your personal information has been successfully edited!\nThank you!");
+              "Your personal information has been successfully edited!\nThank you!");
       alert.showAndWait();
     }
-    if(getCpr()==null){
+    if (getCpr() == null) {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a valid cpr number!");
-      alert.showAndWait();}
+      alert.showAndWait();
+    }
 
-    if(getDateBirth()==null){
+    if (getDateBirth() == null) {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a valid birthday!");
       alert.showAndWait();
     }
-    if(getPhoneNumber()==null)
-    {
+    if (getPhoneNumber() == null) {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a phone number!");
@@ -216,8 +206,24 @@ public class EditPersonalInfoViewController implements ViewController
     }
   }
 
-    public void onMenu(ActionEvent actionEvent) throws SQLException, RemoteException {
+  public void onMenu(ActionEvent actionEvent) throws SQLException, RemoteException {
+    viewHandler.openMenuCustomerView(customer);
+  }
+
+  public void onDeletePersonalAccount(ActionEvent actionEvent) throws RemoteException, SQLException {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Delete Account");
+    alert.setHeaderText("");
+    alert.setContentText("Are you sure you would like to delete this account?");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK) {
+      editPersonalInfoViewModel.deleteCustomerAccount(customer);
+      viewHandler.openLogInMenu();
+    } else if (result.get() == ButtonType.CANCEL) {
       viewHandler.openMenuCustomerView(customer);
     }
+  }
 }
+
 

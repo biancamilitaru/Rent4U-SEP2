@@ -103,6 +103,6 @@ public class VehicleListViewCell extends ListCell<Vehicle>
 
   public void clickedStatusButton() throws RemoteException, SQLException
   {
-    listOfVehiclesViewController.onStatus(vehicle);
+    listOfVehiclesViewController.onStatusButton(vehicle);
   }
 }

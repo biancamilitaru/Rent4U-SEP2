@@ -87,8 +87,8 @@ public class ListOfCustomersViewController implements ViewController
     Optional<ButtonType> result = alert.showAndWait();
     if (result.get() == ButtonType.OK){
     listOfCustomersViewModel.deleteCustomer(customer);
-    viewHandler.openLogInCustomer();}
+    viewHandler.openListOfCustomers(manager);}
     else if(result.get()==ButtonType.CANCEL){
-      viewHandler.openLogInCustomer(); }
+      viewHandler.openListOfCustomers(manager); }
   }
 }

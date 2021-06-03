@@ -134,7 +134,7 @@ public class AddBookingCustomerViewController implements ViewController {
       setter=false;
 
     }
-    if(endHour1>59 ||endHour1<0)
+    if(endMinute1>59 ||endMinute1<0)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
@@ -142,7 +142,7 @@ public class AddBookingCustomerViewController implements ViewController {
       alert.showAndWait();
       setter=false;
     }
-    if(setter=true)
+    if(setter)
     {
       LocalDate date2 = endDatePicker.getValue();
       GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
@@ -165,7 +165,6 @@ public class AddBookingCustomerViewController implements ViewController {
 
   public void onCreateBookingButton() throws RemoteException, SQLException {
     boolean setter=true;
-    int id = Integer.parseInt(customer.getCpr_number());
     String licensePlate=chosenVehicle.getLicensePlate();
     GregorianCalendar now=new GregorianCalendar();
 
@@ -181,14 +180,14 @@ public class AddBookingCustomerViewController implements ViewController {
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
-      alert.setContentText("Please enter a valid end time\nTry again!");
+      alert.setContentText("Please enter a valid time\nTry again!");
       alert.showAndWait();
       setter=false;
     }
     if(setter)
     {
-      viewModel.createBooking(id,chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
-      viewHandler.openMenuCustomerView(customer);
+      viewModel.createBooking(customer.getCpr_number(),chosenVehicle.getLicensePlate(), getStartDate(), getEndDate(),getTotalPrice());
+      viewHandler.openPersonalBookings(customer);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Booking created");
       alert.setContentText("The booking has been created!\nThank you!");

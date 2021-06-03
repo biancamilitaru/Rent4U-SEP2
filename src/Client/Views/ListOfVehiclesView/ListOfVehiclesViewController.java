@@ -26,7 +26,6 @@ public class ListOfVehiclesViewController implements ViewController
   private boolean manager;
 
   @FXML ListView<Vehicle> listView;
-  @FXML ImageView logoSymbol;
 
 
   public final ObservableList<Vehicle> tableObservableList = FXCollections.observableArrayList();
@@ -37,8 +36,6 @@ public class ListOfVehiclesViewController implements ViewController
     this.listOfVehiclesViewModel = viewModelFactory.getListOfVehiclesViewModel();
     getVehicleData(listOfVehiclesViewModel.getVehicles());
 
-    Image logo = new Image("/GUI/Logo.png");
-    logoSymbol.setImage(logo);
     listView.setItems(tableObservableList);
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell(this));
     listView.setFixedCellSize(50);
@@ -88,5 +85,10 @@ public class ListOfVehiclesViewController implements ViewController
   public void setManager(boolean manager)
   {
     this.manager = manager;
+  }
+
+  public void onStatusButton(Vehicle vehicle)
+  {
+    viewHandler.openSetStatusView(vehicle, manager);
   }
 }

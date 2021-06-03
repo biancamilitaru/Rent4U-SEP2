@@ -29,4 +29,8 @@ public class EditPersonalInfoViewModel
   {
     return userModel.getCustomers();
   }
+
+  public void deleteCustomerAccount(Customer customer) throws RemoteException, SQLException {
+    userModel.deleteCustomer(customer);
+  }
 }
