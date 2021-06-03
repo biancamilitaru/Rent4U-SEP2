@@ -10,13 +10,13 @@ import java.util.GregorianCalendar;
 public class Booking implements Serializable
 {
   private int booking_id;
-  private int idOfCustomer;
+  private String idOfCustomer;
   private String licencePlate;
   private GregorianCalendar startTime;
   private GregorianCalendar endTime;
   private double price;
 
-  public Booking(int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
+  public Booking(String idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
     this.idOfCustomer = idOfCustomer;
     this.licencePlate = licencePlate;
     this.startTime = startTime;
@@ -24,7 +24,7 @@ public class Booking implements Serializable
     this.price = price;
   }
 
-  public Booking(int booking_id, int idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
+  public Booking(int booking_id, String idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
     this.booking_id = booking_id;
     this.idOfCustomer = idOfCustomer;
     this.licencePlate = licencePlate;
@@ -61,12 +61,12 @@ public class Booking implements Serializable
     return endTime;
   }
 
-  public void setIdOfCustomer(int idOfCustomer)
+  public void setIdOfCustomer(String idOfCustomer)
   {
     this.idOfCustomer = idOfCustomer;
   }
 
-  public int getIdOfCustomer()
+  public String getIdOfCustomer()
   {
     return idOfCustomer;
   }

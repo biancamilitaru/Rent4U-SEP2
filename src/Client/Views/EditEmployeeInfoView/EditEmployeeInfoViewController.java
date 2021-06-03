@@ -12,8 +12,10 @@ import javafx.scene.control.TextField;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class EditEmployeeInfoViewController implements ViewController
@@ -54,31 +56,27 @@ public class EditEmployeeInfoViewController implements ViewController
     this.manager = manager;
   }
 
-  public static final LocalDate dateConvertor(String dateString){
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    LocalDate localDate = LocalDate.parse(dateString, formatter);
-    return localDate;
+  public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+    return dateToConvert.toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate();
   }
 
   public void loadData()
   {
     firstNameField.setText(employee.getFirstName());
     lastNameField.setText(employee.getLastName());
-    dateOfBirthPicker.setValue(
-        dateConvertor(
-            employee.getDateOfBirth().get(Calendar.DATE)+ "-" +
-                employee.getDateOfBirth().get(Calendar.MONTH)+"-"+
-                employee.getDateOfBirth().get(Calendar.YEAR)));
+    dateOfBirthPicker.setValue(convertToLocalDateViaInstant(employee.getDateOfBirth().getTime()));
     eMailField.setText(employee.getEmail());
     cprFirstField.setText(employee.getCpr().substring(0,6));
-    cprSecondField.setText(employee.getCpr().substring(7,11));
+    cprSecondField.setText(employee.getCpr().substring(6,10));
     phoneField.setText(employee.getPhoneNumber());
     position.setText(employee.getPosition());
     String str = Double.toString(employee.getSalary());
     salaryField.setText(str);
   }
 
-  private String getCpr()
+  private String getCpr() throws RemoteException, SQLException
   {
     boolean setter=true;
     int firstPart=0;
@@ -98,27 +96,44 @@ public class EditEmployeeInfoViewController implements ViewController
     }
     if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
       setter=false;
+
+    String cpr=cprFirstField.getText()+cprSecondField.getText();
+    for(int i=0;i<editEmployeeInfoViewModel.getCustomers().size();i++)
+    {
+      if(cpr.equals(editEmployeeInfoViewModel.getCustomers().get(i).getCpr_number()))
+        setter=false;
+    }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
     return null;
   }
+  private String getEmail() throws RemoteException, SQLException
+  {
+    String email=eMailField.getText();
+    for(int i=0;i<editEmployeeInfoViewModel.getCustomers().size();i++)
+    {
+      if(editEmployeeInfoViewModel.getCustomers().get(i).getEmail().equals(email))
+        return null;
+    }
+    return email;
+  }
 
-  public GregorianCalendar getDateOfBirth()
+  private GregorianCalendar getDateOfBirth()
   {
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
+    if(now.before(dateOfBirth))
       return null;
     return  dateOfBirth;
   }
 
-  public int getSalary()
+  private double getSalary()
   {
     String salaryString=salaryField.getText();
-    int salaryInt=0;
+    double salaryInt=0;
     try{
-      salaryInt=Integer.parseInt(salaryString);
+      salaryInt=Double.parseDouble(salaryString);
     }
     catch (NumberFormatException e)
     {
@@ -126,7 +141,8 @@ public class EditEmployeeInfoViewController implements ViewController
     }
     return salaryInt;
   }
-  public String getPhoneNumber()
+
+  private String getPhoneNumber()
   {
     String phoneNumberString=phoneField.getText();
     if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
@@ -142,9 +158,17 @@ public class EditEmployeeInfoViewController implements ViewController
     return phoneNumberString;
   }
 
+  private String getPosition()
+  {
+    String positionString=position.getText();
+    if(positionString.equals("employee") || positionString.equals("manager"))
+      return positionString;
+    return null;
+  }
+
   public void onSaveButton() throws RemoteException, SQLException
   {
-    if (getDateOfBirth() != null && getCpr() != null && getDateOfBirth()!=null && getPhoneNumber()!=null && getSalary()!=0)
+    if (getDateOfBirth() != null && getCpr() != null && getDateOfBirth()!=null && getPhoneNumber()!=null && getSalary()!=0 && getEmail()!=null && getPosition()!=null)
     {
       editEmployeeInfoViewModel.editEmployeeInfo(
           employee,
@@ -153,10 +177,10 @@ public class EditEmployeeInfoViewController implements ViewController
           lastNameField.getText(),
           getDateOfBirth(),
           getPhoneNumber(),
-          eMailField.getText(),
+          getEmail(),
           getSalary(),
-          position.getText());
-
+          getPosition());
+      viewHandler.openListOfEmployees(manager);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Employee information edited");
       alert.setContentText(
@@ -192,6 +216,20 @@ public class EditEmployeeInfoViewController implements ViewController
       alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid salary!\nPlease try again!");
+      alert.showAndWait();
+    }
+    if(getEmail()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a unique email address!");
+      alert.showAndWait();
+    }
+    if(getPosition()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid position!");
       alert.showAndWait();
     }
   }

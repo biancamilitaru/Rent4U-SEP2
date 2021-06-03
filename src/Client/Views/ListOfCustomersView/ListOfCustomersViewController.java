@@ -47,6 +47,7 @@ public class ListOfCustomersViewController implements ViewController
     listView.setItems(customersObservableList);
     listView.setCellFactory(customerListView -> new CustomerListViewCell(this));
     listView.setFixedCellSize(40);
+    listView.setFocusTraversable(false);
   }
 
   public void setManager(boolean manager)
@@ -86,8 +87,8 @@ public class ListOfCustomersViewController implements ViewController
     Optional<ButtonType> result = alert.showAndWait();
     if (result.get() == ButtonType.OK){
     listOfCustomersViewModel.deleteCustomer(customer);
-    viewHandler.openLogInCustomer();}
+    viewHandler.openListOfCustomers(manager);}
     else if(result.get()==ButtonType.CANCEL){
-      viewHandler.openLogInCustomer(); }
+      viewHandler.openListOfCustomers(manager); }
   }
 }

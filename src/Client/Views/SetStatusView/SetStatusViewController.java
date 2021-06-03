@@ -85,7 +85,6 @@ public class SetStatusViewController implements ViewController
       alert.setContentText("Please enter a valid time\nPlease try again!");
       alert.showAndWait();
       setter=false;
-
     }
     if(startMinute1>59 ||startMinute1<0)
     {
@@ -132,7 +131,7 @@ public class SetStatusViewController implements ViewController
       setter=false;
 
     }
-    if(endHour1>59 ||endHour1<0)
+    if(endMinute1>59 ||endMinute1<0)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
@@ -140,7 +139,7 @@ public class SetStatusViewController implements ViewController
       alert.showAndWait();
       setter=false;
     }
-    if(setter=true)
+    if(setter)
     {
       LocalDate date2 = endDatePicker.getValue();
       GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
@@ -163,30 +162,33 @@ public class SetStatusViewController implements ViewController
       throws RemoteException, SQLException
   {
     GregorianCalendar now = new GregorianCalendar();
+    boolean setter = true;
 
-    if(getEndDate()!=null && getStartDate()!=null && getStatus()!=null)
-    {
-    Status status = new Status(getStartDate(), getEndDate(), getStatus());
-    setStatusViewModel.setStatus(vehicle, status);
-    viewHandler.openListOfVehicleView(manager);
-
-      Alert alert = new Alert(Alert.AlertType.INFORMATION);
-      alert.setTitle("Status created");
-      alert.setContentText("The status has been created!\nThank you!");
-      alert.showAndWait();
-    }
     if (getStartDate().before(now) || getEndDate().before(getStartDate()) || getEndDate().before(now) || getEndDate()==null || getStartDate()==null)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
-      alert.setContentText("Please enter a valid end time\nTry again!");
+      alert.setContentText("Please enter a valid time\nTry again!");
       alert.showAndWait();
+      setter = false;
     }
     if(getStatus()==null)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
       alert.setContentText("Please enter a valid status!\nTry again!");
+      alert.showAndWait();
+      setter = false;
+    }
+    if(getEndDate()!=null && getStartDate()!=null && getStatus()!=null && setter)
+    {
+      Status status = new Status(getStartDate(), getEndDate(), getStatus());
+      setStatusViewModel.setStatus(vehicle, status);
+      viewHandler.openListOfVehicleView(manager);
+
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Status created");
+      alert.setContentText("The status has been created!\nThank you!");
       alert.showAndWait();
     }
 

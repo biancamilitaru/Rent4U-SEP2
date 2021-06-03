@@ -180,7 +180,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
             statement.setTimestamp(1, start_time);
             Timestamp end_time = new Timestamp(booking.getEndTime().getTimeInMillis());
             statement.setTimestamp(2, end_time);
-            statement.setInt(3, booking.getIdOfCustomer());
+            statement.setString(3, booking.getIdOfCustomer());
             statement.setString(4, booking.getLicencePlate());
             statement.setDouble(5, booking.getPrice());
             statement.executeUpdate();
@@ -212,7 +212,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         LocalDateTime end_time_local = end_time_timestamp.toLocalDateTime();
         GregorianCalendar end_time = new GregorianCalendar(end_time_local.getYear(), end_time_local.getMonthValue()-1,
                 end_time_local.getDayOfMonth(), end_time_local.getHour(), end_time_local.getMinute());
-        int id_of_customer = resultSet.getInt(4);
+        String id_of_customer = resultSet.getString(4);
         String license_plate = resultSet.getString(5);
         double price = resultSet.getDouble(6);
         return new Booking(booking_id, id_of_customer, license_plate, start_time, end_time, price);
@@ -232,7 +232,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
             statement.setInt(2, booking.getBooking_id());
             statement.executeUpdate();
             statement = connection.prepareStatement("UPDATE booking SET cpr_of_customer = ? WHERE booking_id = ?");
-            statement.setInt(1, newBooking.getIdOfCustomer());
+            statement.setString(1, newBooking.getIdOfCustomer());
             statement.setInt(2, booking.getBooking_id());
             statement.executeUpdate();
             statement = connection.prepareStatement("UPDATE booking SET licence_plate = ? WHERE booking_id = ?");

@@ -28,7 +28,7 @@ public class EmployeeCellViewController extends ListCell<Employee>
   @FXML Label dateOfBirtLabel;
   @FXML Label eMailLabel;
   @FXML Label phoneLabel;
-  @FXML Label position;
+  @FXML Label positionLabel;
   @FXML Label cprLabel;
   @FXML Label salaryLabel;
 
@@ -41,7 +41,6 @@ public class EmployeeCellViewController extends ListCell<Employee>
     this.listOfEmployeesViewController=listOfEmployeesViewController;
   }
 
-  //some reason does not expect override, why?
   protected void updateItem(Employee employee, boolean empty)
   {
     super.updateItem(employee, empty);
@@ -76,25 +75,31 @@ public class EmployeeCellViewController extends ListCell<Employee>
       dateOfBirtLabel.setText(dateFormat.format(employee.getDateOfBirth().getTime()));
       eMailLabel.setText(employee.getEmail());
       phoneLabel.setText(employee.getPhoneNumber());
-      position.setText(employee.getPosition());
+      positionLabel.setText(employee.getPosition());
       cprLabel.setText(employee.getCpr());
       salaryLabel.setText(String.valueOf(employee.getSalary()));
 
 
       setText(null);
       setGraphic(this.anchorPane);
+
+      if (getIndex()%2==0){
+        //OnOrange
+        setStyle("-fx-background-color: FFFFFF");
+      } else {
+        //OnWhite
+        setStyle("-fx-background-color: F4AF82");
+      }
     }
   }
-/*
+
   public void onClickedEditButton() throws SQLException, RemoteException
   {
-    listOfEmployeesViewController.editEmployee(employee);
+    listOfEmployeesViewController.onEditEmployee(employee);
   }
-  public void onDeleteButton() throws SQLException, RemoteException
+  public void onClickedDeleteButton() throws SQLException, RemoteException
   {
     listOfEmployeesViewController.deleteEmployee(employee);
   }
-
- */
 
 }

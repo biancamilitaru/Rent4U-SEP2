@@ -18,7 +18,7 @@ public class AddBookingCustomerViewModel
     this.userModel= userModel;
 
   }
-  public void createBooking(int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price) throws
+  public void createBooking(String idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price) throws
       RemoteException, SQLException
   {
 

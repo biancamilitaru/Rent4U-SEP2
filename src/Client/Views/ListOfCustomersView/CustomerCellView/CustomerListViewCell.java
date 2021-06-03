@@ -47,8 +47,7 @@ public class CustomerListViewCell extends ListCell<Customer>
     {
       if (mLLoader == null)
       {
-        mLLoader = new FXMLLoader(getClass().getResource(
-            "CustomerViewCell.fxml"));
+        mLLoader = new FXMLLoader(getClass().getResource("CustomerViewCell.fxml"));
         mLLoader.setController(this);
 
         try
@@ -73,6 +72,14 @@ public class CustomerListViewCell extends ListCell<Customer>
 
       setText(null);
       setGraphic(this.anchorPane);
+
+      if (getIndex()%2==0){
+        //OnOrange
+        setStyle("-fx-background-color: FFFFFF");
+      } else {
+        //OnWhite
+        setStyle("-fx-background-color: F4AF82");
+      }
     }
   }
 

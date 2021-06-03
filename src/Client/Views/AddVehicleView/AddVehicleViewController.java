@@ -234,14 +234,14 @@ public class AddVehicleViewController implements ViewController
                 {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid input");
-                    alert.setContentText("Please enter a valid year!\nTry again!");
+                    alert.setContentText("Please enter a valid license!\nTry again!");
                     alert.showAndWait();
                 }
                 if(getEnginePower()==0)
                 {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid input");
-                    alert.setContentText("Please enter a valid year!\nTry again!");
+                    alert.setContentText("Please enter a valid engine power!\nTry again!");
                     alert.showAndWait();
                 }
 

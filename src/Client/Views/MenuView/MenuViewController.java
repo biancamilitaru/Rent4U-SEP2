@@ -7,6 +7,7 @@ import Client.Views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ public class MenuViewController implements ViewController
 
   @FXML private Button openAddEmployeeButton;
   @FXML private Button listOfEmployeesButton;
+  @FXML private Label welcomeLabel;
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory)
@@ -74,5 +76,7 @@ public class MenuViewController implements ViewController
   {
     listOfEmployeesButton.setVisible(arg);
     openAddEmployeeButton.setVisible(arg);
+    if(arg)
+      welcomeLabel.setText("Welcome Manager!");
   }
 }

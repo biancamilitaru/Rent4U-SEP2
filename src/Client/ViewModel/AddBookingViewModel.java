@@ -19,7 +19,7 @@ public class AddBookingViewModel
     this.userModel= userModel;
 
   }
-  public void createBooking(int idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price) throws RemoteException, SQLException {
+  public void createBooking(String idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price) throws RemoteException, SQLException {
 
     userModel.createBooking(new Booking(idOfCustomer,licencePlate,startTime,endTime,price));
   }
@@ -33,12 +33,12 @@ public class AddBookingViewModel
     return userModel.getFreeVehicles(startDate, endDate, type);
   }
 
-  public ArrayList<Integer> getAllCustomersID() throws RemoteException, SQLException {
-    ArrayList<Integer> IDs = new ArrayList<>();
+  public ArrayList<String> getAllCustomersID() throws RemoteException, SQLException {
+    ArrayList<String> IDs = new ArrayList<>();
     ArrayList<Customer> customers = userModel.getCustomers();
     for (int i = 0; i < customers.size(); i++)
     {
-      IDs.add(Integer.parseInt(customers.get(i).getCpr_number()));
+      IDs.add(customers.get(i).getCpr_number());
     }
     return IDs;
   }

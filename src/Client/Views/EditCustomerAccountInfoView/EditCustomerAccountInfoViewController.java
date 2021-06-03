@@ -80,15 +80,17 @@ public class EditCustomerAccountInfoViewController implements ViewController
     dateOfBirthPicker.setValue(convertToLocalDateViaInstant(customer.getDateOfBirth().getTime()));
     eMailField.setText(customer.getEmail());
     drivingLicenseField.setText(customer.getDrivingLicenseNumber());
+    System.out.println(customer.getCpr_number());
     cprFirstField.setText(customer.getCpr_number().substring(0,6));
-    cprSecondField.setText(customer.getCpr_number().substring(7,11));
+    cprSecondField.setText(customer.getCpr_number().substring(6,10));
     passwordField.setText(customer.getPassword());
     rePasswordField.setText(customer.getPassword());
     phoneField.setText(customer.getPhoneNumber());
     passwordCheckLabel.setVisible(false);
   }
 
-  private String getCpr(){
+  private String getCpr() throws RemoteException, SQLException
+  {
     boolean setter=true;
     int firstPart=0;
     int secondPart=0;
@@ -107,16 +109,33 @@ public class EditCustomerAccountInfoViewController implements ViewController
     }
     if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
       setter=false;
+    String cpr=cprFirstField.getText()+cprSecondField.getText();
+    for(int i=0;i<editCustomerInfoViewModel.getCustomers().size();i++)
+    {
+      if(cpr.equals(editCustomerInfoViewModel.getCustomers().get(i).getCpr_number()))
+        setter=false;
+    }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
     return null;
   }
 
+  private String getEmail() throws RemoteException, SQLException
+  {
+    String email=eMailField.getText();
+    for(int i=0;i<editCustomerInfoViewModel.getCustomers().size();i++)
+    {
+      if(editCustomerInfoViewModel.getCustomers().get(i).getEmail().equals(email))
+        return null;
+    }
+    return email;
+  }
+
   public GregorianCalendar getDateBirth(){
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
-    if(dateOfBirth.before(now))
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
+    if(now.before(dateOfBirth))
       return null;
     return  dateOfBirth;
   }
@@ -138,14 +157,14 @@ public class EditCustomerAccountInfoViewController implements ViewController
 
   public void onUpdateCustomer() throws RemoteException, SQLException
   {
-    if(getDateBirth()!=null && getCpr()!=null)
+    if(getDateBirth()!=null && getCpr()!=null && getPhoneNumber()!=null && getEmail()!=null)
     {
     editCustomerInfoViewModel.editCustomerInfo(
         customer,
         firstNameField.getText(),
         lastNameField.getText(),
         getDateBirth(),
-        eMailField.getText(),
+        getEmail(),
         passwordField.getText(),
         getPhoneNumber(),
         drivingLicenseField.getText(),
@@ -154,6 +173,7 @@ public class EditCustomerAccountInfoViewController implements ViewController
       alert.setTitle("Customer information edited");
       alert.setContentText("The customer information has been successfully edited!\nThank you!");
       alert.showAndWait();
+      viewHandler.openListOfCustomers(manager);
     }
 
     if(getCpr()==null){
@@ -173,6 +193,13 @@ public class EditCustomerAccountInfoViewController implements ViewController
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
+    if(getEmail()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a unique email address!");
       alert.showAndWait();
     }
   }

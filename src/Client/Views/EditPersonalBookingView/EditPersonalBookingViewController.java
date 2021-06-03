@@ -13,11 +13,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -51,6 +51,7 @@ public class EditPersonalBookingViewController implements ViewController
     listView.setCellFactory(vehiclesObservableList-> new VehicleListViewCell(this));
     listView.setFixedCellSize(125);
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+    listView.setFocusTraversable(false);
   }
 
   public ObservableList<Vehicle> getVehicleData(
@@ -131,7 +132,7 @@ public class EditPersonalBookingViewController implements ViewController
       setter=false;
 
     }
-    if(endHour1>59 ||endHour1<0)
+    if(endMinute1>59 ||endMinute1<0)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
@@ -140,7 +141,7 @@ public class EditPersonalBookingViewController implements ViewController
       setter=false;
     }
 
-    if(setter=true)
+    if(setter)
     {
       LocalDate date2 = endDatePicker.getValue();
       GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
@@ -170,9 +171,9 @@ public class EditPersonalBookingViewController implements ViewController
   public void loadData(){
     startDatePicker.setValue(convertToLocalDateViaInstant(booking.getStartTime().getTime()));
     endDatePicker.setValue(convertToLocalDateViaInstant(booking.getEndTime().getTime()));
-    startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR)));
+    startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR_OF_DAY)));
     startMinute.setText(String.valueOf(booking.getStartTime().get(Calendar.MINUTE)));
-    endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR)));
+    endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR_OF_DAY)));
     endMinute.setText(String.valueOf(booking.getEndTime().get(Calendar.MINUTE)));
     totalPriceOfBooking.setText(String.valueOf(booking.getPrice()));
   }
@@ -213,7 +214,7 @@ public class EditPersonalBookingViewController implements ViewController
     {
       editPersonalBookingViewModel.editPersonalBooking(
           booking,
-          Integer.valueOf(idOfCustomer),
+          idOfCustomer,
           licensePlate,
           getStartDate(),
           getEndDate(),
@@ -235,7 +236,7 @@ public class EditPersonalBookingViewController implements ViewController
 
   }
   public int daysBetween(Date d1, Date d2) {
-    return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+    return (int) (d1.toInstant().until(d2.toInstant(), ChronoUnit.DAYS)+1);
   }
 
   public double getTotalPrice(){

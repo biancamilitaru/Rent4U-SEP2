@@ -26,35 +26,9 @@ public class ListOfVehiclesViewController implements ViewController
   private boolean manager;
 
   @FXML ListView<Vehicle> listView;
-  @FXML ImageView logoSymbol;
 
 
   public final ObservableList<Vehicle> tableObservableList = FXCollections.observableArrayList();
-
-  public Image carSymbolImage = new Image("/GUI/Vehicle/CarSymbol.png");
-  public Image minivanSymbolImage = new Image("/GUI/Vehicle/MiniVanSymbol.png");
-  public Image busImage = new Image("/GUI/Vehicle/BusSymbol.png");
-  public Image motorcycleImage = new Image("/GUI/Vehicle/MotorcycleSymbol.png");
-  public Image seatSymbolImage = new Image("/GUI/Vehicle/SeatSymbol.png");
-  public Image gearboxSymbolImage = new Image("/GUI/Vehicle/GearboxSymbol.png");
-  public Image fuelSymbolImage = new Image("/GUI/Vehicle/FuelSymbol.png");
-  public Image engineSymbolImage = new Image("/GUI/Vehicle/EnginePowerSymbol.png");
-  public Image editSymbolImage = new Image("/GUI/Vehicle/Edit.png");
-  public Image deleteSymbolImage = new Image("/GUI/Vehicle/Delete.png");
-  public Image licensePlateSymbol = new Image("/GUI/Vehicle/LicensePlate.png");
-
-  public Image getCarSymbolImage() { return carSymbolImage; }
-  public Image getMinivanSymbolImage() { return minivanSymbolImage; }
-  public Image getBusImage() { return busImage; }
-  public Image getMotorcycleImage() { return motorcycleImage; }
-  public Image getSeatSymbolImage() { return seatSymbolImage; }
-  public Image getGearboxSymbolImage() { return gearboxSymbolImage; }
-  public Image getFuelSymbolImage() { return fuelSymbolImage; }
-  public Image getEngineSymbolImage() { return engineSymbolImage; }
-  public Image getEditSymbolImage() { return editSymbolImage; }
-  public Image getDeleteSymbolImage() { return deleteSymbolImage; }
-  public Image getLicensePlateSymbolImage() { return licensePlateSymbol; }
-
 
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory) throws SQLException, RemoteException {
@@ -62,8 +36,6 @@ public class ListOfVehiclesViewController implements ViewController
     this.listOfVehiclesViewModel = viewModelFactory.getListOfVehiclesViewModel();
     getVehicleData(listOfVehiclesViewModel.getVehicles());
 
-    Image logo = new Image("/GUI/Logo.png");
-    logoSymbol.setImage(logo);
     listView.setItems(tableObservableList);
     listView.setCellFactory(vehicleListView -> new VehicleListViewCell(this));
     listView.setFixedCellSize(50);
@@ -113,5 +85,10 @@ public class ListOfVehiclesViewController implements ViewController
   public void setManager(boolean manager)
   {
     this.manager = manager;
+  }
+
+  public void onStatusButton(Vehicle vehicle)
+  {
+    viewHandler.openSetStatusView(vehicle, manager);
   }
 }

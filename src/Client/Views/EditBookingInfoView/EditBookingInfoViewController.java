@@ -17,6 +17,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -59,6 +60,7 @@ public class EditBookingInfoViewController implements ViewController
     listView.setCellFactory(studentListView -> new EditVehicleViewCell(this));
 
     listView.setFixedCellSize(120);
+    listView.setFocusTraversable(false);
   }
 
   public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
@@ -72,11 +74,12 @@ public class EditBookingInfoViewController implements ViewController
   }
 
   public void loadData(){
+    System.out.println(booking.getEndTime().get(Calendar.HOUR));
     startDatePicker.setValue(convertToLocalDateViaInstant(booking.getStartTime().getTime()));
     endDatePicker.setValue(convertToLocalDateViaInstant(booking.getEndTime().getTime()));
-    startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR)));
+    startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR_OF_DAY)));
     startMinute.setText(String.valueOf(booking.getStartTime().get(Calendar.MINUTE)));
-    endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR)));
+    endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR_OF_DAY)));
     endMinute.setText(String.valueOf(booking.getEndTime().get(Calendar.MINUTE)));
     totalPriceOfBooking.setText(String.valueOf(booking.getPrice()));
     customerID.setPromptText(String.valueOf(booking.getIdOfCustomer()));
@@ -187,7 +190,7 @@ public class EditBookingInfoViewController implements ViewController
       setter=false;
 
     }
-    if(endHour1>59 ||endHour1<0)
+    if(endMinute1>59 ||endMinute1<0)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
@@ -195,7 +198,7 @@ public class EditBookingInfoViewController implements ViewController
       alert.showAndWait();
       setter=false;
     }
-    if(setter=true)
+    if(setter)
     {
       LocalDate date2 = endDatePicker.getValue();
       GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
@@ -206,7 +209,7 @@ public class EditBookingInfoViewController implements ViewController
     return null;
   }
   public int daysBetween(Date d1, Date d2) {
-  return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+    return (int) (d1.toInstant().until(d2.toInstant(), ChronoUnit.DAYS)+1);
 }
 
   public double getTotalPrice(){
@@ -239,15 +242,15 @@ public class EditBookingInfoViewController implements ViewController
     }
 
     double price=Double.valueOf(totalPriceOfBooking.getText());
-    ///////////////////////////////////////
 
     if(getEndDate()!=null && getStartDate()!=null && now.before(getStartDate()) && getStartDate().before(getEndDate()) && now.before(getEndDate()))
     {
-      editBookingInfoViewModel.editBookingInfo(booking,Integer.valueOf(idOfCustomer),licensePlate,getStartDate(),getEndDate(),price);
+      editBookingInfoViewModel.editBookingInfo(booking, idOfCustomer,licensePlate,getStartDate(),getEndDate(),price);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("The booking is edited");
       alert.setContentText("The booking has been edited!\nThank you!");
       alert.showAndWait();
+      viewHandler.openListOfBookingsView(manager);
     }
     else
     {

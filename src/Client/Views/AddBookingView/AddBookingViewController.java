@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -27,7 +28,7 @@ public class AddBookingViewController implements ViewController {
   @FXML ListView<Vehicle> listView;
   @FXML DatePicker startDatePicker;
   @FXML DatePicker endDatePicker;
-  @FXML ComboBox<Integer> customersID;
+  @FXML ComboBox<String> customersID;
   @FXML TextField startHour;
   @FXML TextField startMinute;
   @FXML TextField endHour;
@@ -52,6 +53,7 @@ public class AddBookingViewController implements ViewController {
     listView.setVisible(false);
     customersID.getItems().addAll(viewModel.getAllCustomersID());
     type.getItems().addAll("Car", "Minibus", "Bus", "Motorcycle");
+    listView.setFocusTraversable(false);
   }
 
   public void setManager(boolean manager)
@@ -138,7 +140,7 @@ public class AddBookingViewController implements ViewController {
       setter=false;
 
     }
-    if(endHour1>59 ||endHour1<0)
+    if(endMinute1>59 ||endMinute1<0)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
@@ -146,7 +148,7 @@ public class AddBookingViewController implements ViewController {
       alert.showAndWait();
       setter=false;
     }
-    if(setter=true)
+    if(setter)
     {
       LocalDate date2 = endDatePicker.getValue();
       GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
@@ -194,7 +196,7 @@ public class AddBookingViewController implements ViewController {
   }
 
   public int daysBetween(Date d1, Date d2) {
-    return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+    return (int) (d1.toInstant().until(d2.toInstant(), ChronoUnit.DAYS)+1);
   }
 
   public double getTotalPrice(){
