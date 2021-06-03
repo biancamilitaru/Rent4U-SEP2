@@ -29,7 +29,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     private Connection getConnection() throws SQLException
     {
         return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=rent4u",
-                "postgres","Pikolo");
+                "postgres","Pikolo11");
     }
 
     @Override
