@@ -1,10 +1,12 @@
 package Client.ViewModel;
 
 import Client.Model.ClientModel;
+import Client.Model.Customer;
 import Client.Model.Employee;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class EditEmployeeInfoViewModel
@@ -21,5 +23,9 @@ public class EditEmployeeInfoViewModel
   {
     Employee newEmployee = new Employee(cpr,firstName,lastName,dateOfBirth,phoneNumber,email,salary,position);
     userModel.editEmployeeInfo(employee,newEmployee);
+  }
+  public ArrayList<Customer> getCustomers() throws RemoteException, SQLException
+  {
+    return userModel.getCustomers();
   }
 }

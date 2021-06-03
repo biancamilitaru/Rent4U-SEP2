@@ -91,7 +91,8 @@ public class EditPersonalInfoViewController implements ViewController
    * @author Radovan Santa & Kyra Tolnai
    * @return Returns the full CPR number of the user.
    */
-  private String getCpr(){
+  private String getCpr() throws RemoteException, SQLException
+  {
     boolean setter=true;
     int firstPart=0;
     int secondPart=0;
@@ -110,9 +111,27 @@ public class EditPersonalInfoViewController implements ViewController
     }
     if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
       setter=false;
+
+    String cpr=cprFirstField.getText()+cprSecondField.getText();
+    for(int i=0;i<editPersonalInfoViewModel.getCustomers().size();i++)
+    {
+      if(cpr.equals(editPersonalInfoViewModel.getCustomers().get(i).getCpr_number()))
+        setter=false;
+    }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
     return null;
+  }
+
+  private String getEmail() throws RemoteException, SQLException
+  {
+    String email=eMailField.getText();
+    for(int i=0;i<editPersonalInfoViewModel.getCustomers().size();i++)
+    {
+      if(editPersonalInfoViewModel.getCustomers().get(i).getEmail().equals(email))
+        return null;
+    }
+    return email;
   }
 
   public GregorianCalendar getDateBirth(){
@@ -150,14 +169,14 @@ public class EditPersonalInfoViewController implements ViewController
    */
   public void onUpdatePersonalAccount() throws RemoteException, SQLException
   {
-    if(getCpr()!=null && getDateBirth()!=null && getPhoneNumber()!=null)
+    if(getCpr()!=null && getDateBirth()!=null && getPhoneNumber()!=null && getEmail()!=null)
     {
       editPersonalInfoViewModel.editPersonalInfo(
         customer,
         firstNameField.getText(),
         lastNameField.getText(),
         getDateBirth(),
-        eMailField.getText(),
+        getEmail(),
         passwordField.getText(),
         getPhoneNumber(),
         drivingLicenseField.getText(),
@@ -186,6 +205,13 @@ public class EditPersonalInfoViewController implements ViewController
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a phone number!");
+      alert.showAndWait();
+    }
+    if(getEmail()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a unique email address!");
       alert.showAndWait();
     }
   }

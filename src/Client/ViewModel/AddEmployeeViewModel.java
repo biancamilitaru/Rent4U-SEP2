@@ -5,6 +5,7 @@ import Client.Model.Employee;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class AddEmployeeViewModel
@@ -20,5 +21,10 @@ public class AddEmployeeViewModel
       throws RemoteException, SQLException
   {
     userModel.createEmployee(new Employee(cpr,firstName,lastName,dateOfBirth,phoneNumber,email,salary,position));
+  }
+
+  public ArrayList<Employee> getEmployees() throws RemoteException, SQLException
+  {
+    return userModel.getEmployees();
   }
 }

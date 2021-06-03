@@ -46,7 +46,8 @@ public class AddEmployeesViewController implements ViewController
     this.manager = manager;
   }
 
-  private String getCpr(){
+  private String getCpr() throws RemoteException, SQLException
+  {
     boolean setter=true;
     int firstPart=0;
     int secondPart=0;
@@ -65,10 +66,19 @@ public class AddEmployeesViewController implements ViewController
     }
     if(cprFirstField.getText().length()!=6 && cprSecondField.getText().length()!=4)
       setter=false;
+
+    String cpr=cprFirstField.getText()+cprSecondField.getText();
+    for(int i=0;i<addEmployeeViewModel.getEmployees().size();i++)
+    {
+      if(cpr.equals(addEmployeeViewModel.getEmployees().get(i).getCpr()))
+        setter=false;
+    }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
     return null;
   }
+
+
 
   public GregorianCalendar getDateBirth(){
     GregorianCalendar now=new GregorianCalendar();
@@ -94,6 +104,17 @@ public class AddEmployeesViewController implements ViewController
     return phoneNumberString;
   }
 
+  private String getEmail() throws RemoteException, SQLException
+  {
+    String email=eMailField.getText();
+    for(int i=0;i<addEmployeeViewModel.getEmployees().size();i++)
+    {
+      if(addEmployeeViewModel.getEmployees().get(i).getEmail().equals(email))
+        return null;
+    }
+    return email;
+  }
+
   public int getSalary()
   {
     String salaryString=salary.getText();
@@ -110,7 +131,7 @@ public class AddEmployeesViewController implements ViewController
 
   public void onCreateButton() throws RemoteException, SQLException, NumberFormatException{
 
-    if(dateOfBirthPicker!=null && getCpr()!=null &&getDateBirth()!=null && getPhoneNumber()!=null && getSalary()!=0)
+    if(dateOfBirthPicker!=null && getCpr()!=null &&getDateBirth()!=null && getPhoneNumber()!=null && getSalary()!=0 && getEmail()!=null)
     {
       addEmployeeViewModel.createEmployee(
           getCpr(),
@@ -118,7 +139,7 @@ public class AddEmployeesViewController implements ViewController
           lastNameField.getText(),
           getDateBirth(),
           phoneField.getText(),
-          eMailField.getText(),
+          getEmail(),
           getSalary(),
           position.getText()
 
@@ -158,6 +179,13 @@ public class AddEmployeesViewController implements ViewController
       alert.setTitle("Invalid Input");
       alert.setContentText(
           "Please enter a valid salary!\nPlease try again!");
+      alert.showAndWait();
+    }
+    if(getEmail()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a unique email address!");
       alert.showAndWait();
     }
   }
