@@ -171,7 +171,7 @@ public class EditPersonalInfoViewController implements ViewController {
         getPhoneNumber(),
         drivingLicenseField.getText(),
         getCpr());
-      viewHandler.openListOfEmployees(manager);
+      viewHandler.openMenuCustomerView(customer);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Your information was edited");
       alert.setContentText(
