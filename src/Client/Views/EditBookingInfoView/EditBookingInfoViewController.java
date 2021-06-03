@@ -17,6 +17,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -207,7 +208,7 @@ public class EditBookingInfoViewController implements ViewController
     return null;
   }
   public int daysBetween(Date d1, Date d2) {
-  return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+    return (int) (d1.toInstant().until(d2.toInstant(), ChronoUnit.DAYS)+1);
 }
 
   public double getTotalPrice(){
