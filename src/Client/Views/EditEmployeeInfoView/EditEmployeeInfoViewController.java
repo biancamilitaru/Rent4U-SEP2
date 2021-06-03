@@ -118,7 +118,7 @@ public class EditEmployeeInfoViewController implements ViewController
     return email;
   }
 
-  public GregorianCalendar getDateOfBirth()
+  private GregorianCalendar getDateOfBirth()
   {
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
@@ -128,7 +128,7 @@ public class EditEmployeeInfoViewController implements ViewController
     return  dateOfBirth;
   }
 
-  public int getSalary()
+  private int getSalary()
   {
     String salaryString=salaryField.getText();
     int salaryInt=0;
@@ -141,7 +141,8 @@ public class EditEmployeeInfoViewController implements ViewController
     }
     return salaryInt;
   }
-  public String getPhoneNumber()
+
+  private String getPhoneNumber()
   {
     String phoneNumberString=phoneField.getText();
     if(phoneNumberString.length()>12 ||phoneNumberString.length()<6)
@@ -157,9 +158,17 @@ public class EditEmployeeInfoViewController implements ViewController
     return phoneNumberString;
   }
 
+  private String getPosition()
+  {
+    String positionString=position.getText();
+    if(positionString.equals("employee") || positionString.equals("manager"))
+      return positionString;
+    return null;
+  }
+
   public void onSaveButton() throws RemoteException, SQLException
   {
-    if (getDateOfBirth() != null && getCpr() != null && getDateOfBirth()!=null && getPhoneNumber()!=null && getSalary()!=0 && getEmail()!=null)
+    if (getDateOfBirth() != null && getCpr() != null && getDateOfBirth()!=null && getPhoneNumber()!=null && getSalary()!=0 && getEmail()!=null && getPosition()!=null)
     {
       editEmployeeInfoViewModel.editEmployeeInfo(
           employee,
@@ -170,7 +179,7 @@ public class EditEmployeeInfoViewController implements ViewController
           getPhoneNumber(),
            getEmail(),
           getSalary(),
-          position.getText());
+          getPosition());
 
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Employee information edited");
@@ -214,6 +223,13 @@ public class EditEmployeeInfoViewController implements ViewController
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a unique email address!");
+      alert.showAndWait();
+    }
+    if(getPosition()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid position!");
       alert.showAndWait();
     }
   }

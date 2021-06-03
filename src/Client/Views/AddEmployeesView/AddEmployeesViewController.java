@@ -129,9 +129,17 @@ public class AddEmployeesViewController implements ViewController
     return salaryInt;
   }
 
+  private String getPosition()
+  {
+    String positionString=position.getText();
+    if(positionString.equals("employee") || positionString.equals("manager"))
+      return positionString;
+    return null;
+  }
+
   public void onCreateButton() throws RemoteException, SQLException, NumberFormatException{
 
-    if(dateOfBirthPicker!=null && getCpr()!=null &&getDateBirth()!=null && getPhoneNumber()!=null && getSalary()!=0 && getEmail()!=null)
+    if(dateOfBirthPicker!=null && getCpr()!=null &&getDateBirth()!=null && getPhoneNumber()!=null && getSalary()!=0 && getEmail()!=null && getPosition()!=null)
     {
       addEmployeeViewModel.createEmployee(
           getCpr(),
@@ -141,7 +149,7 @@ public class AddEmployeesViewController implements ViewController
           phoneField.getText(),
           getEmail(),
           getSalary(),
-          position.getText()
+          getPosition()
 
       );
       viewHandler.openListOfEmployees(manager);
@@ -186,6 +194,13 @@ public class AddEmployeesViewController implements ViewController
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
       alert.setContentText("Please enter a unique email address!");
+      alert.showAndWait();
+    }
+    if(getPosition()==null)
+    {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Invalid input");
+      alert.setContentText("Please enter a valid position!");
       alert.showAndWait();
     }
   }
