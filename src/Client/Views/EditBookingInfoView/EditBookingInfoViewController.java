@@ -189,7 +189,7 @@ public class EditBookingInfoViewController implements ViewController
       setter=false;
 
     }
-    if(endHour1>59 ||endHour1<0)
+    if(endMinute1>59 ||endMinute1<0)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid input");
@@ -197,7 +197,7 @@ public class EditBookingInfoViewController implements ViewController
       alert.showAndWait();
       setter=false;
     }
-    if(setter=true)
+    if(setter)
     {
       LocalDate date2 = endDatePicker.getValue();
       GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
@@ -249,6 +249,7 @@ public class EditBookingInfoViewController implements ViewController
       alert.setTitle("The booking is edited");
       alert.setContentText("The booking has been edited!\nThank you!");
       alert.showAndWait();
+      viewHandler.openListOfBookingsView(manager);
     }
     else
     {

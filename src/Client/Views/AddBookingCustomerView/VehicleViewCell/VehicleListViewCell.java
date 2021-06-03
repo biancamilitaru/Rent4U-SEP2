@@ -67,7 +67,7 @@ public class VehicleListViewCell extends ListCell<Vehicle>
       fuelTypeLabel.setText(vehicle.getTypeOfFuel());
       nbOfSeatsLabel.setText(String.valueOf(vehicle.getNumberOfSeats()));
       licensePlateLabel.setText(vehicle.getLicensePlate());
-      enginesPowerLabel.setText(String.valueOf(vehicle.getEnginesPower()));
+      enginesPowerLabel.setText(String.valueOf(vehicle.getEnginesPower())+" HP");
       priceLabel.setText(String.valueOf(vehicle.getPrice()));
 
       setText(null);

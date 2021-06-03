@@ -131,7 +131,7 @@ public class EditPersonalBookingViewController implements ViewController
       setter=false;
 
     }
-    if(endHour1>59 ||endHour1<0)
+    if(endMinute1>59 ||endMinute1<0)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
@@ -140,7 +140,7 @@ public class EditPersonalBookingViewController implements ViewController
       setter=false;
     }
 
-    if(setter=true)
+    if(setter)
     {
       LocalDate date2 = endDatePicker.getValue();
       GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),
@@ -170,9 +170,9 @@ public class EditPersonalBookingViewController implements ViewController
   public void loadData(){
     startDatePicker.setValue(convertToLocalDateViaInstant(booking.getStartTime().getTime()));
     endDatePicker.setValue(convertToLocalDateViaInstant(booking.getEndTime().getTime()));
-    startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR)));
+    startHour.setText(String.valueOf(booking.getStartTime().get(Calendar.HOUR_OF_DAY)));
     startMinute.setText(String.valueOf(booking.getStartTime().get(Calendar.MINUTE)));
-    endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR)));
+    endHour.setText(String.valueOf(booking.getEndTime().get(Calendar.HOUR_OF_DAY)));
     endMinute.setText(String.valueOf(booking.getEndTime().get(Calendar.MINUTE)));
     totalPriceOfBooking.setText(String.valueOf(booking.getPrice()));
   }

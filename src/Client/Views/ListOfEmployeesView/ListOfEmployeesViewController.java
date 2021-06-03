@@ -57,7 +57,7 @@ public class ListOfEmployeesViewController implements ViewController
     return employeesObservableList;
   }
 
-  public void onAddEmployeeButton() throws SQLException, RemoteException {
+  public void onAddCustomerButton() throws SQLException, RemoteException {
     viewHandler.openAddEmployee(manager);
   }
 

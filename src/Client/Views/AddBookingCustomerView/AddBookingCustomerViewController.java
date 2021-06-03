@@ -133,7 +133,7 @@ public class AddBookingCustomerViewController implements ViewController {
       setter=false;
 
     }
-    if(endHour1>59 ||endHour1<0)
+    if(endMinute1>59 ||endMinute1<0)
     {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Invalid Input");
@@ -141,7 +141,7 @@ public class AddBookingCustomerViewController implements ViewController {
       alert.showAndWait();
       setter=false;
     }
-    if(setter=true)
+    if(setter)
     {
       LocalDate date2 = endDatePicker.getValue();
       GregorianCalendar endDate = new GregorianCalendar(date2.getYear(),

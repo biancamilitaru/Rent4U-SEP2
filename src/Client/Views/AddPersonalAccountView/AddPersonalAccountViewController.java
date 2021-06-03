@@ -78,7 +78,7 @@ public class AddPersonalAccountViewController implements ViewController
   public GregorianCalendar getDateBirth(){
     GregorianCalendar now=new GregorianCalendar();
     LocalDate date = dateOfBirthPicker.getValue();
-    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+    GregorianCalendar dateOfBirth = new GregorianCalendar(date.getYear(), date.getMonth().getValue()-1, date.getDayOfMonth());
     if(now.before(dateOfBirth))
       return null;
     return  dateOfBirth;

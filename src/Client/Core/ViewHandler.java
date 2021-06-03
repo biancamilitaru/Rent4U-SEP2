@@ -72,7 +72,7 @@ public class ViewHandler
     }
     LoginViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("LogIn");
+    stage.setTitle("Log-in Employee");
 
     Scene scene = new Scene(root);
     stage.setScene(scene);
@@ -387,7 +387,7 @@ public class ViewHandler
     }
     AddBookingCustomerViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("Log In Menu");
+    stage.setTitle("Add booking");
     view.setCustomer(customer);
 
     Scene scene = new Scene(root);
@@ -509,7 +509,7 @@ public class ViewHandler
     }
     EditEmployeeInfoViewController view = loader.getController();
     view.init(ViewHandler.getInstance(), ViewModelFactory.getInstance());
-    stage.setTitle("Edit Personal Info");
+    stage.setTitle("Edit Employee Info");
     view.setManager(manager);
     view.setEmployee(employee);
 
