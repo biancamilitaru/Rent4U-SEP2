@@ -1,6 +1,7 @@
 package Client.Networking;
 
 import Client.Model.*;
+import Util.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -96,7 +97,7 @@ public interface Client
    * @throws RemoteException
    * @throws SQLException
    */
-  void editCustomerInfo(Customer customer,Customer newCustomer)throws RemoteException, SQLException;
+  void editCustomerInfo(Customer customer, Customer newCustomer)throws RemoteException, SQLException;
   /**
    * This method is used to create a Customer account in the system from the Customer's point of view. The method is connected to the server.
    * @param customer

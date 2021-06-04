@@ -1,10 +1,8 @@
-package Client.Model;
+package Util;
 
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
 import java.util.GregorianCalendar;
 
 public class Booking implements Serializable
@@ -16,7 +14,7 @@ public class Booking implements Serializable
   private GregorianCalendar endTime;
   private double price;
 
-  public Booking(String idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
+  public Booking(String idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price){
     this.idOfCustomer = idOfCustomer;
     this.licencePlate = licencePlate;
     this.startTime = startTime;
@@ -24,7 +22,7 @@ public class Booking implements Serializable
     this.price = price;
   }
 
-  public Booking(int booking_id, String idOfCustomer,String licencePlate,GregorianCalendar startTime,GregorianCalendar endTime,double price){
+  public Booking(int booking_id, String idOfCustomer, String licencePlate, GregorianCalendar startTime, GregorianCalendar endTime, double price){
     this.booking_id = booking_id;
     this.idOfCustomer = idOfCustomer;
     this.licencePlate = licencePlate;

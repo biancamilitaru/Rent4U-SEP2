@@ -1,9 +1,9 @@
 package Client.Core;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Employee;
-import Client.Model.Vehicle;
+import Util.Booking;
+import Util.Customer;
+import Util.Employee;
+import Util.Vehicle;
 import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
 import Client.Views.AddBookingView.AddBookingViewController;
 import Client.Views.AddCustomerAccountView.AddCustomerAccountViewController;
@@ -55,8 +55,7 @@ public class ViewHandler
     openLogInMenu();
   }
 
-  public void openLogInEmployee()
-  {
+  public void openLogInEmployee() {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/LogInView/LoginView.fxml"));
@@ -79,8 +78,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openAddVehicle(boolean manager)
-  {
+  public void openAddVehicle(boolean manager) {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/AddVehicleView/AddVehicleView.fxml"));
@@ -104,9 +102,7 @@ public class ViewHandler
     stage.show();
   }
 
-
-  public void openMainMenu(boolean manager)
-  {
+  public void openMainMenu(boolean manager) {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/MenuView/MenuView.fxml"));
@@ -153,6 +149,7 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
+
   public void openListOfBookingsView(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
@@ -250,6 +247,7 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
+
   public void openEditBooking(Booking booking, boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
@@ -298,6 +296,7 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
+
   public void openAddPersonalAccount() throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
@@ -346,8 +345,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openLogInCustomer() throws SQLException, RemoteException
-  {
+  public void openLogInCustomer() throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/LogInForCustomerView/LogInForCustomerView.fxml"));
@@ -370,8 +368,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openAddBookingCustomer(Customer customer) throws SQLException, RemoteException
-  {
+  public void openAddBookingCustomer(Customer customer) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/AddBookingCustomerView/AddBookingCustomerView.fxml"));
@@ -395,8 +392,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openLogInMenu() throws SQLException, RemoteException
-  {
+  public void openLogInMenu() throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/MenuForLogInView/MenuForLogInView.fxml"));
@@ -419,8 +415,7 @@ public class ViewHandler
     stage.show();
   }
 
-  public void openListOfCustomers(boolean manager) throws SQLException, RemoteException
-  {
+  public void openListOfCustomers(boolean manager) throws SQLException, RemoteException {
     FXMLLoader loader = new FXMLLoader();
 
     loader.setLocation(getClass().getResource("../Views/ListOfCustomersView/ListOfCustomersView.fxml"));
@@ -467,7 +462,6 @@ public class ViewHandler
     stage.setScene(scene);
     stage.show();
   }
-
 
   public void openEditPersonalInfo(Customer customer) throws SQLException, RemoteException {
 
@@ -590,7 +584,7 @@ public class ViewHandler
     stage.show();
   }
 
-    public void openEditPersonalBooking(Customer customer, Booking booking) throws SQLException, RemoteException {
+  public void openEditPersonalBooking(Customer customer, Booking booking) throws SQLException, RemoteException {
       FXMLLoader loader = new FXMLLoader();
 
       loader.setLocation(getClass().getResource("../Views/EditPersonalBookingView/EditPersonalBookingView.fxml"));

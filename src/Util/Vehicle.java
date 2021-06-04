@@ -1,8 +1,6 @@
-package Client.Model;
-
+package Util;
 
 import java.io.Serializable;
-import java.rmi.Remote;
 import java.util.ArrayList;
 
 public class Vehicle implements Serializable
@@ -19,8 +17,8 @@ public class Vehicle implements Serializable
   private double price;
   private ArrayList<Status> statuses;
 
-  public Vehicle(String licensePlate,int enginesPower,String type,String make,String model,int year,
-                 String typeOfGearbox, String typeOfFuel,int numberOfSeats,double price){
+  public Vehicle(String licensePlate, int enginesPower, String type, String make, String model, int year,
+                 String typeOfGearbox, String typeOfFuel, int numberOfSeats, double price){
 
     this.licensePlate = licensePlate;
     this.enginesPower = enginesPower;

@@ -4,6 +4,7 @@ import Client.Model.*;
 import Server.Model.ServerModelManager;
 import Shared.ClientCallBack;
 import Shared.RMIServer;
+import Util.*;
 
 import java.beans.PropertyChangeListener;
 import java.rmi.AlreadyBoundException;
@@ -138,8 +139,7 @@ public class ServerImpl implements RMIServer
         serverModelManager.deletePersonalBooking(booking);
     }
 
-    @Override public void editEmployeeInfo(Employee employee,
-        Employee newEmployee) throws RemoteException, SQLException
+    @Override public void editEmployeeInfo(Employee employee, Employee newEmployee) throws RemoteException, SQLException
     {
         serverModelManager.editEmployeeInfo(employee,newEmployee);
     }

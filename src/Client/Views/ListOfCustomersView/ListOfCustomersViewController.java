@@ -2,7 +2,7 @@ package Client.Views.ListOfCustomersView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Customer;
+import Util.Customer;
 import Client.ViewModel.ListOfCustomersViewModel;
 import Client.Views.ListOfCustomersView.CustomerCellView.CustomerListViewCell;
 import Client.Views.ViewController;

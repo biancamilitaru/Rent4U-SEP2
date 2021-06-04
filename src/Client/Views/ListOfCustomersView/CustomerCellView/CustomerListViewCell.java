@@ -1,6 +1,6 @@
 package Client.Views.ListOfCustomersView.CustomerCellView;
 
-import Client.Model.Customer;
+import Util.Customer;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfCustomersView.ListOfCustomersViewController;
 import javafx.fxml.FXML;

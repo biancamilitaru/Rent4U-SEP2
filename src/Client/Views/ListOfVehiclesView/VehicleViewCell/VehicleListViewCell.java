@@ -1,6 +1,6 @@
 package Client.Views.ListOfVehiclesView.VehicleViewCell;
 
-import Client.Model.Vehicle;
+import Util.Vehicle;
 import Client.Views.ListOfVehiclesView.ListOfVehiclesViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

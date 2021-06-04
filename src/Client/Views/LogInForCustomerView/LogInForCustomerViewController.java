@@ -2,7 +2,7 @@ package Client.Views.LogInForCustomerView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Customer;
+import Util.Customer;
 import Client.ViewModel.LogInCustomerViewModel;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;

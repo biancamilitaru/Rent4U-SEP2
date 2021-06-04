@@ -1,7 +1,7 @@
 package Server.DatabaseAccess;
 
-import Client.Model.Status;
-import Client.Model.Vehicle;
+import Util.Status;
+import Util.Vehicle;
 
 
 import java.rmi.RemoteException;

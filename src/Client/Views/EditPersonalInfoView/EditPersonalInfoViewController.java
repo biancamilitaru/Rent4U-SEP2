@@ -2,7 +2,7 @@ package Client.Views.EditPersonalInfoView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Customer;
+import Util.Customer;
 import Client.ViewModel.EditPersonalInfoViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;

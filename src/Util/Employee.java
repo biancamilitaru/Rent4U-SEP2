@@ -1,7 +1,6 @@
-package Client.Model;
+package Util;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Employee implements Serializable
@@ -15,8 +14,8 @@ public class Employee implements Serializable
   private double salary;
   private String position;
 
-  public Employee(String cpr, String firstName, String lastName, GregorianCalendar dateOfBirth,String phoneNumber,
-                  String email, double salary,String position){
+  public Employee(String cpr, String firstName, String lastName, GregorianCalendar dateOfBirth, String phoneNumber,
+                  String email, double salary, String position){
     this.cpr = cpr;
     this.firstName = firstName;
     this.lastName = lastName;

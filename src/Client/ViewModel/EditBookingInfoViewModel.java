@@ -1,9 +1,9 @@
 package Client.ViewModel;
 
-import Client.Model.Booking;
+import Util.Booking;
 import Client.Model.ClientModel;
-import Client.Model.Customer;
-import Client.Model.Vehicle;
+import Util.Customer;
+import Util.Vehicle;
 import javafx.collections.ObservableList;
 
 import java.rmi.RemoteException;

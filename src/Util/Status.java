@@ -1,7 +1,6 @@
-package Client.Model;
+package Util;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class Status implements Serializable
@@ -10,7 +9,7 @@ public class Status implements Serializable
   private GregorianCalendar startDate;
   private GregorianCalendar endDate;
 
-  public Status(GregorianCalendar startDate,GregorianCalendar endDate, String status)
+  public Status(GregorianCalendar startDate, GregorianCalendar endDate, String status)
   {
     this.startDate=startDate;
     this.endDate=endDate;

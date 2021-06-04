@@ -1,6 +1,7 @@
 package Server.Model;
 
 import Client.Model.*;
+import Util.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -175,7 +176,7 @@ public interface ServerModel
    * @throws RemoteException
    * @throws SQLException
    */
-  void editEmployeeInfo(Employee employee,Employee newEmployee) throws RemoteException, SQLException;
+  void editEmployeeInfo(Employee employee, Employee newEmployee) throws RemoteException, SQLException;
   /**
    * This method is for getting all the Employees in the system. The method can be accessed in the ServerModelManager class.
    * @return Arraylist of Employees

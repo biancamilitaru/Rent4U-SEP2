@@ -2,7 +2,7 @@ package Client.Views.EditCustomerAccountInfoView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Customer;
+import Util.Customer;
 import Client.ViewModel.EditCustomerInfoViewModel;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;

@@ -2,7 +2,7 @@ package Client.Views.ListOfVehiclesView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Vehicle;
+import Util.Vehicle;
 import Client.ViewModel.ListOfVehiclesViewModel;
 import Client.Views.ListOfVehiclesView.VehicleViewCell.VehicleListViewCell;
 import Client.Views.ViewController;

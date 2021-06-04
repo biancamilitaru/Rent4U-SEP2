@@ -257,7 +257,7 @@ public class AddVehicleViewController implements ViewController
     viewHandler.openMainMenu(manager);
   }
 
-    public void setManager(boolean manager) {
+  public void setManager(boolean manager) {
         this.manager = manager;
     }
 }

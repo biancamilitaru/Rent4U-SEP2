@@ -1,4 +1,4 @@
-package Client.Model;
+package Util;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
@@ -16,7 +16,7 @@ public class Customer implements Serializable
 
   public Customer(){};
 
-  public Customer(String firstName,String lastName,GregorianCalendar dateOfBirth,String email,String password,String phoneNumber,String drivingLicenseNumber,String cpr_number)
+  public Customer(String firstName, String lastName, GregorianCalendar dateOfBirth, String email, String password, String phoneNumber, String drivingLicenseNumber, String cpr_number)
   {
     this.firstName=firstName;
     this.lastName=lastName;

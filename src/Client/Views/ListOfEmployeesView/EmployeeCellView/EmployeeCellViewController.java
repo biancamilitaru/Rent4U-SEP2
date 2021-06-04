@@ -2,8 +2,8 @@ package Client.Views.ListOfEmployeesView.EmployeeCellView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Customer;
-import Client.Model.Employee;
+import Util.Customer;
+import Util.Employee;
 import Client.Views.ListOfEmployeesView.ListOfEmployeesViewController;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;

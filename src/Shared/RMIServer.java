@@ -1,6 +1,7 @@
 package Shared;
 
 import Client.Model.*;
+import Util.*;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.Remote;

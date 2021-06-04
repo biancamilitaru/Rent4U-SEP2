@@ -1,7 +1,7 @@
 package Server.DatabaseAccess;
 
-import Client.Model.Booking;
-import Client.Model.Customer;
+import Util.Booking;
+import Util.Customer;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

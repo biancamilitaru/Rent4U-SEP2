@@ -1,8 +1,8 @@
 package Client.ViewModel;
 
 import Client.Model.ClientModel;
-import Client.Model.Customer;
-import Client.Model.Employee;
+import Util.Customer;
+import Util.Employee;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

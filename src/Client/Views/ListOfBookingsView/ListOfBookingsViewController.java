@@ -2,7 +2,7 @@ package Client.Views.ListOfBookingsView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Booking;
+import Util.Booking;
 import Client.ViewModel.ListOfBookingsViewModel;
 import Client.Views.ListOfBookingsView.BookingViewCell.BookingListViewCell;
 import Client.Views.ViewController;

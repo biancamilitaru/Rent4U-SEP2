@@ -2,9 +2,9 @@ package Client.Views.EditBookingInfoView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Booking;
-import Client.Model.Customer;
-import Client.Model.Vehicle;
+import Util.Booking;
+import Util.Customer;
+import Util.Vehicle;
 import Client.ViewModel.EditBookingInfoViewModel;
 import Client.Views.EditBookingInfoView.EditVehicleViewCell.EditVehicleViewCell;
 import Client.Views.ViewController;

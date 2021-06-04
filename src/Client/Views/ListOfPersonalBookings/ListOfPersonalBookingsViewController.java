@@ -2,8 +2,8 @@ package Client.Views.ListOfPersonalBookings;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Booking;
-import Client.Model.Customer;
+import Util.Booking;
+import Util.Customer;
 import Client.ViewModel.ListOfPersonalBookingsViewModel;
 import Client.Views.ListOfPersonalBookings.PersonalBookingCell.PersonalBookingCellViewController;
 import Client.Views.ViewController;

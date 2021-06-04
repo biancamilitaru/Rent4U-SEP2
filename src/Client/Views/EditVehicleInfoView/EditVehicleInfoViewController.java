@@ -2,7 +2,7 @@ package Client.Views.EditVehicleInfoView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Vehicle;
+import Util.Vehicle;
 import Client.ViewModel.EditVehicleInfoViewModel;
 import Client.Views.ViewController;
 import javafx.application.Platform;

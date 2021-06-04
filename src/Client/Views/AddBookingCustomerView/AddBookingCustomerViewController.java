@@ -2,8 +2,8 @@ package Client.Views.AddBookingCustomerView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Customer;
-import Client.Model.Vehicle;
+import Util.Customer;
+import Util.Vehicle;
 import Client.ViewModel.AddBookingViewModel;
 import Client.Views.AddBookingCustomerView.VehicleViewCell.VehicleListViewCell;
 import Client.Views.ViewController;

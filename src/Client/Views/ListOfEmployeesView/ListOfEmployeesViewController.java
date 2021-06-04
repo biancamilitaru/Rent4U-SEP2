@@ -2,7 +2,7 @@ package Client.Views.ListOfEmployeesView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Employee;
+import Util.Employee;
 import Client.ViewModel.ListOfEmployeesViewModel;
 import Client.Views.ListOfEmployeesView.EmployeeCellView.EmployeeCellViewController;
 import Client.Views.ViewController;

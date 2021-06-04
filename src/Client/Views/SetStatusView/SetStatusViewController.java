@@ -2,8 +2,8 @@ package Client.Views.SetStatusView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Status;
-import Client.Model.Vehicle;
+import Util.Status;
+import Util.Vehicle;
 import Client.ViewModel.SetStatusViewModel;
 import Client.Views.ViewController;
 import javafx.event.ActionEvent;
@@ -158,7 +158,7 @@ public class SetStatusViewController implements ViewController
       return status;
   }
 
-  public void setSetStatusButton(ActionEvent evt)
+  public void setStatusButton(ActionEvent evt)
       throws RemoteException, SQLException
   {
     GregorianCalendar now = new GregorianCalendar();

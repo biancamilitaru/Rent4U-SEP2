@@ -1,7 +1,7 @@
 package Client.Views.ListOfPersonalBookings.PersonalBookingCell;
 
 import Client.Core.ViewHandler;
-import Client.Model.Booking;
+import Util.Booking;
 import Client.Views.ListOfBookingsView.ListOfBookingsViewController;
 import Client.Views.ListOfPersonalBookings.ListOfPersonalBookingsViewController;
 import javafx.event.ActionEvent;

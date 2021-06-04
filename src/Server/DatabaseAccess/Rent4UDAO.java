@@ -1,7 +1,6 @@
 package Server.DatabaseAccess;
 
-import Client.Model.*;
-
+import Util.*;
 
 import java.rmi.RemoteException;
 import java.sql.*;

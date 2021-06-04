@@ -1,6 +1,6 @@
 package Client.Views.AddBookingCustomerView.VehicleViewCell;
 
-import Client.Model.Vehicle;
+import Util.Vehicle;
 import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,6 +1,6 @@
 package Client.Views.EditPersonalBookingView.VehicleViewCell;
 
-import Client.Model.Vehicle;
+import Util.Vehicle;
 import Client.Views.AddBookingCustomerView.AddBookingCustomerViewController;
 import Client.Views.EditPersonalBookingView.EditPersonalBookingViewController;
 import javafx.fxml.FXML;

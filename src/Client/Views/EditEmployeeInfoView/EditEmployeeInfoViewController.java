@@ -2,7 +2,7 @@ package Client.Views.EditEmployeeInfoView;
 
 import Client.Core.ViewHandler;
 import Client.Core.ViewModelFactory;
-import Client.Model.Employee;
+import Util.Employee;
 import Client.ViewModel.EditEmployeeInfoViewModel;
 import Client.Views.ViewController;
 import javafx.fxml.FXML;

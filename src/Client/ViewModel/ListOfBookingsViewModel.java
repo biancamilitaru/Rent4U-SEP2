@@ -1,6 +1,6 @@
 package Client.ViewModel;
 
-import Client.Model.Booking;
+import Util.Booking;
 import Client.Model.ClientModel;
 
 import java.rmi.RemoteException;

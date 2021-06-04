@@ -1,5 +1,7 @@
 package Client.Model;
 
+import Util.*;
+
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -104,7 +106,7 @@ public interface ClientModel
    * @throws RemoteException
    * @throws SQLException
    */
-  void editCustomerInfo(Customer customer,Customer newCustomer) throws RemoteException, SQLException;
+  void editCustomerInfo(Customer customer, Customer newCustomer) throws RemoteException, SQLException;
   /**
    * This method is used to delete a vehicle from the system. This functionality is accessed from the ListOfVehiclesView where a button can be found
    * to delete a vehicle. The signal is sent from the ViewController to the ViewModel where the selected Vehicle is deleted.
