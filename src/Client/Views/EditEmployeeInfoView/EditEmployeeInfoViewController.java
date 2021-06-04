@@ -98,10 +98,11 @@ public class EditEmployeeInfoViewController implements ViewController
       setter=false;
 
     String cpr=cprFirstField.getText()+cprSecondField.getText();
-    for(int i=0;i<editEmployeeInfoViewModel.getCustomers().size();i++)
+    for(int i=0;i<editEmployeeInfoViewModel.getEmployees().size();i++)
     {
-      if(cpr.equals(editEmployeeInfoViewModel.getCustomers().get(i).getCpr_number()))
-        setter=false;
+      if(!editEmployeeInfoViewModel.getEmployees().get(i).equals(employee))
+        if(cpr.equals(editEmployeeInfoViewModel.getEmployees().get(i).getCpr()))
+          setter=false;
     }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
@@ -110,10 +111,11 @@ public class EditEmployeeInfoViewController implements ViewController
   private String getEmail() throws RemoteException, SQLException
   {
     String email=eMailField.getText();
-    for(int i=0;i<editEmployeeInfoViewModel.getCustomers().size();i++)
+    for(int i=0;i<editEmployeeInfoViewModel.getEmployees().size();i++)
     {
-      if(editEmployeeInfoViewModel.getCustomers().get(i).getEmail().equals(email))
-        return null;
+      if(!editEmployeeInfoViewModel.getEmployees().get(i).equals(employee))
+        if(editEmployeeInfoViewModel.getEmployees().get(i).getEmail().equals(email))
+          return null;
     }
     return email;
   }
@@ -161,7 +163,7 @@ public class EditEmployeeInfoViewController implements ViewController
   private String getPosition()
   {
     String positionString=position.getText();
-    if(positionString.equals("employee") || positionString.equals("manager"))
+    if(positionString.equalsIgnoreCase("employee") || positionString.equalsIgnoreCase("manager"))
       return positionString;
     return null;
   }

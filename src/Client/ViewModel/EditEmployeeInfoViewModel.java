@@ -24,8 +24,8 @@ public class EditEmployeeInfoViewModel
     Employee newEmployee = new Employee(cpr,firstName,lastName,dateOfBirth,phoneNumber,email,salary,position);
     userModel.editEmployeeInfo(employee,newEmployee);
   }
-  public ArrayList<Customer> getCustomers() throws RemoteException, SQLException
+  public ArrayList<Employee> getEmployees() throws RemoteException, SQLException
   {
-    return userModel.getCustomers();
+    return userModel.getEmployees();
   }
 }

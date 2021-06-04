@@ -16,8 +16,8 @@ public class LogInViewModel
   {
     this.userModel= userModel;
     password = new SimpleStringProperty();
-    employeePassword = "default";
-    managerPassword = "default2";
+    employeePassword = "EMP2021";
+    managerPassword = "MNG2021";
   }
 
   public StringProperty passwordProperty()

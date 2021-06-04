@@ -130,7 +130,7 @@ public class AddEmployeesViewController implements ViewController
   private String getPosition()
   {
     String positionString=position.getText();
-    if(positionString.equals("employee") || positionString.equals("manager"))
+    if(positionString.equalsIgnoreCase("employee") || positionString.equalsIgnoreCase("manager"))
       return positionString;
     return null;
   }

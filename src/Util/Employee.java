@@ -2,9 +2,9 @@ package Util;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
-public class Employee implements Serializable
-{
+public class Employee implements Serializable {
   private String cpr;
   private String firstName;
   private String lastName;
@@ -15,7 +15,7 @@ public class Employee implements Serializable
   private String position;
 
   public Employee(String cpr, String firstName, String lastName, GregorianCalendar dateOfBirth, String phoneNumber,
-                  String email, double salary, String position){
+                  String email, double salary, String position) {
     this.cpr = cpr;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -26,83 +26,67 @@ public class Employee implements Serializable
     this.position = position;
   }
 
-  public void setCpr(String cpr)
-  {
+  public void setCpr(String cpr) {
     this.cpr = cpr;
   }
 
-  public String getCpr()
-  {
+  public String getCpr() {
     return cpr;
   }
 
-  public void setDateOfBirth(GregorianCalendar dateOfBirth)
-  {
+  public void setDateOfBirth(GregorianCalendar dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
 
-  public GregorianCalendar getDateOfBirth()
-  {
+  public GregorianCalendar getDateOfBirth() {
     return dateOfBirth;
   }
 
-  public void setEmail(String email)
-  {
+  public void setEmail(String email) {
     this.email = email;
   }
 
-  public String getEmail()
-  {
+  public String getEmail() {
     return email;
   }
 
-  public void setFirstName(String firstName)
-  {
+  public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
 
-  public String getFirstName()
-  {
+  public String getFirstName() {
     return firstName;
   }
 
-  public void setLastName(String lastName)
-  {
+  public void setLastName(String lastName) {
     this.lastName = lastName;
   }
 
-  public String getLastName()
-  {
+  public String getLastName() {
     return lastName;
   }
 
-  public void setPhoneNumber(String phoneNumber)
-  {
+  public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
-  public String getPhoneNumber()
-  {
+  public String getPhoneNumber() {
     return phoneNumber;
   }
 
-  public void setPosition(String position)
-  {
+  public void setPosition(String position) {
     this.position = position;
   }
 
-  public String getPosition()
-  {
+  public String getPosition() {
     return position;
   }
 
-  public void setSalary(double salary)
-  {
+  public void setSalary(double salary) {
     this.salary = salary;
   }
 
-  public double getSalary()
-  {
+  public double getSalary() {
     return salary;
   }
 
@@ -118,5 +102,20 @@ public class Employee implements Serializable
             ", salary=" + salary +
             ", position='" + position + '\'' +
             '}';
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (!(obj instanceof Employee))
+      return false;
+    Employee temp = (Employee) obj;
+    return temp.getSalary() == salary &&
+            temp.getCpr().equals(cpr) &&
+            temp.getFirstName().equals(firstName) &&
+            temp.getLastName().equals(lastName) &&
+            temp.getDateOfBirth().equals(dateOfBirth) &&
+            temp.getPhoneNumber().equals(phoneNumber) &&
+            temp.getEmail().equals(email) &&
+            temp.getPosition().equals(position);
   }
 }

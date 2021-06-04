@@ -2,6 +2,7 @@ package Util;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 public class Customer implements Serializable
 {
@@ -121,4 +122,22 @@ public class Customer implements Serializable
             ", cpr_number='" + cpr_number + '\'' +
             '}';
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (!(obj instanceof Customer)) {
+      System.out.println("!!!!!!");
+      return false;
+    }
+    Customer temp = (Customer)obj;
+    return temp.getFirstName().equals(firstName) &&
+            temp.getLastName().equals(lastName) &&
+            temp.getDateOfBirth().equals(dateOfBirth) &&
+            temp.getEmail().equals(email) &&
+            temp.getPassword().equals(password) &&
+            temp.getPhoneNumber().equals(phoneNumber)&&
+            temp.getDrivingLicenseNumber().equals(drivingLicenseNumber)&&
+            temp.getCpr_number().equals(cpr_number);
+  }
+
 }

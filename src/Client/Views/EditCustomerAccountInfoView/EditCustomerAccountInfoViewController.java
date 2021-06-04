@@ -112,8 +112,9 @@ public class EditCustomerAccountInfoViewController implements ViewController
     String cpr=cprFirstField.getText()+cprSecondField.getText();
     for(int i=0;i<editCustomerInfoViewModel.getCustomers().size();i++)
     {
-      if(cpr.equals(editCustomerInfoViewModel.getCustomers().get(i).getCpr_number()))
-        setter=false;
+      if(!editCustomerInfoViewModel.getCustomers().get(i).equals(customer))
+        if(cpr.equals(editCustomerInfoViewModel.getCustomers().get(i).getCpr_number()))
+          setter=false;
     }
     if(setter)
       return cprFirstField.getText()+cprSecondField.getText();
@@ -125,8 +126,9 @@ public class EditCustomerAccountInfoViewController implements ViewController
     String email=eMailField.getText();
     for(int i=0;i<editCustomerInfoViewModel.getCustomers().size();i++)
     {
-      if(editCustomerInfoViewModel.getCustomers().get(i).getEmail().equals(email))
-        return null;
+      if(!editCustomerInfoViewModel.getCustomers().get(i).equals(customer))
+        if(editCustomerInfoViewModel.getCustomers().get(i).getEmail().equals(email))
+          return null;
     }
     return email;
   }
@@ -175,32 +177,32 @@ public class EditCustomerAccountInfoViewController implements ViewController
       alert.showAndWait();
       viewHandler.openListOfCustomers(manager);
     }
+    else {
+      if (getCpr() == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid input");
+        alert.setContentText("Please enter a valid cpr number!");
+        alert.showAndWait();
+      }
 
-    if(getCpr()==null){
-    Alert alert = new Alert(Alert.AlertType.WARNING);
-    alert.setTitle("Invalid input");
-    alert.setContentText("Please enter a valid cpr number!");
-    alert.showAndWait();}
-
-    if(getDateBirth()==null){
-      Alert alert = new Alert(Alert.AlertType.WARNING);
-      alert.setTitle("Invalid input");
-      alert.setContentText("Please enter a valid birthday!");
-      alert.showAndWait();
-    }
-    if(getPhoneNumber()==null)
-    {
-      Alert alert = new Alert(Alert.AlertType.WARNING);
-      alert.setTitle("Invalid input");
-      alert.setContentText("Please enter a phone number!");
-      alert.showAndWait();
-    }
-    if(getEmail()==null)
-    {
-      Alert alert = new Alert(Alert.AlertType.WARNING);
-      alert.setTitle("Invalid input");
-      alert.setContentText("Please enter a unique email address!");
-      alert.showAndWait();
+      if (getDateBirth() == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid input");
+        alert.setContentText("Please enter a valid birthday!");
+        alert.showAndWait();
+      }
+      if (getPhoneNumber() == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid input");
+        alert.setContentText("Please enter a phone number!");
+        alert.showAndWait();
+      }
+      if (getEmail() == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid input");
+        alert.setContentText("Please enter a unique email address!");
+        alert.showAndWait();
+      }
     }
   }
 
