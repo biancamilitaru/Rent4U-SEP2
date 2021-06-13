@@ -5,13 +5,17 @@ import Client.Networking.ClientImpl;
 
 public class ClientFactory
 {
-    private static ClientFactory instance = new ClientFactory();
+    private static ClientFactory instance;
     private Client client;
 
     private ClientFactory() {}
 
     public static ClientFactory getInstance()
     {
+        if(instance==null)
+        {
+            instance=new ClientFactory();
+        }
         return instance;
     }
 

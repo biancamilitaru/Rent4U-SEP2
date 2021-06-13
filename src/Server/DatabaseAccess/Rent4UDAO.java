@@ -21,7 +21,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         return instance;
     }
 
-    public Rent4UDAO() throws SQLException
+   public Rent4UDAO() throws SQLException
     {
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
@@ -35,6 +35,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     @Override
     public void addNewVehicle(Vehicle vehicle) throws  SQLException
     {
+        //Methods that create the connection between the SQL and the java code
         try(Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO Vehicle(licence_plate, type, make, model,"
                     + "year, engine_power, type_of_gearbox, number_of_seats, type_of_fuel, price)" +

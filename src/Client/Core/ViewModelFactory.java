@@ -7,12 +7,15 @@ import Client.Views.ListOfEmployeesView.ListOfEmployeesViewController;
 
 public class ViewModelFactory
 {
+
   private static ViewModelFactory instance = new ViewModelFactory();
 
   public static ViewModelFactory getInstance(){
     if(instance == null)
       instance = new ViewModelFactory();
     return instance;
+  }
+  private ViewModelFactory() {
   }
 
   private EditPersonalBookingViewModel editPersonalBookingViewModel;
@@ -38,8 +41,6 @@ public class ViewModelFactory
   private AddEmployeeViewModel addEmployeeViewModel;
   private ListOfEmployeesViewModel listOfEmployeesViewModel;
   private EditEmployeeInfoViewModel editEmployeeInfoViewModel;
-  private ViewModelFactory() {
-  }
 
   public LogInViewModel getLogInViewModel() {
     if (logInViewModel == null)
