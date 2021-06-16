@@ -5,13 +5,17 @@ import Client.Model.ClientModelManager;
 
 public class ModelFactory
 {
-  private static ModelFactory instance = new ModelFactory();
-  public static ModelFactory getInstance(){
+  private static ModelFactory instance;
+  public static ModelFactory getInstance()
+  {
+    if(instance == null)
+      instance = new ModelFactory();
     return instance;
   }
-  private ClientModel clientModel;
 
   private ModelFactory() {}
+
+  private ClientModel clientModel;
 
   public ClientModel getClientModel(){
     if (clientModel == null)

@@ -11,7 +11,6 @@ import java.util.GregorianCalendar;
 
 public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomers, ManageEmployees
 {
-    //We are using singleton for this class because we want to have only one instance in our program
     private static Rent4UDAO instance;
     public static synchronized Rent4UDAO getInstance() throws SQLException
     {
@@ -29,6 +28,20 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
     {
         return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=rent4u",
                 "postgres","maria5561");
+    }
+
+    @Override public void setStatus(Vehicle vehicle, Status status) throws SQLException {
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO status(license_plate, " +
+                    "start_time, end_time, status) VALUES (?, ?, ?, ?)");
+            statement.setString(1, vehicle.getLicensePlate());
+            Timestamp start_time = new Timestamp(status.getStartDate().getTimeInMillis());
+            statement.setTimestamp(2, start_time);
+            Timestamp end_time = new Timestamp(status.getEndDate().getTimeInMillis());
+            statement.setTimestamp(3, end_time);
+            statement.setString(4, status.getStatus());
+            statement.executeUpdate();
+        }
     }
 
     @Override
@@ -92,19 +105,7 @@ public class Rent4UDAO implements ManageVehicles, ManageBookings, ManageCustomer
         return new Vehicle(licencePlate, enginePower, type, make, model, year, typeOfGearBox, typeOfFuel, numberOfSeats, price);
     }
 
-    @Override public void setStatus(Vehicle vehicle, Status status) throws SQLException {
-        try(Connection connection = getConnection()){
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO status(license_plate, " +
-                    "start_time, end_time, status) VALUES (?, ?, ?, ?)");
-            statement.setString(1, vehicle.getLicensePlate());
-            Timestamp start_time = new Timestamp(status.getStartDate().getTimeInMillis());
-            statement.setTimestamp(2, start_time);
-            Timestamp end_time = new Timestamp(status.getEndDate().getTimeInMillis());
-            statement.setTimestamp(3, end_time);
-            statement.setString(4, status.getStatus());
-            statement.executeUpdate();
-        }
-    }
+
 
     @Override public void editVehicleInfo(Vehicle vehicle, Vehicle newVehicle) throws SQLException {
         try(Connection connection = getConnection()){
